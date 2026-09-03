@@ -1,10 +1,10 @@
 {
- "ts": "2026-09-03T17:24:53",
+ "ts": "2026-09-03T18:21:07",
  "chat_id": null,
  "results": [
   {
    "id": "B1",
-   "fusion_doc": "水库基本信息.md",
+   "fusion_doc": "水库基本信息.jpg",
    "coverage": "text",
    "question": "桃曲坡水库的设计总库容是多少万立方米？",
    "note": "校准题：预案文本与注册证均载 5720，预期导入前即可通过",
@@ -26,7 +26,7 @@
   },
   {
    "id": "B2",
-   "fusion_doc": "水库基本信息.md",
+   "fusion_doc": "水库基本信息.jpg",
    "coverage": "text",
    "question": "桃曲坡水库的兴利库容是多少万立方米？",
    "note": "校准题",
@@ -35,18 +35,19 @@
     "pass_count": "3/3",
     "top1": "04-大坝安全管理应急预案.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
      "04-大坝安全管理应急预案.pdf",
+     "05-库容水位对照表.jpg",
      "水库基本信息.jpg"
     ]
    }
   },
   {
    "id": "B3",
-   "fusion_doc": "水库基本信息.md",
+   "fusion_doc": "水库基本信息.jpg",
    "coverage": "text",
    "question": "桃曲坡水库枢纽工程由哪几部分组成？",
    "note": "校准题：四组成部分",
@@ -55,7 +56,7 @@
     "pass_count": "3/3",
     "top1": "02-调度规程.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
@@ -68,7 +69,7 @@
   },
   {
    "id": "B4",
-   "fusion_doc": "水库基本信息.md",
+   "fusion_doc": "水库基本信息.jpg",
    "coverage": "text",
    "question": "桃曲坡水库溢洪道百年一遇设计洪水泄量是多少立方米每秒？",
    "note": "校准题：TEXTUALIZED_VALUES 锚点",
@@ -77,7 +78,7 @@
     "pass_count": "3/3",
     "top1": "03-汛期调度运用计划.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
@@ -91,7 +92,7 @@
   },
   {
    "id": "Y7",
-   "fusion_doc": "溢洪道图2.md",
+   "fusion_doc": "溢洪道图2.jpg",
    "coverage": "both",
    "question": "桃曲坡水库溢洪道工作闸门采用什么型号的启闭机？",
    "note": "预案文本同源段落亦载，融合文档补强",
@@ -100,7 +101,7 @@
     "pass_count": "3/3",
     "top1": "04-大坝安全管理应急预案.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -112,7 +113,7 @@
   },
   {
    "id": "Y8",
-   "fusion_doc": "溢洪道图2.md",
+   "fusion_doc": "溢洪道图2.jpg",
    "coverage": "both",
    "question": "桃曲坡水库溢洪道单扇闸门总水压力是多少吨？",
    "note": "数值题",
@@ -120,8 +121,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "溢洪道图2.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -133,7 +134,7 @@
   },
   {
    "id": "W1",
-   "fusion_doc": "物资图1.md",
+   "fusion_doc": "物资图1.jpg",
    "coverage": "both",
    "question": "市区应急机构防汛袋类储备最低限额是多少万条？",
    "note": "口径一（市、区最低限额）",
@@ -141,8 +142,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "物资图1.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -153,7 +154,7 @@
   },
   {
    "id": "W2",
-   "fusion_doc": "物资图1.md",
+   "fusion_doc": "物资图1.jpg",
    "coverage": "both",
    "question": "桃曲坡水库灌溉中心防汛物资储备最低限额中救生衣是多少件？",
    "note": "口径二（中心最低限额 200 件，勿与市区 5000 件混）",
@@ -161,8 +162,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "物资图1.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -173,7 +174,7 @@
   },
   {
    "id": "W3",
-   "fusion_doc": "物资图1.md",
+   "fusion_doc": "物资图1.jpg",
    "coverage": "both",
    "question": "桃曲坡水库枢纽站物资库实有彩条布是多少平方米？",
    "note": "口径三（枢纽站实有）；判别题：市区 10000 / 中心 500 / 实有 2000 严禁混",
@@ -182,7 +183,7 @@
     "pass_count": "3/3",
     "top1": "01-防洪抢险应急预案.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -193,7 +194,7 @@
   },
   {
    "id": "W4",
-   "fusion_doc": "物资图1.md",
+   "fusion_doc": "物资图1.jpg",
    "coverage": "both",
    "question": "桃曲坡水库灌溉中心袋类物资储备最低限额是多少？",
    "note": "口径二判别题：2 万条 ≠ 市区 30 万条 ≠ 实有 7500 条；any 双词形（首跑 all/any 互斥为判分 bug，已修）",
@@ -201,8 +202,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "物资图1.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "04-大坝安全管理应急预案.pdf",
@@ -212,42 +213,44 @@
   },
   {
    "id": "W5",
-   "fusion_doc": "物资图2.md",
+   "fusion_doc": "物资图2.jpg",
    "coverage": "both",
    "question": "桃曲坡水库枢纽站实有物资中铁锹有多少把？",
    "note": "315 有 315KVA 干扰项，故 all 铁锹 + any 315 把",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
-    "top1": "01-防洪抢险应急预案.pdf",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "物资图2.jpg",
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "物资图2.jpg"
     ]
    }
   },
   {
    "id": "W6",
-   "fusion_doc": "物资图2.md",
+   "fusion_doc": "物资图2.jpg",
    "coverage": "both",
    "question": "桃曲坡水库防汛物资的存放地点在哪里？",
    "note": "存放地点：桃曲坡水库枢纽站库房",
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "01-防洪抢险应急预案.pdf",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1": "物资图2.jpg",
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "物资图2.jpg"
     ]
    }
   },
   {
    "id": "W7",
-   "fusion_doc": "物资图2.md",
+   "fusion_doc": "物资图2.jpg",
    "coverage": "both",
    "question": "溃坝或重大工程险情的应急抢险费用主要由谁负担？",
    "note": "5.3 经费保障，两新源补出内容",
@@ -255,8 +258,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "物资图2.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "04-大坝安全管理应急预案.pdf",
      "物资图2.jpg"
@@ -265,7 +268,7 @@
   },
   {
    "id": "R1",
-   "fusion_doc": "三个责任人.md",
+   "fusion_doc": "三个责任人.jpg",
    "coverage": "both",
    "question": "桃曲坡水库防汛安全行政责任人是谁？",
    "note": "责任人表（冒烟已测杨一波，此题换行政责任人）；首跑误将手机号放 any 作硬性 OR 致假阴，已修",
@@ -274,7 +277,7 @@
     "pass_count": "3/3",
     "top1": "03-汛期调度运用计划.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -285,7 +288,7 @@
   },
   {
    "id": "R2",
-   "fusion_doc": "三个责任人.md",
+   "fusion_doc": "三个责任人.jpg",
    "coverage": "both",
    "question": "防汛安全技术责任人张永康的办公室电话是多少？",
    "note": "办公室电话，区别于手机 13809182800",
@@ -293,8 +296,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "三个责任人.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "三个责任人.jpg"
@@ -303,7 +306,7 @@
   },
   {
    "id": "R3",
-   "fusion_doc": "三个责任人.md",
+   "fusion_doc": "三个责任人.jpg",
    "coverage": "both",
    "question": "桃曲坡水库的报汛电话是多少？",
    "note": "报汛（读图定案字形）；与值班电话同号",
@@ -312,7 +315,7 @@
     "pass_count": "3/3",
     "top1": "03-汛期调度运用计划.pdf",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
@@ -322,7 +325,7 @@
   },
   {
    "id": "G1",
-   "fusion_doc": "中心架构图.md",
+   "fusion_doc": "中心架构图.png",
    "coverage": "fusion",
    "question": "富平灌溉总站下辖哪些灌溉管理站？",
    "note": "纯delta：架构图从未入文本语料；读图定案富平 5 站",
@@ -330,8 +333,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "中心架构图.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "中心架构图.png",
      "桃曲坡平台设备管理.xlsx",
@@ -341,7 +344,7 @@
   },
   {
    "id": "G2",
-   "fusion_doc": "中心架构图.md",
+   "fusion_doc": "中心架构图.png",
    "coverage": "fusion",
    "question": "陕西省桃曲坡水库灌溉中心的财务类科室有哪些？",
    "note": "纯delta：分设两科（2:1 定案）",
@@ -349,8 +352,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "中心架构图.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "中心架构图.png"
@@ -359,24 +362,25 @@
   },
   {
    "id": "G3",
-   "fusion_doc": "中心架构图.md",
+   "fusion_doc": "中心架构图.png",
    "coverage": "fusion",
    "question": "桃曲坡水库灌溉中心下属有哪些企业？",
    "note": "纯delta；架构图用简写'供水有限公司'，与用水需求图'供水有限责任公司'为两处口径",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
-    "top1": "02-调度规程.pdf",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "中心架构图.png",
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
+     "中心架构图.png",
      "桃曲坡平台设备管理.xlsx"
     ]
    }
   },
   {
    "id": "G4",
-   "fusion_doc": "中心架构图.md",
+   "fusion_doc": "中心架构图.png",
    "coverage": "fusion",
    "question": "桃曲坡水库灌溉中心设有哪个工程维修养护机构？",
    "note": "纯delta",
@@ -384,8 +388,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "中心架构图.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "中心架构图.png"
     ]
@@ -393,7 +397,7 @@
   },
   {
    "id": "Z1",
-   "fusion_doc": "大坝注册登记证.md",
+   "fusion_doc": "大坝注册登记证.png",
    "coverage": "both",
    "question": "桃曲坡水库大坝注册登记证由哪个机构颁发？",
    "note": "发证机关=注册登记机构=陕西省水利厅",
@@ -401,8 +405,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "大坝注册登记证.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "大坝注册登记证.png"
     ]
@@ -410,7 +414,7 @@
   },
   {
    "id": "Z2",
-   "fusion_doc": "大坝注册登记证.md",
+   "fusion_doc": "大坝注册登记证.png",
    "coverage": "fusion",
    "question": "桃曲坡水库大坝注册登记证的发证日期是什么时候？",
    "note": "纯delta：发证日期仅证件图载有",
@@ -418,8 +422,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "大坝注册登记证.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "大坝注册登记证.png"
     ]
@@ -427,7 +431,7 @@
   },
   {
    "id": "Z3",
-   "fusion_doc": "大坝注册登记证.md",
+   "fusion_doc": "大坝注册登记证.png",
    "coverage": "fusion",
    "question": "注册证载明的桃曲坡水库所在地点在哪里？",
    "note": "纯delta：耀州区石柱乡马咀村",
@@ -435,8 +439,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "大坝注册登记证.png",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "大坝注册登记证.png"
@@ -445,7 +449,7 @@
   },
   {
    "id": "S1",
-   "fusion_doc": "各部门用水需求.md",
+   "fusion_doc": "各部门用水需求.jpg",
    "coverage": "both",
    "question": "桃曲坡水库2026年度农灌斗口供水计划是多少万立方米？",
    "note": "2026 计划；all 用词形锚防 5000 裸数字误配",
@@ -453,8 +457,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "各部门用水需求.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "各部门用水需求.jpg"
@@ -463,7 +467,7 @@
   },
   {
    "id": "S2",
-   "fusion_doc": "各部门用水需求.md",
+   "fusion_doc": "各部门用水需求.jpg",
    "coverage": "both",
    "question": "桃曲坡水库沮河生态基流是多少万立方米？",
    "note": "2026 计划 630 万立方米",
@@ -471,8 +475,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "各部门用水需求.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "各部门用水需求.jpg"
@@ -481,7 +485,7 @@
   },
   {
    "id": "S3",
-   "fusion_doc": "各部门用水需求.md",
+   "fusion_doc": "各部门用水需求.jpg",
    "coverage": "fusion",
    "question": "供配水计划中向城市及工业供水的企业有哪 7 家？",
    "note": "纯delta：7 家企业名单；any 为读图定案的全称（带'责任'字）",
@@ -489,8 +493,8 @@
     "passed": true,
     "pass_count": "3/3",
     "top1": "各部门用水需求.jpg",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
      "03-汛期调度运用计划.pdf",
      "各部门用水需求.jpg"
