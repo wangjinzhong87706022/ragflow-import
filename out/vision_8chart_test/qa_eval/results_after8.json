@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-03T13:41:01",
+ "ts": "2026-09-03T17:24:53",
  "chat_id": null,
  "results": [
   {
@@ -17,8 +17,10 @@
     "hit_docs": [
      "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
      "03-汛期调度运用计划.pdf",
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "大坝注册登记证.png"
     ]
    }
   },
@@ -37,7 +39,8 @@
     "hit_docs": [
      "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.jpg"
     ]
    }
   },
@@ -54,10 +57,12 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
+     "01-划界报告.pdf",
      "01-防洪抢险应急预案.pdf",
      "02-调度规程.pdf",
      "03-汛期调度运用计划.pdf",
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.jpg"
     ]
    }
   },
@@ -79,6 +84,7 @@
      "02-调度规程.pdf",
      "03-汛期调度运用计划.pdf",
      "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.jpg",
      "溢洪道图1.jpg"
     ]
    }
@@ -98,7 +104,9 @@
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
      "03-汛期调度运用计划.pdf",
-     "04-大坝安全管理应急预案.pdf"
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.jpg",
+     "溢洪道图2.jpg"
     ]
    }
   },
@@ -111,11 +119,15 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "01-防洪抢险应急预案.pdf",
+    "top1": "溢洪道图2.jpg",
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "01-防洪抢险应急预案.pdf"
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.jpg",
+     "溢洪道图2.jpg"
     ]
    }
   },
@@ -153,6 +165,8 @@
     "target_in_topn": false,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
      "物资图1.jpg"
     ]
    }
@@ -190,6 +204,8 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf",
      "物资图1.jpg"
     ]
    }
@@ -207,7 +223,8 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "01-防洪抢险应急预案.pdf"
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf"
     ]
    }
   },
@@ -218,12 +235,14 @@
    "question": "桃曲坡水库防汛物资的存放地点在哪里？",
    "note": "存放地点：桃曲坡水库枢纽站库房",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
+    "passed": true,
+    "pass_count": "3/3",
     "top1": "01-防洪抢险应急预案.pdf",
     "top1_is_target": false,
     "target_in_topn": false,
-    "hit_docs": []
+    "hit_docs": [
+     "04-大坝安全管理应急预案.pdf"
+    ]
    }
   },
   {
@@ -253,12 +272,14 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "02-调度规程.pdf",
+    "top1": "03-汛期调度运用计划.pdf",
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
      "01-防洪抢险应急预案.pdf",
-     "03-汛期调度运用计划.pdf"
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "三个责任人.jpg"
     ]
    }
   },
@@ -312,7 +333,6 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "03-汛期调度运用计划.pdf",
      "中心架构图.png",
      "桃曲坡平台设备管理.xlsx",
      "视频监控台账.xlsx"
@@ -332,6 +352,7 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
+     "03-汛期调度运用计划.pdf",
      "中心架构图.png"
     ]
    }
@@ -348,7 +369,9 @@
     "top1": "02-调度规程.pdf",
     "top1_is_target": false,
     "target_in_topn": false,
-    "hit_docs": []
+    "hit_docs": [
+     "桃曲坡平台设备管理.xlsx"
+    ]
    }
   },
   {
@@ -358,12 +381,14 @@
    "question": "桃曲坡水库灌溉中心设有哪个工程维修养护机构？",
    "note": "纯delta",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
-    "top1": "大坝注册登记证.png",
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "中心架构图.png",
     "top1_is_target": false,
     "target_in_topn": false,
-    "hit_docs": []
+    "hit_docs": [
+     "中心架构图.png"
+    ]
    }
   },
   {
@@ -379,7 +404,6 @@
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "01-防洪抢险应急预案.pdf",
      "大坝注册登记证.png"
     ]
    }
@@ -446,11 +470,12 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "03-汛期调度运用计划.pdf",
+    "top1": "各部门用水需求.jpg",
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "03-汛期调度运用计划.pdf"
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.jpg"
     ]
    }
   },

@@ -345,6 +345,11 @@ class RAGFlowClient:
         top_k: int = 10,
         use_kg: bool = False,
         meta_data_filter: dict | None = None,
+        rerank_id: str | None = None,
+        vector_similarity_weight: float | None = None,
+        keyword: bool | None = None,
+        page_size: int | None = None,
+        rerank_candidates_count: int | None = None,
     ) -> dict:
         payload = {
             "dataset_ids": dataset_ids,
@@ -354,6 +359,21 @@ class RAGFlowClient:
         }
         if meta_data_filter is not None:
             payload["meta_data_filter"] = meta_data_filter
+        # P2-9 检索层可选项（v0.27.1 REST 原生支持）：rerank_id=对话层同款
+        # rerank 模型行 id；vector_similarity_weight=向量/关键词混合权重；
+        # keyword=true 走 LLM 查询改写；page_size 控制返回条数（服务端默认 30）；
+        # rerank_candidates_count=精排/分页候选池大小（服务端默认 64——实测多库检索
+        # 时目标块可能被 64 池预截断，256 可救回，见 out/retrieval_tuning/）。
+        # 缺省一律不传，行为与旧版完全一致。
+        for key, val in (
+            ("rerank_id", rerank_id),
+            ("vector_similarity_weight", vector_similarity_weight),
+            ("keyword", keyword),
+            ("page_size", page_size),
+            ("rerank_candidates_count", rerank_candidates_count),
+        ):
+            if val is not None:
+                payload[key] = val
         resp = self.session.post(f"{API_BASE}/datasets/search", json=payload, timeout=DEFAULT_TIMEOUT)
         return _check(resp)["data"]
 

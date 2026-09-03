@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-03T13:33:43",
+ "ts": "2026-09-03T16:57:23",
  "phase": "after",
  "results": [
   {
@@ -11,8 +11,8 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
-    "top1_is_target": false,
+    "top1": "洪水统计(1).xls",
+    "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
      "洪水汇报(2).doc",
@@ -29,11 +29,12 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
-    "top1_is_target": false,
-    "target_in_topn": false,
+    "top1": "洪水统计(1).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
     "hit_docs": [
-     "洪水汇报(2).doc"
+     "洪水汇报(2).doc",
+     "洪水统计(1).xls"
     ]
    }
   },
@@ -46,12 +47,13 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
-    "top1_is_target": false,
+    "top1": "洪水统计(1).xls",
+    "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
      "洪水汇报(2).doc",
-     "洪水统计(1).xls"
+     "洪水统计(1).xls",
+     "较大洪水统计表.xls"
     ]
    }
   },
@@ -79,12 +81,14 @@
    "question": "8.21洪水的流域面雨量是多少毫米？",
    "note": "预报值块：面雨量 87.66mm、净雨深 13.15mm",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
-    "top1": "洪水汇报(2).doc",
-    "top1_is_target": false,
-    "target_in_topn": false,
-    "hit_docs": []
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水统计(1).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水统计(1).xls"
+    ]
    }
   },
   {
@@ -94,12 +98,14 @@
    "question": "桃曲坡水库流域实测洪峰流量最大的是哪场洪水？洪峰流量是多少？",
    "note": "1867年以来目录：2010年7月24日 1353 m³/s 为实测最大",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
+    "passed": true,
+    "pass_count": "3/3",
     "top1": "洪水汇报(1).doc",
     "top1_is_target": false,
-    "target_in_topn": false,
-    "hit_docs": []
+    "target_in_topn": true,
+    "hit_docs": [
+     "较大洪水统计表.xls"
+    ]
    }
   },
   {
@@ -109,12 +115,14 @@
    "question": "桃曲坡水库流域哪场洪水是200年一遇？",
    "note": "1867 历史调查洪水",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
+    "passed": true,
+    "pass_count": "3/3",
     "top1": "洪水汇报(2).doc",
     "top1_is_target": false,
-    "target_in_topn": false,
-    "hit_docs": []
+    "target_in_topn": true,
+    "hit_docs": [
+     "较大洪水统计表.xls"
+    ]
    }
   },
   {
@@ -126,11 +134,12 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
+    "top1": "洪水统计(1).xls",
     "top1_is_target": false,
     "target_in_topn": false,
     "hit_docs": [
-     "洪水汇报(2).doc"
+     "洪水汇报(2).doc",
+     "洪水统计(1).xls"
     ]
    }
   },
@@ -141,12 +150,14 @@
    "question": "1932年的洪水洪峰流量是多少？",
    "note": "历史洪水 2110 m³/s，100年一遇",
    "retrieval": {
-    "passed": false,
-    "pass_count": "0/3",
+    "passed": true,
+    "pass_count": "3/3",
     "top1": "洪水汇报(2).doc",
     "top1_is_target": false,
-    "target_in_topn": false,
-    "hit_docs": []
+    "target_in_topn": true,
+    "hit_docs": [
+     "较大洪水统计表.xls"
+    ]
    }
   },
   {
@@ -160,9 +171,11 @@
     "pass_count": "3/3",
     "top1": "洪水汇报(2).doc",
     "top1_is_target": false,
-    "target_in_topn": false,
+    "target_in_topn": true,
     "hit_docs": [
-     "洪水统计.xls"
+     "2011年下泄水量统计.xls",
+     "洪水统计.xls",
+     "较大洪水统计表.xls"
     ]
    }
   },

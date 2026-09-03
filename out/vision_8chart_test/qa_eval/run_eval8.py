@@ -73,12 +73,14 @@ def score(all_kw, any_kw, texts):
 
 
 REPEAT = 3  # v0.27.1 单次检索排序有向量噪声漂移，每题跑 3 次取多数
+POOL = 256  # P2-9：候选池 64→256（默认 64 池会预截断目标块，G4 实证；见 out/retrieval_tuning/）
 
 
 def run_retrieval(client, q):
     passes, top1, target_topn, target_top1, hits = 0, "?", False, False, set()
     for _ in range(REPEAT):
-        data = client.search_datasets(DS_IDS, q["question"], top_k=10)
+        data = client.search_datasets(DS_IDS, q["question"], top_k=10,
+                                      rerank_candidates_count=POOL)
         chunks = data.get("chunks", [])
         texts = chunk_texts(chunks)
         names = [chunk_doc(c) for c in chunks]

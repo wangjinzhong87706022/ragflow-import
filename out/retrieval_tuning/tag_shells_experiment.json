@@ -1,0 +1,35 @@
+{
+  "ts": "2026-09-03",
+  "purpose": "P2-9 实验：壳块补 tag_feas（免 parse 漏打标是壳排序劣势的根因，tag_fea=cos(q标签,块标签)×10 见 rag/nlp/search.py:389）",
+  "es_index": "ragflow_72fc3f62a01f11f19d7235ad4ea699d4",
+  "steps": [
+    {
+      "doc": "洪水统计(1).xls",
+      "kb": "d6fcb56ea1d711f19d7235ad4ea699d4",
+      "chunks_updated": 10,
+      "tag_feas_written": {"洪水资料": 10, "基础数据": 8},
+      "tag_source": "同类别解析件 洪水统计.xls 实际携带向量（LLM tag 兜底产物），元数据口径一致（doc_category=洪水资料）",
+      "result": "X1 瑶曲132 rank 17→5（无 rerank）→2（rerank vsw0.5）；X5 87.66 FAIL→rank1；对照 弃水10561 rank1 不变",
+      "revert": "update_by_query 同 query，script: ctx._source.remove('tag_feas')"
+    },
+    {
+      "doc": "较大洪水统计表.xls + 2011年下泄水量统计.xls",
+      "kb": "d6fcb56ea1d711f19d7235ad4ea699d4",
+      "chunks_updated": 18,
+      "tag_feas_written": {"洪水资料": 10, "基础数据": 8, "历年统计": 5},
+      "tag_source": "同上（历年统计类补事件词表项）",
+      "revert": "update_by_query 同 query，script: ctx._source.remove('tag_feas')"
+    },
+    {
+      "doc": "12 份 PNG 壳（ds2×8: 水库基本信息/02-大坝剖面图/溢洪道图1/溢洪道图2/05-库容水位对照表/06-泄流曲线/物资图1/物资图2 各.jpg；ds4×4: 三个责任人.jpg/中心架构图.png/各部门用水需求.jpg/大坝注册登记证.png）",
+      "kb": "ds2 d6ec4e36a1d711f19d7235ad4ea699d4 + ds4 d756f7b8a1d711f19d7235ad4ea699d4",
+      "chunks_updated": 120,
+      "tag_feas_written": "ds2 八壳 {基础数据:10, 历年统计:5}（镜像元数据 doc_category+flood_event）；ds4 四壳 {组织管理:10}",
+      "tag_source": "镜像各壳 11 字段元数据（doc_meta 索引核验，零污染：更新仅命中名单内 12 文档）",
+      "note": "关键事实：ds2/ds4 解析件分片携带的是 LLM 自由标签（hydrology/water_resource_monitoring 等），与 13 词表查询向量 cosine≈0 → 库内竞争者本就无标签加成，壳只有跨库（ds1 规程预案等词表标签件）竞争时才结构吃亏；补词表标签=方向正确的对等修正",
+      "revert": "update_by_query 同 query，script: ctx._source.remove('tag_feas')"
+    }
+  ],
+  "pre_state": "壳块无 tag_feas（UNSTART 免 parse → 未过 tag 阶段）",
+  "next": "已完成（见 REPORT.md）：12题 8→12/12、26题 22→24/26（池256，多库场景）、QC 6/6、chat 探针 3/3；剩余 W5/G3 为内容层缺口 → P1-4 补行"
+}

@@ -26,6 +26,10 @@ DS3 = "d6fcb56ea1d711f19d7235ad4ea699d4"   # 洪水资料
 DS_IDS = [DS3]
 REPEAT = 3
 TOPN = 10  # v0.27.1 检索实际返回 30 条，必须切片
+# P2-9 实证（2026-09-03）：ds3 保持服务端默认候选池 64，不传 rerank_candidates_count。
+# 256 池在 F1 垃圾重灾区会放进更多高复合分垃圾块挤掉行切片（X6/X7/X9/X10 0/3→FAIL）；
+# 64 池 + 壳打标后 X5/X6/X7/X9 稳定 3/3（rank 1/5/5/3）。多库场景（26 题）才受益于 256。
+
 
 
 def load_questions():

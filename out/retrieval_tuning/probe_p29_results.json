@@ -1,0 +1,280 @@
+{
+ "ts": "2026-09-03T15:09:29",
+ "rerank_id": "269c3b0ea02911f19d7235ad4ea699d4",
+ "topn": 10,
+ "repeats": 3,
+ "questions": [
+  {
+   "id": "X5",
+   "question": "8.21洪水的流域面雨量是多少毫米？",
+   "target_doc": "洪水统计(1).xls",
+   "configs": {
+    "A_base": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      1,
+      1,
+      1
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      1,
+      1,
+      1
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      1,
+      1,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": "X6",
+   "question": "桃曲坡水库流域实测洪峰流量最大的是哪场洪水？洪峰流量是多少？",
+   "target_doc": "较大洪水统计表.xls",
+   "configs": {
+    "A_base": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "id": "X7",
+   "question": "桃曲坡水库流域哪场洪水是200年一遇？",
+   "target_doc": "较大洪水统计表.xls",
+   "configs": {
+    "A_base": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      5,
+      5,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "id": "X9",
+   "question": "1932年的洪水洪峰流量是多少？",
+   "target_doc": "较大洪水统计表.xls",
+   "configs": {
+    "A_base": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      3,
+      3,
+      3
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      3,
+      3,
+      3
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "3/3",
+     "passed": true,
+     "target_ranks": [
+      3,
+      3,
+      3
+     ]
+    }
+   }
+  },
+  {
+   "id": "W5",
+   "question": "桃曲坡水库枢纽站实有物资中铁锹有多少把？",
+   "target_doc": "物资图2.jpg",
+   "configs": {
+    "A_base": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "id": "W6",
+   "question": "桃曲坡水库防汛物资的存放地点在哪里？",
+   "target_doc": "物资图2.jpg",
+   "configs": {
+    "A_base": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "id": "G3",
+   "question": "桃曲坡水库灌溉中心下属有哪些企业？",
+   "target_doc": "中心架构图.png",
+   "configs": {
+    "A_base": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "id": "G4",
+   "question": "桃曲坡水库灌溉中心设有哪个工程维修养护机构？",
+   "target_doc": "中心架构图.png",
+   "configs": {
+    "A_base": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "B_rerank_vsw03": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    },
+    "C_rerank_vsw05": {
+     "pass_count": "0/3",
+     "passed": false,
+     "target_ranks": [
+      null,
+      null,
+      null
+     ]
+    }
+   }
+  }
+ ]
+}

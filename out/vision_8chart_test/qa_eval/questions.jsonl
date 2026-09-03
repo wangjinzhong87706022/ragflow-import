@@ -1,26 +1,26 @@
-{"id":"B1","fusion_doc":"水库基本信息.md","question":"桃曲坡水库的设计总库容是多少万立方米？","all_keywords":["5720"],"any_keywords":null,"coverage":"text","note":"校准题：预案文本与注册证均载 5720，预期导入前即可通过"}
-{"id":"B2","fusion_doc":"水库基本信息.md","question":"桃曲坡水库的兴利库容是多少万立方米？","all_keywords":["4290"],"any_keywords":null,"coverage":"text","note":"校准题"}
-{"id":"B3","fusion_doc":"水库基本信息.md","question":"桃曲坡水库枢纽工程由哪几部分组成？","all_keywords":["拦河坝","溢洪道","高放水洞","低放水洞"],"any_keywords":null,"coverage":"text","note":"校准题：四组成部分"}
-{"id":"B4","fusion_doc":"水库基本信息.md","question":"桃曲坡水库溢洪道百年一遇设计洪水泄量是多少立方米每秒？","all_keywords":["1454"],"any_keywords":["立方米每秒","m³/s"],"coverage":"text","note":"校准题：TEXTUALIZED_VALUES 锚点"}
-{"id":"Y7","fusion_doc":"溢洪道图2.md","question":"桃曲坡水库溢洪道工作闸门采用什么型号的启闭机？","all_keywords":["QPQ2"],"any_keywords":["固定卷扬"],"coverage":"both","note":"预案文本同源段落亦载，融合文档补强"}
-{"id":"Y8","fusion_doc":"溢洪道图2.md","question":"桃曲坡水库溢洪道单扇闸门总水压力是多少吨？","all_keywords":["132.5"],"any_keywords":["水压力"],"coverage":"both","note":"数值题"}
-{"id":"W1","fusion_doc":"物资图1.md","question":"市区应急机构防汛袋类储备最低限额是多少万条？","all_keywords":["袋类"],"any_keywords":["30 万条","30万条"],"coverage":"both","note":"口径一（市、区最低限额）"}
-{"id":"W2","fusion_doc":"物资图1.md","question":"桃曲坡水库灌溉中心防汛物资储备最低限额中救生衣是多少件？","all_keywords":["救生衣"],"any_keywords":["200 件","200件"],"coverage":"both","note":"口径二（中心最低限额 200 件，勿与市区 5000 件混）"}
-{"id":"W3","fusion_doc":"物资图1.md","question":"桃曲坡水库枢纽站物资库实有彩条布是多少平方米？","all_keywords":["彩条布"],"any_keywords":["2000 平方米","2000平方米","2000 ㎡"],"coverage":"both","note":"口径三（枢纽站实有）；判别题：市区 10000 / 中心 500 / 实有 2000 严禁混"}
-{"id":"W4","fusion_doc":"物资图1.md","question":"桃曲坡水库灌溉中心袋类物资储备最低限额是多少？","all_keywords":null,"any_keywords":["袋类 2 万条","袋类2万条"],"coverage":"both","note":"口径二判别题：2 万条 ≠ 市区 30 万条 ≠ 实有 7500 条；any 双词形（首跑 all/any 互斥为判分 bug，已修）"}
-{"id":"W5","fusion_doc":"物资图2.md","question":"桃曲坡水库枢纽站实有物资中铁锹有多少把？","all_keywords":["铁锹"],"any_keywords":["315 把","315把"],"coverage":"both","note":"315 有 315KVA 干扰项，故 all 铁锹 + any 315 把"}
-{"id":"W6","fusion_doc":"物资图2.md","question":"桃曲坡水库防汛物资的存放地点在哪里？","all_keywords":["枢纽站库房"],"any_keywords":null,"coverage":"both","note":"存放地点：桃曲坡水库枢纽站库房"}
-{"id":"W7","fusion_doc":"物资图2.md","question":"溃坝或重大工程险情的应急抢险费用主要由谁负担？","all_keywords":["铜川市政府"],"any_keywords":["公共财政"],"coverage":"both","note":"5.3 经费保障，两新源补出内容"}
-{"id":"R1","fusion_doc":"三个责任人.md","question":"桃曲坡水库防汛安全行政责任人是谁？","all_keywords":["刘浩"],"any_keywords":null,"coverage":"both","note":"责任人表（冒烟已测杨一波，此题换行政责任人）；首跑误将手机号放 any 作硬性 OR 致假阴，已修"}
-{"id":"R2","fusion_doc":"三个责任人.md","question":"防汛安全技术责任人张永康的办公室电话是多少？","all_keywords":["0919-3588336"],"any_keywords":null,"coverage":"both","note":"办公室电话，区别于手机 13809182800"}
-{"id":"R3","fusion_doc":"三个责任人.md","question":"桃曲坡水库的报汛电话是多少？","all_keywords":["0919-3588315"],"any_keywords":null,"coverage":"both","note":"报汛（读图定案字形）；与值班电话同号"}
-{"id":"G1","fusion_doc":"中心架构图.md","question":"富平灌溉总站下辖哪些灌溉管理站？","all_keywords":["觅子","庄里","宫里","曹村"],"any_keywords":["惠家窑"],"coverage":"fusion","note":"纯delta：架构图从未入文本语料；读图定案富平 5 站"}
-{"id":"G2","fusion_doc":"中心架构图.md","question":"陕西省桃曲坡水库灌溉中心的财务类科室有哪些？","all_keywords":["规划计划科","财务审计科"],"any_keywords":null,"coverage":"fusion","note":"纯delta：分设两科（2:1 定案）"}
-{"id":"G3","fusion_doc":"中心架构图.md","question":"桃曲坡水库灌溉中心下属有哪些企业？","all_keywords":["陕西铜川供水有限公司","陕西飞龙水利水电工程有限公司"],"any_keywords":["锦阳湖"],"coverage":"fusion","note":"纯delta；架构图用简写'供水有限公司'，与用水需求图'供水有限责任公司'为两处口径"}
-{"id":"G4","fusion_doc":"中心架构图.md","question":"桃曲坡水库灌溉中心设有哪个工程维修养护机构？","all_keywords":["工程维修养护大队"],"any_keywords":null,"coverage":"fusion","note":"纯delta"}
-{"id":"Z1","fusion_doc":"大坝注册登记证.md","question":"桃曲坡水库大坝注册登记证由哪个机构颁发？","all_keywords":["陕西省水利厅"],"any_keywords":["注册登记机构"],"coverage":"both","note":"发证机关=注册登记机构=陕西省水利厅"}
-{"id":"Z2","fusion_doc":"大坝注册登记证.md","question":"桃曲坡水库大坝注册登记证的发证日期是什么时候？","all_keywords":["2023-06-13"],"any_keywords":["2023 年 6 月 13 日","2023年6月13日"],"coverage":"fusion","note":"纯delta：发证日期仅证件图载有"}
-{"id":"Z3","fusion_doc":"大坝注册登记证.md","question":"注册证载明的桃曲坡水库所在地点在哪里？","all_keywords":["马咀村"],"any_keywords":null,"coverage":"fusion","note":"纯delta：耀州区石柱乡马咀村"}
-{"id":"S1","fusion_doc":"各部门用水需求.md","question":"桃曲坡水库2026年度农灌斗口供水计划是多少万立方米？","all_keywords":["农灌斗口"],"any_keywords":["5000"],"coverage":"both","note":"2026 计划；all 用词形锚防 5000 裸数字误配"}
-{"id":"S2","fusion_doc":"各部门用水需求.md","question":"桃曲坡水库沮河生态基流是多少万立方米？","all_keywords":["沮河生态基流"],"any_keywords":["630"],"coverage":"both","note":"2026 计划 630 万立方米"}
-{"id":"S3","fusion_doc":"各部门用水需求.md","question":"供配水计划中向城市及工业供水的企业有哪 7 家？","all_keywords":["铜川自来水公司","陕西美鑫产业投资有限公司"],"any_keywords":["陕西铜川供水有限责任公司"],"coverage":"fusion","note":"纯delta：7 家企业名单；any 为读图定案的全称（带'责任'字）"}
+{"id": "B1", "fusion_doc": "水库基本信息.jpg", "question": "桃曲坡水库的设计总库容是多少万立方米？", "all_keywords": ["5720"], "any_keywords": null, "coverage": "text", "note": "校准题：预案文本与注册证均载 5720，预期导入前即可通过"}
+{"id": "B2", "fusion_doc": "水库基本信息.jpg", "question": "桃曲坡水库的兴利库容是多少万立方米？", "all_keywords": ["4290"], "any_keywords": null, "coverage": "text", "note": "校准题"}
+{"id": "B3", "fusion_doc": "水库基本信息.jpg", "question": "桃曲坡水库枢纽工程由哪几部分组成？", "all_keywords": ["拦河坝", "溢洪道", "高放水洞", "低放水洞"], "any_keywords": null, "coverage": "text", "note": "校准题：四组成部分"}
+{"id": "B4", "fusion_doc": "水库基本信息.jpg", "question": "桃曲坡水库溢洪道百年一遇设计洪水泄量是多少立方米每秒？", "all_keywords": ["1454"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "text", "note": "校准题：TEXTUALIZED_VALUES 锚点"}
+{"id": "Y7", "fusion_doc": "溢洪道图2.jpg", "question": "桃曲坡水库溢洪道工作闸门采用什么型号的启闭机？", "all_keywords": ["QPQ2"], "any_keywords": ["固定卷扬"], "coverage": "both", "note": "预案文本同源段落亦载，融合文档补强"}
+{"id": "Y8", "fusion_doc": "溢洪道图2.jpg", "question": "桃曲坡水库溢洪道单扇闸门总水压力是多少吨？", "all_keywords": ["132.5"], "any_keywords": ["水压力"], "coverage": "both", "note": "数值题"}
+{"id": "W1", "fusion_doc": "物资图1.jpg", "question": "市区应急机构防汛袋类储备最低限额是多少万条？", "all_keywords": ["袋类"], "any_keywords": ["30 万条", "30万条"], "coverage": "both", "note": "口径一（市、区最低限额）"}
+{"id": "W2", "fusion_doc": "物资图1.jpg", "question": "桃曲坡水库灌溉中心防汛物资储备最低限额中救生衣是多少件？", "all_keywords": ["救生衣"], "any_keywords": ["200 件", "200件"], "coverage": "both", "note": "口径二（中心最低限额 200 件，勿与市区 5000 件混）"}
+{"id": "W3", "fusion_doc": "物资图1.jpg", "question": "桃曲坡水库枢纽站物资库实有彩条布是多少平方米？", "all_keywords": ["彩条布"], "any_keywords": ["2000 平方米", "2000平方米", "2000 ㎡"], "coverage": "both", "note": "口径三（枢纽站实有）；判别题：市区 10000 / 中心 500 / 实有 2000 严禁混"}
+{"id": "W4", "fusion_doc": "物资图1.jpg", "question": "桃曲坡水库灌溉中心袋类物资储备最低限额是多少？", "all_keywords": null, "any_keywords": ["袋类 2 万条", "袋类2万条"], "coverage": "both", "note": "口径二判别题：2 万条 ≠ 市区 30 万条 ≠ 实有 7500 条；any 双词形（首跑 all/any 互斥为判分 bug，已修）"}
+{"id": "W5", "fusion_doc": "物资图2.jpg", "question": "桃曲坡水库枢纽站实有物资中铁锹有多少把？", "all_keywords": ["铁锹"], "any_keywords": ["315 把", "315把"], "coverage": "both", "note": "315 有 315KVA 干扰项，故 all 铁锹 + any 315 把"}
+{"id": "W6", "fusion_doc": "物资图2.jpg", "question": "桃曲坡水库防汛物资的存放地点在哪里？", "all_keywords": ["枢纽站库房"], "any_keywords": null, "coverage": "both", "note": "存放地点：桃曲坡水库枢纽站库房"}
+{"id": "W7", "fusion_doc": "物资图2.jpg", "question": "溃坝或重大工程险情的应急抢险费用主要由谁负担？", "all_keywords": ["铜川市政府"], "any_keywords": ["公共财政"], "coverage": "both", "note": "5.3 经费保障，两新源补出内容"}
+{"id": "R1", "fusion_doc": "三个责任人.jpg", "question": "桃曲坡水库防汛安全行政责任人是谁？", "all_keywords": ["刘浩"], "any_keywords": null, "coverage": "both", "note": "责任人表（冒烟已测杨一波，此题换行政责任人）；首跑误将手机号放 any 作硬性 OR 致假阴，已修"}
+{"id": "R2", "fusion_doc": "三个责任人.jpg", "question": "防汛安全技术责任人张永康的办公室电话是多少？", "all_keywords": ["0919-3588336"], "any_keywords": null, "coverage": "both", "note": "办公室电话，区别于手机 13809182800"}
+{"id": "R3", "fusion_doc": "三个责任人.jpg", "question": "桃曲坡水库的报汛电话是多少？", "all_keywords": ["0919-3588315"], "any_keywords": null, "coverage": "both", "note": "报汛（读图定案字形）；与值班电话同号"}
+{"id": "G1", "fusion_doc": "中心架构图.png", "question": "富平灌溉总站下辖哪些灌溉管理站？", "all_keywords": ["觅子", "庄里", "宫里", "曹村"], "any_keywords": ["惠家窑"], "coverage": "fusion", "note": "纯delta：架构图从未入文本语料；读图定案富平 5 站"}
+{"id": "G2", "fusion_doc": "中心架构图.png", "question": "陕西省桃曲坡水库灌溉中心的财务类科室有哪些？", "all_keywords": ["规划计划科", "财务审计科"], "any_keywords": null, "coverage": "fusion", "note": "纯delta：分设两科（2:1 定案）"}
+{"id": "G3", "fusion_doc": "中心架构图.png", "question": "桃曲坡水库灌溉中心下属有哪些企业？", "all_keywords": ["陕西铜川供水有限公司", "陕西飞龙水利水电工程有限公司"], "any_keywords": ["锦阳湖"], "coverage": "fusion", "note": "纯delta；架构图用简写'供水有限公司'，与用水需求图'供水有限责任公司'为两处口径"}
+{"id": "G4", "fusion_doc": "中心架构图.png", "question": "桃曲坡水库灌溉中心设有哪个工程维修养护机构？", "all_keywords": ["工程维修养护大队"], "any_keywords": null, "coverage": "fusion", "note": "纯delta"}
+{"id": "Z1", "fusion_doc": "大坝注册登记证.png", "question": "桃曲坡水库大坝注册登记证由哪个机构颁发？", "all_keywords": ["陕西省水利厅"], "any_keywords": ["注册登记机构"], "coverage": "both", "note": "发证机关=注册登记机构=陕西省水利厅"}
+{"id": "Z2", "fusion_doc": "大坝注册登记证.png", "question": "桃曲坡水库大坝注册登记证的发证日期是什么时候？", "all_keywords": ["2023-06-13"], "any_keywords": ["2023 年 6 月 13 日", "2023年6月13日"], "coverage": "fusion", "note": "纯delta：发证日期仅证件图载有"}
+{"id": "Z3", "fusion_doc": "大坝注册登记证.png", "question": "注册证载明的桃曲坡水库所在地点在哪里？", "all_keywords": ["马咀村"], "any_keywords": null, "coverage": "fusion", "note": "纯delta：耀州区石柱乡马咀村"}
+{"id": "S1", "fusion_doc": "各部门用水需求.jpg", "question": "桃曲坡水库2026年度农灌斗口供水计划是多少万立方米？", "all_keywords": ["农灌斗口"], "any_keywords": ["5000"], "coverage": "both", "note": "2026 计划；all 用词形锚防 5000 裸数字误配"}
+{"id": "S2", "fusion_doc": "各部门用水需求.jpg", "question": "桃曲坡水库沮河生态基流是多少万立方米？", "all_keywords": ["沮河生态基流"], "any_keywords": ["630"], "coverage": "both", "note": "2026 计划 630 万立方米"}
+{"id": "S3", "fusion_doc": "各部门用水需求.jpg", "question": "供配水计划中向城市及工业供水的企业有哪 7 家？", "all_keywords": ["铜川自来水公司", "陕西美鑫产业投资有限公司"], "any_keywords": ["陕西铜川供水有限责任公司"], "coverage": "fusion", "note": "纯delta：7 家企业名单；any 为读图定案的全称（带'责任'字）"}

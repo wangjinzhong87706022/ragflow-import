@@ -139,6 +139,10 @@ def kg_gain_record(hit5_on: int, hit5_off: int) -> int:
 CASE_REQUIRED_FIELDS = ("id", "tier", "layer", "question", "datasets", "gold")
 CASE_TIERS = ("acceptance", "regression")
 CASE_LAYERS = ("retrieval", "structured", "e2e")
+# P2-9 实证（2026-09-03）：候选池维持服务端默认 64。QC 六问均为单库检索，
+# 256 池只对多库（ds1+ds2+ds4）场景有益、对 F1 污染库（ds3）反而放进更多
+# 高复合分垃圾块（Q4 实证 PASS→FAIL；多库收益见 qa_eval/run_eval8.py）。
+RERANK_CANDIDATES_COUNT = None
 
 
 class EvalCaseError(ValueError):
@@ -438,6 +442,7 @@ def run_qc(dry_run: bool = False) -> list[dict]:
                 top_k=10,
                 use_kg=use_kg,
                 meta_data_filter=meta_filter,
+                rerank_candidates_count=RERANK_CANDIDATES_COUNT,
             )
             chunk_texts, total = chunk_texts_from_response(data)
             found = keywords_found(chunk_texts, expected)

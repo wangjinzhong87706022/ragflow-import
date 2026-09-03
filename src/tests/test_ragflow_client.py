@@ -220,6 +220,29 @@ def test_search_payload_structure():
     assert payload["use_kg"] is True
 
 
+def test_search_optional_ranking_params_only_when_set():
+    """P2-9 检索层专项：rerank_id / vector_similarity_weight / keyword / page_size /
+    rerank_candidates_count 为 v0.27.1 REST 可选项；缺省一律不进 payload（行为与
+    旧版完全一致），显式传入才携带（rerank_id=对话层同款 rerank 模型行 id）。"""
+    c, session = _mk_client()
+    session.post.return_value = _ok({"chunks": [], "total": 0})
+
+    c.search_datasets(["ds1"], "q")
+    base = session.post.call_args[1]["json"]
+    for absent in ("rerank_id", "vector_similarity_weight", "keyword", "page_size",
+                   "rerank_candidates_count"):
+        assert absent not in base, f"缺省时不应携带 {absent}"
+
+    c.search_datasets(["ds1"], "q", rerank_id="r1", vector_similarity_weight=0.5,
+                      keyword=True, page_size=10, rerank_candidates_count=256)
+    payload = session.post.call_args[1]["json"]
+    assert payload["rerank_id"] == "r1"
+    assert payload["vector_similarity_weight"] == 0.5
+    assert payload["keyword"] is True
+    assert payload["page_size"] == 10
+    assert payload["rerank_candidates_count"] == 256
+
+
 # ---------------------------------------------------------------------------
 # P0-3 run 状态双兼容："DONE"/"FAIL"（REST 层）与 "3"/"4"（DB 枚举）
 # ---------------------------------------------------------------------------
