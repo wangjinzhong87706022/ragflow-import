@@ -220,6 +220,32 @@ def test_search_payload_structure():
     assert payload["use_kg"] is True
 
 
+def test_meta_data_filter_conditions_normalized_to_manual():
+    """P1-5 回归 pin：v0.27.1 apply_meta_data_filter 的 manual 分支读
+    meta_data_filter["manual"]（列表），不读 "conditions"——写错键会被静默忽略，
+    过滤等于没过滤（QC Q5 曾因此假阳性）。client 必须归一成 "manual"，
+    已写 "manual" 的调用方原样放行。"""
+    c, session = _mk_client()
+    session.post.return_value = _ok({"chunks": [], "total": 0})
+    cond = [{"key": "flood_event", "op": "=", "value": "2013-7"}]
+
+    c.search_datasets(["ds3"], "q", meta_data_filter={
+        "method": "manual", "logic": "and", "conditions": cond})
+    payload = session.post.call_args[1]["json"]["meta_data_filter"]
+    assert payload["manual"] == cond
+    assert "conditions" not in payload
+    assert payload["method"] == "manual" and payload["logic"] == "and"
+
+    c.search_datasets(["ds3"], "q", meta_data_filter={"manual": cond})
+    payload = session.post.call_args[1]["json"]["meta_data_filter"]
+    assert payload["manual"] == cond           # 原样放行
+    assert payload["method"] == "manual"       # setdefault 补齐
+
+    # 无过滤时完全不携带该键（行为与旧版一致）
+    c.search_datasets(["ds3"], "q")
+    assert "meta_data_filter" not in session.post.call_args[1]["json"]
+
+
 def test_search_optional_ranking_params_only_when_set():
     """P2-9 检索层专项：rerank_id / vector_similarity_weight / keyword / page_size /
     rerank_candidates_count 为 v0.27.1 REST 可选项；缺省一律不进 payload（行为与

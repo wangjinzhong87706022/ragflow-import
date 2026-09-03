@@ -1,0 +1,78 @@
+{
+ "ec08f730a75711f1af477b6050be89ec": {
+  "name": "洪水统计(1).xls",
+  "meta_fields": {
+   "doc_category": "洪水资料",
+   "doc_nature": "技术",
+   "doc_type": "表格",
+   "flood_event": "2018-8",
+   "flood_magnitude": "不适用",
+   "location": "全库",
+   "quality": "high",
+   "rel": "06-历年洪水资料/06-2008年洪水(8-22)/洪水统计.xls",
+   "source_format": "excel",
+   "sub_category": "2018年洪水(8-21)",
+   "year": 2018
+  }
+ },
+ "6c78f7f6a1f611f19d7235ad4ea699d4": {
+  "name": "降雨量统计(1).xls",
+  "meta_fields": {
+   "doc_category": "洪水资料",
+   "doc_nature": "技术",
+   "doc_type": "表格",
+   "flood_event": "2018-8",
+   "flood_magnitude": "不适用",
+   "quality": "high",
+   "rel": "06-历年洪水资料/06-2008年洪水(8-22)/降雨量统计.xls",
+   "source_format": "excel",
+   "sub_category": "2018年洪水(8-21)",
+   "year": 2018
+  }
+ },
+ "67f237c4a1f611f19d7235ad4ea699d4": {
+  "name": "弃水计算.xls",
+  "meta_fields": {
+   "doc_category": "洪水资料",
+   "doc_nature": "技术",
+   "doc_type": "表格",
+   "flood_event": "2018-8",
+   "flood_magnitude": "不适用",
+   "quality": "high",
+   "rel": "06-历年洪水资料/06-2008年洪水(8-22)/弃水计算.xls",
+   "source_format": "excel",
+   "sub_category": "2018年洪水(8-21)",
+   "year": 2018
+  }
+ },
+ "691c64e4a1f611f19d7235ad4ea699d4": {
+  "name": "洪水汇报(2).doc",
+  "meta_fields": {
+   "doc_category": "洪水资料",
+   "doc_nature": "技术",
+   "doc_type": "文本",
+   "flood_event": "2018-8",
+   "flood_magnitude": "不适用",
+   "quality": "high",
+   "rel": "06-历年洪水资料/06-2008年洪水(8-22)/洪水汇报.doc",
+   "source_format": "word",
+   "sub_category": "2018年洪水(8-21)",
+   "year": 2018
+  }
+ },
+ "6a4598eaa1f611f19d7235ad4ea699d4": {
+  "name": "洪水简报.doc",
+  "meta_fields": {
+   "doc_category": "洪水资料",
+   "doc_nature": "技术",
+   "doc_type": "文本",
+   "flood_event": "2018-8",
+   "flood_magnitude": "不适用",
+   "quality": "high",
+   "rel": "06-历年洪水资料/06-2008年洪水(8-22)/洪水简报.doc",
+   "source_format": "word",
+   "sub_category": "2018年洪水(8-21)",
+   "year": 2018
+  }
+ }
+}

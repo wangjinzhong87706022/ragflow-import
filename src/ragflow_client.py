@@ -104,6 +104,25 @@ def _run_done(run) -> bool:
 def _run_failed(run) -> bool:
     return str(run) in {"4", "FAIL", "fail"}
 
+def _normalize_meta_data_filter(mf: dict) -> dict:
+    """v0.27.1 契约：manual 模式的条件列表放在 "manual" 键下。
+
+    服务端 apply_meta_data_filter（common/metadata_utils.py）manual 分支读
+    meta_data_filter.get("manual", [])——写 "conditions" 键会被静默忽略：
+    filters=[] → 不过滤也无 "-999" 占位，检索照常返回无过滤结果
+    （QC Q5 的"元数据钻取"曾因此长期是假阳性）。这里把 "conditions"
+    归一成 "manual"，已写 "manual" 的调用方原样放行。条件本身用
+    key/op/value 形状（ES pushdown 的 is_pushdown_supported 认这个）。
+    """
+    mf = dict(mf)
+    conditions = mf.pop("conditions", None)
+    if conditions is not None and "manual" not in mf:
+        mf["manual"] = conditions
+    mf.setdefault("method", "manual")
+    return mf
+
+
+
 
 class RAGFlowClient:
     """RAGFlow API client. Handles RSA login and carries session cookie for all requests."""
@@ -358,7 +377,7 @@ class RAGFlowClient:
             "use_kg": use_kg,
         }
         if meta_data_filter is not None:
-            payload["meta_data_filter"] = meta_data_filter
+            payload["meta_data_filter"] = _normalize_meta_data_filter(meta_data_filter)
         # P2-9 检索层可选项（v0.27.1 REST 原生支持）：rerank_id=对话层同款
         # rerank 模型行 id；vector_similarity_weight=向量/关键词混合权重；
         # keyword=true 走 LLM 查询改写；page_size 控制返回条数（服务端默认 30）；

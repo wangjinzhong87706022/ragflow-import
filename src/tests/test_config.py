@@ -102,6 +102,17 @@ def test_flood_event_sources_are_mutually_consistent():
     assert not missing, f"目录映射中的事件不在标签词表里: {missing}"
 
 
+def test_flood_event_2008_dir_is_actually_2018():
+    """P1-5 纠偏回归 pin：档案目录 "06-2008年洪水(8-22)" 内表格数据实为
+    2018-08-21 洪水（表内标题 20180821 + Excel 序列日 43333 + 《较大洪水统计表》
+    180821 行互证），映射必须取 2018-8；枚举/词表须含 2018-8，2008-8 仅作历史值域。"""
+    assert FLOOD_EVENT_BY_SUBDIR["06-2008年洪水(8-22)"] == "2018-8"
+    fld = next(f for f in METADATA_SCHEMA if f["key"] == "flood_event")
+    assert "2018-8" in fld["enum"]
+    from tag_vocab import VOCAB_ROWS
+    assert ("2018-8", "2018-8") in VOCAB_ROWS
+
+
 def test_dept_keywords_longest_first():
     """多模式提取按序匹配，长词必须在前——否则'管理局'抢在'桃曲坡水库管理局'之前命中。"""
     lengths = [len(k) for k in LOCATION_KEYWORDS]
