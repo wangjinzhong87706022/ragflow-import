@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "seconds": 31.2,
+  "finish_reason": "stop",
+  "content_chars": 672,
+  "max_tokens": 8192,
+  "sent_mime": "image/jpeg",
+  "sent_kb": 380,
+  "usage": {
+    "prompt_tokens": 2832,
+    "completion_tokens": 1175,
+    "total_tokens": 4007,
+    "prompt_tokens_details": {
+      "cached_tokens": 192
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 192
+  }
+}

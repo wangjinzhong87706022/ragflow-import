@@ -1,0 +1,272 @@
+# Review package — Tasks 1–3（base=快照 run_qc.py.task123.pre）
+
++diff --git a/opt/wangjz/ragflow-import/.superpowers/sdd/2026-08-27-eval-suite-phase1/base/run_qc.py.task123.pre b/src/run_qc.py
++index 399499f..1d21082 100644
++--- a/opt/wangjz/ragflow-import/.superpowers/sdd/2026-08-27-eval-suite-phase1/base/run_qc.py.task123.pre
+++++ b/src/run_qc.py
++@@ -7,30 +7,142 @@ Procedure:
++        map ds_keys to dataset_ids via setup_state
++        call client.search_datasets(...)
++        check expected_keywords against chunk texts
++        record pass/fail result
++   4. Write OUT_DIR/qc/results_{timestamp}.json
++   5. Write OUT_DIR/qc/report_{timestamp}.md
++   6. Print overall pass rate and list of failed questions.
++ """
++ 
++ import json
+++import posixpath
++ import sys
++ import time
++ from pathlib import Path
++ 
++ import requests
++ 
++ from config import OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM
++ from ragflow_client import RAGFlowClient
++ 
++ 
+++# ------------------------------------------------------------------
+++# 评测纯函数（spec §4.1）：同一输入必得同一分数
+++# ------------------------------------------------------------------
+++def normalize_for_match(text: str) -> str:
+++    """小写化 + 全角转半角 + 去千分位逗号。只做包含匹配前的归一，不做单位换算。"""
+++    out_chars = []
+++    prev_digit = False
+++    for ch in (text or "").lower():
+++        code = ord(ch)
+++        if 0xFF01 <= code <= 0xFF5E:            # 全角 ASCII 区
+++            ch = chr(code - 0xFEE0)
+++        if ch == "," and prev_digit:            # 千分位逗号（仅数字后跟数字场景，宽泛去除无害：
+++            out_chars.append("")                # 普通“,”紧跟数字的组合中文文本中不存在）
+++            continue
+++        out_chars.append(ch)
+++        prev_digit = ch.isdigit()
+++    return "".join(out_chars)
+++
+++
+++def numeric_hits(numbers: list[str], texts: list[str]) -> int:
+++    norm_texts = [normalize_for_match(t) for t in texts]
+++    return sum(
+++        1 for n in numbers
+++        if n and any(normalize_for_match(n) in t for t in norm_texts)
+++    )
+++
+++
+++def keyword_hits(keywords: list[str], texts: list[str]) -> int:
+++    norm_texts = [normalize_for_match(t) for t in texts]
+++    return sum(
+++        1 for kw in keywords
+++        if kw and any(normalize_for_match(kw) in t for t in norm_texts)
+++    )
+++
+++
+++def anchor_hit_at_k(gold: dict, texts_ranked: list[str], k: int) -> bool:
+++    """hit@k：gold.numbers ∪ keywords 任一命中前 k 名 chunk。空集 gold 由 loader 拒绝。"""
+++    topk = texts_ranked[:k]
+++    return numeric_hits(gold.get("numbers", []), topk) > 0 or \
+++        keyword_hits(gold.get("keywords", []), topk) > 0
+++
+++
+++def decide_pass(*, numeric_exact: bool, hit10: bool, kw_hits: int, min_keywords: int) -> bool:
+++    """spec §4.1 通过公式，运算顺序显式化。min_keywords 为 0/None（对应
+++    gold.keywords 为空）时关键词门恒真——数值锚点独立承载该 case。"""
+++    anchor_gate = bool(numeric_exact) or bool(hit10)
+++    kw_ok = True if not min_keywords else kw_hits >= int(min_keywords)
+++    return anchor_gate and kw_ok
+++
+++
+++def score_retrieval(gold: dict, texts: list[str]) -> dict:
+++    """对单个 case 的检索结果打分（text 相关度序，最多取 10 条）。"""
+++    hit5 = anchor_hit_at_k(gold, texts, 5)
+++    hit10 = anchor_hit_at_k(gold, texts, 10)
+++    numbers, keywords = gold.get("numbers", []), gold.get("keywords", [])
+++    numeric_exact = numeric_hits(numbers, texts[:10]) > 0 and bool(numbers)
+++
+++    mrr_rank = 0
+++    for rank, t in enumerate(texts[:10], start=1):
+++        if numeric_hits(numbers, [t]) or keyword_hits(keywords, [t]):
+++            mrr_rank = rank
+++            break
+++
+++    kw_hits = keyword_hits(keywords, texts[:10])
+++    kw_needed = 0 if not keywords else \
+++        int(gold.get("threshold", {}).get("min_keywords", 1))
+++    passed = decide_pass(
+++        numeric_exact=numeric_exact, hit10=hit10,
+++        kw_hits=kw_hits, min_keywords=kw_needed,
+++    )
+++    return {
+++        "hit5": hit5, "hit10": hit10, "mrr_rank": mrr_rank,
+++        "numeric_exact": numeric_exact, "kw_hits": kw_hits,
+++        "kw_needed": kw_needed, "passed": passed,
+++    }
+++
+++
+++def mrr_mean(mrr_ranks: list[int]) -> float:
+++    """MRR = Σ(1/rank) / n；rank 为 0（无命中）计 0 分。"""
+++    if not mrr_ranks:
+++        return 0.0
+++    return sum(1.0 / r for r in mrr_ranks if r > 0) / len(mrr_ranks)
+++
+++
+++def rel_to_name(rel: str) -> str:
+++    return posixpath.basename(rel)
+++
+++
+++def score_meta_filter(expected_names: list[str], returned_names: list[str]) -> dict:
+++    """元数据硬过滤 drill：返回文档名单与期望名单精确一致才 pass（顺序无关）。"""
+++    exp, got = set(expected_names), set(returned_names)
+++    return {
+++        "passed": exp == got,
+++        "missing": sorted(exp - got),
+++        "unexpected": sorted(got - exp),
+++    }
+++
+++
+++def tag_signal(chunks: list[dict], expected_tags: list[str]) -> int:
+++    seen = set()
+++    for c in chunks[:10]:
+++        for kw in c.get("important_keywords") or []:
+++            if kw in expected_tags:
+++                seen.add(kw)
+++    return len(seen)
+++
+++
+++def kg_gain_record(hit5_on: int, hit5_off: int) -> int:
+++    return int(hit5_on) - int(hit5_off)
+++
+++
++ # ------------------------------------------------------------------
++ # Questions (spec §3.5)
++ # ------------------------------------------------------------------
++ QUESTIONS = [
++     {
++         "id": "Q1",
++         "text": "桃曲坡水库溢洪道的设计泄量是多少？",
++         "dataset_ids": ["ds1", "ds2"],
++         "use_kg": True,
++         "meta_data_filter": None,
+
+# 新增文件全文: src/tests/test_eval_scoring.py
+```
+import sys, pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
+
+from run_qc import (
+    normalize_for_match, numeric_hits, keyword_hits,
+    anchor_hit_at_k, decide_pass,
+)
+
+
+def test_normalize_fullwidth_and_case():
+    assert normalize_for_match("Ｍ³/S １２３Ａ") == "m³/s 123a"
+
+
+def test_normalize_thousands_comma_removed_only_between_digits():
+    assert "1454" in normalize_for_match("设计泄量1,454 m³/s")
+    assert "," in normalize_for_match("雨情,水情")   # 中文/普通逗号不动（千分位只删数字后跟随者）
+
+
+def test_numeric_hits_containment():
+    texts = ["泄量1,454立方米每秒", "汛限水位７８８.５米"]
+    assert numeric_hits(["1454"], texts) == 1
+    assert numeric_hits(["1454", "788.5"], texts) == 2
+    assert numeric_hits(["9999"], texts) == 0
+
+
+def test_keyword_hits_counts_distinct_keywords():
+    texts = ["溢洪道百年一遇泄量1454"]
+    assert keyword_hits(["溢洪道", "百年一遇", "瑶曲"], texts) == 2
+
+
+def test_anchor_hit_boundary_at_k():
+    gold = {"numbers": ["1454"], "keywords": ["溢洪道"]}
+    texts = [f"噪声块{i}" for i in range(5)] + ["溢洪道设计泄量1454"]
+    assert anchor_hit_at_k(gold, texts, 5) is False
+    assert anchor_hit_at_k(gold, texts, 6) is True
+
+
+def test_decide_pass_formula_truth_table():
+    # 规格公式：pass = (numeric_exact OR hit@10) AND keyword_ok
+    assert decide_pass(numeric_exact=True, hit10=False, kw_hits=1, min_keywords=1)
+    assert decide_pass(numeric_exact=False, hit10=True, kw_hits=2, min_keywords=2)
+    assert not decide_pass(numeric_exact=True, hit10=False, kw_hits=0, min_keywords=1)   # 关键词门挡下
+    assert not decide_pass(numeric_exact=False, hit10=False, kw_hits=5, min_keywords=1)  # 锚点门挡下
+
+
+from run_qc import score_retrieval, mrr_mean
+
+
+def test_score_retrieval_full_fields():
+    gold = {"numbers": ["1454"], "keywords": ["溢洪道", "百年一遇"]}
+    texts = ["噪声", "溢洪道百年一遇设计泄量1454"]
+    r = score_retrieval(gold, texts)
+    assert r["hit5"] and r["hit10"]
+    assert r["numeric_exact"] is True
+    assert r["kw_hits"] == 2
+    assert r["mrr_rank"] == 2
+    assert r["passed"] is True
+
+
+def test_score_retrieval_fails_on_empty_numbers_without_hits():
+    gold = {"numbers": [], "keywords": ["瑶曲"]}          # 只有关键词锚点
+    r = score_retrieval(gold, ["柳林站雨量偏大"])
+    assert r["numeric_exact"] is False
+    assert r["hit10"] is False
+    assert r["passed"] is False                            # keyword_ok 但锚点门未过
+
+
+def test_score_retrieval_keywords_empty_means_always_ok():
+    gold = {"numbers": ["8360"], "keywords": []}
+    r = score_retrieval(gold, ["潼关站8360m3/s"])
+    assert r["kw_needed"] == 0
+    assert r["passed"] is True
+
+
+def test_score_retrieval_no_keywords_present_needs_one():
+    gold = {"numbers": ["123"], "keywords": ["汛限水位"]}
+    r = score_retrieval(gold, ["123 在正文出现但关键词缺席"])
+    assert r["kw_needed"] == 1
+    assert r["passed"] is False
+
+
+def test_mrr_mean_over_cases():
+    assert mrr_mean([1, 3, 0]) == (1 + 1 / 3 + 0) / 3
+    assert mrr_mean([]) == 0.0
+
+
+import posixpath
+from run_qc import rel_to_name, score_meta_filter, tag_signal, kg_gain_record
+
+
+def test_rel_to_name():
+    assert rel_to_name("06-历年洪水资料/05-2013年洪水(7-22)/7-22防洪报告.doc") == "7-22防洪报告.doc"
+
+
+def test_meta_filter_exact_set_equality():
+    exp = ["防洪报告.doc", "洪水过程.xls"]
+    assert score_meta_filter(exp, list(reversed(exp)))["passed"] is True
+    r = score_meta_filter(exp, ["防洪报告.doc"])                # 少了一个
+    assert r["passed"] is False and r["missing"] == ["洪水过程.xls"] and r["unexpected"] == []
+    r2 = score_meta_filter(exp, exp + ["多余.doc"])
+    assert r2["passed"] is False and r2["unexpected"] == ["多余.doc"]
+
+
+def test_tag_signal_intersection_count():
+    chunks = [
+        {"important_keywords": ["溢洪道", "泄洪", "无关词"]},
+        {"important_keywords": []},
+        {},
+    ]
+    assert tag_signal(chunks, ["溢洪道", "泄洪", "灾损"]) == 2   # 去重计数
+
+
+def test_tag_signal_tolerates_missing_field():
+    assert tag_signal([{"content_with_weight": "x"}], ["任意"]) == 0
+
+
+def test_kg_gain_is_plain_difference():
+    assert kg_gain_record(hit5_on=1, hit5_off=0) == 1
+    assert kg_gain_record(hit5_on=0, hit5_off=1) == -1
+```

@@ -1,0 +1,167 @@
+[
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "水库基本信息.jpg",
+    "md": "水库基本信息.md",
+    "status": "FAIL(md 保留)",
+    "md_id": "42ed6542a67f11f196c0d10ff025f702",
+    "png_id": "e598834ea69811f196c0d10ff025f702",
+    "chunks": 12,
+    "detail": [
+      "png 已存在 e598834e run=UNSTART",
+      "元数据已有",
+      "挂载 12 切片",
+      "验证锚点 5720: 未命中"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "02-大坝剖面图.jpg",
+    "md": "02-大坝剖面图.md",
+    "status": "FAIL(md 保留)",
+    "md_id": "0dbe1f48a5d911f196c0d10ff025f702",
+    "png_id": "ef90aa66a69811f196c0d10ff025f702",
+    "chunks": 4,
+    "detail": [
+      "png 已存在 ef90aa66 run=UNSTART",
+      "元数据已有",
+      "挂载 4 切片",
+      "验证锚点 788.50: 未命中"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "溢洪道图1.jpg",
+    "md": "溢洪道图1.md",
+    "status": "OK",
+    "md_id": "0e6ac02ca5d911f196c0d10ff025f702",
+    "png_id": "f1f45672a69811f196c0d10ff025f702",
+    "chunks": 5,
+    "detail": [
+      "png 已存在 f1f45672 run=UNSTART",
+      "元数据已有",
+      "挂载 5 切片",
+      "验证锚点 1454: [('溢洪道图1.jpg', 0.414), ('溢洪道图1.jpg', 0.342)]"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "溢洪道图2.jpg",
+    "md": "溢洪道图2.md",
+    "status": "OK",
+    "md_id": "453bfe08a67f11f196c0d10ff025f702",
+    "png_id": "f27a61f4a69811f196c0d10ff025f702",
+    "chunks": 4,
+    "detail": [
+      "png 已存在 f27a61f4 run=UNSTART",
+      "元数据已有",
+      "挂载 4 切片",
+      "验证锚点 QPQ2: [('溢洪道图2.jpg', 0.42), ('溢洪道图2.jpg', 0.393)]"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "05-库容水位对照表.jpg",
+    "md": "05-库容水位对照表.md",
+    "status": "OK",
+    "md_id": "83007696a5e011f196c0d10ff025f702",
+    "png_id": "f31f9c28a69811f196c0d10ff025f702",
+    "chunks": 62,
+    "detail": [
+      "png 已存在 f31f9c28 run=UNSTART",
+      "元数据已有",
+      "挂载 62 切片",
+      "验证锚点 3370: [('05-库容水位对照表.jpg', 0.53)]"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "06-泄流曲线.jpg",
+    "md": "06-泄流曲线.md",
+    "status": "OK",
+    "md_id": "537c1756a5de11f196c0d10ff025f702",
+    "png_id": "f474ae9ca69811f196c0d10ff025f702",
+    "chunks": 5,
+    "detail": [
+      "png 已存在 f474ae9c run=UNSTART",
+      "元数据已有",
+      "挂载 5 切片",
+      "验证锚点 1400: [('06-泄流曲线.jpg', 0.511), ('06-泄流曲线.jpg', 0.395)]"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "物资图1.jpg",
+    "md": "物资图1.md",
+    "status": "OK",
+    "md_id": "484e12a2a67f11f196c0d10ff025f702",
+    "png_id": "f620d9b4a69811f196c0d10ff025f702",
+    "chunks": 5,
+    "detail": [
+      "png 已存在 f620d9b4 run=UNSTART",
+      "元数据已有",
+      "挂载 5 切片",
+      "验证锚点 2 万条: [('物资图1.jpg', 0.552)]"
+    ]
+  },
+  {
+    "ds": "d6ec4e36a1d711f19d7235ad4ea699d4",
+    "png": "物资图2.jpg",
+    "md": "物资图2.md",
+    "status": "OK",
+    "md_id": "48ecdc20a67f11f196c0d10ff025f702",
+    "png_id": "f7ea4de8a69811f196c0d10ff025f702",
+    "chunks": 5,
+    "detail": [
+      "png 已存在 f7ea4de8 run=UNSTART",
+      "元数据已有",
+      "挂载 5 切片",
+      "验证锚点 枢纽站库房: [('物资图2.jpg', 0.387)]"
+    ]
+  },
+  {
+    "ds": "d756f7b8a1d711f19d7235ad4ea699d4",
+    "png": "三个责任人.jpg",
+    "md": "三个责任人.md",
+    "status": "OK",
+    "md_id": "4a1d5ed0a67f11f196c0d10ff025f702",
+    "png_id": "f916a2d4a69811f196c0d10ff025f702",
+    "chunks": 4,
+    "detail": [
+      "png 已存在 f916a2d4 run=UNSTART",
+      "元数据已有",
+      "挂载 4 切片",
+      "验证锚点 刘浩: [('三个责任人.jpg', 0.505), ('三个责任人.jpg', 0.42)]"
+    ]
+  },
+  {
+    "ds": "d756f7b8a1d711f19d7235ad4ea699d4",
+    "png": "中心架构图.png",
+    "md": "中心架构图.md",
+    "status": "OK",
+    "md_id": "4b516738a67f11f196c0d10ff025f702",
+    "png_id": "f9ba4fa6a69811f196c0d10ff025f702",
+    "chunks": 6,
+    "detail": [
+      "png 已存在 f9ba4fa6 run=UNSTART",
+      "元数据已有",
+      "挂载 6 切片",
+      "验证锚点 庄里: [('中心架构图.png', 0.453), ('中心架构图.png', 0.445), ('中心架构图.png', 0.374), ('中心架构图.png', 0.324)]"
+    ]
+  },
+  {
+    "ds": "d756f7b8a1d711f19d7235ad4ea699d4",
+    "png": "各部门用水需求.jpg",
+    "md": "各部门用水需求.md",
+    "status": "OK",
+    "md_id": "4e658f76a67f11f196c0d10ff025f702",
+    "png_id": "fa566be8a69811f196c0d10ff025f702",
+    "chunks": 4,
+    "detail": [
+      "png 已存在 fa566be8 run=UNSTART",
+      "元数据已有",
+      "挂载 4 切片",
+      "验证锚点 5000: [('各部门用水需求.jpg', 0.493), ('各部门用水需求.jpg', 0.476)]"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[18:36:31] run=RUNNING prog=0.0095 chunks=0
+  msg: 0 tasks are ahead in the queue...
+[18:37:11] run=RUNNING prog=0.0095 chunks=0
+  msg: 1 tasks are ahead in the queue...
+[18:37:31] run=RUNNING prog=0.0095 chunks=0
+  msg: 0 tasks are ahead in the queue...
+[18:42:12] run=RUNNING prog=0.0777 chunks=0
+  msg:  | 18:42:00 Task has been received.
+[18:42:32] run=DONE prog=1.0000 chunks=13
+  msg: 00000): Extract TAG: 13 | 18:42:15 Page(1~100000000): Generate 13 chunks | 18:42:16 Page(1~100000000): Embedding chunks (0.60s) | 18:42:19 Page(1~100000000): Indexing done (2.89s). | 18:42:20 Page(1~100000000): Task done (4.99s)
+=== 终态 ===
+run=DONE progress=1.0 chunk_count=13 token_count=73
+full msg:
+
+18:42:00 Task has been received.
+18:42:15 Page(1~100000000): Start to parse.
+18:42:15 Page(1~100000000): Extract TAG: 13
+18:42:15 Page(1~100000000): Generate 13 chunks
+18:42:16 Page(1~100000000): Embedding chunks (0.60s)
+18:42:19 Page(1~100000000): Indexing done (2.89s).
+18:42:20 Page(1~100000000): Task done (4.99s)
+list_chunks err: RAGFlowClient.list_chunks() got an unexpected keyword argument 'document_id'

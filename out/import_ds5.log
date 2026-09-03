@@ -1,0 +1,16 @@
+[TIMEOUT] 02-安全鉴定与评价/01-大坝安全鉴定报告书-2020.pdf: Document 61d8375ca1f711f19d7235ad4ea699d4 did not complete within 1800s.
+[INFO] 02-安全鉴定与评价/02-桃曲坡水库大坝安全鉴定.pdf: 文档已是完成状态，跳过 parse（保护既有 chunks）
+[TIMEOUT] 02-安全鉴定与评价/03-桃曲坡等三座大坝安全评价报告.pdf: Document 3700c9f6a1fa11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/01-加闸竣工图/加闸竣工图5.pdf: Document a1635c0ea1fb11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/01-加闸竣工图/加闸竣工图6.pdf: Document 137e25e8a1fd11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/01-加闸竣工图/加闸竣工图7.pdf: Document 80bb379ea1fe11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/01-加闸竣工图/加闸竣工图8.pdf: Document eec69c96a1ff11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/01-加闸竣工图/加闸竣工图9.pdf: Document 5bea2d78a20111f19d7235ad4ea699d4 did not complete within 1800s.
+[INFO] 03-施工图纸与设计/02-施工图修改意见/安全设施建设工程施工图纸（修改意见）.pdf: 文档已是完成状态，跳过 parse（保护既有 chunks）
+[TIMEOUT] 03-施工图纸与设计/02-施工图修改意见/数字孪生工程施工图册（修改意见）.pdf: Document ebeefff6a22a11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/02-施工图修改意见/数字孪生项目施工图纸审查意见.pdf: Document 23b7ab5aa22f11f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/03-数字孪生工程.pdf: Document 5829557ea23311f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/04-安全设施建设工程.pdf: Document 9881e4dea23711f19d7235ad4ea699d4 did not complete within 1800s.
+[TIMEOUT] 03-施工图纸与设计/05-数字孪生项目建设方案.docx: Document d347e808a23b11f19d7235ad4ea699d4 did not complete within 1800s.
+Import complete: 3 done, 12 failed, 0 skipped in 22985.5s
+{'done': 3, 'failed': 12, 'skipped': 0}

@@ -1,0 +1,12 @@
+{"id": "X1", "fusion_doc": "洪水统计(1).xls", "question": "“8.21洪水”流域内哪个雨量站日降雨量最大？是多少毫米？", "all_keywords": ["瑶曲", "148"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta：14站日降雨表，行文本化后应 rank1 级可达"}
+{"id": "X2", "fusion_doc": "洪水统计(1).xls", "question": "2018年8月21日洪水柳林断面实测洪峰流量是多少立方米每秒？", "all_keywords": ["383"], "any_keywords": ["立方米每秒", "m3/s", "立米秒"], "coverage": "fusion", "note": "来水表报汛峰值 383；洪水目录备注同值互证"}
+{"id": "X3", "fusion_doc": "洪水统计(1).xls", "question": "8.21洪水折算入库洪峰流量是多少？最大三日洪水总量是多少？", "all_keywords": ["466", "1308"], "any_keywords": ["万m3", "万立方米"], "coverage": "fusion", "note": "来水表合计行；与洪水目录 180821 行逐值一致"}
+{"id": "X4", "fusion_doc": "洪水统计(1).xls", "question": "8.21洪水桃曲坡水库累计弃水量是多少万立方米？", "all_keywords": ["1238"], "any_keywords": ["万m3", "万立方米"], "coverage": "fusion", "note": "弃水表累计 1238.44（截至8月31日）；注意与岔口断面 1395 区分"}
+{"id": "X5", "fusion_doc": "洪水统计(1).xls", "question": "8.21洪水的流域面雨量是多少毫米？", "all_keywords": ["87.66"], "any_keywords": ["面雨量"], "coverage": "fusion", "note": "预报值块：面雨量 87.66mm、净雨深 13.15mm"}
+{"id": "X6", "fusion_doc": "较大洪水统计表.xls", "question": "桃曲坡水库流域实测洪峰流量最大的是哪场洪水？洪峰流量是多少？", "all_keywords": ["1353"], "any_keywords": [], "coverage": "fusion", "note": "1867年以来目录：2010年7月24日 1353 m³/s 为实测最大"}
+{"id": "X7", "fusion_doc": "较大洪水统计表.xls", "question": "桃曲坡水库流域哪场洪水是200年一遇？", "all_keywords": ["1867"], "any_keywords": ["200年一遇"], "coverage": "fusion", "note": "1867 历史调查洪水"}
+{"id": "X8", "fusion_doc": "较大洪水统计表.xls", "question": "2018年8月21日的洪水最大一日洪量是多少万立方米？", "all_keywords": ["958"], "any_keywords": ["万m3", "万立方米"], "coverage": "fusion", "note": "目录 180821 行；与来水表合计行互证"}
+{"id": "X9", "fusion_doc": "较大洪水统计表.xls", "question": "1932年的洪水洪峰流量是多少？", "all_keywords": ["2110"], "any_keywords": ["100年一遇"], "coverage": "fusion", "note": "历史洪水 2110 m³/s，100年一遇"}
+{"id": "X10", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年9月5日洪水柳林断面洪峰流量和5日洪量各是多少？", "all_keywords": ["904"], "any_keywords": ["70"], "coverage": "fusion", "note": "110905：洪峰70 m³/s、5日洪量904万m³；与洪水目录互证"}
+{"id": "X11", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年桃曲坡水库累计弃水量是多少万立方米？其中低洞泄水量是多少？", "all_keywords": ["10561", "9401"], "any_keywords": [], "coverage": "fusion", "note": "备注行：累计10561=低洞9401+溢流1160"}
+{"id": "X12", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年水库蓄满溢流共发生了几次？溢流水量累计多少？", "all_keywords": ["1160"], "any_keywords": ["四次", "4次", "36天"], "coverage": "fusion", "note": "备注行：4次溢流（167/127/14/852）共36天，累计1160万m³"}

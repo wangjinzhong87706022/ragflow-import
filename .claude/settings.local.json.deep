@@ -1,0 +1,13 @@
+{
+"env": {
+    "ANTHROPIC_BASE_URL": "https://opencode.ai/zen/go",
+    "ANTHROPIC_AUTH_TOKEN": "sk-nbksOcvjaPxNmplqHUtdgFJXMUcPjIzPUbWzmLJpXbv82aKCtnQHIB5d9U5kfSl3",
+    "ANTHROPIC_MODEL": "minimax-m3",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax-m3",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax-m3",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax-m3",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "minimax-m3",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "minimax-m3",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "minimax-m3"
+  }
+}

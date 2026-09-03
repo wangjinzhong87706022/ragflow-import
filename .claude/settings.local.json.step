@@ -1,0 +1,16 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.stepfun.com/step_plan",
+    "ANTHROPIC_AUTH_TOKEN": "3k0QNM5K6Yohv12eoPZnlBlOMNC1k0MgBsmCdpk5FFcc2Wf9hvAtqcCaxkoRiSDPc",
+    "ANTHROPIC_MODEL": "step-3.5-flash-2603",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "step-3.5-flash-2603",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "step-3.7-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "step-3.7-flash",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "step-3.7-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "step-3.7-flash"
+  },	
+  "enabledMcpjsonServers": [
+    "codegraph"
+  ],
+  "enableAllProjectMcpServers": true
+}

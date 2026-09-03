@@ -1,0 +1,754 @@
+{
+ "ts": "2026-09-02T13:13:02",
+ "chat_id": "d4746f6aa68911f196c0d10ff025f702",
+ "note": "retrieval=修正判分后×3多数；qa=run1(12:59)问答层",
+ "results": [
+  {
+   "id": "B1",
+   "fusion_doc": "水库基本信息.md",
+   "coverage": "text",
+   "question": "桃曲坡水库的设计总库容是多少万立方米？",
+   "note": "校准题：预案文本与注册证均载 5720，预期导入前即可通过",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "01-划界报告.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-划界报告.pdf",
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集，桃曲坡水库的设计总库容为5720万立方米 [ID:0][ID:1][ID:2]。  以下是数据集中的相关信息： *   **ID 0 (02-调度规程.pdf)**: “水库设计总库容5720万m3” [ID:0]。 *   **ID 1 (01-划界报告.pdf)**: “水库设计总库容5720万 m3”",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "02-调度规程.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "05-库容水位对照表.md"
+    ],
+    "elapsed_s": 7.8
+   }
+  },
+  {
+   "id": "B2",
+   "fusion_doc": "水库基本信息.md",
+   "coverage": "text",
+   "question": "桃曲坡水库的兴利库容是多少万立方米？",
+   "note": "校准题",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "04-大坝安全管理应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-划界报告.pdf",
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库的兴利库容是**4290万立方米** [ID:0] [ID:1]。  以下是数据集中相关的具体信息列表：  *   **ID: 0 (01-划界报告.pdf)**: 提到“水库设计总库容5720万m3，兴利库容4290万m3” [ID:0]。 *   **ID: 1 (04-大坝安全管理应急预",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "05-库容水位对照表.md"
+    ],
+    "elapsed_s": 10.8
+   }
+  },
+  {
+   "id": "B3",
+   "fusion_doc": "水库基本信息.md",
+   "coverage": "text",
+   "question": "桃曲坡水库枢纽工程由哪几部分组成？",
+   "note": "校准题：四组成部分",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "02-调度规程.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "桃曲坡水库枢纽工程由**拦河坝**、**溢洪道**、**高放水洞**、**低放水洞**四部分组成 [ID:2][ID:3][ID:4][ID:5]。",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.md"
+    ],
+    "elapsed_s": 6.3
+   }
+  },
+  {
+   "id": "B4",
+   "fusion_doc": "水库基本信息.md",
+   "coverage": "text",
+   "question": "桃曲坡水库溢洪道百年一遇设计洪水泄量是多少立方米每秒？",
+   "note": "校准题：TEXTUALIZED_VALUES 锚点",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "06-泄流曲线.md",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": [
+     "01-划界报告.pdf",
+     "01-防洪抢险应急预案.pdf",
+     "02-大坝剖面图.md",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "06-泄流曲线.md",
+     "溢洪道图1.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库溢洪道的百年一遇设计洪水泄量数据如下：  - **泄洪能力数据**：百年一遇设计洪水泄量为 **1454 立方米每秒（m³/s）** [ID:1][ID:4]。 - **曲线印证**：在水位 788.5 米时的近似泄量约为 1400 立方米每秒，与文本所载的 1454 立方米每秒基本相符（偏差",
+    "cited_docs": [
+     "06-泄流曲线.md",
+     "水库基本信息.md",
+     "溢洪道图1.md"
+    ],
+    "elapsed_s": 7.6
+   }
+  },
+  {
+   "id": "Y7",
+   "fusion_doc": "溢洪道图2.md",
+   "coverage": "both",
+   "question": "桃曲坡水库溢洪道工作闸门采用什么型号的启闭机？",
+   "note": "预案文本同源段落亦载，融合文档补强",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "04-大坝安全管理应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据提供的数据集，桃曲坡水库溢洪道的工作闸门采用的启闭机型号为 **QPQ2×25t 固定卷扬式启闭机** [ID:0][ID:1]。  以下是相关数据的详细列表：  1.  **闸门类型与数量**：设有7孔 10.5×5.5 米平面钢闸门（工作闸门） [ID:0][ID:1][ID:2][ID:3][ID:4][ID",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "水库基本信息.md",
+     "溢洪道图2.md"
+    ],
+    "elapsed_s": 10.7
+   }
+  },
+  {
+   "id": "Y8",
+   "fusion_doc": "溢洪道图2.md",
+   "coverage": "both",
+   "question": "桃曲坡水库溢洪道单扇闸门总水压力是多少吨？",
+   "note": "数值题",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "01-防洪抢险应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库溢洪道的单扇闸门总水压力为 **132.5吨** [ID:0] [ID:1]。  **详细数据列表如下：**  *   **溢洪道闸门规格**：设有7孔10.5×5.5米平面钢闸门，另设有1扇10.5×5.5米平面检修钢闸门 [ID:0] [ID:1]。 *   **设计水头**：工作闸门设计",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf"
+    ],
+    "elapsed_s": 11.7
+   }
+  },
+  {
+   "id": "W1",
+   "fusion_doc": "物资图1.md",
+   "coverage": "both",
+   "question": "市区应急机构防汛袋类储备最低限额是多少万条？",
+   "note": "口径一（市、区最低限额）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "物资图1.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据陕西省防汛物资储备管理办法规定，市、区应急机构部门防汛抗旱物资储备最低限额中，袋类为30万条 [ID:0] [ID:1] [ID:2]。  具体数据如下： *   **袋类**：30万条 [ID:0] [ID:1] [ID:2] [ID:3]",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ],
+    "elapsed_s": 5.1
+   }
+  },
+  {
+   "id": "W2",
+   "fusion_doc": "物资图1.md",
+   "coverage": "both",
+   "question": "桃曲坡水库灌溉中心防汛物资储备最低限额中救生衣是多少件？",
+   "note": "口径二（中心最低限额 200 件，勿与市区 5000 件混）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "物资图1.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "物资图1.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库灌溉中心防汛物资储备最低限额中救生衣为 **200件**。  以下是数据集中相关的物资储备明细：  1.  **来源：04-大坝安全管理应急预案.pdf [ID:0]**     *   桃曲坡水库灌溉中心防汛抗旱物资储备最低限额包括：         *   救生衣 200 件       ",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ],
+    "elapsed_s": 13.6
+   }
+  },
+  {
+   "id": "W3",
+   "fusion_doc": "物资图1.md",
+   "coverage": "both",
+   "question": "桃曲坡水库枢纽站物资库实有彩条布是多少平方米？",
+   "note": "口径三（枢纽站实有）；判别题：市区 10000 / 中心 500 / 实有 2000 严禁混",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "01-防洪抢险应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库枢纽站物资库实有的彩条布为**2000平方米**。  数据集中详细列出了相关物资信息： *   **ID: 0** 指出：“目前枢纽站物资库实有物资：编织袋7500条，彩条布2000平方米” [ID:0]。 *   **ID: 1** 同样列出：“目前枢纽站物资库实有物资：编织袋7500条，彩",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ],
+    "elapsed_s": 9.6
+   }
+  },
+  {
+   "id": "W4",
+   "fusion_doc": "物资图1.md",
+   "coverage": "both",
+   "question": "桃曲坡水库灌溉中心袋类物资储备最低限额是多少？",
+   "note": "口径二判别题：2 万条 ≠ 市区 30 万条 ≠ 实有 7500 条",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "物资图1.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "物资图1.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集，桃曲坡水库灌溉中心防汛抗旱物资储备最低限额中的袋类物资数量为2万条 [ID:0] [ID:1] [ID:2]。  数据集中关于桃曲坡水库灌溉中心防汛抗旱物资储备最低限额的具体列表如下 [ID:0] [ID:1] [ID:2]： *   救生衣：200件 *   救生圈：100个 *   机动救生船：1艘 *",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图1.md"
+    ],
+    "elapsed_s": 12.6
+   }
+  },
+  {
+   "id": "W5",
+   "fusion_doc": "物资图2.md",
+   "coverage": "both",
+   "question": "桃曲坡水库枢纽站实有物资中铁锹有多少把？",
+   "note": "315 有 315KVA 干扰项，故 all 铁锹 + any 315 把",
+   "retrieval": {
+    "passed": false,
+    "pass_count": "0/3",
+    "top1": "01-防洪抢险应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库枢纽站物资库实有物资中，**铁锨（铁锹）有 315 把**。  以下是数据集 ID 0 中列出的详细物资清单： *   编织袋：7500 条 *   彩条布：2000 平方米 *   防渗土工布 (6*50m)：1 卷 *   **铁锨：315 把** *   洋镐：95 把 *   应急灯：",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf"
+    ],
+    "elapsed_s": 15.7
+   }
+  },
+  {
+   "id": "W6",
+   "fusion_doc": "物资图2.md",
+   "coverage": "both",
+   "question": "桃曲坡水库防汛物资的存放地点在哪里？",
+   "note": "存放地点：桃曲坡水库枢纽站库房",
+   "retrieval": {
+    "passed": false,
+    "pass_count": "0/3",
+    "top1": "01-防洪抢险应急预案.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": []
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据提供的文档，桃曲坡水库防汛物资的存放地点如下：  目前枢纽站物资库实有的物资（如编织袋、彩条布、铁锨、发电机等）存放地点为：**桃曲坡水库枢纽站物资库** [ID:0]。  另一部分物资（包括快艇、橡皮舟、发电机、机油、电缆等）的存放地点记录为：**桃曲坡水库枢纽站库房** [ID:1]。  相关物资库的联系电话为",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "物资图2.md"
+    ],
+    "elapsed_s": 9.6
+   }
+  },
+  {
+   "id": "W7",
+   "fusion_doc": "物资图2.md",
+   "coverage": "both",
+   "question": "溃坝或重大工程险情的应急抢险费用主要由谁负担？",
+   "note": "5.3 经费保障，两新源补出内容",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "物资图2.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "04-大坝安全管理应急预案.pdf",
+     "物资图2.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据提供的文档，溃坝或重大工程险情的应急抢险物资和设备的购置与保管费用、救援物资和设备的购置与保管费用、全面演练费用以及重大险情应急处置发生的直接费用等，主要由铜川市政府公共财政负担 [ID:0] [ID:1]。  具体费用承担情况如下： *   **主要由铜川市政府公共财政负担的费用**：     *   溃坝或重大",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "物资图2.md"
+    ],
+    "elapsed_s": 12.3
+   }
+  },
+  {
+   "id": "R1",
+   "fusion_doc": "三个责任人.md",
+   "coverage": "both",
+   "question": "桃曲坡水库防汛安全行政责任人是谁？",
+   "note": "责任人表（冒烟已测杨一波，此题换行政责任人）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "02-调度规程.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库的防汛安全行政责任人是**刘浩**。  以下是数据集中的详细数据支持：  1.  **责任人信息**：     *   **姓名**：刘浩     *   **单位**：铜川市政府     *   **职务**：副市长     *   **手机号码**：13992811991     *   ",
+    "cited_docs": [
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "三个责任人.md"
+    ],
+    "elapsed_s": 16.0
+   }
+  },
+  {
+   "id": "R2",
+   "fusion_doc": "三个责任人.md",
+   "coverage": "both",
+   "question": "防汛安全技术责任人张永康的办公室电话是多少？",
+   "note": "办公室电话，区别于手机 13809182800",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "三个责任人.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf",
+     "三个责任人.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，防汛安全技术责任人张永康的办公室电话是 **0919-3588336** [ID:0][ID:1]。  以下是数据集中关于张永康的具体信息： *   **姓名**：张永康 *   **单位**：桃曲坡中心（省桃曲坡水库灌溉中心） *   **职务**：主任 *   **身份**：防汛安全技术责任人 * ",
+    "cited_docs": [
+     "03-汛期调度运用计划.pdf",
+     "三个责任人.md"
+    ],
+    "elapsed_s": 8.9
+   }
+  },
+  {
+   "id": "R3",
+   "fusion_doc": "三个责任人.md",
+   "coverage": "both",
+   "question": "桃曲坡水库的报汛电话是多少？",
+   "note": "报汛（读图定案字形）；与值班电话同号",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "03-汛期调度运用计划.pdf",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "三个责任人.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库的报汛电话是 **0919-3588315** [ID:0] [ID:2]。  **数据详情：** *   **ID: 0** (三个责任人.md) 中明确列出：     *   报汛电话：0919-3588315 [ID:0] *   **ID: 2** (03-汛期调度运用计划.pdf) ",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "三个责任人.md"
+    ],
+    "elapsed_s": 10.3
+   }
+  },
+  {
+   "id": "G1",
+   "fusion_doc": "中心架构图.md",
+   "coverage": "fusion",
+   "question": "富平灌溉总站下辖哪些灌溉管理站？",
+   "note": "纯delta：架构图从未入文本语料；读图定案富平 5 站",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "中心架构图.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf",
+     "中心架构图.md",
+     "桃曲坡平台设备管理.xlsx",
+     "视频监控台账.xlsx"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，富平灌溉总站下辖的灌溉管理站包括：  1.  觅子管理站 2.  庄里管理站 3.  宫里管理站 4.  惠家窑管理站 5.  曹村管理站  [ID:3] [ID:4]",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "中心架构图.md"
+    ],
+    "elapsed_s": 5.3
+   }
+  },
+  {
+   "id": "G2",
+   "fusion_doc": "中心架构图.md",
+   "coverage": "fusion",
+   "question": "陕西省桃曲坡水库灌溉中心的财务类科室有哪些？",
+   "note": "纯delta：分设两科（2:1 定案）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "中心架构图.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "中心架构图.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，陕西省桃曲坡水库灌溉中心下设的职能科室中，属于财务类的科室是**财务审计科** [ID:0][ID:1]。  **数据集相关详细信息如下：**  *   **中心名称**：陕西省桃曲坡水库灌溉中心 [ID:0][ID:1]。 *   **职能科室列表**：该中心共下设 13 个职能科室，具体包括：行政办",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "中心架构图.md"
+    ],
+    "elapsed_s": 12.0
+   }
+  },
+  {
+   "id": "G3",
+   "fusion_doc": "中心架构图.md",
+   "coverage": "fusion",
+   "question": "桃曲坡水库灌溉中心下属有哪些企业？",
+   "note": "纯delta；架构图用简写'供水有限公司'，与用水需求图'供水有限责任公司'为两处口径",
+   "retrieval": {
+    "passed": false,
+    "pass_count": "0/3",
+    "top1": "02-调度规程.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": []
+   },
+   "qa": {
+    "passed": false,
+    "answer_head": "根据提供的文档，桃曲坡水库灌溉中心（亦称为陕西省桃曲坡水库灌溉管理局）下属有4个局属企业实体[ID:0]。文档中详细列出了向城市及工业供水的7家企业，这些企业属于其供水服务对象或相关实体，具体名单如下：  1.  铜川自来水公司 [ID:4] 2.  陕西美鑫产业投资有限公司 [ID:4] 3.  惠塬工业园区 [ID",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "01-防洪抢险应急预案.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf"
+    ],
+    "elapsed_s": 15.0
+   }
+  },
+  {
+   "id": "G4",
+   "fusion_doc": "中心架构图.md",
+   "coverage": "fusion",
+   "question": "桃曲坡水库灌溉中心设有哪个工程维修养护机构？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": false,
+    "pass_count": "0/3",
+    "top1": "大坝注册登记证.md",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": []
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，陕西省桃曲坡水库灌溉中心下设的工程维修养护机构为**工程维修养护大队** [ID:3]。  以下是数据集中关于该机构的具体信息：  *   **所属单位**：陕西省桃曲坡水库灌溉中心 [ID:0]。 *   **机构类型**：在中心的组织机构架构中，工程维修养护大队被列为“管理站队”之一，与枢纽管理站、",
+    "cited_docs": [
+     "03-汛期调度运用计划.pdf",
+     "中心架构图.md",
+     "大坝注册登记证.md",
+     "水库基本信息.md"
+    ],
+    "elapsed_s": 11.7
+   }
+  },
+  {
+   "id": "Z1",
+   "fusion_doc": "大坝注册登记证.md",
+   "coverage": "both",
+   "question": "桃曲坡水库大坝注册登记证由哪个机构颁发？",
+   "note": "发证机关=注册登记机构=陕西省水利厅",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "大坝注册登记证.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "大坝注册登记证.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "桃曲坡水库大坝注册登记证由陕西省水利厅颁发 [ID:0][ID:1][ID:2]。  以下是数据集中与发证机构相关的详细信息：  *   **ID 0**: 明确记载“注册登记机构：陕西省水利厅” [ID:0]。 *   **ID 1**: 在逐字段速查中回答“注册登记机构是谁？答：陕西省水利厅” [ID:1]。 * ",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "大坝注册登记证.md"
+    ],
+    "elapsed_s": 10.5
+   }
+  },
+  {
+   "id": "Z2",
+   "fusion_doc": "大坝注册登记证.md",
+   "coverage": "fusion",
+   "question": "桃曲坡水库大坝注册登记证的发证日期是什么时候？",
+   "note": "纯delta：发证日期仅证件图载有",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "大坝注册登记证.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "大坝注册登记证.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库大坝注册登记证的发证日期是 **2023 年 6 月 13 日**（2023-06-13）[ID:0] [ID:1] [ID:4]。  以下是数据集的相关详细信息：  *   **发证日期**：2023 年 6 月 13 日（2023-06-13）[ID:0] *   **注册登记机构**：陕",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "大坝注册登记证.md"
+    ],
+    "elapsed_s": 9.1
+   }
+  },
+  {
+   "id": "Z3",
+   "fusion_doc": "大坝注册登记证.md",
+   "coverage": "fusion",
+   "question": "注册证载明的桃曲坡水库所在地点在哪里？",
+   "note": "纯delta：耀州区石柱乡马咀村",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "大坝注册登记证.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf",
+     "大坝注册登记证.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，注册证（大坝注册登记证）上载明的桃曲坡水库所在地点为：**陕西省铜川市耀州区石柱乡马咀村**。  **数据详情如下：** 1.  **水库名称**：桃曲坡水库 [ID:0] 2.  **所在地点**：陕西省铜川市耀州区石柱乡马咀村 [ID:0] [ID:1] 3.  **其他相关登记信息**：     ",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "04-大坝安全管理应急预案.pdf",
+     "大坝注册登记证.md"
+    ],
+    "elapsed_s": 9.7
+   }
+  },
+  {
+   "id": "S1",
+   "fusion_doc": "各部门用水需求.md",
+   "coverage": "both",
+   "question": "桃曲坡水库2026年度农灌斗口供水计划是多少万立方米？",
+   "note": "2026 计划；all 用词形锚防 5000 裸数字误配",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "各部门用水需求.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "桃曲坡水库2026年度农灌斗口供水计划是5000万立方米 [ID:0][ID:1][ID:2]。",
+    "cited_docs": [
+     "01-防洪抢险应急预案.pdf",
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.md"
+    ],
+    "elapsed_s": 5.0
+   }
+  },
+  {
+   "id": "S2",
+   "fusion_doc": "各部门用水需求.md",
+   "coverage": "both",
+   "question": "桃曲坡水库沮河生态基流是多少万立方米？",
+   "note": "2026 计划 630 万立方米",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "03-汛期调度运用计划.pdf",
+    "top1_is_target": false,
+    "target_in_topn": false,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据数据集内容，桃曲坡水库2026年度沮河生态基流为 **630 万立方米**（630 万m³）[ID:0][ID:2][ID:3]。  详细数据如下： *   **2026 年度城市及工业供水**：2450 万立方米（2450 万m³）[ID:0][ID:2][ID:3] *   **2026 年度农灌斗口供水**：",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "02-调度规程.pdf",
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.md"
+    ],
+    "elapsed_s": 10.0
+   }
+  },
+  {
+   "id": "S3",
+   "fusion_doc": "各部门用水需求.md",
+   "coverage": "fusion",
+   "question": "供配水计划中向城市及工业供水的企业有哪 7 家？",
+   "note": "纯delta：7 家企业名单；any 为读图定案的全称（带'责任'字）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "各部门用水需求.md",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.md"
+    ]
+   },
+   "qa": {
+    "passed": true,
+    "answer_head": "根据提供的数据集，2026年度向城市及工业供水的企业共有7家，具体名单如下 [ID:0][ID:1][ID:2]：  1. 铜川自来水公司 2. 陕西美鑫产业投资有限公司 3. 惠塬工业园区 4. 华能铜川照金煤电有限公司 5. 陕西陕焦化工有限公司 6. 陕西铜川供水有限责任公司 7. 铜川鸿宇润泽供水有限公司  相",
+    "cited_docs": [
+     "01-划界报告.pdf",
+     "03-汛期调度运用计划.pdf",
+     "各部门用水需求.md"
+    ],
+    "elapsed_s": 7.7
+   }
+  }
+ ]
+}

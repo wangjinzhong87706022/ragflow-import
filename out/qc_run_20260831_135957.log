@@ -1,0 +1,12 @@
+[PASS] Q1: 桃曲坡水库溢洪道的设计泄量是多少？ | found=['1454', 'm³/s', '百年'] chunks=30
+[PASS] Q2: 2021年共发生几次洪水？时序如何？ | found=['2021', '洪水'] chunks=30
+[FAIL] Q3: 10·3洪水调度依据规程哪条？涉及哪些站点？ | found=['规程'] chunks=30
+[FAIL] Q4: 安芳东在哪些洪水事件中担任指挥？ | found=['安芳东'] chunks=30
+[PASS] Q5: 2013年7月洪水的降雨量统计结果如何？ | found=['2013', '降雨'] chunks=30
+[PASS] Q6: 桃曲坡水库汛限水位是多少？ | found=['788.5', '汛限水位'] chunks=30
+[INFO] Wrote /opt/wangjz/ragflow-import/out/qc/results_20260831_140019.json
+[INFO] Wrote /opt/wangjz/ragflow-import/out/qc/report_20260831_140019.md
+
+=== QC Summary ===
+Pass rate: 4/6 (67%)
+Failed: Q3, Q4

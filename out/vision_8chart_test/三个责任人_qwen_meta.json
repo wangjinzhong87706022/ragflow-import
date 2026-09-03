@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "seconds": 99.7,
+  "finish_reason": "stop",
+  "content_chars": 287,
+  "reasoning_chars": 0,
+  "sent_mime": "image/jpeg",
+  "sent_kb": 433,
+  "usage": null
+}

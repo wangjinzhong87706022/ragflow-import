@@ -1,0 +1,5371 @@
+{
+ "工程资料": {
+  "name": "工程资料",
+  "chunk_method": "paper",
+  "parser_config": {
+   "auto_keywords": 8,
+   "auto_questions": 0,
+   "built_in_metadata": [],
+   "children_delimiter": "",
+   "chunk_token_num": 512,
+   "delimiter": "\n",
+   "enable_children": false,
+   "enable_metadata": false,
+   "graphrag": {
+    "batch_chunk_token_size": 4096,
+    "entity_types": [
+     "organization",
+     "person",
+     "geo",
+     "event",
+     "category"
+    ],
+    "method": "light",
+    "use_graphrag": true
+   },
+   "html4excel": false,
+   "image_context_size": 0,
+   "image_table_context_window": 0,
+   "layout_recognize": "DeepDOC",
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "metadata": [
+    {
+     "description": "文档大类",
+     "enum": [
+      "规程预案",
+      "基础数据",
+      "洪水资料",
+      "组织管理",
+      "工程资料"
+     ],
+     "key": "doc_category",
+     "type": "string"
+    },
+    {
+     "description": "子类",
+     "enum": null,
+     "key": "sub_category",
+     "type": "string"
+    },
+    {
+     "description": "关联洪水事件",
+     "enum": [
+      "2021-10",
+      "2021-09",
+      "2020-8",
+      "2019-9",
+      "2013-7",
+      "2008-8",
+      "其他",
+      "历年统计"
+     ],
+     "key": "flood_event",
+     "type": "string"
+    },
+    {
+     "description": "文档形态",
+     "enum": [
+      "文本",
+      "表格",
+      "图片",
+      "图纸"
+     ],
+     "key": "doc_type",
+     "type": "string"
+    },
+    {
+     "description": "年份",
+     "enum": null,
+     "key": "year",
+     "type": "number"
+    },
+    {
+     "description": "来源格式",
+     "enum": [
+      "pdf",
+      "word",
+      "excel",
+      "ocr_jpg",
+      "ocr_png",
+      "native_xlsx"
+     ],
+     "key": "source_format",
+     "type": "string"
+    },
+    {
+     "description": "OCR质量分级",
+     "enum": [
+      "high",
+      "medium",
+      "low"
+     ],
+     "key": "quality",
+     "type": "string"
+    },
+    {
+     "description": "责任/发文部门",
+     "enum": null,
+     "key": "responsible_dept",
+     "type": "string"
+    },
+    {
+     "description": "文件性质",
+     "enum": [
+      "法规",
+      "技术",
+      "管理",
+      "统计"
+     ],
+     "key": "doc_nature",
+     "type": "string"
+    },
+    {
+     "description": "工程部位",
+     "enum": [
+      "主坝",
+      "副坝一",
+      "副坝二",
+      "溢洪道",
+      "高洞",
+      "低洞",
+      "放水塔",
+      "库区",
+      "全库"
+     ],
+     "key": "location",
+     "type": "string"
+    },
+    {
+     "description": "洪水量级",
+     "enum": [
+      "百年一遇",
+      "千年一遇",
+      "一般洪水",
+      "不适用"
+     ],
+     "key": "flood_magnitude",
+     "type": "string"
+    }
+   ],
+   "mineru_formula_enable": true,
+   "mineru_lang": "English",
+   "mineru_parse_method": "auto",
+   "mineru_table_enable": true,
+   "overlapped_percent": 0,
+   "parent_child": {},
+   "raptor": {
+    "max_cluster": 64,
+    "max_token": 512,
+    "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+    "random_seed": 0,
+    "scope": "file",
+    "use_raptor": true
+   },
+   "table_context_size": 0,
+   "tag_kb_ids": [
+    "d6ae9230a1d711f19d7235ad4ea699d4"
+   ],
+   "topn_tags": 3
+  },
+  "embd_id": null,
+  "doc_count": 15,
+  "docs_run_not_done": [
+   {
+    "name": "05-数字孪生项目建设方案.docx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "04-安全设施建设工程.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "03-数字孪生工程.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "数字孪生项目施工图纸审查意见.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "数字孪生工程施工图册（修改意见）.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "安全设施建设工程施工图纸审查意见.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "加闸竣工图9.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "加闸竣工图8.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "加闸竣工图7.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "加闸竣工图6.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "加闸竣工图5.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "01-大坝安全鉴定报告书-2020.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "05-数字孪生项目建设方案.docx",
+   "04-安全设施建设工程.pdf",
+   "03-数字孪生工程.pdf",
+   "数字孪生项目施工图纸审查意见.pdf",
+   "数字孪生工程施工图册（修改意见）.pdf",
+   "安全设施建设工程施工图纸（修改意见）.pdf",
+   "安全设施建设工程施工图纸审查意见.pdf",
+   "加闸竣工图9.pdf",
+   "加闸竣工图8.pdf",
+   "加闸竣工图7.pdf",
+   "加闸竣工图6.pdf",
+   "加闸竣工图5.pdf",
+   "03-桃曲坡等三座大坝安全评价报告.pdf",
+   "02-桃曲坡水库大坝安全鉴定.pdf",
+   "01-大坝安全鉴定报告书-2020.pdf"
+  ],
+  "docs_no_meta": [],
+  "chunks_total": 477,
+  "disabled_chunks": 0,
+  "table_chunks": [
+   {
+    "doc": "05-数字孪生项目建设方案.docx",
+    "len": 734,
+    "head": "<table><caption>Table Location: 05-数字孪生项目建设方案 > 数据底板建设 > 地理空间数据建设 > L3级底板</capti"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 1584,
+    "head": "<table>\n<tr><td></td><td  >桃曲坡水库安全设施建设工程 工程名称 施工图册</td><td  >完成时间 设计阶段</td><td  "
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 875,
+    "head": "<table><caption>重点取水口流量监测现状</caption>\n<tr><td  >序号</td><td  >分类</td><td  >点位</td"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 760,
+    "head": "<table><caption>流量监测站点位置参数一览表</caption>\n<tr><td  >序号</td><td  >站名</td><td  >站类</"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 611,
+    "head": "<table><caption>1.1.4无人机巡查系统</caption>\n<tr><td  >序号</td><td  >站名</td><td  >站类</t"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 458,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 528,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td><td></td></tr>\n<"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 522,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td><td></td></tr>\n<"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 446,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 91,
+    "head": "<table>\n<tr><td  >2000</td></tr>\n<tr><td  >5900</td></tr>\n<tr><td  >6000</td></t"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 324,
+    "head": "<table><caption>材料及工程量清单</caption>\n<tr><td  >序号</td><td  >项目</td><td  >单位</td><t"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 457,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 1734,
+    "head": "<table>\n<tr><td></td><td></td><td  rowspan=2 >桃曲坡水库数字孪生工程 施工图册</td><td  rowspan="
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 354,
+    "head": "<table>\n<tr><td  >序号</td><td  >位置</td><td  >设备名称</td><td  >单位</td><td  >数量</td><"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 391,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td></tr>\n<tr><td></td><td  >"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 734,
+    "head": "<table>\n<tr><td></td><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td><td></t"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 324,
+    "head": "<table><caption>材料及工程量清单</caption>\n<tr><th  >序号</th><th  >项目</th><th  >单位</th><t"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 454,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 1829,
+    "head": "<table><caption>目</caption>\n<tr><td  >工程名称</td><td  >桃曲坡水库数字李生工程 施工图册</td><td  >"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 350,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td></tr>\n<tr><td  >核定</td><t"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 393,
+    "head": "<table>\n<tr><th  >陕西江汉水电勘测设计有限公司</th><th></th><th></th></tr>\n<tr><td></td><td></"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 330,
+    "head": "<table><caption>每米材料及工程量清单</caption>\n<tr><th  >序号</th><th  >项目</th><th  >单位</th>"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 376,
+    "head": "<table>\n<tr><th  >陕西江汉水电勘测设计有限公司</th><th></th><th></th></tr>\n<tr><td  >核定</td><t"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 451,
+    "head": "<table>\n<tr><th  >陕西江汉水电勘测设计有限公司</th><th></th><th></th><th></th></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 402,
+    "head": "<table>\n<tr><td  >序号</td><td  >设备名称</td><td  >型号 材料 单位</td><td  >数量</td><td  >备注"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 2437,
+    "head": "<table><caption>目</caption>\n<tr><td></td><td></td><td  rowspan=2 >桃曲坡水库安全设施建设工程 "
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 743,
+    "head": "<table><caption>重点取水口流量监测现状</caption>\n<tr><td  >序号</td><td  >分类</td><td  >点位</td"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 757,
+    "head": "<table><caption>流量监测站点位置参数一览表</caption>\n<tr><td  >序号</td><td  >站名</td><td  >站类</"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 611,
+    "head": "<table><caption>1.1.4无人机巡查系统</caption>\n<tr><th  >序号</th><th  >站名</th><th  >站类</t"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 5685,
+    "head": "<table><caption>坝基渗流测点明细表</caption>\n<tr><th  >序号</th><th  >测点编号</th><th  >桩号</th"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 1127,
+    "head": "<table><caption>绕坝渗流测点明细表</caption>\n<tr><th></th><th  >测点编号</th><th></th><th  >轴"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 459,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 378,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td></tr>\n<tr><td  >核定</td><t"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 454,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 328,
+    "head": "<table><caption>每米材料及工程量清单</caption>\n<tr><th  >序号</th><th  >项目</th><th  >单位</th>"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 457,
+    "head": "<table>\n<tr><th  >陕西江汉水电勘测设计有限公司</th><th></th><th></th><th></th></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 452,
+    "head": "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td></td><td></td><td></td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "加闸竣工图8.pdf",
+    "len": 48,
+    "head": "<table>\n<tr><td  >张仁 加闸工 层平面图</td></tr>\n</table>"
+   },
+   {
+    "doc": "加闸竣工图7.pdf",
+    "len": 90,
+    "head": "<table>\n<tr><td  >792000层平面图</td><td></td></tr>\n<tr><td></td><td  >取消，详</td></tr"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 359,
+    "head": "<table><caption>表1-1 3座水库主要建筑物组成统计表</caption>\n<tr><td  >序号</td><td  >名称</td><td "
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 341,
+    "head": "<table><caption>表1-2 3座水库大坝等级表</caption>\n<tr><td  >项目</td><td  >桃曲坡水库</td><td  >"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 300,
+    "head": "<table><caption>表2-1 3座水库历史水位极值表</caption>\n<tr><td></td><td></td><td  >水库名称超出最高水"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 434,
+    "head": "<table><caption>表3-1 三座大坝安全鉴定汇总表</caption>\n<tr><td  >大坝</td><td  >时间</td><td  >组"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 359,
+    "head": "<table><caption>表3-2  3座水库主要建筑物组成统计表</caption>\n<tr><td  >序号</td><td  >名称</td><td"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 727,
+    "head": "<table><caption>表3-3 3座水库大坝等级标准复核成果表</caption>\n<tr><th></th><th  >项目</th><th  >桃"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 2683,
+    "head": "<table><caption>表3-4 3座水库大坝洪水复核成果表</caption>\n<tr><th></th><th  >项目</th><th  >单位<"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 2125,
+    "head": "<table><caption>表3-5 3座水库大坝坝体基本情况</caption>\n<tr><th  >项目</th><th  >单位</th><th  >"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 580,
+    "head": "<table><caption>表3-6 3座水库大坝超高复核成果表</caption>\n<tr><th></th><th  >项目</th><th></th>"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 1408,
+    "head": "<table><caption>表3-7 3座水库大坝渗透稳定分析成果表从表3-7可知各水库大坝填土计算的渗透坡降均小于i允，能满足渗透稳定的要求。</capt"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 1139,
+    "head": "<table><caption>表3-8  3座水库大坝稳定计算有关主要材料特性表计算分两种情况：</caption>\n<tr><th></th><th  >项"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 753,
+    "head": "<table><caption>表3-9  3座水库大坝稳定安全系数成果表根据表3-9可知大坝安全系数计算结果均能满足规定的安全系数要求。</caption>\n"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 462,
+    "head": "<table><caption>表3-10  3座水库设计标准表</caption>\n<tr><td  >水库名称</td><td  >水库工程等级</td><"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 757,
+    "head": "<table><caption>表3-11 3座水库洪水复核成果表（3）大坝稳定复核</caption>\n<tr><th></th><th></th><th  "
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 335,
+    "head": "<table><caption>表3-12 不同情况下大坝抗滑安全系数复核成果表（4）大坝质量评价</caption>\n<tr><td  >水库名称</td><"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 930,
+    "head": "<table><caption>表3-13 大坝安全鉴定结果汇总表综上所述，项目涉及的三座大坝自建成以来，运行良好，大坝安全鉴定结论表明大坝无严重安全隐患，能够"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 355,
+    "head": "<table><caption>表4-1 三座水库大坝管理机构简表</caption>\n<tr><td  >水库</td><td  >管理机构</td><td "
+   },
+   {
+    "doc": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "len": 407,
+    "head": "<table><caption>工程概况：</caption>\n<tr><td  >水库名称</td><td  >桃曲坡水库</td><td  >所在地点</t"
+   },
+   {
+    "doc": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "len": 3363,
+    "head": "<table>\n<tr><td  >低放水洞位于大坝右岸山体内，担负灌溉、泄洪及排沙任务，为圆形有压隧 洞，洞径3.0m，总长335.3m，进口高程755.00"
+   },
+   {
+    "doc": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "len": 1148,
+    "head": "<table><caption>桃曲坡水库大坝安全鉴定审查会专家组成品备注：本表不做为专家评审费领取依据。</caption>\n<tr><th  >姓 名</t"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 383,
+    "head": "<table>\n<tr><td  >水库名称</td><td  >桃曲坡水库</td><td  >所在地点</td><td  >陕西省铜川市</td></tr>"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 3792,
+    "head": "<table>\n<tr><td  >洞，洞径3.0m，总长335.3m，进口高程755.00m，设塔式进水口，安装1扇 3.3m×3.0m平板检修钢闸门，配置一"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 1154,
+    "head": "<table><caption>2020年1月17日桃曲坡水库大坝安全鉴定审查会专家组成员备注：本表不做为专家评审费领取依据</caption>\n<tr><th"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 333,
+    "head": "<table>\n<tr><th  >水库名称</th><th  >尚书水库</th><th  >所在地点</th><th  >陕西省富平县</th></tr>\n"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 2367,
+    "head": "<table>\n<tr><td  >562.50m之间、右坝肩坝体与岸坡接触部位（桩号0+278）背水坡高程 559.00m～562.80m之间各存在4处漏水点"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 1019,
+    "head": "<table><caption>尚书水库大坝安全鉴定审查会专家组成员备注：本表不做为专家评审费领取依据。</caption>\n<tr><th  >姓 名</th"
+   }
+  ],
+  "long_chunks": [
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 2437,
+    "head": "<table><caption>目</caption>\n<tr><td></td><td></td><td  rowspan=2 >桃曲坡水库安全设施建设工程 "
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 5685,
+    "head": "<table><caption>坝基渗流测点明细表</caption>\n<tr><th  >序号</th><th  >测点编号</th><th  >桩号</th"
+   },
+   {
+    "doc": "加闸竣工图5.pdf",
+    "len": 3390,
+    "head": "\n- Visual Type: Technical engineering blueprint containing cross-sections, plan "
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 2683,
+    "head": "<table><caption>表3-4 3座水库大坝洪水复核成果表</caption>\n<tr><th></th><th  >项目</th><th  >单位<"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 2125,
+    "head": "<table><caption>表3-5 3座水库大坝坝体基本情况</caption>\n<tr><th  >项目</th><th  >单位</th><th  >"
+   },
+   {
+    "doc": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "len": 3363,
+    "head": "<table>\n<tr><td  >低放水洞位于大坝右岸山体内，担负灌溉、泄洪及排沙任务，为圆形有压隧 洞，洞径3.0m，总长335.3m，进口高程755.00"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 3792,
+    "head": "<table>\n<tr><td  >洞，洞径3.0m，总长335.3m，进口高程755.00m，设塔式进水口，安装1扇 3.3m×3.0m平板检修钢闸门，配置一"
+   },
+   {
+    "doc": "01-大坝安全鉴定报告书-2020.pdf",
+    "len": 2367,
+    "head": "<table>\n<tr><td  >562.50m之间、右坝肩坝体与岸坡接触部位（桩号0+278）背水坡高程 559.00m～562.80m之间各存在4处漏水点"
+   }
+  ],
+  "tiny_chunks": [
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 22,
+    "head": "桃曲坡水库安全设施建设工程\n施工图册\n目\n录"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 27,
+    "head": "(33)\n《无人驾驶航空器系统行业标准（电力行业）》；"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 15,
+    "head": "电缆\n200\n错位(测缝)计/"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 27,
+    "head": "40.: 30 . 30 . 30 . 30\n2000"
+   },
+   {
+    "doc": "04-安全设施建设工程.pdf",
+    "len": 19,
+    "head": "400\n水平接地体\n700\n垂直接地体"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 6,
+    "head": "五、建设内容"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 22,
+    "head": "图例\n堤防控制线\n桩号控制线\n[>\n水流方向"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 13,
+    "head": "说明：\n图中尺寸均以m计;"
+   },
+   {
+    "doc": "03-数字孪生工程.pdf",
+    "len": 19,
+    "head": "400\n水平接地体\n700\n垂直接地体"
+   },
+   {
+    "doc": "数字孪生工程施工图册（修改意见）.pdf",
+    "len": 6,
+    "head": "五、建设内容"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 27,
+    "head": "(32)\n《无人驾驶航空器系统行业标准（电力行业)》;"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 28,
+    "head": "焊接\n焊接\n焊接\n开挖沟槽\n2000\n5900\n6000"
+   },
+   {
+    "doc": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "len": 27,
+    "head": "2.图中长度单位除已标注外，其他长度单位均为m。\n说明"
+   },
+   {
+    "doc": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "len": 29,
+    "head": "3.2.3 复核结果\n3座水库大坝洪水复核成果见表3-4。"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "05-数字孪生项目建设方案.docx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 17,
+    "avg_len": 652.8,
+    "max_len": 1914
+   },
+   {
+    "name": "04-安全设施建设工程.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 67,
+    "avg_len": 268.8,
+    "max_len": 1584
+   },
+   {
+    "name": "03-数字孪生工程.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 78,
+    "avg_len": 216.8,
+    "max_len": 1734
+   },
+   {
+    "name": "数字孪生项目施工图纸审查意见.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 14,
+    "avg_len": 43.3,
+    "max_len": 86
+   },
+   {
+    "name": "数字孪生工程施工图册（修改意见）.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 95,
+    "avg_len": 226.6,
+    "max_len": 1829
+   },
+   {
+    "name": "安全设施建设工程施工图纸（修改意见）.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 83,
+    "avg_len": 348.1,
+    "max_len": 5685
+   },
+   {
+    "name": "安全设施建设工程施工图纸审查意见.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 12,
+    "avg_len": 47.7,
+    "max_len": 88
+   },
+   {
+    "name": "加闸竣工图9.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 602,
+    "max_len": 602
+   },
+   {
+    "name": "加闸竣工图8.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 48,
+    "max_len": 48
+   },
+   {
+    "name": "加闸竣工图7.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 90,
+    "max_len": 90
+   },
+   {
+    "name": "加闸竣工图6.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 1068,
+    "max_len": 1068
+   },
+   {
+    "name": "加闸竣工图5.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 3390,
+    "max_len": 3390
+   },
+   {
+    "name": "03-桃曲坡等三座大坝安全评价报告.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 55,
+    "avg_len": 448.9,
+    "max_len": 2683
+   },
+   {
+    "name": "02-桃曲坡水库大坝安全鉴定.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 23,
+    "avg_len": 439.5,
+    "max_len": 3363
+   },
+   {
+    "name": "01-大坝安全鉴定报告书-2020.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 28,
+    "avg_len": 616.1,
+    "max_len": 3792
+   }
+  ],
+  "img_shell": [],
+  "manual_chunks": 0,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 477,
+   "len_min": 6,
+   "len_p50": 130,
+   "len_p90": 743,
+   "len_p99": 2683,
+   "len_max": 5685,
+   "len_mean": 324.6,
+   "n_gt_2048": 8,
+   "n_gt_4096": 1,
+   "n_lt_30": 14,
+   "n_table": 65,
+   "table_max_len": 5685,
+   "disabled": 0,
+   "manual_chunks": 0
+  },
+  "near_dup_examples": [
+   [
+    "<table>\n<tr><td  >陕西江汉水电勘测设计有限公司</td><td",
+    7
+   ],
+   [
+    "(39)\n《水利信息化项目验收规范》（SL588-2013）；",
+    3
+   ]
+  ]
+ },
+ "组织管理": {
+  "name": "组织管理",
+  "chunk_method": "naive",
+  "parser_config": {
+   "auto_keywords": 8,
+   "auto_questions": 0,
+   "built_in_metadata": [],
+   "children_delimiter": "",
+   "chunk_token_num": 256,
+   "delimiter": "\n",
+   "enable_children": false,
+   "graphrag": {
+    "batch_chunk_token_size": 4096,
+    "build_subgraph_min_timeout_seconds": 600,
+    "build_subgraph_timeout_per_chunk_seconds": 300,
+    "community_timeout_seconds": 1800,
+    "entity_types": [
+     "organization",
+     "person",
+     "geo",
+     "event",
+     "category"
+    ],
+    "lock_acquire_timeout_seconds": 600,
+    "merge_timeout_seconds": 180,
+    "method": "light",
+    "resolution_timeout_seconds": 1800,
+    "retry_attempts": 2,
+    "retry_backoff_max_seconds": 60.0,
+    "retry_backoff_seconds": 2.0,
+    "use_graphrag": false
+   },
+   "html4excel": false,
+   "image_context_size": 0,
+   "layout_recognize": "DeepDOC",
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "metadata": [
+    {
+     "description": "文档大类",
+     "enum": [
+      "规程预案",
+      "基础数据",
+      "洪水资料",
+      "组织管理",
+      "工程资料"
+     ],
+     "key": "doc_category",
+     "type": "string"
+    },
+    {
+     "description": "子类",
+     "enum": null,
+     "key": "sub_category",
+     "type": "string"
+    },
+    {
+     "description": "关联洪水事件",
+     "enum": [
+      "2021-10",
+      "2021-09",
+      "2020-8",
+      "2019-9",
+      "2013-7",
+      "2008-8",
+      "其他",
+      "历年统计"
+     ],
+     "key": "flood_event",
+     "type": "string"
+    },
+    {
+     "description": "文档形态",
+     "enum": [
+      "文本",
+      "表格",
+      "图片",
+      "图纸"
+     ],
+     "key": "doc_type",
+     "type": "string"
+    },
+    {
+     "description": "年份",
+     "enum": null,
+     "key": "year",
+     "type": "number"
+    },
+    {
+     "description": "来源格式",
+     "enum": [
+      "pdf",
+      "word",
+      "excel",
+      "ocr_jpg",
+      "ocr_png",
+      "native_xlsx"
+     ],
+     "key": "source_format",
+     "type": "string"
+    },
+    {
+     "description": "OCR质量分级",
+     "enum": [
+      "high",
+      "medium",
+      "low"
+     ],
+     "key": "quality",
+     "type": "string"
+    },
+    {
+     "description": "责任/发文部门",
+     "enum": null,
+     "key": "responsible_dept",
+     "type": "string"
+    },
+    {
+     "description": "文件性质",
+     "enum": [
+      "法规",
+      "技术",
+      "管理",
+      "统计"
+     ],
+     "key": "doc_nature",
+     "type": "string"
+    },
+    {
+     "description": "工程部位",
+     "enum": [
+      "主坝",
+      "副坝一",
+      "副坝二",
+      "溢洪道",
+      "高洞",
+      "低洞",
+      "放水塔",
+      "库区",
+      "全库"
+     ],
+     "key": "location",
+     "type": "string"
+    },
+    {
+     "description": "洪水量级",
+     "enum": [
+      "百年一遇",
+      "千年一遇",
+      "一般洪水",
+      "不适用"
+     ],
+     "key": "flood_magnitude",
+     "type": "string"
+    }
+   ],
+   "parent_child": {
+    "children_delimiter": "\n",
+    "use_parent_child": false
+   },
+   "raptor": {
+    "clustering_ratio": 0.5,
+    "clustering_threshold": 0.3,
+    "max_cluster": 64,
+    "max_token": 512,
+    "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+    "random_seed": 0,
+    "use_raptor": false
+   },
+   "table_context_size": 0,
+   "tag_kb_ids": [
+    "d6ae9230a1d711f19d7235ad4ea699d4"
+   ],
+   "topn_tags": 2
+  },
+  "embd_id": null,
+  "doc_count": 9,
+  "docs_run_not_done": [
+   {
+    "name": "水利部关于渭河流域暴雨洪水防御工作的通知.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "政务数据共享需求填报说明.docx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "在建项目资料报送时间跟踪.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "视频监控台账.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "桃曲坡平台设备管理.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "各部门用水需求.jpg",
+   "中心架构图.png",
+   "三个责任人.jpg",
+   "大坝注册登记证.png",
+   "水利部关于渭河流域暴雨洪水防御工作的通知.pdf",
+   "政务数据共享需求填报说明.docx",
+   "在建项目资料报送时间跟踪.xlsx",
+   "视频监控台账.xlsx",
+   "桃曲坡平台设备管理.xlsx"
+  ],
+  "docs_no_meta": [],
+  "chunks_total": 106,
+  "disabled_chunks": 0,
+  "table_chunks": [
+   {
+    "doc": "政务数据共享需求填报说明.docx",
+    "len": 861,
+    "head": "<table><tr><td colspan='10'>需求信息</td><td colspan='8'>供给信息</td><td colspan='3'>其他"
+   }
+  ],
+  "long_chunks": [],
+  "tiny_chunks": [
+   {
+    "doc": "水利部关于渭河流域暴雨洪水防御工作的通知.pdf",
+    "len": 7,
+    "head": "\n陕西省水利厅"
+   },
+   {
+    "doc": "水利部关于渭河流域暴雨洪水防御工作的通知.pdf",
+    "len": 3,
+    "head": "\n量。"
+   },
+   {
+    "doc": "政务数据共享需求填报说明.docx",
+    "len": 12,
+    "head": "政务数据共享需求填报说明"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "水利部关于渭河流域暴雨洪水防御工作的通知.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 7,
+    "avg_len": 165.4,
+    "max_len": 329
+   },
+   {
+    "name": "政务数据共享需求填报说明.docx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 2,
+    "avg_len": 436.5,
+    "max_len": 861
+   },
+   {
+    "name": "在建项目资料报送时间跟踪.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 4,
+    "avg_len": 265.5,
+    "max_len": 399
+   },
+   {
+    "name": "视频监控台账.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 23,
+    "avg_len": 396.4,
+    "max_len": 472
+   },
+   {
+    "name": "桃曲坡平台设备管理.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 70,
+    "avg_len": 381.9,
+    "max_len": 475
+   }
+  ],
+  "img_shell": [
+   {
+    "name": "各部门用水需求.jpg",
+    "chunks": 4,
+    "run": "UNSTART"
+   },
+   {
+    "name": "中心架构图.png",
+    "chunks": 6,
+    "run": "UNSTART"
+   },
+   {
+    "name": "三个责任人.jpg",
+    "chunks": 4,
+    "run": "UNSTART"
+   },
+   {
+    "name": "大坝注册登记证.png",
+    "chunks": 4,
+    "run": "UNSTART"
+   }
+  ],
+  "manual_chunks": 18,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 106,
+   "len_min": 3,
+   "len_p50": 378,
+   "len_p90": 448,
+   "len_p99": 475,
+   "len_max": 861,
+   "len_mean": 367.4,
+   "n_gt_2048": 0,
+   "n_gt_4096": 0,
+   "n_lt_30": 3,
+   "n_table": 1,
+   "table_max_len": 861,
+   "disabled": 0,
+   "manual_chunks": 18
+  },
+  "near_dup_examples": []
+ },
+ "洪水资料": {
+  "name": "洪水资料",
+  "chunk_method": "naive",
+  "parser_config": {
+   "auto_keywords": 0,
+   "auto_questions": 5,
+   "built_in_metadata": [],
+   "children_delimiter": "",
+   "chunk_token_num": 256,
+   "delimiter": "\n",
+   "enable_children": false,
+   "enable_metadata": false,
+   "graphrag": {
+    "batch_chunk_token_size": 4096,
+    "build_subgraph_min_timeout_seconds": 600,
+    "build_subgraph_timeout_per_chunk_seconds": 300,
+    "community_timeout_seconds": 1800,
+    "entity_types": [
+     "FloodEvent",
+     "Station",
+     "Structure",
+     "Person",
+     "Regulation",
+     "Parameter"
+    ],
+    "lock_acquire_timeout_seconds": 600,
+    "merge_timeout_seconds": 180,
+    "method": "light",
+    "resolution": true,
+    "resolution_timeout_seconds": 1800,
+    "retry_attempts": 2,
+    "retry_backoff_max_seconds": 60.0,
+    "retry_backoff_seconds": 2.0,
+    "use_graphrag": true
+   },
+   "html4excel": false,
+   "image_context_size": 0,
+   "image_table_context_window": 0,
+   "layout_recognize": "DeepDOC",
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "metadata": [
+    {
+     "description": "文档大类",
+     "enum": [
+      "规程预案",
+      "基础数据",
+      "洪水资料",
+      "组织管理",
+      "工程资料"
+     ],
+     "key": "doc_category",
+     "type": "string"
+    },
+    {
+     "description": "子类",
+     "enum": null,
+     "key": "sub_category",
+     "type": "string"
+    },
+    {
+     "description": "关联洪水事件",
+     "enum": [
+      "2021-10",
+      "2021-09",
+      "2020-8",
+      "2019-9",
+      "2013-7",
+      "2008-8",
+      "其他",
+      "历年统计"
+     ],
+     "key": "flood_event",
+     "type": "string"
+    },
+    {
+     "description": "文档形态",
+     "enum": [
+      "文本",
+      "表格",
+      "图片",
+      "图纸"
+     ],
+     "key": "doc_type",
+     "type": "string"
+    },
+    {
+     "description": "年份",
+     "enum": null,
+     "key": "year",
+     "type": "number"
+    },
+    {
+     "description": "来源格式",
+     "enum": [
+      "pdf",
+      "word",
+      "excel",
+      "ocr_jpg",
+      "ocr_png",
+      "native_xlsx"
+     ],
+     "key": "source_format",
+     "type": "string"
+    },
+    {
+     "description": "OCR质量分级",
+     "enum": [
+      "high",
+      "medium",
+      "low"
+     ],
+     "key": "quality",
+     "type": "string"
+    },
+    {
+     "description": "责任/发文部门",
+     "enum": null,
+     "key": "responsible_dept",
+     "type": "string"
+    },
+    {
+     "description": "文件性质",
+     "enum": [
+      "法规",
+      "技术",
+      "管理",
+      "统计"
+     ],
+     "key": "doc_nature",
+     "type": "string"
+    },
+    {
+     "description": "工程部位",
+     "enum": [
+      "主坝",
+      "副坝一",
+      "副坝二",
+      "溢洪道",
+      "高洞",
+      "低洞",
+      "放水塔",
+      "库区",
+      "全库"
+     ],
+     "key": "location",
+     "type": "string"
+    },
+    {
+     "description": "洪水量级",
+     "enum": [
+      "百年一遇",
+      "千年一遇",
+      "一般洪水",
+      "不适用"
+     ],
+     "key": "flood_magnitude",
+     "type": "string"
+    }
+   ],
+   "mineru_formula_enable": true,
+   "mineru_lang": "English",
+   "mineru_parse_method": "auto",
+   "mineru_table_enable": true,
+   "overlapped_percent": 0,
+   "parent_child": {
+    "children_delimiter": "\n",
+    "use_parent_child": false
+   },
+   "raptor": {
+    "clustering_ratio": 0.5,
+    "clustering_threshold": 0.3,
+    "max_cluster": 64,
+    "max_token": 512,
+    "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+    "random_seed": 0,
+    "scope": "file",
+    "use_raptor": true
+   },
+   "table_context_size": 0,
+   "tag_kb_ids": [
+    "d6ae9230a1d711f19d7235ad4ea699d4"
+   ],
+   "topn_tags": 3
+  },
+  "embd_id": null,
+  "doc_count": 45,
+  "docs_run_not_done": [
+   {
+    "name": "防洪减灾统计表.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "较大洪水统计表.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪涝受损统计.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "泄生态水过程.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "泄洪通知.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "水位库容曲线推求.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "弃水量统计表（含生态）.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "弃水量统计表.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "华州区汛情处置汇报.docx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "TB0207.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "2011年下泄水量统计.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "2010年下泄水量统计.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "2001年洪水过程线.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "724-829两场洪水.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "降雨量统计(1).xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水统计(1).xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水简报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水汇报(2).doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "弃水计算.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "降雨量统计.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水过程(3).xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "“7.29”洪水简讯doc.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "“7.22”洪水汇报终告.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "7-22防洪报告.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水统计.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水汇报(1).doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "防洪报告.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水过程(2).xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水调度报告.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水汇报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "防洪调度效益统计.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "三场洪水调度过程汇报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "防汛抗洪纪实.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水过程(1).xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水调度情况汇报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "汛期措施.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "华商报报道.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "9-15强降雨工作汇报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "洪水过程.xls",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "水务局汇报.docx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "桃曲坡水库10月3日-10月6日洪水调度情况汇报.doc",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "受损统计.xlsx",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "重要水情快报第121期.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "汛情专报_20211006.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "水情通报第161期.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "防洪减灾统计表.xls",
+   "较大洪水统计表.xls",
+   "洪涝受损统计.xlsx",
+   "泄生态水过程.xls",
+   "泄洪通知.doc",
+   "水位库容曲线推求.xls",
+   "弃水量统计表（含生态）.xls",
+   "弃水量统计表.xls",
+   "华州区汛情处置汇报.docx",
+   "TB0207.xls",
+   "2011年下泄水量统计.xls",
+   "2010年下泄水量统计.xls",
+   "2001年洪水过程线.xls",
+   "724-829两场洪水.xls",
+   "降雨量统计(1).xls",
+   "洪水统计(1).xls",
+   "洪水简报.doc",
+   "洪水汇报(2).doc",
+   "弃水计算.xls",
+   "降雨量统计.xls",
+   "洪水过程(3).xls",
+   "“7.29”洪水简讯doc.doc",
+   "“7.22”洪水汇报终告.doc",
+   "7-22防洪报告.doc",
+   "洪水统计.xls",
+   "洪水汇报(1).doc",
+   "防洪报告.doc",
+   "洪水过程(2).xls",
+   "洪水调度报告.doc",
+   "洪水汇报.doc",
+   "防洪调度效益统计.xlsx",
+   "三场洪水调度过程汇报.doc",
+   "防汛抗洪纪实.doc",
+   "洪水过程(1).xls",
+   "洪水调度情况汇报.doc",
+   "汛期措施.doc",
+   "华商报报道.doc",
+   "9-15强降雨工作汇报.doc",
+   "洪水过程.xls",
+   "水务局汇报.docx",
+   "桃曲坡水库10月3日-10月6日洪水调度情况汇报.doc",
+   "受损统计.xlsx",
+   "重要水情快报第121期.pdf",
+   "汛情专报_20211006.pdf",
+   "水情通报第161期.pdf"
+  ],
+  "docs_no_meta": [],
+  "chunks_total": 1042,
+  "disabled_chunks": 0,
+  "table_chunks": [
+   {
+    "doc": "重要水情快报第121期.pdf",
+    "len": 1580,
+    "head": "<table><caption>重点降雨区域主要河流水情趋势预警预测流量：m³/s</caption>\n<tr><td  >水系</td><td  >站点</t"
+   },
+   {
+    "doc": "水情通报第161期.pdf",
+    "len": 812,
+    "head": "<table><caption>表1 5日6时至6日6时最大前十位降雨量表单位：</caption>\n<tr><td  >序号</td><td  >测站名称</"
+   },
+   {
+    "doc": "水情通报第161期.pdf",
+    "len": 6228,
+    "head": "<table><caption>单位：水位m；流量m3/s</caption>\n<tr><th  >序号</th><th  >测站</th><th  >河流名称"
+   }
+  ],
+  "long_chunks": [
+   {
+    "doc": "水情通报第161期.pdf",
+    "len": 6228,
+    "head": "<table><caption>单位：水位m；流量m3/s</caption>\n<tr><th  >序号</th><th  >测站</th><th  >河流名称"
+   }
+  ],
+  "tiny_chunks": [
+   {
+    "doc": "洪水汇报(2).doc",
+    "len": 9,
+    "head": "\n二、水库运行情况"
+   },
+   {
+    "doc": "“7.29”洪水简讯doc.doc",
+    "len": 19,
+    "head": "\n二0一一年八月十日\nPAGE  \n3"
+   },
+   {
+    "doc": "“7.22”洪水汇报终告.doc",
+    "len": 9,
+    "head": "\n二、洪水调度过程"
+   },
+   {
+    "doc": "洪水汇报(1).doc",
+    "len": 9,
+    "head": "\n三、洪水调度过程"
+   },
+   {
+    "doc": "三场洪水调度过程汇报.doc",
+    "len": 2,
+    "head": "\n3"
+   },
+   {
+    "doc": "汛期措施.doc",
+    "len": 9,
+    "head": "\nPAGE  \n2"
+   },
+   {
+    "doc": "华商报报道.doc",
+    "len": 9,
+    "head": "\nPAGE  \n1"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "防洪减灾统计表.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 391,
+    "max_len": 423
+   },
+   {
+    "name": "较大洪水统计表.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 27,
+    "avg_len": 517.3,
+    "max_len": 548
+   },
+   {
+    "name": "洪涝受损统计.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 4,
+    "avg_len": 233.2,
+    "max_len": 303
+   },
+   {
+    "name": "泄生态水过程.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 19,
+    "avg_len": 522.1,
+    "max_len": 715
+   },
+   {
+    "name": "泄洪通知.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 2,
+    "avg_len": 224.5,
+    "max_len": 244
+   },
+   {
+    "name": "水位库容曲线推求.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 523,
+    "avg_len": 631.9,
+    "max_len": 866
+   },
+   {
+    "name": "弃水量统计表（含生态）.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 12,
+    "avg_len": 645.7,
+    "max_len": 703
+   },
+   {
+    "name": "弃水量统计表.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 12,
+    "avg_len": 719.2,
+    "max_len": 765
+   },
+   {
+    "name": "华州区汛情处置汇报.docx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 543,
+    "max_len": 543
+   },
+   {
+    "name": "TB0207.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 25,
+    "avg_len": 553.0,
+    "max_len": 629
+   },
+   {
+    "name": "2011年下泄水量统计.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 101,
+    "avg_len": 558.1,
+    "max_len": 707
+   },
+   {
+    "name": "2010年下泄水量统计.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 12,
+    "avg_len": 606.1,
+    "max_len": 667
+   },
+   {
+    "name": "2001年洪水过程线.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 43,
+    "avg_len": 509.3,
+    "max_len": 645
+   },
+   {
+    "name": "724-829两场洪水.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 16,
+    "avg_len": 407.6,
+    "max_len": 439
+   },
+   {
+    "name": "降雨量统计(1).xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 5,
+    "avg_len": 502.4,
+    "max_len": 539
+   },
+   {
+    "name": "洪水统计(1).xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 12,
+    "avg_len": 790.8,
+    "max_len": 826
+   },
+   {
+    "name": "洪水简报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 295.7,
+    "max_len": 357
+   },
+   {
+    "name": "洪水汇报(2).doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 7,
+    "avg_len": 227.4,
+    "max_len": 358
+   },
+   {
+    "name": "弃水计算.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 19,
+    "avg_len": 620.8,
+    "max_len": 677
+   },
+   {
+    "name": "降雨量统计.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 6,
+    "avg_len": 463.2,
+    "max_len": 494
+   },
+   {
+    "name": "洪水过程(3).xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 9,
+    "avg_len": 587.8,
+    "max_len": 654
+   },
+   {
+    "name": "“7.29”洪水简讯doc.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 6,
+    "avg_len": 275.3,
+    "max_len": 562
+   },
+   {
+    "name": "“7.22”洪水汇报终告.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 10,
+    "avg_len": 233.3,
+    "max_len": 371
+   },
+   {
+    "name": "7-22防洪报告.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 4,
+    "avg_len": 204.2,
+    "max_len": 307
+   },
+   {
+    "name": "洪水统计.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 14,
+    "avg_len": 780.4,
+    "max_len": 824
+   },
+   {
+    "name": "洪水汇报(1).doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 7,
+    "avg_len": 202.1,
+    "max_len": 275
+   },
+   {
+    "name": "防洪报告.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 2,
+    "avg_len": 323.5,
+    "max_len": 380
+   },
+   {
+    "name": "洪水过程(2).xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 15,
+    "avg_len": 536.3,
+    "max_len": 595
+   },
+   {
+    "name": "洪水调度报告.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 6,
+    "avg_len": 192,
+    "max_len": 273
+   },
+   {
+    "name": "洪水汇报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 10,
+    "avg_len": 203.1,
+    "max_len": 371
+   },
+   {
+    "name": "防洪调度效益统计.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 271.7,
+    "max_len": 301
+   },
+   {
+    "name": "三场洪水调度过程汇报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 7,
+    "avg_len": 253.7,
+    "max_len": 363
+   },
+   {
+    "name": "防汛抗洪纪实.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 278.7,
+    "max_len": 688
+   },
+   {
+    "name": "洪水过程(1).xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 16,
+    "avg_len": 606.4,
+    "max_len": 703
+   },
+   {
+    "name": "洪水调度情况汇报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 6,
+    "avg_len": 234.8,
+    "max_len": 346
+   },
+   {
+    "name": "汛期措施.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 8,
+    "avg_len": 249.9,
+    "max_len": 698
+   },
+   {
+    "name": "华商报报道.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 175.3,
+    "max_len": 388
+   },
+   {
+    "name": "9-15强降雨工作汇报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 2,
+    "avg_len": 395.5,
+    "max_len": 400
+   },
+   {
+    "name": "洪水过程.xls",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 28,
+    "avg_len": 645.4,
+    "max_len": 717
+   },
+   {
+    "name": "水务局汇报.docx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 5,
+    "avg_len": 244.2,
+    "max_len": 364
+   },
+   {
+    "name": "桃曲坡水库10月3日-10月6日洪水调度情况汇报.doc",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 6,
+    "avg_len": 290.5,
+    "max_len": 495
+   },
+   {
+    "name": "受损统计.xlsx",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 1,
+    "avg_len": 259,
+    "max_len": 259
+   },
+   {
+    "name": "重要水情快报第121期.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 9,
+    "avg_len": 414.4,
+    "max_len": 1580
+   },
+   {
+    "name": "汛情专报_20211006.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 3,
+    "avg_len": 198,
+    "max_len": 215
+   },
+   {
+    "name": "水情通报第161期.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 7,
+    "avg_len": 1176.7,
+    "max_len": 6228
+   }
+  ],
+  "img_shell": [],
+  "manual_chunks": 0,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 1042,
+   "len_min": 2,
+   "len_p50": 584,
+   "len_p90": 802,
+   "len_p99": 860,
+   "len_max": 6228,
+   "len_mean": 570.8,
+   "n_gt_2048": 1,
+   "n_gt_4096": 1,
+   "n_lt_30": 7,
+   "n_table": 3,
+   "table_max_len": 6228,
+   "disabled": 0,
+   "manual_chunks": 0
+  },
+  "near_dup_examples": [
+   [
+    "\n2021年9月25日-10月10日桃曲坡水库泄水过程\n            ",
+    28
+   ],
+   [
+    "\n2021年9月-10月桃曲坡水库泄水期间生态水量计算表\n           ",
+    16
+   ],
+   [
+    "\n柳林断面2008年来水量统计表：月; Unnamed: 1：日; Unname",
+    11
+   ],
+   [
+    "\n续表7：                                   ",
+    11
+   ],
+   [
+    "\n柳林断面2008年来水量统计表：nan; Unnamed: 1：nan; Un",
+    8
+   ],
+   [
+    "\n“8.21洪水”流域内各雨量站日降雨量统计表：nan; Unnamed: 1：",
+    8
+   ],
+   [
+    "\n柳林断面2008年来水量统计表：nan; Unnamed: 1：nan; Un",
+    7
+   ],
+   [
+    "\n表7：                                    ",
+    7
+   ]
+  ]
+ },
+ "基础数据": {
+  "name": "基础数据",
+  "chunk_method": "naive",
+  "parser_config": {
+   "auto_keywords": 8,
+   "auto_questions": 0,
+   "built_in_metadata": [],
+   "children_delimiter": "",
+   "chunk_token_num": 256,
+   "delimiter": "\n",
+   "enable_children": false,
+   "graphrag": {
+    "batch_chunk_token_size": 4096,
+    "build_subgraph_min_timeout_seconds": 600,
+    "build_subgraph_timeout_per_chunk_seconds": 300,
+    "community_timeout_seconds": 1800,
+    "entity_types": [
+     "organization",
+     "person",
+     "geo",
+     "event",
+     "category"
+    ],
+    "lock_acquire_timeout_seconds": 600,
+    "merge_timeout_seconds": 180,
+    "method": "light",
+    "resolution_timeout_seconds": 1800,
+    "retry_attempts": 2,
+    "retry_backoff_max_seconds": 60.0,
+    "retry_backoff_seconds": 2.0,
+    "use_graphrag": false
+   },
+   "html4excel": false,
+   "image_context_size": 0,
+   "layout_recognize": "DeepDOC",
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "metadata": [
+    {
+     "description": "文档大类",
+     "enum": [
+      "规程预案",
+      "基础数据",
+      "洪水资料",
+      "组织管理",
+      "工程资料"
+     ],
+     "key": "doc_category",
+     "type": "string"
+    },
+    {
+     "description": "子类",
+     "enum": null,
+     "key": "sub_category",
+     "type": "string"
+    },
+    {
+     "description": "关联洪水事件",
+     "enum": [
+      "2021-10",
+      "2021-09",
+      "2020-8",
+      "2019-9",
+      "2013-7",
+      "2008-8",
+      "其他",
+      "历年统计"
+     ],
+     "key": "flood_event",
+     "type": "string"
+    },
+    {
+     "description": "文档形态",
+     "enum": [
+      "文本",
+      "表格",
+      "图片",
+      "图纸"
+     ],
+     "key": "doc_type",
+     "type": "string"
+    },
+    {
+     "description": "年份",
+     "enum": null,
+     "key": "year",
+     "type": "number"
+    },
+    {
+     "description": "来源格式",
+     "enum": [
+      "pdf",
+      "word",
+      "excel",
+      "ocr_jpg",
+      "ocr_png",
+      "native_xlsx"
+     ],
+     "key": "source_format",
+     "type": "string"
+    },
+    {
+     "description": "OCR质量分级",
+     "enum": [
+      "high",
+      "medium",
+      "low"
+     ],
+     "key": "quality",
+     "type": "string"
+    },
+    {
+     "description": "责任/发文部门",
+     "enum": null,
+     "key": "responsible_dept",
+     "type": "string"
+    },
+    {
+     "description": "文件性质",
+     "enum": [
+      "法规",
+      "技术",
+      "管理",
+      "统计"
+     ],
+     "key": "doc_nature",
+     "type": "string"
+    },
+    {
+     "description": "工程部位",
+     "enum": [
+      "主坝",
+      "副坝一",
+      "副坝二",
+      "溢洪道",
+      "高洞",
+      "低洞",
+      "放水塔",
+      "库区",
+      "全库"
+     ],
+     "key": "location",
+     "type": "string"
+    },
+    {
+     "description": "洪水量级",
+     "enum": [
+      "百年一遇",
+      "千年一遇",
+      "一般洪水",
+      "不适用"
+     ],
+     "key": "flood_magnitude",
+     "type": "string"
+    }
+   ],
+   "parent_child": {
+    "children_delimiter": "\n",
+    "use_parent_child": false
+   },
+   "raptor": {
+    "clustering_ratio": 0.5,
+    "clustering_threshold": 0.3,
+    "max_cluster": 64,
+    "max_token": 512,
+    "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+    "random_seed": 0,
+    "use_raptor": false
+   },
+   "table_context_size": 0,
+   "tag_kb_ids": [
+    "d6ae9230a1d711f19d7235ad4ea699d4"
+   ],
+   "topn_tags": 3
+  },
+  "embd_id": null,
+  "doc_count": 9,
+  "docs_run_not_done": [
+   {
+    "name": "01-划界报告.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "物资图2.jpg",
+   "物资图1.jpg",
+   "06-泄流曲线.jpg",
+   "05-库容水位对照表.jpg",
+   "溢洪道图2.jpg",
+   "溢洪道图1.jpg",
+   "02-大坝剖面图.jpg",
+   "水库基本信息.jpg",
+   "01-划界报告.pdf"
+  ],
+  "docs_no_meta": [],
+  "chunks_total": 105,
+  "disabled_chunks": 0,
+  "table_chunks": [
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 10517,
+    "head": "<table><caption>表1-1灌区渠系工程统计表</caption>\n<tr><th></th><th></th><th></th><th></th>"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 1253,
+    "head": "<table>\n<tr><th  >工程区域</th><th  >上游</th><th  >下游</th><th  >左右岸</th><th  >其他</th>"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 523,
+    "head": "<table><caption>表2-2渠岸、渠道保护范围分类标准表</caption>\n<tr><th  >设计流量（m3/s）</th><th  >渠岸宽度"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 1155,
+    "head": "<table><caption>表2-3有坝引水管理范围及保护范围分类标准表</caption>\n<tr><td  rowspan=2 >水流量 （m3/s）<"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 7238,
+    "head": "<table><caption>表3-1渠道管理范围线、保护范围线划定标准</caption>\n<tr><th  >序号</th><th  >渠道名称</th>"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 932,
+    "head": "<table>\n<tr><td  >序 号</td><td  >设施或设备名称</td><td  >主要规格型号</td><td  >数量</td><td  >"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 271,
+    "head": "<table><caption>表5.5.2-1平面位置中误差单位：m</caption>\n<tr><td  >比例尺</td><td></td><td  >1"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 456,
+    "head": "<table><caption>表5.5.2-2高程中误差单位：m</caption>\n<tr><td  >比例尺</td><td></td><td  >1：2"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 335,
+    "head": "<table><caption>应符合下表要求：</caption>\n<tr><td  >项目</td><td  >E</td></tr>\n<tr><td  >"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 247,
+    "head": "<table><caption>E级GPS网精度指标</caption>\n<tr><td  rowspan=2 >级别</td><td></td><td  >相"
+   }
+  ],
+  "long_chunks": [
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 10517,
+    "head": "<table><caption>表1-1灌区渠系工程统计表</caption>\n<tr><th></th><th></th><th></th><th></th>"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 7238,
+    "head": "<table><caption>表3-1渠道管理范围线、保护范围线划定标准</caption>\n<tr><th  >序号</th><th  >渠道名称</th>"
+   }
+  ],
+  "tiny_chunks": [
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 8,
+    "head": "\n（4）街子水库"
+   },
+   {
+    "doc": "01-划界报告.pdf",
+    "len": 20,
+    "head": "\n7划界成果管理\n7.1划界成果质量说明"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "01-划界报告.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 105,
+    "avg_len": 508.0,
+    "max_len": 10517
+   }
+  ],
+  "img_shell": [
+   {
+    "name": "物资图2.jpg",
+    "chunks": 5,
+    "run": "UNSTART"
+   },
+   {
+    "name": "物资图1.jpg",
+    "chunks": 5,
+    "run": "UNSTART"
+   },
+   {
+    "name": "06-泄流曲线.jpg",
+    "chunks": 5,
+    "run": "UNSTART"
+   },
+   {
+    "name": "05-库容水位对照表.jpg",
+    "chunks": 62,
+    "run": "UNSTART"
+   },
+   {
+    "name": "溢洪道图2.jpg",
+    "chunks": 4,
+    "run": "UNSTART"
+   },
+   {
+    "name": "溢洪道图1.jpg",
+    "chunks": 5,
+    "run": "UNSTART"
+   },
+   {
+    "name": "02-大坝剖面图.jpg",
+    "chunks": 4,
+    "run": "UNSTART"
+   },
+   {
+    "name": "水库基本信息.jpg",
+    "chunks": 12,
+    "run": "UNSTART"
+   }
+  ],
+  "manual_chunks": 102,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 105,
+   "len_min": 8,
+   "len_p50": 272,
+   "len_p90": 932,
+   "len_p99": 7238,
+   "len_max": 10517,
+   "len_mean": 508.0,
+   "n_gt_2048": 2,
+   "n_gt_4096": 2,
+   "n_lt_30": 2,
+   "n_table": 10,
+   "table_max_len": 10517,
+   "disabled": 0,
+   "manual_chunks": 102
+  },
+  "near_dup_examples": []
+ },
+ "规程与预案": {
+  "name": "规程与预案",
+  "chunk_method": "laws",
+  "parser_config": {
+   "auto_keywords": 10,
+   "auto_questions": 3,
+   "built_in_metadata": [],
+   "children_delimiter": "",
+   "chunk_token_num": 512,
+   "enable_children": false,
+   "graphrag": {
+    "entity_types": [
+     "FloodEvent",
+     "Station",
+     "Structure",
+     "Person",
+     "Regulation",
+     "Parameter"
+    ],
+    "method": "light",
+    "resolution": true,
+    "use_graphrag": true
+   },
+   "image_context_size": 0,
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "metadata": [
+    {
+     "description": "文档大类",
+     "enum": [
+      "规程预案",
+      "基础数据",
+      "洪水资料",
+      "组织管理",
+      "工程资料"
+     ],
+     "key": "doc_category",
+     "type": "string"
+    },
+    {
+     "description": "子类",
+     "enum": null,
+     "key": "sub_category",
+     "type": "string"
+    },
+    {
+     "description": "关联洪水事件",
+     "enum": [
+      "2021-10",
+      "2021-09",
+      "2020-8",
+      "2019-9",
+      "2013-7",
+      "2008-8",
+      "其他",
+      "历年统计"
+     ],
+     "key": "flood_event",
+     "type": "string"
+    },
+    {
+     "description": "文档形态",
+     "enum": [
+      "文本",
+      "表格",
+      "图片",
+      "图纸"
+     ],
+     "key": "doc_type",
+     "type": "string"
+    },
+    {
+     "description": "年份",
+     "enum": null,
+     "key": "year",
+     "type": "number"
+    },
+    {
+     "description": "来源格式",
+     "enum": [
+      "pdf",
+      "word",
+      "excel",
+      "ocr_jpg",
+      "ocr_png",
+      "native_xlsx"
+     ],
+     "key": "source_format",
+     "type": "string"
+    },
+    {
+     "description": "OCR质量分级",
+     "enum": [
+      "high",
+      "medium",
+      "low"
+     ],
+     "key": "quality",
+     "type": "string"
+    },
+    {
+     "description": "责任/发文部门",
+     "enum": null,
+     "key": "responsible_dept",
+     "type": "string"
+    },
+    {
+     "description": "文件性质",
+     "enum": [
+      "法规",
+      "技术",
+      "管理",
+      "统计"
+     ],
+     "key": "doc_nature",
+     "type": "string"
+    },
+    {
+     "description": "工程部位",
+     "enum": [
+      "主坝",
+      "副坝一",
+      "副坝二",
+      "溢洪道",
+      "高洞",
+      "低洞",
+      "放水塔",
+      "库区",
+      "全库"
+     ],
+     "key": "location",
+     "type": "string"
+    },
+    {
+     "description": "洪水量级",
+     "enum": [
+      "百年一遇",
+      "千年一遇",
+      "一般洪水",
+      "不适用"
+     ],
+     "key": "flood_magnitude",
+     "type": "string"
+    }
+   ],
+   "parent_child": {},
+   "raptor": {
+    "use_raptor": true
+   },
+   "table_context_size": 0,
+   "tag_kb_ids": [
+    "d6ae9230a1d711f19d7235ad4ea699d4"
+   ],
+   "topn_tags": 3
+  },
+  "embd_id": null,
+  "doc_count": 4,
+  "docs_run_not_done": [
+   {
+    "name": "04-大坝安全管理应急预案.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "03-汛期调度运用计划.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "02-调度规程.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   },
+   {
+    "name": "01-防洪抢险应急预案.pdf",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "04-大坝安全管理应急预案.pdf",
+   "03-汛期调度运用计划.pdf",
+   "02-调度规程.pdf",
+   "01-防洪抢险应急预案.pdf"
+  ],
+  "docs_no_meta": [],
+  "chunks_total": 957,
+  "disabled_chunks": 0,
+  "table_chunks": [],
+  "long_chunks": [
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4756,
+    "head": "桃曲坡水库灌溉中心防汛抢险队组成人员名单\n第一支队（ 74人）\n长：叶绥鹏电话：1399291508副队长：许峰电话：15709192632\n员： 荣\n赵愿利\n"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 2323,
+    "head": "2.水库枢纽工程病险隐患险情\n（1）大坝坝体裂缝\n经1998年和2000年探测，大坝左坝肩背水坡0+104m（782m高 程）存在不均匀沉降横向裂缝，其他部位存"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5080,
+    "head": "落、架空坍塌、错动或开裂；上游护坡冻胀严重，鼓胀隆起、坍塌 下滑；下游护坡雨水冲刷严重，形成雨淋沟、陡坎、坍塌。\n大坝护坡塌陷处置以“抓紧翻筑抢护，防止险情扩大"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 2417,
+    "head": "附件2\n桃曲坡水库水位一库容一水面面积曲线图\n45 0 5 30 25 2015\n2.\n库容（百万m²）\n（km²）\n水面面积\n用积\n0.5\n5 0\n763 7"
+   }
+  ],
+  "tiny_chunks": [
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 11,
+    "head": "1.1编制目的...."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "1.2编制依据."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "1.3适用范围..."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 12,
+    "head": "1.4编制原则....."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ". 4"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": ".. 6"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 16,
+    "head": "2.5其他突发事件及其后果分析."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "3.应急组织体系......"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "3.1应急组织体系框架..."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ". 6"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 15,
+    "head": "3.2应急指挥机构......"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 21,
+    "head": "3.2.1桃曲坡水库大坝安全应急指挥机构."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 21,
+    "head": "3.2.2桃曲坡水库大坝安全应急保障机构."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": ". 12"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 16,
+    "head": "3.3应急抢险专家组......"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": ". 16"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 13,
+    "head": "3.4应急抢险与救援队伍."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": ".. 16"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "4.运行机制.."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 9,
+    "head": "4.1预测与预警."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": ". 17"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 15,
+    "head": "4.1.1水情与工情监测预报."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 15,
+    "head": "4.1.2通信........"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "..18"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "4.1.3报警系统."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": ". 18"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "4.1.4预警级别."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": ".. 19"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "4.1.5突发事件信息报告."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "4.2 应急响应"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".22"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 17,
+    "head": "4.3.1险情、灾情信息报告与发布"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 13,
+    "head": "4.3.2应急调度...."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".24"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 13,
+    "head": "4.3.3应急抢险与处理."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": ".24 .25"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 27,
+    "head": "4.3.4应急监测和巡查.. 4.3.5人员应急转移."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".25"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "4.3.6 临时安置...."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "4.4应急结束."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": ".26 .26"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 17,
+    "head": "4.5善后处理... 5.应急保障"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": ".27 .27"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 28,
+    "head": "5.1应急抢险与救援物资保障 5.1.1物资种类和数量."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".27"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 17,
+    "head": "5.1.2水库实有物资情况...."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "...27"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 13,
+    "head": "5.2交通、通信及电力保障"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "5.3经费保障..."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".28"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "5.4 其他保障"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "6.2 培训...."
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": ".29"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 9,
+    "head": "6.3演练\n7附则"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": ".30\n1总则"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 12,
+    "head": "2.突发事件及其后果分析"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 9,
+    "head": "2.1水库工程概况"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "3.应急组织体系"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 9,
+    "head": "3.2应急指挥机构"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 29,
+    "head": "1.张永康（党委书记、主任）：负责全中心应急抢险指挥决策。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "4.运行机制"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "4.1预测与预警"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 19,
+    "head": "2.地震：遭遇地震，坝体出现细微裂缝。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 24,
+    "head": "2.地震：遭遇地震，坝体出现多处纵向、横向裂缝。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 27,
+    "head": "2.地震：遭遇地震，坝体发生局部滑坡，有可能导致漫顶。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 29,
+    "head": "2.地震：遭遇地震，坝体发生大滑坡，很有可能导致漫顶溃坝。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 28,
+    "head": "4.2应急响应\nⅣ级应急响应启动后，应采取下列响应措施："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 25,
+    "head": "5.交通、通信、供电等部门保障设施安全和正常运行。"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "4.3应急处置"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "4.5善后处理"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "5.应急保障"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "5.1应急抢险与救援物资保障"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "6.宣传、培训和演练"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 24,
+    "head": "2.\n容（百万m3)\n(km²)\n水面面积\n面积"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "附件7"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 14,
+    "head": "桃曲坡水库大坝安全应急调度单"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "通知单位"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "调度内容"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "调度负责人意见"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "通知时间"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "被通知人姓名"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 16,
+    "head": "桃曲坡水库大坝安全应急调度执行单"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 13,
+    "head": "编号（20 ）-----号"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 12,
+    "head": "指令下达单位 （或部门）"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "指令内容"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "本单位领导意见"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "执行人"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "执行情况"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "时间："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "值班人员："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "附件8"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 12,
+    "head": "水库险情及抢险情况报告表"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "填报时间："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "灾情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "工情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "抢险措施"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "险情可能"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "抢险队伍"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "设计"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "技术"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "处理"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "抢险"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "现行"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "险情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "出险"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "可能造"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "造成的影"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "种类"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "部位"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "时间"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "成损失"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "情况"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "标准"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "措施"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "物资"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "地方"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "部队"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "响"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 28,
+    "head": "水库大坝 泄水建筑物 输水建筑物 下游堤防 高边坡 其它"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "出库流量(m³/s)"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "备注"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "蓄水量(m³)"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "水情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "水库水位(m)"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "入库流量(m³/s)"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "他"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "其"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "出险时水情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "最新水情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "联系电话："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "填报人："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "：（盖章）"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 8,
+    "head": "填报单位负责人："
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "填报单位"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "附件9"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "发现险情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "前期处置"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "报告险情"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 10,
+    "head": "将研判结果报相关单位"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "研判事态"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "确定相应级别"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "启动应急响应"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 5,
+    "head": "召开会商会"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 6,
+    "head": "特 别紧 急"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "工"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 3,
+    "head": "应急调"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "将会"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "加"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "紧"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "商结"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "程"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "强监"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "急"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "果报"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "抢"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "相关"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "险"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "度"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 1,
+    "head": "测"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 2,
+    "head": "单位"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "人员转移"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 4,
+    "head": "响应终止"
+   },
+   {
+    "doc": "04-大坝安全管理应急预案.pdf",
+    "len": 7,
+    "head": "应急响应流程图"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 3,
+    "head": "..4"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 15,
+    "head": "1.4上年度水库调度运用总结."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": ". 4\n2防洪调度计划."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 2,
+    "head": ".5"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "2.1防洪标准"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 17,
+    "head": "2.2水库历次除险加固工程实施情况"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 15,
+    "head": "2.3水库洪水调度原则及方式."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": ".. 6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 8,
+    "head": "2.4汛期划分."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 2,
+    "head": ".6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "2.5汛限水位"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 3,
+    "head": "..6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": "2.6水库允许最高洪水位"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "2.7.1洪水调度原则"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 3,
+    "head": "..7"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 15,
+    "head": "2.7.2不同量级洪水判断方法"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 13,
+    "head": "2.7.3水库洪水防御方案"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 3,
+    "head": "..9"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": "2.7.4防洪调度权限."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 13,
+    "head": "..15\n3兴利调度计划."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "3.1入库径流"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "..16"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "3.2各部门用水需求."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 10,
+    "head": "3.3兴利特征水位."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "...16"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 23,
+    "head": "3.4兴利调节计算及调度计划.\n4安全度汛措施"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "..17"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 16,
+    "head": "4.1.1联合防汛组织机构及职责"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": ".. 20"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 22,
+    "head": "4.1.2省桃曲坡水库灌溉中心防汛机构及职责"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 14,
+    "head": "4.2.1抢险队伍及职责范围"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": ". 24"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 15,
+    "head": "4.2.2抢险物料、器材储备."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 14,
+    "head": "4.2.3防汛通讯联络系统."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "..26"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "4.3应急预案"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "..27"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 8,
+    "head": "4.4泄洪预警."
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "..28"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": ". 28"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 14,
+    "head": "水库其它技术指标详见附表2。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 13,
+    "head": "2.7不同量级洪水防御方案"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 23,
+    "head": "2.百年一遇、千年一遇设计洪水过程线表见附录一"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 23,
+    "head": "4.59-7.02 \n0.5小时洪量(万m) "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 27,
+    "head": "7.02-8.55 8.55-10.25 \n＞30.6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "10.25-13.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 17,
+    "head": "13.5-30.6 \n≤4.59 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "9.18-14.04 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 20,
+    "head": "1.0小时洪量(万m3) \n≤9.18 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 16,
+    "head": "27.0-61.2 \n＞61.2"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 23,
+    "head": "14.04-17.10 17.10-20.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 24,
+    "head": "20.5-27.0 \n≤22.5 \n＞141.3"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "22.5-34.38 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 13,
+    "head": "1.5小时洪量(万m3) "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "50.2-66.15 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": "34.38-41.85 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "41.85-50.2 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": "66.15-141.3 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 23,
+    "head": "35.82-54.72 54.72-66.6 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 21,
+    "head": "2.0小时洪量(万m3) \n≤35.82 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "82.4 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "70.6 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "76.0 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "91.4 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "61.9 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "52.9 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 18,
+    "head": "41.4\n124.7 \n104.7 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "86.9 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "98.3 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "75.3 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "92.9 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 29,
+    "head": "3.由铜川市防汛抗旱指挥部通知做好河道巡查、抢险准备工作。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 25,
+    "head": "5.由桃曲坡水库联防指挥部指挥长张永康发布泄洪令。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 28,
+    "head": "5.铜川市防汛抗旱指挥部负责做好河道防汛抢险的各项准备。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 28,
+    "head": "7.电信部门保证水库通讯畅通，电力部门确保水库供电正常。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 24,
+    "head": "4.由铜川市防汛抗旱指挥部副总指挥长下达泄洪令。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 28,
+    "head": "4.铜川市防汛抗旱指挥部负责做好河道防汛抢险的各项准备。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 28,
+    "head": "6.电信部门保证水库通讯畅通，电力部门保证水库供电正常。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 28,
+    "head": "5.枢纽站工作人员遵照指令迅速全开溢洪道闸门和低洞闸门。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "4.1防汛组织"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 29,
+    "head": "1.张永康（党委书记、主任）：负责全中心防汛抢险指挥决策。"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "4.2保障措施"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 9,
+    "head": "4.2.4汛期工作"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 7,
+    "head": "4.4泄洪预警"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 24,
+    "head": "4.4.1水库下泄不同流量洪水淹没范围及应对措施"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 9,
+    "head": "4.4.2撤离方案"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "1.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 25,
+    "head": "3.0 \nQm(m3/s) \nW24h(万m3) "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "3.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 21,
+    "head": "1.2 \nW72h(万m3) \n0.95 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "88.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 11,
+    "head": "74.2 \n11 12"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "62.3 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "50.0 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "37.5 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "25.0 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "22.0 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "19.8 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "17.8 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 13,
+    "head": "15.5 \n67 53.6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "11.7 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "53.6"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 5,
+    "head": "10.4 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 12,
+    "head": "83.5 \n机率（%） "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "5.3 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 4,
+    "head": "6.7 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 8,
+    "head": "86.1\n敞式有"
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 21,
+    "head": "38.0 \n773.00 \n763.40 "
+   },
+   {
+    "doc": "03-汛期调度运用计划.pdf",
+    "len": 18,
+    "head": "5.27 \n陕西省桃曲坡水库灌溉中心"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": "..3"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "1.8水库调度原则."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 2,
+    "head": ".5"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 14,
+    "head": "2.2安全监测与巡视检查要求"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": "..6"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 18,
+    "head": "2.3水库运用参数及主要指标...."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 4,
+    "head": "...6"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": "..8"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "3.1调度任务及原则"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "3.2调度时间."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 2,
+    "head": ".8"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "3.3调度方式."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 19,
+    "head": "3.4调度依据.. 3.5调度权限.."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": "..9"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 12,
+    "head": "3.6调度方案批准程序."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 12,
+    "head": "3.7调度指令执行程序."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 11,
+    "head": "..10\n4灌溉调度."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "4.1调度任务及原则"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".11"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "4.2调度程序，"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 7,
+    "head": "4.3调度方式"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "4.4调度权限."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...12"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 7,
+    "head": "4.5调度依据"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".12"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 11,
+    "head": "4.6供水调配...."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 6,
+    "head": "....12"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 7,
+    "head": "5 供水调度."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "5.1调度任务与原则"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 4,
+    "head": "..14"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "5.2调度方式，"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".14"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 11,
+    "head": "5.2.1一般供水.."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...15"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 9,
+    "head": "5.2.2供水过程"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".15"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 12,
+    "head": "5.2.3特殊干旱年供水"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".16"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 8,
+    "head": "6 生态用水调度"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".17"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 14,
+    "head": "6.1生态用水调度任务..."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 6,
+    "head": "...1.7"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 12,
+    "head": "6.2生态用水调度原则."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 4,
+    "head": "..17"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 16,
+    "head": "6.3生态用水调度的泄放流量要求"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...17"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 16,
+    "head": "6.4生态用水调度方式及控制条件"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".18"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 7,
+    "head": "7 泥沙调度."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 9,
+    "head": "7.1泥沙调度任务"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "7.2 泥沙调度原则"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...19"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "7.3 泥沙调度时期"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".19"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 9,
+    "head": "7.4泥沙调度方式"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...20"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 10,
+    "head": "7.5 泥沙监测要求"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 3,
+    "head": ".20"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 9,
+    "head": "8 综合利用调度."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 5,
+    "head": "...21"
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 9,
+    "head": "9 水库调度管理."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 11,
+    "head": ".22\n10附则..."
+   },
+   {
+    "doc": "02-调度规程.pdf",
+    "len": 7,
+    "head": ".24\n1总则"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ".. 4"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": ". 5"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 10,
+    "head": "3.1工程险情分析."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": ". 8"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 19,
+    "head": "3.1.1导致水库工程出现险情的因素."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 19,
+    "head": "3.2大坝溃决分析及影响范围....."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "..13"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "3.2.1最大溃坝流量的计算"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 13"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 18,
+    "head": "3.2.2坝址处溃坝洪水过程线推求."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": ".. 14"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "3.2.3溃坝洪水演进计算."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 15"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 28,
+    "head": "3.2.4溃坝洪水的淹没范围统计\n4险情监测与报告..."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "..17"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 11,
+    "head": "4.1险情监测和巡查."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 17"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 27,
+    "head": "4.1.1水库工程险情监测，巡查部位、内容、方式、频次"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "...17"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 21,
+    "head": "4.1.2监测、巡查人员组成及结果的处理."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 20"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "4.2险情上报和预警.."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 16,
+    "head": ". 20\n5险情处置与人员转移."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 17,
+    "head": "5.1应急调度.........."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": ".21"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "5.1.1超标准洪水调度方案"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 21"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 17,
+    "head": "5.1.2地质灾害或地震灾害..."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 23"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "5.2险情处置."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": ".. 24"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 24,
+    "head": "5.2.1各种险情及抢险调度方案下相应的抢险措施"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 24"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "5.3人员转移....."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 34"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 23,
+    "head": "5.3.1确定受威胁区域人员及财产转移安置任务"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": ".. 34"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 13,
+    "head": "5.3.2应急转移方案.."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 15,
+    "head": "..34\n6应急保障....."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "...36"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "6.1组织保障."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 36"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 21,
+    "head": "6.1.1桃曲坡水库联合防汛组织机构及职责"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": ".. 36"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 22,
+    "head": "6.1.2省桃曲坡水库灌溉中心防汛机构及职责"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": ".37"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "6.2队伍保障....."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "...38"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "6.2.1抢险队伍组成."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 38"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "6.2.2抢险任务....."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 39"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "6.3物资保障."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 19,
+    "head": "6.3.1物资种类和数量......."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "...39"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 15,
+    "head": "6.3.2水库实有物资情况.."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 9,
+    "head": "6.4通信保障.."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "6.4.1应急传送方式."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": ". 40"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "6.4.2抢险指挥通信方式."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": ".. 40"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "6.5其它保障\n7应急响应."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "7.1IV级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 11,
+    "head": "7.2 IⅢI级响应."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 9,
+    "head": "7.3 ⅡI级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 16,
+    "head": "7.4 I 级响应.\n8后期处置"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 11,
+    "head": "8.1善后处置...."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 25,
+    "head": "8.2水库防洪抢险应急工作评估\n9宣传、培训和演练"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": ".47"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 10,
+    "head": "9.1公众信息交流."
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 21,
+    "head": "9.2培训与演练.\n10附表附图.\n1总则"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "2工程概况"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "2.2工程概况"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 18,
+    "head": "2.2.4工程存在的主要防洪安全问题"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "2.3水文"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 24,
+    "head": "60.3 \n1952.8—55.12\n水位、流量"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "10.1 \n（阿姑社） "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "56.3 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 18,
+    "head": "10.5 \n水位、流量、泥沙\n苏家店"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 13,
+    "head": "56.1—59.12\n耀城"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "66.5 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "9.87 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 18,
+    "head": "60.1—66.4\n水位、流量、泥沙"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 9,
+    "head": "56.3 \n苏家店"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "10.5 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 22,
+    "head": "66.5—70.12\n水位、流量、泥沙\n柳林"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "71.1—现在"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "40.0 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 9,
+    "head": "3.1工程险情分析"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 18,
+    "head": "3.1.1导致水库工程出现险情的因素"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 26,
+    "head": "3.1.2水库工程出现险情的种类、发生部位和危害程度"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 14,
+    "head": "3.2大坝溃决分析及影响范围"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 23,
+    "head": "2.先假定一系列H值列表计算出与之相应的堰流量"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 6,
+    "head": "14.15 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "1.11 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "2.59 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "1.48 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "1.85 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "2.96 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "2.22 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "3.33 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 20,
+    "head": "3.7\n（小时） \nQi\n（m³/s） "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 10,
+    "head": "30.0 \n坝址断面"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 17,
+    "head": "2.9 \n315.0 \n苏家店断面"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 17,
+    "head": "6.8 \n寺沟断面\n671.80 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "8.2 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 22,
+    "head": ".27/16\n645.50 \n650.90 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 12,
+    "head": "11.4 \n620.0 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": ".4 \n耀城断面"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 29,
+    "head": ".46/28\n130.0 \n605.60 \n614.00 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 9,
+    "head": "8.4 \n岔口断面"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "15.3 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 27,
+    "head": ".62/37 1.08/65\n485.0 \n白马村断面"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "3.3 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 21,
+    "head": "19.3 \n573.00 \n576.30 "
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 10,
+    "head": "4.1险情监测和巡查"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "5.1应急调度"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 28,
+    "head": "4.铜川市防汛抗旱指挥部负责做好河道防汛抢险的各项准备。"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 28,
+    "head": "6.电信部门保证水库通讯畅通，电力部门保证水库供电正常。"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 28,
+    "head": "5.枢纽站工作人员遵照指令迅速全开溢洪道闸门和低洞闸门。"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "5.2险情处置"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "5.3人员转移"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 11,
+    "head": "5.3.2应急转移方案"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "6.1组织保障"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "6.2队伍保障"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "6.3物资保障"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "6.4通信保障"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "7.1 Ⅳ级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "7.2 Ⅲ级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "7.3 Ⅱ级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 8,
+    "head": "7.4 Ⅰ级响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 7,
+    "head": "8.1善后处置"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 15,
+    "head": "8.2水库防洪抢险应急工作评估"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 25,
+    "head": "1.培训学习，熟悉预案，明确责任，时间不少于1天；"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "发现险情"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "前期处置"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "报告险情"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "研判事态"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 10,
+    "head": "将研判结果报相关单位"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 6,
+    "head": "确定相应级别"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 6,
+    "head": "启动应急响应"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 1,
+    "head": "特"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "召开会商会"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": "别紧急"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "工程抢险"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": "应急调"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 2,
+    "head": "将会"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 1,
+    "head": "加"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 1,
+    "head": "紧"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 2,
+    "head": "商结"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 3,
+    "head": "强监测"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 1,
+    "head": "急"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 5,
+    "head": "果报 相关"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 1,
+    "head": "度"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 2,
+    "head": "单位"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "人员转移"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 4,
+    "head": "响应终止"
+   },
+   {
+    "doc": "01-防洪抢险应急预案.pdf",
+    "len": 6,
+    "head": "急响应流程图"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "04-大坝安全管理应急预案.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 297,
+    "avg_len": 70.8,
+    "max_len": 1552
+   },
+   {
+    "name": "03-汛期调度运用计划.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 278,
+    "avg_len": 127.2,
+    "max_len": 4756
+   },
+   {
+    "name": "02-调度规程.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 121,
+    "avg_len": 115.2,
+    "max_len": 1609
+   },
+   {
+    "name": "01-防洪抢险应急预案.pdf",
+    "type": "pdf",
+    "run": "DONE",
+    "chunks": 261,
+    "avg_len": 139.6,
+    "max_len": 5080
+   }
+  ],
+  "img_shell": [],
+  "manual_chunks": 0,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 957,
+   "len_min": 1,
+   "len_p50": 28,
+   "len_p90": 255,
+   "len_p99": 1495,
+   "len_max": 5080,
+   "len_mean": 111.6,
+   "n_gt_2048": 4,
+   "n_gt_4096": 2,
+   "n_lt_30": 493,
+   "n_table": 0,
+   "table_max_len": 0,
+   "disabled": 0,
+   "manual_chunks": 0
+  },
+  "near_dup_examples": [
+   [
+    "..17",
+    3
+   ]
+  ]
+ },
+ "桃曲坡标签库": {
+  "name": "桃曲坡标签库",
+  "chunk_method": "tag",
+  "parser_config": {
+   "image_context_size": 0,
+   "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+   "table_context_size": 0
+  },
+  "embd_id": null,
+  "doc_count": 1,
+  "docs_run_not_done": [
+   {
+    "name": "taoqupo_vocab.txt",
+    "run": "DONE",
+    "progress": 1.0
+   }
+  ],
+  "docs_zero_chunks": [],
+  "doc_parser_override": [
+   "taoqupo_vocab.txt"
+  ],
+  "docs_no_meta": [
+   "taoqupo_vocab.txt"
+  ],
+  "chunks_total": 13,
+  "disabled_chunks": 0,
+  "table_chunks": [],
+  "long_chunks": [],
+  "tiny_chunks": [
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n规程预案"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n基础数据"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n洪水资料"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n组织管理"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n工程资料"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 8,
+    "head": "\n2021-10"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 8,
+    "head": "\n2021-09"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 7,
+    "head": "\n2020-8"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 7,
+    "head": "\n2019-9"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 7,
+    "head": "\n2013-7"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 7,
+    "head": "\n2008-8"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 3,
+    "head": "\n其他"
+   },
+   {
+    "doc": "taoqupo_vocab.txt",
+    "len": 5,
+    "head": "\n历年统计"
+   }
+  ],
+  "dup_exact": [],
+  "per_doc": [
+   {
+    "name": "taoqupo_vocab.txt",
+    "type": "doc",
+    "run": "DONE",
+    "chunks": 13,
+    "avg_len": 5.9,
+    "max_len": 8
+   }
+  ],
+  "img_shell": [],
+  "manual_chunks": 0,
+  "chunk_keys": [
+   "content",
+   "id",
+   "keywords"
+  ],
+  "agg": {
+   "chunks_total": 13,
+   "len_min": 3,
+   "len_p50": 5,
+   "len_p90": 8,
+   "len_p99": 8,
+   "len_max": 8,
+   "len_mean": 5.9,
+   "n_gt_2048": 0,
+   "n_gt_4096": 0,
+   "n_lt_30": 13,
+   "n_table": 0,
+   "table_max_len": 0,
+   "disabled": 0,
+   "manual_chunks": 0
+  },
+  "near_dup_examples": []
+ }
+}

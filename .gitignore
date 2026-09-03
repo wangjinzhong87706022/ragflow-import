@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 大体积升级备份（482MB，含 SQL dump；镜像/卷/库已有同目录 tgz 备份）
+out/upgrade-v0.27.1/
+
+# 含外部付费 key（MiniMax coding plan sk-cp-…），不入库
+out/vision_8chart_test/FUSION_REPORT.md

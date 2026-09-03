@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "seconds": 32.6,
+  "usage": {
+    "prompt_tokens": 2944,
+    "completion_tokens": 3355,
+    "total_tokens": 6299,
+    "prompt_tokens_details": {
+      "cached_tokens": 192
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 192
+  },
+  "finish_reason": "stop",
+  "src_bytes": 3392975,
+  "sent_bytes": 373217
+}

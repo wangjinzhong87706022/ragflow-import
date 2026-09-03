@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "seconds": 8.7,
+  "stop_reason": "end_turn",
+  "content_chars": 691,
+  "thinking_chars": 0,
+  "sent_mime": "image/jpeg",
+  "sent_kb": 414,
+  "usage": {
+    "input_tokens": 3313,
+    "output_tokens": 427,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 128,
+    "service_tier": "standard"
+  }
+}
