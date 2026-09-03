@@ -1,0 +1,48 @@
+{
+ "洪水统计(1).xls": {
+  "kb_name": "洪水统计(1).xls",
+  "corpus_path": "06-历年洪水资料/06-2008年洪水(8-22)/洪水统计.xls",
+  "old": {
+   "id": "12da2434a75711f1af477b6050be89ec",
+   "run": "UNSTART",
+   "chunk_count": 10
+  },
+  "shell_id": "ec08f730a75711f1af477b6050be89ec",
+  "chunks": 10,
+  "verified": true,
+  "similarity": null,
+  "status": "OK",
+  "finished": "2026-09-03T13:26:15",
+  "probe_rank": 18
+ },
+ "较大洪水统计表.xls": {
+  "kb_name": "较大洪水统计表.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/较大洪水统计表.xls",
+  "old": {
+   "id": "ff039228a75711f1af477b6050be89ec",
+   "run": "UNSTART",
+   "chunk_count": 11
+  },
+  "shell_id": "8c140aeea75811f1af477b6050be89ec",
+  "chunks": 11,
+  "verified": true,
+  "probe_rank": 23,
+  "status": "OK",
+  "finished": "2026-09-03T13:30:46"
+ },
+ "2011年下泄水量统计.xls": {
+  "kb_name": "2011年下泄水量统计.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/2011年下泄水量统计.xls",
+  "old": {
+   "id": "9fc70d70a75811f1af477b6050be89ec",
+   "run": "UNSTART",
+   "chunk_count": 7
+  },
+  "shell_id": "d67ea09ea75811f1af477b6050be89ec",
+  "chunks": 7,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-03T13:32:47"
+ }
+}

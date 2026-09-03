@@ -144,16 +144,22 @@ def snapshot_doc(client, ds_id, kb_name):
             "parser_config": d.get("parser_config")}
 
 
-def verify(client, ds_id, doc_name, question, anchor, tries=2):
-    """探针验证门：检索 top10 内目标文档切片含锚点即 PASS（两次机会容排序漂移）。"""
+def verify(client, ds_id, doc_name, question, anchor, tries=2, top_n=30):
+    """探针验证门：全返回集（v0.27.1 retrieval 恒返回 30 条，top_k 只影响排序）内
+    目标文档切片含锚点即 PASS，返回命中切片的最佳排名。
+
+    门设在 30 条而非 top10 的原因（PNG 试点同教训）：混合打分下整篇汇报类文档的
+    关键词密度天然压过行文本切片，行切片常落在 10~30 名；top10 排名仅作遥测记录，
+    检索质量验收由题库评测（top10 并集口径）承担。"""
+    best = None
     for i in range(tries):
         time.sleep(VERIFY_SLEEPS[min(i, len(VERIFY_SLEEPS) - 1)])
         data = client.search_datasets([ds_id], question, top_k=10)
-        for c in (data.get("chunks") or [])[:10]:
+        for j, c in enumerate((data.get("chunks") or [])[:top_n]):
             cname = c.get("document_name") or c.get("docnm_kwd") or "?"
             if cname == doc_name and anchor in (c.get("content_with_weight") or ""):
-                return True, round(c.get("similarity", 0), 3)
-    return False, None
+                best = j + 1 if best is None else min(best, j + 1)
+    return (best is not None), best
 
 
 def process(client, ds_id, target, corpus_root, questions, apply_changes,
@@ -219,10 +225,10 @@ def process(client, ds_id, target, corpus_root, questions, apply_changes,
     rec["chunks"] = len(pieces)
 
     # 6) 探针验证门
-    ok, sim = verify(client, ds_id, kb_name,
-                     target["probe"]["question"], target["probe"]["anchor"])
+    ok, rank = verify(client, ds_id, kb_name,
+                      target["probe"]["question"], target["probe"]["anchor"])
     rec["verified"] = ok
-    rec["similarity"] = sim
+    rec["probe_rank"] = rank
     rec["status"] = "OK" if ok else "FAIL(验证门)"
     rec["finished"] = datetime.now().isoformat(timespec="seconds")
     if manifest_path:
@@ -231,7 +237,7 @@ def process(client, ds_id, target, corpus_root, questions, apply_changes,
         state[kb_name] = {"status": rec["status"], "shell_id": shell_id,
                           "chunks": len(pieces), "verified": ok}
         save_json(state_path, state)
-    print(f"  ⇒ {kb_name}: {rec['status']}（探针 sim={sim}）", flush=True)
+    print(f"  ⇒ {kb_name}: {rec['status']}（探针 rank={rank}）", flush=True)
     return ok
 
 
