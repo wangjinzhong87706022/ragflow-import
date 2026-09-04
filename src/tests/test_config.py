@@ -113,6 +113,21 @@ def test_flood_event_2008_dir_is_actually_2018():
     assert ("2018-8", "2018-8") in VOCAB_ROWS
 
 
+def test_flood_event_2010_events_from_content():
+    """F1 批次二回归 pin：08-历年洪水统计 下三份表格按内容实为 2010 场次——
+    2001年洪水过程线.xls Sheet1 标题"柳林断面流量统计表(20100724洪水)"、
+    2010年下泄水量统计.xls 标题"柳林断面流量统计表(20100813洪水)"、Excel 序列日
+    40402=2010-08-12 互证；724-829两场洪水.xls 含 20100724+20030829 两张摘录表。
+    枚举扩 2010-7/2010-8；目录映射保持"历年统计"（目录混装多年份文件）。"""
+    fld = next(f for f in METADATA_SCHEMA if f["key"] == "flood_event")
+    assert "2010-7" in fld["enum"]
+    assert "2010-8" in fld["enum"]
+    assert FLOOD_EVENT_BY_SUBDIR["08-历年洪水统计"] == "历年统计"
+    from tag_vocab import VOCAB_ROWS
+    assert ("2010-7", "2010-7") in VOCAB_ROWS
+    assert ("2010-8", "2010-8") in VOCAB_ROWS
+
+
 def test_dept_keywords_longest_first():
     """多模式提取按序匹配，长词必须在前——否则'管理局'抢在'桃曲坡水库管理局'之前命中。"""
     lengths = [len(k) for k in LOCATION_KEYWORDS]

@@ -27,3 +27,13 @@
 {"id": "X27", "fusion_doc": "降雨量统计.xls", "question": "2013年7·22洪水柳林洪峰流量和折合入库洪峰各是多少？", "all_keywords": ["210", "258"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta；Q5钻取集内文档"}
 {"id": "X28", "fusion_doc": "降雨量统计.xls", "question": "7·22洪水三日洪水总量和最高库水位各是多少？", "all_keywords": ["1249", "780.93"], "any_keywords": ["万立方米", "米"], "coverage": "fusion", "note": "纯delta"}
 {"id": "X29", "fusion_doc": "降雨量统计.xls", "question": "7·22洪水流域哪个雨量站过程降雨最大？是多少毫米？", "all_keywords": ["瑶曲", "106.5"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X30", "fusion_doc": "2001年洪水过程线.xls", "question": "2010年7·24洪水柳林断面洪峰流量是多少？", "all_keywords": ["1100"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "批次二：文件名2001实为20100724（裁定），统计表+724-829摘录表互证"}
+{"id": "X31", "fusion_doc": "2001年洪水过程线.xls", "question": "2010年7·24洪水期间水库累计泄水多少万立方米？", "all_keywords": ["131.17"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "批次二：泄水过程表 cum，7·24场次口径（区别于备注总账1355）"}
+{"id": "X32", "fusion_doc": "2001年洪水过程线.xls", "question": "2010年7·24洪水降雨最大的雨量站是哪站？", "all_keywords": ["213.3"], "any_keywords": ["柳林", "毫米", "mm"], "coverage": "fusion", "note": "批次二：22-24日8站降雨，最大单站柳林"}
+{"id": "X33", "fusion_doc": "2001年洪水过程线.xls", "question": "2010年7·24洪水累计洪水总量是多少万立方米？", "all_keywords": ["2746.40"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "批次二：柳林统计表 cum 至7月26日08时"}
+{"id": "X34", "fusion_doc": "2010年下泄水量统计.xls", "question": "2010年8·13洪水柳林断面洪峰流量是多少？", "all_keywords": ["310"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "批次二：20100813 洪水，峰 310@06:14"}
+{"id": "X35", "fusion_doc": "2010年下泄水量统计.xls", "question": "2010年8·13洪水期间最高库水位是多少？", "all_keywords": ["786.87"], "any_keywords": ["米", "m"], "coverage": "fusion", "note": "批次二：最高库水位 786.87/3570.1 @8-13 15时"}
+{"id": "X36", "fusion_doc": "2010年下泄水量统计.xls", "question": "2010年8·13洪水截至9月15日累计下泄水量是多少万立方米？", "all_keywords": ["4802.42"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "批次二：泄水过程 cum 至 9-15 09时"}
+{"id": "X37", "fusion_doc": "2010年下泄水量统计.xls", "question": "2010年汛期两次总计下泄水量与弃水量各是多少？", "all_keywords": ["6157.42", "5057.42"], "any_keywords": ["灌溉", "万m³", "万立方米"], "coverage": "fusion", "note": "批次二：备注行总账（弃水5057.42+灌溉1100）"}
+{"id": "X38", "fusion_doc": "724-829两场洪水.xls", "question": "2003年8·29洪水柳林断面洪峰流量是多少？", "all_keywords": ["327.2"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "批次二：内容层新发现场次（20030829），不扩枚举"}
+{"id": "X39", "fusion_doc": "724-829两场洪水.xls", "question": "7·24和8·29两场洪水分别是哪一年的？", "all_keywords": ["20100724", "20030829"], "any_keywords": [], "coverage": "fusion", "note": "批次二：双表定性，文件名两场=2010-7-24+2003-8-29"}

@@ -142,7 +142,7 @@ TAG_KB = {"key": "ds0", "name": "桃曲坡标签库", "chunk_method": "tag"}
 METADATA_SCHEMA = [
     {"key": "doc_category",    "type": "string",  "description": "文档大类",           "enum": ["规程预案","基础数据","洪水资料","组织管理","工程资料"]},
     {"key": "sub_category",    "type": "string",  "description": "子类",               "enum": None},
-    {"key": "flood_event",     "type": "string",  "description": "关联洪水事件",        "enum": ["2021-10","2021-09","2020-8","2019-9","2013-7","2018-8","2008-8","其他","历年统计"]},
+    {"key": "flood_event",     "type": "string",  "description": "关联洪水事件",        "enum": ["2021-10","2021-09","2020-8","2019-9","2013-7","2010-8","2010-7","2018-8","2008-8","其他","历年统计"]},
     {"key": "doc_type",        "type": "string",  "description": "文档形态",           "enum": ["文本","表格","图片","图纸"]},
     {"key": "year",            "type": "number",  "description": "年份",               "enum": None},
     {"key": "source_format",   "type": "string",  "description": "来源格式",           "enum": ["pdf","word","excel","ocr_jpg","ocr_png","native_xlsx"]},
@@ -165,6 +165,14 @@ METADATA_SCHEMA = [
 # 2018-08-21、《较大洪水统计表》180821 行逐值互证；档案目录 2007→2010 年间并无
 # 2008 场次）。映射值改 "2018-8"；枚举保留 "2008-8" 仅为历史值域完整，语料中已无
 # 2008 场次。此为档案级错误，已另行整理反馈文案（docs/archive-feedback-2026-09-03.md）。
+#
+# F1 批次二（2026-09-04）枚举扩 "2010-8"/"2010-7"：08-历年洪水统计 下三份表格按内容
+# 实为 2010 场次（2001年洪水过程线.xls 标题 20100724、2010年下泄水量统计.xls 标题
+# 20100813、Excel 序列日 40402=2010-08-12 互证），但该目录本身混装 1997/2021/历年
+# 多类文件，故不改目录映射（保持"历年统计"），场次值走 shell TARGETS 逐文件元数据
+# （2001年洪水过程线.xls→2010-7、2010年下泄水量统计.xls→2010-8、724-829两场洪水.xls
+# →2010-7 主值；其第二张摘录表 20030829 系内容层新发现，单值字段不扩 2003-8，
+# 见 out/xls_fusion/REVIEW_WAVE3.md 裁定点）。
 FLOOD_EVENT_BY_SUBDIR = {
     "02-2021年洪水调度":  "2021-10",
     "03-2020年洪水(8-16)": "2020-8",
