@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-03T19:04:28",
+ "ts": "2026-09-04T11:44:37",
  "phase": "after",
  "results": [
   {
@@ -15,7 +15,6 @@
     "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
-     "洪水汇报(2).doc",
      "洪水统计(1).xls"
     ]
    }
@@ -51,9 +50,7 @@
     "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
-     "洪水汇报(2).doc",
-     "洪水统计(1).xls",
-     "较大洪水统计表.xls"
+     "洪水统计(1).xls"
     ]
    }
   },
@@ -152,7 +149,7 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
+    "top1": "降雨量统计.xls",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
@@ -169,13 +166,11 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "洪水汇报(2).doc",
-    "top1_is_target": false,
+    "top1": "2011年下泄水量统计.xls",
+    "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
-     "2011年下泄水量统计.xls",
-     "洪水统计.xls",
-     "较大洪水统计表.xls"
+     "2011年下泄水量统计.xls"
     ]
    }
   },
@@ -207,7 +202,302 @@
     "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
-     "2011年下泄水量统计.xls"
+     "2011年下泄水量统计.xls",
+     "弃水量统计表.xls",
+     "弃水量统计表（含生态）.xls"
+    ]
+   }
+  },
+  {
+   "id": "X13",
+   "fusion_doc": "洪水过程.xls",
+   "coverage": "fusion",
+   "question": "2021年10·3洪水柳林断面洪峰流量是多少立方米每秒？",
+   "note": "纯delta：dup入库洪水sheet并入后新增可达",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "华州区汛情处置汇报.docx",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水统计.xls",
+     "洪水过程.xls"
+    ]
+   }
+  },
+  {
+   "id": "X14",
+   "fusion_doc": "洪水过程.xls",
+   "coverage": "fusion",
+   "question": "2021年11月桃曲坡水库溢洪道溢流持续多少天？累计溢流量多少万立方米？",
+   "note": "纯delta：全库唯一溢洪道溢流过程（dup独有sheet）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "泄生态水过程.xls",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程.xls"
+    ]
+   }
+  },
+  {
+   "id": "X15",
+   "fusion_doc": "洪水过程.xls",
+   "coverage": "fusion",
+   "question": "\"10.3\"洪水的面雨量和净雨深分别是多少毫米？",
+   "note": "纯delta：dup降雨量预报值sheet并入",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程.xls"
+    ]
+   }
+  },
+  {
+   "id": "X16",
+   "fusion_doc": "洪水过程.xls",
+   "coverage": "fusion",
+   "question": "2021年岔口断面全年弃水量是多少？弃水多少天？",
+   "note": "纯delta：dup弃水快照（至10-30）取代在库旧快照",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "华州区汛情处置汇报.docx",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程.xls"
+    ]
+   }
+  },
+  {
+   "id": "X17",
+   "fusion_doc": "洪水过程.xls",
+   "coverage": "fusion",
+   "question": "2021年9月25日至10月11日水库泄水总量是多少？其中低洞多少？",
+   "note": "纯delta：泄水摘要行结构化",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "泄生态水过程.xls",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "三场洪水调度过程汇报.doc",
+     "洪水过程.xls"
+    ]
+   }
+  },
+  {
+   "id": "X18",
+   "fusion_doc": "洪水过程(1).xls",
+   "coverage": "fusion",
+   "question": "2021年9·25洪水柳林断面洪峰流量是多少立方米每秒？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "华州区汛情处置汇报.docx",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(1).xls"
+    ]
+   }
+  },
+  {
+   "id": "X19",
+   "fusion_doc": "洪水过程(1).xls",
+   "coverage": "fusion",
+   "question": "9·25洪水总量是多少？期间最高库水位是多少？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(1).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(1).xls"
+    ]
+   }
+  },
+  {
+   "id": "X20",
+   "fusion_doc": "洪水过程(1).xls",
+   "coverage": "fusion",
+   "question": "9·25洪水的预报面雨量和预报洪水总量是多少？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(1).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(1).xls"
+    ]
+   }
+  },
+  {
+   "id": "X21",
+   "fusion_doc": "洪水过程(2).xls",
+   "coverage": "fusion",
+   "question": "2020年8·16洪水柳林断面洪峰流量是多少立方米每秒？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水调度报告.doc",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(2).xls"
+    ]
+   }
+  },
+  {
+   "id": "X22",
+   "fusion_doc": "洪水过程(2).xls",
+   "coverage": "fusion",
+   "question": "2020年8·16洪水水库累计泄水多少？泄水用途是什么？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(2).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(2).xls"
+    ]
+   }
+  },
+  {
+   "id": "X23",
+   "fusion_doc": "洪水过程(2).xls",
+   "coverage": "fusion",
+   "question": "8·16洪水流域面雨量是多少？哪个站过程降雨最大？",
+   "note": "纯delta：7站日降雨表（Sheet1）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(2).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(2).xls"
+    ]
+   }
+  },
+  {
+   "id": "X24",
+   "fusion_doc": "洪水统计.xls",
+   "coverage": "fusion",
+   "question": "2019年9·14洪水柳林断面洪峰流量和库区洪峰流量各是多少？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "弃水计算.xls",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X25",
+   "fusion_doc": "洪水统计.xls",
+   "coverage": "fusion",
+   "question": "9·14洪水最大一日和最大五日洪水总量是多少万立方米？",
+   "note": "纯delta：原表结论文",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水汇报(1).doc",
+     "洪水统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X26",
+   "fusion_doc": "洪水统计.xls",
+   "coverage": "fusion",
+   "question": "2019年9·14洪水流域累计面雨量是多少？哪个站最大？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水汇报(1).doc",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X27",
+   "fusion_doc": "降雨量统计.xls",
+   "coverage": "fusion",
+   "question": "2013年7·22洪水柳林洪峰流量和折合入库洪峰各是多少？",
+   "note": "纯delta；Q5钻取集内文档",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "7-22防洪报告.doc",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "降雨量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X28",
+   "fusion_doc": "降雨量统计.xls",
+   "coverage": "fusion",
+   "question": "7·22洪水三日洪水总量和最高库水位各是多少？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "降雨量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "降雨量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X29",
+   "fusion_doc": "降雨量统计.xls",
+   "coverage": "fusion",
+   "question": "7·22洪水流域哪个雨量站过程降雨最大？是多少毫米？",
+   "note": "纯delta",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "降雨量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "“7.22”洪水汇报终告.doc",
+     "降雨量统计.xls"
     ]
    }
   }

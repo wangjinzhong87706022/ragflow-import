@@ -1,6 +1,8 @@
 # F1 收口 · 批次一（D1+D5）评审门 — S 级 5 份 fuse + dup 独有 sheet 并入
 
-生成：2026-09-04。状态：**待人工评审**。批准方式：`touch approved2.flag` 后
+生成：2026-09-04。状态：**已批准并执行完毕**（2026-09-04，结果见 REPORT_WAVE2.md：
+5/5 过门、29/29、26 题 26/26、QC 6/6、pytest 204 passed；第四节清单 4 项全部核销）。
+原批准方式：`touch approved2.flag` 后
 `RAGFLOW_API_KEY=… python3 rollout_xls_shell2.py --apply`（引擎严格串行，验证门 FAIL 即停）。
 
 ## 一、本批范围与产物

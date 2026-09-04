@@ -1,0 +1,102 @@
+{
+ "降雨量统计.xls": {
+  "kb_name": "降雨量统计.xls",
+  "corpus_path": "06-历年洪水资料/05-2013年洪水(7-22)/降雨量统计.xls",
+  "old": {
+   "id": "e9df6c3ea80e11f1af477b6050be89ec",
+   "run": "UNSTART",
+   "chunk_count": 8
+  },
+  "shell_id": "1c30755ca80f11f1af477b6050be89ec",
+  "chunks": 8,
+  "verified": true,
+  "probe_rank": 3,
+  "status": "OK",
+  "finished": "2026-09-04T11:17:34",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 8
+ },
+ "洪水统计.xls": {
+  "kb_name": "洪水统计.xls",
+  "corpus_path": "06-历年洪水资料/04-2019年洪水(9-14)/洪水统计.xls",
+  "old": {
+   "id": "63250820a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 14
+  },
+  "shell_id": "31f1a7eea80f11f1af477b6050be89ec",
+  "chunks": 9,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T11:18:02",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 9
+ },
+ "洪水过程(2).xls": {
+  "kb_name": "洪水过程(2).xls",
+  "corpus_path": "06-历年洪水资料/03-2020年洪水(8-16)/洪水过程.xls",
+  "old": {
+   "id": "60c02c40a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 15
+  },
+  "shell_id": "42d44206a80f11f1af477b6050be89ec",
+  "chunks": 8,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T11:18:28",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 8
+ },
+ "洪水过程(1).xls": {
+  "kb_name": "洪水过程(1).xls",
+  "corpus_path": "06-历年洪水资料/02-2021年洪水调度/9-25洪水/洪水过程.xls",
+  "old": {
+   "id": "d315131aa1f511f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 16
+  },
+  "shell_id": "517642faa80f11f1af477b6050be89ec",
+  "chunks": 9,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T11:18:57",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 9
+ },
+ "洪水过程.xls": {
+  "kb_name": "洪水过程.xls",
+  "corpus_path": "06-历年洪水资料/02-2021年洪水调度/10-3洪水/洪水过程.xls",
+  "old": {
+   "id": "25d8d35ea1f411f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 28
+  },
+  "shell_id": "62d37de2a80f11f1af477b6050be89ec",
+  "chunks": 10,
+  "verified": true,
+  "probe_rank": 4,
+  "status": "OK",
+  "finished": "2026-09-04T11:19:27",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 10
+ }
+}
