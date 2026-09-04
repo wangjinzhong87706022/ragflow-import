@@ -1,0 +1,22 @@
+{
+ "水位库容曲线推求.xls": {
+  "kb_name": "水位库容曲线推求.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/水位库容曲线推求.xls",
+  "old": {
+   "id": "72802a7aa1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 523
+  },
+  "shell_id": "e35a274aa82d11f1af477b6050be89ec",
+  "chunks": 12,
+  "verified": true,
+  "probe_rank": 2,
+  "status": "OK",
+  "finished": "2026-09-04T14:57:59",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 12
+ }
+}

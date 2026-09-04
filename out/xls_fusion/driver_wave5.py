@@ -32,7 +32,7 @@ ES_AUTH = ("elastic", "infini_rag_flow")
 ES_URL = f"http://localhost:1200/{ES_INDEX}/_update_by_query?refresh=true"
 TAG_FEAS = {"洪水资料": 10, "基础数据": 8}
 
-from rollout_xls_shell4 import CORPUS, ARCHIVE, STATE, MANIFEST, TARGETS, load_questions  # noqa: E402
+from rollout_xls_shell5 import CORPUS, ARCHIVE, STATE, MANIFEST, TARGETS, load_questions  # noqa: E402
 
 
 def backfill_tag_feas(kb_name):
