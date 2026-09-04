@@ -1,0 +1,956 @@
+{
+ "724-829两场洪水.xls": {
+  "snapshot": {
+   "id": "6dbf74d2a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 16,
+   "meta_fields": {
+    "doc_category": "洪水资料",
+    "doc_nature": "技术",
+    "doc_type": "表格",
+    "flood_event": "2010-7",
+    "flood_magnitude": "不适用",
+    "quality": "high",
+    "rel": "06-历年洪水资料/07-其他洪水事件/724-829两场洪水.xls",
+    "source_format": "excel",
+    "sub_category": "其他洪水事件",
+    "year": 2010
+   },
+   "chunk_method": "naive",
+   "parser_config": {
+    "auto_keywords": 0,
+    "auto_questions": 5,
+    "built_in_metadata": [],
+    "children_delimiter": "",
+    "chunk_token_num": 256,
+    "delimiter": "\n",
+    "enable_children": false,
+    "graphrag": {
+     "batch_chunk_token_size": 4096,
+     "build_subgraph_min_timeout_seconds": 600,
+     "build_subgraph_timeout_per_chunk_seconds": 300,
+     "community_timeout_seconds": 1800,
+     "entity_types": [
+      "FloodEvent",
+      "Station",
+      "Structure",
+      "Person",
+      "Regulation",
+      "Parameter"
+     ],
+     "lock_acquire_timeout_seconds": 600,
+     "merge_timeout_seconds": 180,
+     "method": "light",
+     "resolution": true,
+     "resolution_timeout_seconds": 1800,
+     "retry_attempts": 2,
+     "retry_backoff_max_seconds": 60.0,
+     "retry_backoff_seconds": 2.0,
+     "use_graphrag": true
+    },
+    "html4excel": false,
+    "image_context_size": 0,
+    "layout_recognize": "DeepDOC",
+    "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+    "metadata": {
+     "additionalProperties": false,
+     "properties": {
+      "doc_category": {
+       "description": "文档大类",
+       "enum": [
+        "规程预案",
+        "基础数据",
+        "洪水资料",
+        "组织管理",
+        "工程资料"
+       ],
+       "type": "string"
+      },
+      "doc_nature": {
+       "description": "文件性质",
+       "enum": [
+        "法规",
+        "技术",
+        "管理",
+        "统计"
+       ],
+       "type": "string"
+      },
+      "doc_type": {
+       "description": "文档形态",
+       "enum": [
+        "文本",
+        "表格",
+        "图片",
+        "图纸"
+       ],
+       "type": "string"
+      },
+      "flood_event": {
+       "description": "关联洪水事件",
+       "enum": [
+        "2021-10",
+        "2021-09",
+        "2020-8",
+        "2019-9",
+        "2013-7",
+        "2008-8",
+        "其他",
+        "历年统计"
+       ],
+       "type": "string"
+      },
+      "flood_magnitude": {
+       "description": "洪水量级",
+       "enum": [
+        "百年一遇",
+        "千年一遇",
+        "一般洪水",
+        "不适用"
+       ],
+       "type": "string"
+      },
+      "location": {
+       "description": "工程部位",
+       "enum": [
+        "主坝",
+        "副坝一",
+        "副坝二",
+        "溢洪道",
+        "高洞",
+        "低洞",
+        "放水塔",
+        "库区",
+        "全库"
+       ],
+       "type": "string"
+      },
+      "quality": {
+       "description": "OCR质量分级",
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ],
+       "type": "string"
+      },
+      "responsible_dept": {
+       "description": "责任/发文部门"
+      },
+      "source_format": {
+       "description": "来源格式",
+       "enum": [
+        "pdf",
+        "word",
+        "excel",
+        "ocr_jpg",
+        "ocr_png",
+        "native_xlsx"
+       ],
+       "type": "string"
+      },
+      "sub_category": {
+       "description": "子类"
+      },
+      "year": {
+       "description": "年份"
+      }
+     },
+     "type": "object"
+    },
+    "parent_child": {
+     "children_delimiter": "\n",
+     "use_parent_child": false
+    },
+    "raptor": {
+     "clustering_ratio": 0.5,
+     "clustering_threshold": 0.3,
+     "max_cluster": 64,
+     "max_token": 512,
+     "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+     "random_seed": 0,
+     "use_raptor": false
+    },
+    "table_context_size": 0,
+    "tag_kb_ids": [
+     "d6ae9230a1d711f19d7235ad4ea699d4"
+    ],
+    "topn_tags": 3
+   }
+  },
+  "chunks": [
+   {
+    "id": "14e7506cbd6577ed",
+    "content": "\n20100724洪水水文要素摘录表：日期; Unnamed: 1：报汛时间; Unnamed: 2：流量\n20100724洪水水文要素摘录表：7.22; Unnamed: 1：20:00:00; Unnamed: 2：1.41\n20100724洪水水文要素摘录表：7.23; Unnamed: 1：01:00:00; Unnamed: 2：20.2\n20100724洪水水文要素摘录表：nan; Unnamed: 1：02:00:00; Unnamed: 2：15.4\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：2.42\n20100724洪水水文要素摘录表：nan; Unnamed: 1：14:00:00; Unnamed: 2：7.12\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:00:00; Unnamed: 2：37.4",
+    "keywords": []
+   },
+   {
+    "id": "3e8f944dd64ece25",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:00:00; Unnamed: 2：106\n20100724洪水水文要素摘录表：nan; Unnamed: 1：22:00:00; Unnamed: 2：174\n20100724洪水水文要素摘录表：nan; Unnamed: 1：23:00:00; Unnamed: 2：243\n20100724洪水水文要素摘录表：7.24; Unnamed: 1：00:00:00; Unnamed: 2：310\n20100724洪水水文要素摘录表：nan; Unnamed: 1：01:00:00; Unnamed: 2：380\n20100724洪水水文要素摘录表：nan; Unnamed: 1：01:40:00; Unnamed: 2：600\n20100724洪水水文要素摘录表：nan; Unnamed: 1：01:42:00; Unnamed: 2：1100",
+    "keywords": []
+   },
+   {
+    "id": "dadd4d103caaac84",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：02:00:00; Unnamed: 2：1070\n20100724洪水水文要素摘录表：nan; Unnamed: 1：03:11:00; Unnamed: 2：958\n20100724洪水水文要素摘录表：nan; Unnamed: 1：04:00:00; Unnamed: 2：300\n20100724洪水水文要素摘录表：nan; Unnamed: 1：05:50:00; Unnamed: 2：220\n20100724洪水水文要素摘录表：nan; Unnamed: 1：06:00:00; Unnamed: 2：220\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：163\n20100724洪水水文要素摘录表：nan; Unnamed: 1：12:00:00; Unnamed: 2：170",
+    "keywords": []
+   },
+   {
+    "id": "a7a9da2b7d010e0b",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：15:00:00; Unnamed: 2：158\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:00:00; Unnamed: 2：110\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:00:00; Unnamed: 2：80\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:00:00; Unnamed: 2：76.6\n20100724洪水水文要素摘录表：nan; Unnamed: 1：23:00:00; Unnamed: 2：75\n20100724洪水水文要素摘录表：7.25; Unnamed: 1：00:00:00; Unnamed: 2：70\n20100724洪水水文要素摘录表：nan; Unnamed: 1：03:00:00; Unnamed: 2：70",
+    "keywords": []
+   },
+   {
+    "id": "66eae51c7025f182",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：05:00:00; Unnamed: 2：68\n20100724洪水水文要素摘录表：nan; Unnamed: 1：06:00:00; Unnamed: 2：66\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：50\n20100724洪水水文要素摘录表：nan; Unnamed: 1：09:00:00; Unnamed: 2：36\n20100724洪水水文要素摘录表：nan; Unnamed: 1：11:00:00; Unnamed: 2：36\n20100724洪水水文要素摘录表：nan; Unnamed: 1：14:00:00; Unnamed: 2：22\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:00:00; Unnamed: 2：12",
+    "keywords": []
+   },
+   {
+    "id": "05075aeb2f1ecc46",
+    "content": "\n20100724洪水水文要素摘录表：7.26; Unnamed: 1：08:00:00; Unnamed: 2：9.42\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan",
+    "keywords": []
+   },
+   {
+    "id": "2ee911763306f1d1",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：20030829洪水水文要素摘录表; Unnamed: 1：nan; Unnamed: 2：nan\n20100724洪水水文要素摘录表：日期; Unnamed: 1：报汛时间; Unnamed: 2：流量\n20100724洪水水文要素摘录表：8.28; Unnamed: 1：08:00:00; Unnamed: 2：17.2\n20100724洪水水文要素摘录表：nan; Unnamed: 1：13:18:00; Unnamed: 2：16.4",
+    "keywords": []
+   },
+   {
+    "id": "06209173b57b4f25",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:00:00; Unnamed: 2：40.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:24:00; Unnamed: 2：78.7\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:00:00; Unnamed: 2：140.2\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:12:00; Unnamed: 2：145.1\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:00:00; Unnamed: 2：140.2\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:30:00; Unnamed: 2：125.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：22:00:00; Unnamed: 2：118.1",
+    "keywords": []
+   },
+   {
+    "id": "488323d73ac91602",
+    "content": "\n20100724洪水水文要素摘录表：8.29; Unnamed: 1：02:00:00; Unnamed: 2：95.9\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：153.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:42:00; Unnamed: 2：183.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：13:00:00; Unnamed: 2：177.1\n20100724洪水水文要素摘录表：nan; Unnamed: 1：13:18:00; Unnamed: 2：177.1\n20100724洪水水文要素摘录表：nan; Unnamed: 1：14:00:00; Unnamed: 2：196.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：15:30:00; Unnamed: 2：252.2",
+    "keywords": []
+   },
+   {
+    "id": "894a747e80f92e50",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：16:00:00; Unnamed: 2：303.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：17:00:00; Unnamed: 2：327.2\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:30:00; Unnamed: 2：196.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：20:00:00; Unnamed: 2：179.6\n20100724洪水水文要素摘录表：nan; Unnamed: 1：22:00:00; Unnamed: 2：111.9\n20100724洪水水文要素摘录表：nan; Unnamed: 1：22:30:00; Unnamed: 2：103.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：23:00:00; Unnamed: 2：95.9",
+    "keywords": []
+   },
+   {
+    "id": "28a15fdc0ceed8a1",
+    "content": "\n20100724洪水水文要素摘录表：8.3; Unnamed: 1：00:30:00; Unnamed: 2：86.1\n20100724洪水水文要素摘录表：nan; Unnamed: 1：02:00:00; Unnamed: 2：145.1\n20100724洪水水文要素摘录表：nan; Unnamed: 1：02:36:00; Unnamed: 2：175.9\n20100724洪水水文要素摘录表：nan; Unnamed: 1：03:12:00; Unnamed: 2：169.7\n20100724洪水水文要素摘录表：nan; Unnamed: 1：04:00:00; Unnamed: 2：162.4\n20100724洪水水文要素摘录表：nan; Unnamed: 1：05:00:00; Unnamed: 2：152.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：06:00:00; Unnamed: 2：136.5",
+    "keywords": []
+   },
+   {
+    "id": "02df3e96ec9689a8",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：104.6\n20100724洪水水文要素摘录表：nan; Unnamed: 1：10:00:00; Unnamed: 2：71.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：11:00:00; Unnamed: 2：71.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：12:00:00; Unnamed: 2：71.3\n20100724洪水水文要素摘录表：nan; Unnamed: 1：12:30:00; Unnamed: 2：91.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：13:00:00; Unnamed: 2：91.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：14:00:00; Unnamed: 2：91.8",
+    "keywords": []
+   },
+   {
+    "id": "ae6be600150e7d71",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：15:00:00; Unnamed: 2：61.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：16:00:00; Unnamed: 2：61.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:00:00; Unnamed: 2：61.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:00:00; Unnamed: 2：87.5\n20100724洪水水文要素摘录表：nan; Unnamed: 1：23:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：00:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：8.31; Unnamed: 1：02:00:00; Unnamed: 2：nan",
+    "keywords": []
+   },
+   {
+    "id": "87007fec0ea6c70e",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：03:00:00; Unnamed: 2：76.4\n20100724洪水水文要素摘录表：nan; Unnamed: 1：04:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：05:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：06:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：07:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：nan\n20100724洪水水文要素摘录表：nan; Unnamed: 1：09:00:00; Unnamed: 2：55.4",
+    "keywords": []
+   },
+   {
+    "id": "4f9413da4b9c029f",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：15:00:00; Unnamed: 2：43.9\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:00:00; Unnamed: 2：55.9\n20100724洪水水文要素摘录表：nan; Unnamed: 1：21:00:00; Unnamed: 2：67.8\n20100724洪水水文要素摘录表：9.1; Unnamed: 1：03:00:00; Unnamed: 2：73.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：66.4\n20100724洪水水文要素摘录表：nan; Unnamed: 1：12:00:00; Unnamed: 2：35.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：14:00:00; Unnamed: 2：35.7",
+    "keywords": []
+   },
+   {
+    "id": "cdfe12a962d72dda",
+    "content": "\n20100724洪水水文要素摘录表：nan; Unnamed: 1：16:00:00; Unnamed: 2：35.7\n20100724洪水水文要素摘录表：nan; Unnamed: 1：18:00:00; Unnamed: 2：34.4\n20100724洪水水文要素摘录表：9.2; Unnamed: 1：02:00:00; Unnamed: 2：27.8\n20100724洪水水文要素摘录表：nan; Unnamed: 1：08:00:00; Unnamed: 2：22.9",
+    "keywords": []
+   }
+  ],
+  "meta_amended": {
+   "date": "2026-09-04",
+   "reason": "批次二裁定纠偏（REVIEW_WAVE3.md 裁定点1/2）：表内标题 20100724 铁证，回滚不得倒退至误名值；2010年下泄水量统计.xls 快照与活值一致无需修订",
+   "changes": [
+    {
+     "field": "flood_event",
+     "old": "其他",
+     "new": "2010-7"
+    },
+    {
+     "field": "year",
+     "old": null,
+     "new": 2010
+    }
+   ]
+  }
+ },
+ "2010年下泄水量统计.xls": {
+  "snapshot": {
+   "id": "6ee7a5b4a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 24,
+   "meta_fields": {
+    "doc_category": "洪水资料",
+    "doc_nature": "技术",
+    "doc_type": "表格",
+    "flood_event": "2010-8",
+    "flood_magnitude": "不适用",
+    "quality": "high",
+    "rel": "06-历年洪水资料/08-历年洪水统计/2010年下泄水量统计.xls",
+    "source_format": "excel",
+    "sub_category": "2010年洪水(8-13)",
+    "year": 2010
+   },
+   "chunk_method": "naive",
+   "parser_config": {
+    "auto_keywords": 0,
+    "auto_questions": 5,
+    "built_in_metadata": [],
+    "children_delimiter": "",
+    "chunk_token_num": 256,
+    "delimiter": "\n",
+    "enable_children": false,
+    "graphrag": {
+     "batch_chunk_token_size": 4096,
+     "build_subgraph_min_timeout_seconds": 600,
+     "build_subgraph_timeout_per_chunk_seconds": 300,
+     "community_timeout_seconds": 1800,
+     "entity_types": [
+      "FloodEvent",
+      "Station",
+      "Structure",
+      "Person",
+      "Regulation",
+      "Parameter"
+     ],
+     "lock_acquire_timeout_seconds": 600,
+     "merge_timeout_seconds": 180,
+     "method": "light",
+     "resolution": true,
+     "resolution_timeout_seconds": 1800,
+     "retry_attempts": 2,
+     "retry_backoff_max_seconds": 60.0,
+     "retry_backoff_seconds": 2.0,
+     "use_graphrag": true
+    },
+    "html4excel": false,
+    "image_context_size": 0,
+    "layout_recognize": "DeepDOC",
+    "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+    "metadata": {
+     "additionalProperties": false,
+     "properties": {
+      "doc_category": {
+       "description": "文档大类",
+       "enum": [
+        "规程预案",
+        "基础数据",
+        "洪水资料",
+        "组织管理",
+        "工程资料"
+       ],
+       "type": "string"
+      },
+      "doc_nature": {
+       "description": "文件性质",
+       "enum": [
+        "法规",
+        "技术",
+        "管理",
+        "统计"
+       ],
+       "type": "string"
+      },
+      "doc_type": {
+       "description": "文档形态",
+       "enum": [
+        "文本",
+        "表格",
+        "图片",
+        "图纸"
+       ],
+       "type": "string"
+      },
+      "flood_event": {
+       "description": "关联洪水事件",
+       "enum": [
+        "2021-10",
+        "2021-09",
+        "2020-8",
+        "2019-9",
+        "2013-7",
+        "2008-8",
+        "其他",
+        "历年统计"
+       ],
+       "type": "string"
+      },
+      "flood_magnitude": {
+       "description": "洪水量级",
+       "enum": [
+        "百年一遇",
+        "千年一遇",
+        "一般洪水",
+        "不适用"
+       ],
+       "type": "string"
+      },
+      "location": {
+       "description": "工程部位",
+       "enum": [
+        "主坝",
+        "副坝一",
+        "副坝二",
+        "溢洪道",
+        "高洞",
+        "低洞",
+        "放水塔",
+        "库区",
+        "全库"
+       ],
+       "type": "string"
+      },
+      "quality": {
+       "description": "OCR质量分级",
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ],
+       "type": "string"
+      },
+      "responsible_dept": {
+       "description": "责任/发文部门"
+      },
+      "source_format": {
+       "description": "来源格式",
+       "enum": [
+        "pdf",
+        "word",
+        "excel",
+        "ocr_jpg",
+        "ocr_png",
+        "native_xlsx"
+       ],
+       "type": "string"
+      },
+      "sub_category": {
+       "description": "子类"
+      },
+      "year": {
+       "description": "年份"
+      }
+     },
+     "type": "object"
+    },
+    "parent_child": {
+     "children_delimiter": "\n",
+     "use_parent_child": false
+    },
+    "raptor": {
+     "clustering_ratio": 0.5,
+     "clustering_threshold": 0.3,
+     "max_cluster": 64,
+     "max_token": 512,
+     "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+     "random_seed": 0,
+     "use_raptor": false
+    },
+    "table_context_size": 0,
+    "tag_kb_ids": [
+     "d6ae9230a1d711f19d7235ad4ea699d4"
+    ],
+    "topn_tags": 3
+   }
+  },
+  "chunks": [
+   {
+    "id": "0ce52b6b4ad32835",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：日期; Unnamed: 1：报汛时间; Unnamed: 2：库水位; Unnamed: 3：库容; Unnamed: 4：流量; Unnamed: 5：平均流量; Unnamed: 6：历时; Unnamed: 7：时段水量; Unnamed: 8：洪水总量; Unnamed: 9：2日洪量; Unnamed: 10：依据库容反推的洪量 ——Data",
+    "keywords": []
+   },
+   {
+    "id": "7c1ca2f94ba6f9c8",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：40402; Unnamed: 1：20:00:00; Unnamed: 2：784.6; Unnamed: 3：3042; Unnamed: 4：14.7; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：13日; Unnamed: 1：04:00:00; Unnamed: 2：784.73; Unnamed: 3：3071; Unnamed: 4：100; Unnamed: 5：57.35; Unnamed: 6：8; Unnamed: 7：165.168; Unnamed: 8：165.168; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：05:00:00; Unnamed: 2：784.94; Unnamed: 3：3117; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "c22b2494343a96bd",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：05:53:00; Unnamed: 2：785.12; Unnamed: 3：3159; Unnamed: 4：260; Unnamed: 5：180; Unnamed: 6：1.88; Unnamed: 7：121.82399999999998; Unnamed: 8：286.99199999999996; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：06:10:00; Unnamed: 2：785.23; Unnamed: 3：3185; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：06:14:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：310; Unnamed: 5：285; Unnamed: 6：0.35; Unnamed: 7：35.91; Unnamed: 8：322.90199999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "0a29740458e4cdfe",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：07:00:00; Unnamed: 2：785.64; Unnamed: 3：3284; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：07:10:00; Unnamed: 2：785.72; Unnamed: 3：3303; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：07:20:00; Unnamed: 2：785.82; Unnamed: 3：3327; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "2caa864c3b123c76",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：07:30:00; Unnamed: 2：785.9; Unnamed: 3：3346; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：07:35:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：280; Unnamed: 5：295; Unnamed: 6：1.35; Unnamed: 7：143.37; Unnamed: 8：466.27199999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：786.11; Unnamed: 3：3395.3; Unnamed: 4：258; Unnamed: 5：269; Unnamed: 6：0.42; Unnamed: 7：40.672799999999995; Unnamed: 8：506.94479999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "d1398a9d7db911ec",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：09:00:00; Unnamed: 2：786.44; Unnamed: 3：3471; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：10:00:00; Unnamed: 2：786.6; Unnamed: 3：3508; Unnamed: 4：170; Unnamed: 5：214; Unnamed: 6：2; Unnamed: 7：154.07999999999998; Unnamed: 8：661.0247999999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：11:00:00; Unnamed: 2：786.71; Unnamed: 3：3533; Unnamed: 4：154; Unnamed: 5：162; Unnamed: 6：1; Unnamed: 7：nan; Unnamed: 8：661.0247999999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "84974fd0caf6ea88",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：11:50:00; Unnamed: 2：786.77; Unnamed: 3：3547; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：12:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：134; Unnamed: 5：144; Unnamed: 6：1; Unnamed: 7：51.839999999999996; Unnamed: 8：712.8648; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：12:30:00; Unnamed: 2：786.8; Unnamed: 3：3554; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "65879c67cdaf0c99",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：14:00:00; Unnamed: 2：786.86; Unnamed: 3：3567.8; Unnamed: 4：108; Unnamed: 5：121; Unnamed: 6：2; Unnamed: 7：87.11999999999999; Unnamed: 8：799.9848; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：15:00:00; Unnamed: 2：786.87; Unnamed: 3：3570.1; Unnamed: 4：100; Unnamed: 5：104; Unnamed: 6：1; Unnamed: 7：37.44; Unnamed: 8：837.4248; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：16:00:00; Unnamed: 2：786.87; Unnamed: 3：3570; Unnamed: 4：97.8; Unnamed: 5：98.9; Unnamed: 6：1; Unnamed: 7：35.604; Unnamed: 8：873.0288; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "629f72edaf3df2f7",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：19:00:00; Unnamed: 2：786.87; Unnamed: 3：3570; Unnamed: 4：77.6; Unnamed: 5：87.69999999999999; Unnamed: 6：3; Unnamed: 7：94.71599999999998; Unnamed: 8：967.7448; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：786.81; Unnamed: 3：3556; Unnamed: 4：66; Unnamed: 5：71.8; Unnamed: 6：1; Unnamed: 7：25.848; Unnamed: 8：993.5928; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：22:00:00; Unnamed: 2：786.75; Unnamed: 3：3542; Unnamed: 4：60; Unnamed: 5：63; Unnamed: 6：2; Unnamed: 7：45.36; Unnamed: 8：1038.9528; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "c055c13a55b1185e",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：23:52:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：55; Unnamed: 5：57.5; Unnamed: 6：1.87; Unnamed: 7：38.709; Unnamed: 8：1077.6618; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：14日; Unnamed: 1：1900-01-01 00:00:00; Unnamed: 2：786.67; Unnamed: 3：3526; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：786.45; Unnamed: 3：3474; Unnamed: 4：49; Unnamed: 5：52; Unnamed: 6：8.13; Unnamed: 7：152.1936; Unnamed: 8：1229.8554000000001; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "2a89d4e6a355ec41",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：10:00:00; Unnamed: 2：786.4; Unnamed: 3：3462; Unnamed: 4：36; Unnamed: 5：42.5; Unnamed: 6：2; Unnamed: 7：30.599999999999998; Unnamed: 8：1260.4554; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：13:00:00; Unnamed: 2：786.24; Unnamed: 3：3425; Unnamed: 4：36; Unnamed: 5：36; Unnamed: 6：3; Unnamed: 7：38.879999999999995; Unnamed: 8：1299.3354; Unnamed: 9：nan; Unnamed: 10：nan ——Data\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：17:00:00; Unnamed: 2：786.12; Unnamed: 3：3398; Unnamed: 4：30; Unnamed: 5：33; Unnamed: 6：4; Unnamed: 7：47.519999999999996; Unnamed: 8：1346.8554; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "05d2a4e6450557c7",
+    "content": "\n柳林断面流量统计表(“20100813”洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：786.03; Unnamed: 3：3377; Unnamed: 4：36; Unnamed: 5：33; Unnamed: 6：3; Unnamed: 7：35.64; Unnamed: 8：1382.4954; Unnamed: 9：1382; Unnamed: 10：1443 ——Data",
+    "keywords": []
+   }
+  ],
+  "meta_amended": {
+   "date": "2026-09-04",
+   "reason": "批次二裁定纠偏（REVIEW_WAVE3.md 裁定点3）：表内标题 20100813，回滚不得倒退至 历年统计",
+   "changes": [
+    {
+     "field": "flood_event",
+     "old": "历年统计",
+     "new": "2010-8"
+    },
+    {
+     "field": "sub_category",
+     "old": "历年洪水统计",
+     "new": "2010年洪水(8-13)"
+    }
+   ]
+  }
+ },
+ "2001年洪水过程线.xls": {
+  "snapshot": {
+   "id": "6e717542a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 43,
+   "meta_fields": {
+    "doc_category": "洪水资料",
+    "doc_nature": "技术",
+    "doc_type": "表格",
+    "flood_event": "2010-7",
+    "flood_magnitude": "不适用",
+    "quality": "high",
+    "rel": "06-历年洪水资料/08-历年洪水统计/2001年洪水过程线.xls",
+    "source_format": "excel",
+    "sub_category": "2010年洪水(7-24)",
+    "year": 2010
+   },
+   "chunk_method": "naive",
+   "parser_config": {
+    "auto_keywords": 0,
+    "auto_questions": 5,
+    "built_in_metadata": [],
+    "children_delimiter": "",
+    "chunk_token_num": 256,
+    "delimiter": "\n",
+    "enable_children": false,
+    "graphrag": {
+     "batch_chunk_token_size": 4096,
+     "build_subgraph_min_timeout_seconds": 600,
+     "build_subgraph_timeout_per_chunk_seconds": 300,
+     "community_timeout_seconds": 1800,
+     "entity_types": [
+      "FloodEvent",
+      "Station",
+      "Structure",
+      "Person",
+      "Regulation",
+      "Parameter"
+     ],
+     "lock_acquire_timeout_seconds": 600,
+     "merge_timeout_seconds": 180,
+     "method": "light",
+     "resolution": true,
+     "resolution_timeout_seconds": 1800,
+     "retry_attempts": 2,
+     "retry_backoff_max_seconds": 60.0,
+     "retry_backoff_seconds": 2.0,
+     "use_graphrag": true
+    },
+    "html4excel": false,
+    "image_context_size": 0,
+    "layout_recognize": "DeepDOC",
+    "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+    "metadata": {
+     "additionalProperties": false,
+     "properties": {
+      "doc_category": {
+       "description": "文档大类",
+       "enum": [
+        "规程预案",
+        "基础数据",
+        "洪水资料",
+        "组织管理",
+        "工程资料"
+       ],
+       "type": "string"
+      },
+      "doc_nature": {
+       "description": "文件性质",
+       "enum": [
+        "法规",
+        "技术",
+        "管理",
+        "统计"
+       ],
+       "type": "string"
+      },
+      "doc_type": {
+       "description": "文档形态",
+       "enum": [
+        "文本",
+        "表格",
+        "图片",
+        "图纸"
+       ],
+       "type": "string"
+      },
+      "flood_event": {
+       "description": "关联洪水事件",
+       "enum": [
+        "2021-10",
+        "2021-09",
+        "2020-8",
+        "2019-9",
+        "2013-7",
+        "2008-8",
+        "其他",
+        "历年统计"
+       ],
+       "type": "string"
+      },
+      "flood_magnitude": {
+       "description": "洪水量级",
+       "enum": [
+        "百年一遇",
+        "千年一遇",
+        "一般洪水",
+        "不适用"
+       ],
+       "type": "string"
+      },
+      "location": {
+       "description": "工程部位",
+       "enum": [
+        "主坝",
+        "副坝一",
+        "副坝二",
+        "溢洪道",
+        "高洞",
+        "低洞",
+        "放水塔",
+        "库区",
+        "全库"
+       ],
+       "type": "string"
+      },
+      "quality": {
+       "description": "OCR质量分级",
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ],
+       "type": "string"
+      },
+      "responsible_dept": {
+       "description": "责任/发文部门"
+      },
+      "source_format": {
+       "description": "来源格式",
+       "enum": [
+        "pdf",
+        "word",
+        "excel",
+        "ocr_jpg",
+        "ocr_png",
+        "native_xlsx"
+       ],
+       "type": "string"
+      },
+      "sub_category": {
+       "description": "子类"
+      },
+      "year": {
+       "description": "年份"
+      }
+     },
+     "type": "object"
+    },
+    "parent_child": {
+     "children_delimiter": "\n",
+     "use_parent_child": false
+    },
+    "raptor": {
+     "clustering_ratio": 0.5,
+     "clustering_threshold": 0.3,
+     "max_cluster": 64,
+     "max_token": 512,
+     "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+     "random_seed": 0,
+     "use_raptor": false
+    },
+    "table_context_size": 0,
+    "tag_kb_ids": [
+     "d6ae9230a1d711f19d7235ad4ea699d4"
+    ],
+    "topn_tags": 3
+   }
+  },
+  "chunks": [
+   {
+    "id": "e710ec1ce8007f45",
+    "content": "\n日期：22.0; 报汛时间：20:00:00; 流量：1.41\n日期：23.0; 报汛时间：01:00:00; 流量：20.2\n日期：nan; 报汛时间：02:00:00; 流量：15.4\n日期：nan; 报汛时间：08:00:00; 流量：2.42\n日期：nan; 报汛时间：14:00:00; 流量：7.12\n日期：nan; 报汛时间：20:00:00; 流量：37.4\n日期：nan; 报汛时间：21:00:00; 流量：106.0\n日期：nan; 报汛时间：22:00:00; 流量：174.0\n日期：nan; 报汛时间：23:00:00; 流量：243.0\n日期：24.0; 报汛时间：00:00:00; 流量：310.0\n日期：nan; 报汛时间：01:00:00; 流量：380.0",
+    "keywords": []
+   },
+   {
+    "id": "96e78d8349da2210",
+    "content": "\n日期：nan; 报汛时间：01:40:00; 流量：600.0\n日期：nan; 报汛时间：01:42:00; 流量：1100.0\n日期：nan; 报汛时间：02:00:00; 流量：1070.0\n日期：nan; 报汛时间：03:11:00; 流量：958.0\n日期：nan; 报汛时间：04:00:00; 流量：300.0\n日期：nan; 报汛时间：05:50:00; 流量：220.0\n日期：nan; 报汛时间：06:00:00; 流量：220.0\n日期：nan; 报汛时间：08:00:00; 流量：163.0\n日期：nan; 报汛时间：12:00:00; 流量：170.0\n日期：nan; 报汛时间：15:00:00; 流量：158.0\n日期：nan; 报汛时间：18:00:00; 流量：110.0",
+    "keywords": []
+   },
+   {
+    "id": "d62ec114776af877",
+    "content": "\n日期：nan; 报汛时间：20:00:00; 流量：80.0\n日期：nan; 报汛时间：21:00:00; 流量：76.6\n日期：nan; 报汛时间：23:00:00; 流量：75.0\n日期：25.0; 报汛时间：00:00:00; 流量：70.0\n日期：nan; 报汛时间：03:00:00; 流量：70.0\n日期：nan; 报汛时间：05:00:00; 流量：68.0\n日期：nan; 报汛时间：06:00:00; 流量：66.0\n日期：nan; 报汛时间：08:00:00; 流量：50.0\n日期：nan; 报汛时间：09:00:00; 流量：36.0\n日期：nan; 报汛时间：11:00:00; 流量：36.0\n日期：nan; 报汛时间：14:00:00; 流量：22.0",
+    "keywords": []
+   },
+   {
+    "id": "6a8e3591ae7b9e52",
+    "content": "\n日期：nan; 报汛时间：20:00:00; 流量：12.0\n日期：26.0; 报汛时间：08:00:00; 流量：9.42\n日期：22.0; 报汛时间：20:00:00; 库水位：771.88\n日期：23.0; 报汛时间：02:00:00; 库水位：771.98\n日期：nan; 报汛时间：08:00:00; 库水位：772.26\n日期：nan; 报汛时间：14:00:00; 库水位：772.41\n日期：nan; 报汛时间：18:00:00; 库水位：772.53\n日期：nan; 报汛时间：20:00:00; 库水位：772.82\n日期：24.0; 报汛时间：00:00:00; 库水位：773.01\n日期：nan; 报汛时间：02:00:00; 库水位：774.62\n日期：nan; 报汛时间：03:00:00; 库水位：776.32",
+    "keywords": []
+   },
+   {
+    "id": "5ab40772f95d6540",
+    "content": "\n日期：nan; 报汛时间：04:00:00; 库水位：777.31\n日期：nan; 报汛时间：05:00:00; 库水位：778.06\n日期：nan; 报汛时间：06:00:00; 库水位：778.63\n日期：nan; 报汛时间：07:00:00; 库水位：779.0\n日期：nan; 报汛时间：08:00:00; 库水位：779.32\n日期：nan; 报汛时间：09:00:00; 库水位：779.57\n日期：nan; 报汛时间：10:00:00; 库水位：779.81\n日期：nan; 报汛时间：11:00:00; 库水位：780.15\n日期：nan; 报汛时间：12:00:00; 库水位：780.57\n日期：nan; 报汛时间：13:00:00; 库水位：780.88\n日期：nan; 报汛时间：14:00:00; 库水位：781.14",
+    "keywords": []
+   },
+   {
+    "id": "a0f021df2488f956",
+    "content": "\n日期：nan; 报汛时间：15:00:00; 库水位：781.4\n日期：nan; 报汛时间：16:00:00; 库水位：781.58\n日期：nan; 报汛时间：17:00:00; 库水位：781.78\n日期：nan; 报汛时间：18:00:00; 库水位：781.92\n日期：nan; 报汛时间：19:00:00; 库水位：782.09\n日期：nan; 报汛时间：20:00:00; 库水位：782.21\n日期：nan; 报汛时间：21:00:00; 库水位：782.35\n日期：nan; 报汛时间：22:00:00; 库水位：782.45\n日期：25.0; 报汛时间：00:00:00; 库水位：782.63\n日期：nan; 报汛时间：03:00:00; 库水位：782.87\n日期：nan; 报汛时间：04:00:00; 库水位：782.94",
+    "keywords": []
+   },
+   {
+    "id": "6040a8b23dd908d4",
+    "content": "\n日期：nan; 报汛时间：06:00:00; 库水位：783.09\n日期：nan; 报汛时间：08:00:00; 库水位：783.2\n日期：nan; 报汛时间：10:00:00; 库水位：783.32\n日期：nan; 报汛时间：12:00:00; 库水位：783.44\n日期：nan; 报汛时间：14:00:00; 库水位：783.51\n日期：nan; 报汛时间：16:00:00; 库水位：783.61\n日期：nan; 报汛时间：18:00:00; 库水位：783.69\n日期：nan; 报汛时间：20:00:00; 库水位：783.76\n日期：26.0; 报汛时间：08:00:00; 库水位：784.15\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "539c9bdc277ed53f",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：日期; Unnamed: 1：报汛时间; Unnamed: 2：库水位; Unnamed: 3：库容; Unnamed: 4：流量; Unnamed: 5：平均流量; Unnamed: 6：历时; Unnamed: 7：时段水量; Unnamed: 8：洪水总量; Unnamed: 9：1日洪量/3日洪量; Unnamed: 10：依据库容反推的洪量\n柳林断面流量统计表(“20100724”洪水)：22; Unnamed: 1：20:00:00; Unnamed: 2：771.88; Unnamed: 3：774; Unnamed: 4：1.41; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "62916c47949c9d5c",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：23; Unnamed: 1：01:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：20.2; Unnamed: 5：10.805; Unnamed: 6：5; Unnamed: 7：19.448999999999998; Unnamed: 8：19.448999999999998; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：02:00:00; Unnamed: 2：771.98; Unnamed: 3：787.4; Unnamed: 4：15.4; Unnamed: 5：17.8; Unnamed: 6：1; Unnamed: 7：6.408; Unnamed: 8：25.857; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：772.26; Unnamed: 3：826; Unnamed: 4：2.42; Unnamed: 5：8.91; Unnamed: 6：6; Unnamed: 7：19.2456; Unnamed: 8：45.102599999999995; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "088c9b761c2a5718",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：14:00:00; Unnamed: 2：772.41; Unnamed: 3：847; Unnamed: 4：7.12; Unnamed: 5：4.77; Unnamed: 6：6; Unnamed: 7：10.303199999999999; Unnamed: 8：55.40579999999999; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：18:00:00; Unnamed: 2：772.53; Unnamed: 3：864; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：772.82; Unnamed: 3：905; Unnamed: 4：37.4; Unnamed: 5：22.259999999999998; Unnamed: 6：6; Unnamed: 7：48.0816; Unnamed: 8：103.4874; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "5531a6b02aadbb94",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：21:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：106; Unnamed: 5：71.7; Unnamed: 6：1; Unnamed: 7：25.812; Unnamed: 8：129.2994; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：22:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：174; Unnamed: 5：140; Unnamed: 6：1; Unnamed: 7：50.4; Unnamed: 8：179.6994; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：23:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：243; Unnamed: 5：208.5; Unnamed: 6：1; Unnamed: 7：75.06; Unnamed: 8：254.7594; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "eb89a7d4dcba51b0",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：24; Unnamed: 1：00:00:00; Unnamed: 2：773.01; Unnamed: 3：931; Unnamed: 4：310; Unnamed: 5：276.5; Unnamed: 6：1; Unnamed: 7：99.53999999999999; Unnamed: 8：354.2994; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：01:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：380; Unnamed: 5：345; Unnamed: 6：1; Unnamed: 7：124.19999999999999; Unnamed: 8：478.4994; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：01:40:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：600; Unnamed: 5：490; Unnamed: 6：0.67; Unnamed: 7：118.188; Unnamed: 8：596.6874; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "a58504a55ccef8ac",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：01:42:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：1100; Unnamed: 5：850; Unnamed: 6：0.03; Unnamed: 7：9.18; Unnamed: 8：605.8674; Unnamed: 9：柳林断面出现时间; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：02:00:00; Unnamed: 2：774.62; Unnamed: 3：1158; Unnamed: 4：1000; Unnamed: 5：1050; Unnamed: 6：0.3; Unnamed: 7：113.39999999999999; Unnamed: 8：719.2674; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：03:00:00; Unnamed: 2：776.32; Unnamed: 3：1423; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：洪峰入库时间; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "aa188d886249a185",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：03:11:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：1000; Unnamed: 5：1000; Unnamed: 6：1.2; Unnamed: 7：432; Unnamed: 8：1151.2674; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：04:00:00; Unnamed: 2：777.31; Unnamed: 3：1590; Unnamed: 4：300; Unnamed: 5：650; Unnamed: 6：0.8; Unnamed: 7：187.2; Unnamed: 8：1338.4674; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：05:00:00; Unnamed: 2：778.06; Unnamed: 3：1721; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "80d7afe40c74d21a",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：05:50:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：220; Unnamed: 5：260; Unnamed: 6：1.8; Unnamed: 7：168.48; Unnamed: 8：1506.9474; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：06:00:00; Unnamed: 2：778.63; Unnamed: 3：1826; Unnamed: 4：220; Unnamed: 5：220; Unnamed: 6：0.2; Unnamed: 7：15.84; Unnamed: 8：1522.7874; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：07:00:00; Unnamed: 2：779; Unnamed: 3：1900; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "48c7d1b067a568ae",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：779.32; Unnamed: 3：1964; Unnamed: 4：163; Unnamed: 5：191.5; Unnamed: 6：2; Unnamed: 7：137.88; Unnamed: 8：1660.6673999999998; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：09:00:00; Unnamed: 2：779.57; Unnamed: 3：2015; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：10:00:00; Unnamed: 2：779.81; Unnamed: 3：2070; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "2db00019608f8b4b",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：11:00:00; Unnamed: 2：780.15; Unnamed: 3：2140; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：12:00:00; Unnamed: 2：780.57; Unnamed: 3：2221; Unnamed: 4：170; Unnamed: 5：166.5; Unnamed: 6：4; Unnamed: 7：239.76; Unnamed: 8：1900.4273999999998; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：13:00:00; Unnamed: 2：780.88; Unnamed: 3：2286; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "d48452227010c738",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：14:00:00; Unnamed: 2：781.14; Unnamed: 3：2338; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：15:00:00; Unnamed: 2：781.4; Unnamed: 3：2390; Unnamed: 4：158; Unnamed: 5：164; Unnamed: 6：3; Unnamed: 7：177.12; Unnamed: 8：2077.5474; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：16:00:00; Unnamed: 2：781.58; Unnamed: 3：2428; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "5f631b0e284a2d47",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：17:00:00; Unnamed: 2：781.78; Unnamed: 3：2472; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：18:00:00; Unnamed: 2：781.92; Unnamed: 3：2502; Unnamed: 4：110; Unnamed: 5：134; Unnamed: 6：3; Unnamed: 7：144.72; Unnamed: 8：2222.2673999999997; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：19:00:00; Unnamed: 2：782.09; Unnamed: 3：2538; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "893f2bc478868008",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：782.21; Unnamed: 3：2562; Unnamed: 4：80; Unnamed: 5：95; Unnamed: 6：2; Unnamed: 7：68.39999999999999; Unnamed: 8：2290.6674; Unnamed: 9：2187.18; Unnamed: 10：1826\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：21:00:00; Unnamed: 2：782.35; Unnamed: 3：2590; Unnamed: 4：76.6; Unnamed: 5：78.3; Unnamed: 6：1; Unnamed: 7：28.188; Unnamed: 8：2318.8554; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：22:00:00; Unnamed: 2：782.45; Unnamed: 3：2610; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "d0a651c07e26a002",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：23:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：75; Unnamed: 5：75.8; Unnamed: 6：2; Unnamed: 7：54.57599999999999; Unnamed: 8：2373.4314; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：25; Unnamed: 1：00:00:00; Unnamed: 2：782.63; Unnamed: 3：2646; Unnamed: 4：70; Unnamed: 5：72.5; Unnamed: 6：1; Unnamed: 7：26.099999999999998; Unnamed: 8：2399.5314; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：03:00:00; Unnamed: 2：782.87; Unnamed: 3：2694; Unnamed: 4：70; Unnamed: 5：70; Unnamed: 6：3; Unnamed: 7：75.6; Unnamed: 8：2475.1313999999998; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "e28f923dcbd84857",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：04:00:00; Unnamed: 2：782.94; Unnamed: 3：2708; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：05:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：68; Unnamed: 5：69; Unnamed: 6：2; Unnamed: 7：49.68; Unnamed: 8：2524.8113999999996; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：06:00:00; Unnamed: 2：783.09; Unnamed: 3：2738; Unnamed: 4：66; Unnamed: 5：67; Unnamed: 6：1; Unnamed: 7：24.119999999999997; Unnamed: 8：2548.9313999999995; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "7bd80c4fa3ce070a",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：783.2; Unnamed: 3：2760; Unnamed: 4：50; Unnamed: 5：58; Unnamed: 6：2; Unnamed: 7：41.76; Unnamed: 8：2590.6913999999997; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：09:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：36; Unnamed: 5：43; Unnamed: 6：1; Unnamed: 7：15.479999999999999; Unnamed: 8：2606.1713999999997; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：10:00:00; Unnamed: 2：783.32; Unnamed: 3：2784; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "504779a0050690c7",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：11:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：36; Unnamed: 5：36; Unnamed: 6：2; Unnamed: 7：25.919999999999998; Unnamed: 8：2632.0914; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：12:00:00; Unnamed: 2：783.44; Unnamed: 3：2808; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：14:00:00; Unnamed: 2：783.51; Unnamed: 3：2822; Unnamed: 4：22; Unnamed: 5：29; Unnamed: 6：3; Unnamed: 7：31.32; Unnamed: 8：2663.4114; Unnamed: 9：nan; Unnamed: 10：nan",
+    "keywords": []
+   },
+   {
+    "id": "6f7e7f7cbaaba030",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：16:00:00; Unnamed: 2：783.61; Unnamed: 3：2842; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：18:00:00; Unnamed: 2：783.69; Unnamed: 3：2858; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan\n柳林断面流量统计表(“20100724”洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：783.76; Unnamed: 3：2872; Unnamed: 4：12; Unnamed: 5：17; Unnamed: 6：6; Unnamed: 7：36.72; Unnamed: 8：2700.1313999999998; Unnamed: 9：2665; Unnamed: 10：2230",
+    "keywords": []
+   },
+   {
+    "id": "594482b41820d833",
+    "content": "\n柳林断面流量统计表(“20100724”洪水)：26; Unnamed: 1：08:00:00; Unnamed: 2：784.15; Unnamed: 3：2950; Unnamed: 4：9.42; Unnamed: 5：10.71; Unnamed: 6：12; Unnamed: 7：46.2672; Unnamed: 8：2746.3985999999995; Unnamed: 9：nan; Unnamed: 10：nan\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan\n桃曲坡水库泄水过程(20100724洪水)：日期; Unnamed: 1：时间; Unnamed: 2：库水位; Unnamed: 3：库容; Unnamed: 4：下泄流量; Unnamed: 5：平均流量; Unnamed: 6：历时(小时); Unnamed: 7：泄水量; Unnamed: 8：累计泄水量",
+    "keywords": []
+   },
+   {
+    "id": "eaf17d2238ded876",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：24; Unnamed: 1：02:00:00; Unnamed: 2：774.62; Unnamed: 3：1158; Unnamed: 4：0.59; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：02:38:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：20; Unnamed: 5：0.59; Unnamed: 6：0.6; Unnamed: 7：0.13; Unnamed: 8：0.13\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：03:00:00; Unnamed: 2：776.32; Unnamed: 3：1423; Unnamed: 4：20; Unnamed: 5：20; Unnamed: 6：0.4; Unnamed: 7：2.88; Unnamed: 8：3.01",
+    "keywords": []
+   },
+   {
+    "id": "80d3d88e0aab530d",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：04:00:00; Unnamed: 2：777.31; Unnamed: 3：1590; Unnamed: 4：20; Unnamed: 5：20; Unnamed: 6：1; Unnamed: 7：7.2; Unnamed: 8：10.21\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：05:00:00; Unnamed: 2：778.06; Unnamed: 3：1721; Unnamed: 4：20; Unnamed: 5：20; Unnamed: 6：1; Unnamed: 7：7.2; Unnamed: 8：17.41\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：05:30:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：15; Unnamed: 5：20; Unnamed: 6：0.5; Unnamed: 7：3.6; Unnamed: 8：21.01",
+    "keywords": []
+   },
+   {
+    "id": "6880589fff04cef4",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：06:00:00; Unnamed: 2：778.63; Unnamed: 3：1826; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：0.5; Unnamed: 7：2.7; Unnamed: 8：23.71\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：23.71\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：07:00:00; Unnamed: 2：779; Unnamed: 3：1900; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：29.11",
+    "keywords": []
+   },
+   {
+    "id": "8c45f8ec87509f5d",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：07:30:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：0.5; Unnamed: 7：2.7; Unnamed: 8：31.81\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：08:00:00; Unnamed: 2：779.32; Unnamed: 3：1964; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：0.5; Unnamed: 7：2.7; Unnamed: 8：34.51\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：09:00:00; Unnamed: 2：779.57; Unnamed: 3：2015; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：39.91",
+    "keywords": []
+   },
+   {
+    "id": "95355520cbdabcb4",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：10:00:00; Unnamed: 2：779.81; Unnamed: 3：2070; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：45.309999999999995\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：11:00:00; Unnamed: 2：780.15; Unnamed: 3：2140; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：50.709999999999994\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：12:00:00; Unnamed: 2：780.57; Unnamed: 3：2221; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：56.10999999999999",
+    "keywords": []
+   },
+   {
+    "id": "24c1c988c9006e8e",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：13:00:00; Unnamed: 2：780.88; Unnamed: 3：2286; Unnamed: 4：15; Unnamed: 5：15; Unnamed: 6：1; Unnamed: 7：5.4; Unnamed: 8：61.50999999999999\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：13:16:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：30; Unnamed: 5：15; Unnamed: 6：0.3; Unnamed: 7：1.62; Unnamed: 8：63.12999999999999\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：14:00:00; Unnamed: 2：781.14; Unnamed: 3：2338; Unnamed: 4：30; Unnamed: 5：30; Unnamed: 6：0.7; Unnamed: 7：7.56; Unnamed: 8：70.68999999999998",
+    "keywords": []
+   },
+   {
+    "id": "283df9fc7b0ac759",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：15:00:00; Unnamed: 2：781.4; Unnamed: 3：2390; Unnamed: 4：30; Unnamed: 5：30; Unnamed: 6：1; Unnamed: 7：10.8; Unnamed: 8：81.48999999999998\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：16:00:00; Unnamed: 2：781.58; Unnamed: 3：2428; Unnamed: 4：30; Unnamed: 5：30; Unnamed: 6：1; Unnamed: 7：10.8; Unnamed: 8：92.28999999999998\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：17:00:00; Unnamed: 2：781.78; Unnamed: 3：2472; Unnamed: 4：10; Unnamed: 5：30; Unnamed: 6：1; Unnamed: 7：10.8; Unnamed: 8：103.08999999999997",
+    "keywords": []
+   },
+   {
+    "id": "2e9f9148bd31058c",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：18:00:00; Unnamed: 2：781.92; Unnamed: 3：2502; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：106.68999999999997\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：19:00:00; Unnamed: 2：782.09; Unnamed: 3：2538; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：110.28999999999996\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：20:00:00; Unnamed: 2：782.21; Unnamed: 3：2563; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：113.88999999999996",
+    "keywords": []
+   },
+   {
+    "id": "477e827f105920b0",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：21:00:00; Unnamed: 2：782.35; Unnamed: 3：2590; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：117.48999999999995\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：22:00:00; Unnamed: 2：782.45; Unnamed: 3：2610; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：121.08999999999995\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：23:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：124.68999999999994",
+    "keywords": []
+   },
+   {
+    "id": "44edf23f260dad08",
+    "content": "\n桃曲坡水库泄水过程(20100724洪水)：25; Unnamed: 1：1900-01-01 00:00:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：1; Unnamed: 7：3.6; Unnamed: 8：128.28999999999994\n桃曲坡水库泄水过程(20100724洪水)：nan; Unnamed: 1：00:50:00; Unnamed: 2：关闭; Unnamed: 3：nan; Unnamed: 4：10; Unnamed: 5：10; Unnamed: 6：0.8; Unnamed: 7：2.88; Unnamed: 8：131.16999999999993\n日期：24.0; 时间：02:00:00; 库水位：774.62; 库容：1158.0; 下泄流量：0.59\n日期：nan; 时间：02:38:00; 库水位：nan; 库容：nan; 下泄流量：20.0",
+    "keywords": []
+   },
+   {
+    "id": "10d48454c8973014",
+    "content": "\n日期：nan; 时间：03:00:00; 库水位：776.32; 库容：1423.0; 下泄流量：20.0\n日期：nan; 时间：04:00:00; 库水位：777.31; 库容：1590.0; 下泄流量：20.0\n日期：nan; 时间：05:00:00; 库水位：778.06; 库容：1721.0; 下泄流量：20.0\n日期：nan; 时间：05:30:00; 库水位：nan; 库容：nan; 下泄流量：15.0\n日期：nan; 时间：06:00:00; 库水位：778.63; 库容：1826.0; 下泄流量：15.0\n日期：nan; 时间：nan; 库水位：nan; 库容：nan; 下泄流量：15.0\n日期：nan; 时间：07:00:00; 库水位：779; 库容：1900.0; 下泄流量：15.0",
+    "keywords": []
+   },
+   {
+    "id": "21c47299fad34688",
+    "content": "\n日期：nan; 时间：07:30:00; 库水位：nan; 库容：nan; 下泄流量：15.0\n日期：nan; 时间：08:00:00; 库水位：779.32; 库容：1964.0; 下泄流量：15.0\n日期：nan; 时间：09:00:00; 库水位：779.57; 库容：2015.0; 下泄流量：15.0\n日期：nan; 时间：10:00:00; 库水位：779.81; 库容：2070.0; 下泄流量：15.0\n日期：nan; 时间：11:00:00; 库水位：780.15; 库容：2140.0; 下泄流量：15.0\n日期：nan; 时间：12:00:00; 库水位：780.57; 库容：2221.0; 下泄流量：15.0\n日期：nan; 时间：13:00:00; 库水位：780.88; 库容：2286.0; 下泄流量：15.0",
+    "keywords": []
+   },
+   {
+    "id": "c03daf85fe4dc23a",
+    "content": "\n日期：nan; 时间：13:16:00; 库水位：nan; 库容：nan; 下泄流量：30.0\n日期：nan; 时间：14:00:00; 库水位：781.14; 库容：2338.0; 下泄流量：30.0\n日期：nan; 时间：15:00:00; 库水位：781.4; 库容：2390.0; 下泄流量：30.0\n日期：nan; 时间：16:00:00; 库水位：781.58; 库容：2428.0; 下泄流量：30.0\n日期：nan; 时间：17:00:00; 库水位：781.78; 库容：2472.0; 下泄流量：10.0\n日期：nan; 时间：18:00:00; 库水位：781.92; 库容：2502.0; 下泄流量：10.0\n日期：nan; 时间：19:00:00; 库水位：782.09; 库容：2538.0; 下泄流量：10.0",
+    "keywords": []
+   },
+   {
+    "id": "34525f7ada461178",
+    "content": "\n日期：nan; 时间：20:00:00; 库水位：782.21; 库容：2563.0; 下泄流量：10.0\n日期：nan; 时间：21:00:00; 库水位：782.35; 库容：2590.0; 下泄流量：10.0\n日期：nan; 时间：22:00:00; 库水位：782.45; 库容：2610.0; 下泄流量：10.0\n日期：nan; 时间：23:00:00; 库水位：nan; 库容：nan; 下泄流量：10.0\n日期：25.0; 时间：1900-01-01 00:00:00; 库水位：nan; 库容：nan; 下泄流量：10.0\n日期：nan; 时间：00:50:00; 库水位：关闭; 库容：nan; 下泄流量：10.0\n22---24日降雨统计表：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan",
+    "keywords": []
+   },
+   {
+    "id": "f61eeb3ca7ab9f73",
+    "content": "\n22---24日降雨统计表：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：单位:mm; Unnamed: 8：nan\n22---24日降雨统计表：日期; Unnamed: 1：雨       量      站; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan\n22---24日降雨统计表：nan; Unnamed: 1：庙湾; Unnamed: 2：瑶曲; Unnamed: 3：柳林; Unnamed: 4：石门关; Unnamed: 5：马栏; Unnamed: 6：枢纽; Unnamed: 7：红星; Unnamed: 8：尚书",
+    "keywords": []
+   },
+   {
+    "id": "ad5540b984df4dd4",
+    "content": "\n22---24日降雨统计表：22日; Unnamed: 1：31.6; Unnamed: 2：57; Unnamed: 3：93.3; Unnamed: 4：29; Unnamed: 5：9.7; Unnamed: 6：22.5; Unnamed: 7：3.8; Unnamed: 8：7.2\n22---24日降雨统计表：23日; Unnamed: 1：138; Unnamed: 2：83; Unnamed: 3：109; Unnamed: 4：80; Unnamed: 5：152; Unnamed: 6：130.2; Unnamed: 7：27.4; Unnamed: 8：68.1\n22---24日降雨统计表：24日; Unnamed: 1：28; Unnamed: 2：11; Unnamed: 3：11; Unnamed: 4：7; Unnamed: 5：17; Unnamed: 6：3.3; Unnamed: 7：0; Unnamed: 8：2.1",
+    "keywords": []
+   },
+   {
+    "id": "2b9bd8bb1ee93dc9",
+    "content": "\n22---24日降雨统计表：合计; Unnamed: 1：197.6; Unnamed: 2：151; Unnamed: 3：213.3; Unnamed: 4：116; Unnamed: 5：178.7; Unnamed: 6：156; Unnamed: 7：31.2; Unnamed: 8：77.39999999999999",
+    "keywords": []
+   }
+  ],
+  "meta_amended": {
+   "date": "2026-09-04",
+   "reason": "批次二裁定纠偏（REVIEW_WAVE3.md 裁定点1/2）：表内标题 20100724 铁证，回滚不得倒退至误名值；2010年下泄水量统计.xls 快照与活值一致无需修订",
+   "changes": [
+    {
+     "field": "flood_event",
+     "old": "历年统计",
+     "new": "2010-7"
+    },
+    {
+     "field": "year",
+     "old": 2001,
+     "new": 2010
+    },
+    {
+     "field": "sub_category",
+     "old": "历年洪水统计",
+     "new": "2010年洪水(7-24)"
+    }
+   ]
+  }
+ }
+}

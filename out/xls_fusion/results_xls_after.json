@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-04T11:44:37",
+ "ts": "2026-09-04T12:46:46",
  "phase": "after",
  "results": [
   {
@@ -149,7 +149,7 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "降雨量统计.xls",
+    "top1": "724-829两场洪水.xls",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
@@ -217,11 +217,10 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "华州区汛情处置汇报.docx",
+    "top1": "泄生态水过程.xls",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
-     "洪水统计.xls",
      "洪水过程.xls"
     ]
    }
@@ -304,7 +303,7 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "华州区汛情处置汇报.docx",
+    "top1": "泄生态水过程.xls",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
@@ -462,6 +461,7 @@
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
+     "“7.22”洪水汇报终告.doc",
      "降雨量统计.xls"
     ]
    }
@@ -498,6 +498,177 @@
     "hit_docs": [
      "“7.22”洪水汇报终告.doc",
      "降雨量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X30",
+   "fusion_doc": "2001年洪水过程线.xls",
+   "coverage": "fusion",
+   "question": "2010年7·24洪水柳林断面洪峰流量是多少？",
+   "note": "批次二：文件名2001实为20100724（裁定），统计表+724-829摘录表互证",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2001年洪水过程线.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2001年洪水过程线.xls",
+     "2010年下泄水量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X31",
+   "fusion_doc": "2001年洪水过程线.xls",
+   "coverage": "fusion",
+   "question": "2010年7·24洪水期间水库累计泄水多少万立方米？",
+   "note": "批次二：泄水过程表 cum，7·24场次口径（区别于备注总账1355）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2001年洪水过程线.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2001年洪水过程线.xls"
+    ]
+   }
+  },
+  {
+   "id": "X32",
+   "fusion_doc": "2001年洪水过程线.xls",
+   "coverage": "fusion",
+   "question": "2010年7·24洪水降雨最大的雨量站是哪站？",
+   "note": "批次二：22-24日8站降雨，最大单站柳林",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2001年洪水过程线.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2001年洪水过程线.xls"
+    ]
+   }
+  },
+  {
+   "id": "X33",
+   "fusion_doc": "2001年洪水过程线.xls",
+   "coverage": "fusion",
+   "question": "2010年7·24洪水累计洪水总量是多少万立方米？",
+   "note": "批次二：柳林统计表 cum 至7月26日08时",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2001年洪水过程线.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2001年洪水过程线.xls"
+    ]
+   }
+  },
+  {
+   "id": "X34",
+   "fusion_doc": "2010年下泄水量统计.xls",
+   "coverage": "fusion",
+   "question": "2010年8·13洪水柳林断面洪峰流量是多少？",
+   "note": "批次二：20100813 洪水，峰 310@06:14",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2010年下泄水量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2010年下泄水量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X35",
+   "fusion_doc": "2010年下泄水量统计.xls",
+   "coverage": "fusion",
+   "question": "2010年8·13洪水期间最高库水位是多少？",
+   "note": "批次二：最高库水位 786.87/3570.1 @8-13 15时",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2010年下泄水量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2010年下泄水量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X36",
+   "fusion_doc": "2010年下泄水量统计.xls",
+   "coverage": "fusion",
+   "question": "2010年8·13洪水截至9月15日累计下泄水量是多少万立方米？",
+   "note": "批次二：泄水过程 cum 至 9-15 09时",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2010年下泄水量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2010年下泄水量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X37",
+   "fusion_doc": "2010年下泄水量统计.xls",
+   "coverage": "fusion",
+   "question": "2010年汛期两次总计下泄水量与弃水量各是多少？",
+   "note": "批次二：备注行总账（弃水5057.42+灌溉1100）",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "2010年下泄水量统计.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "2010年下泄水量统计.xls"
+    ]
+   }
+  },
+  {
+   "id": "X38",
+   "fusion_doc": "724-829两场洪水.xls",
+   "coverage": "fusion",
+   "question": "2003年8·29洪水柳林断面洪峰流量是多少？",
+   "note": "批次二：内容层新发现场次（20030829），不扩枚举",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "724-829两场洪水.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "724-829两场洪水.xls"
+    ]
+   }
+  },
+  {
+   "id": "X39",
+   "fusion_doc": "724-829两场洪水.xls",
+   "coverage": "fusion",
+   "question": "7·24和8·29两场洪水分别是哪一年的？",
+   "note": "批次二：双表定性，文件名两场=2010-7-24+2003-8-29",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "724-829两场洪水.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "724-829两场洪水.xls"
     ]
    }
   }

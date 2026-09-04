@@ -1,0 +1,62 @@
+{
+ "724-829两场洪水.xls": {
+  "kb_name": "724-829两场洪水.xls",
+  "corpus_path": "06-历年洪水资料/07-其他洪水事件/724-829两场洪水.xls",
+  "old": {
+   "id": "6dbf74d2a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 16
+  },
+  "shell_id": "cee16322a81a11f1af477b6050be89ec",
+  "chunks": 7,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T12:41:16",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 7
+ },
+ "2010年下泄水量统计.xls": {
+  "kb_name": "2010年下泄水量统计.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/2010年下泄水量统计.xls",
+  "old": {
+   "id": "6ee7a5b4a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 24
+  },
+  "shell_id": "e3d44204a81a11f1af477b6050be89ec",
+  "chunks": 7,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T12:41:51",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 7
+ },
+ "2001年洪水过程线.xls": {
+  "kb_name": "2001年洪水过程线.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/2001年洪水过程线.xls",
+  "old": {
+   "id": "6e717542a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 43
+  },
+  "shell_id": "f7f9d2daa81a11f1af477b6050be89ec",
+  "chunks": 8,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T12:42:28",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 8
+ }
+}
