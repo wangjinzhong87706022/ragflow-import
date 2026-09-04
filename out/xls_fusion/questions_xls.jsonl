@@ -46,3 +46,12 @@
 {"id": "X46", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年渭河1号洪水期间拦蓄洪量和削峰率是多少？", "all_keywords": ["960"], "any_keywords": ["削峰率", "%"], "coverage": "fusion", "note": "批次三；削峰率90%"}
 {"id": "X47", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年防洪减灾效益统计表的审核人和填报人是谁？", "all_keywords": ["同永锋", "高珂"], "any_keywords": [], "coverage": "fusion", "note": "批次三；实体题"}
 {"id": "X48", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年渭河2号洪水期间拦蓄洪量是多少万立方米？", "all_keywords": ["1800"], "any_keywords": ["削峰率"], "coverage": "fusion", "note": "批次三；削峰率44%"}
+{"id":"X49","fusion_doc":"水位库容曲线推求.xls","question":"按2008年8月反推的水位库容查对表，桃曲坡水库水位770米时相对库容是多少万立方米？","all_keywords":["770","215"],"any_keywords":["反推","表A"],"coverage":"fusion","note":"表A整米锚点770→215（表B绝对486见X50）"}
+{"id":"X50","fusion_doc":"水位库容曲线推求.xls","question":"按2008年8月反推的水位库容查对表，桃曲坡水库水位770米时绝对库容是多少万立方米？","all_keywords":["770","486"],"any_keywords":["绝对","表B","271"],"coverage":"fusion","note":"表B整米锚点770→486（=表A 215+271）"}
+{"id":"X51","fusion_doc":"水位库容曲线推求.xls","question":"校核洪水位790.5米在2008年反推查对表中对应库容是多少万立方米？","all_keywords":["790.5","4478"],"any_keywords":["反推","表A","4749"],"coverage":"fusion","note":"表A 4478；绝对口径4749；探针题（4478 全库唯一）"}
+{"id":"X52","fusion_doc":"水位库容曲线推求.xls","question":"水位库容曲线推求工作簿用什么方法推求库容曲线？","all_keywords":["出库水量","逆时序"],"any_keywords":["97线","反推","w入"],"coverage":"fusion","note":"V初=V末−w出+w入，与1997线逐点对比"}
+{"id":"X53","fusion_doc":"水位库容曲线推求.xls","question":"070729洪水是哪一年发生的？入库洪峰流量多大？","all_keywords":["2007","55.35"],"any_keywords":["7月29日","洪峰","断面"],"coverage":"fusion","note":"2007-7-29，入库55.35 m³/s（断面45×1.23）"}
+{"id":"X54","fusion_doc":"水位库容曲线推求.xls","question":"柳林断面2008年全年来水量是多少万立方米？","all_keywords":["4139.20","柳林"],"any_keywords":["2008","来水量"],"coverage":"fusion","note":"全年4139.20万m³，最大4月532.22"}
+{"id":"X55","fusion_doc":"水位库容曲线推求.xls","question":"2008年桃曲坡水库入库水量占多年平均的比例是多少？","all_keywords":["5092","65.5"],"any_keywords":["7771","多年平均"],"coverage":"fusion","note":"入库5092对多年均7771万m³=65.5%，偏枯年"}
+{"id":"X56","fusion_doc":"水位库容曲线推求.xls","question":"2007年柳林断面来水量最大的月份是哪个月？多少万立方米？","all_keywords":["9月","1694.69"],"any_keywords":["2007","最大"],"coverage":"fusion","note":"2007全年7358.67，9月1694.69最大"}
+{"id":"X57","fusion_doc":"水位库容曲线推求.xls","question":"反推查对表B与表A相差多少？其低段与哪年的实测查对表一致？","all_keywords":["271","1997"],"any_keywords":["表B","表A","低段"],"coverage":"fusion","note":"绝对=相对+271（反推段）；低段762.5-767.4与1997实测表逐值一致"}
