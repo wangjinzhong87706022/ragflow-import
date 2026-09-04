@@ -1,0 +1,468 @@
+{
+ "防洪减灾统计表.xls": {
+  "snapshot": {
+   "id": "751b94aea1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 3,
+   "meta_fields": {
+    "doc_category": "洪水资料",
+    "doc_nature": "统计",
+    "doc_type": "表格",
+    "flood_event": "2021-10",
+    "flood_magnitude": "不适用",
+    "quality": "high",
+    "rel": "06-历年洪水资料/08-历年洪水统计/防洪减灾统计表.xls",
+    "source_format": "excel",
+    "sub_category": "历年洪水统计",
+    "year": 2021
+   },
+   "chunk_method": "naive",
+   "parser_config": {
+    "auto_keywords": 0,
+    "auto_questions": 5,
+    "built_in_metadata": [],
+    "children_delimiter": "",
+    "chunk_token_num": 256,
+    "delimiter": "\n",
+    "enable_children": false,
+    "graphrag": {
+     "batch_chunk_token_size": 4096,
+     "build_subgraph_min_timeout_seconds": 600,
+     "build_subgraph_timeout_per_chunk_seconds": 300,
+     "community_timeout_seconds": 1800,
+     "entity_types": [
+      "FloodEvent",
+      "Station",
+      "Structure",
+      "Person",
+      "Regulation",
+      "Parameter"
+     ],
+     "lock_acquire_timeout_seconds": 600,
+     "merge_timeout_seconds": 180,
+     "method": "light",
+     "resolution": true,
+     "resolution_timeout_seconds": 1800,
+     "retry_attempts": 2,
+     "retry_backoff_max_seconds": 60.0,
+     "retry_backoff_seconds": 2.0,
+     "use_graphrag": true
+    },
+    "html4excel": false,
+    "image_context_size": 0,
+    "layout_recognize": "DeepDOC",
+    "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+    "metadata": {
+     "additionalProperties": false,
+     "properties": {
+      "doc_category": {
+       "description": "文档大类",
+       "enum": [
+        "规程预案",
+        "基础数据",
+        "洪水资料",
+        "组织管理",
+        "工程资料"
+       ],
+       "type": "string"
+      },
+      "doc_nature": {
+       "description": "文件性质",
+       "enum": [
+        "法规",
+        "技术",
+        "管理",
+        "统计"
+       ],
+       "type": "string"
+      },
+      "doc_type": {
+       "description": "文档形态",
+       "enum": [
+        "文本",
+        "表格",
+        "图片",
+        "图纸"
+       ],
+       "type": "string"
+      },
+      "flood_event": {
+       "description": "关联洪水事件",
+       "enum": [
+        "2021-10",
+        "2021-09",
+        "2020-8",
+        "2019-9",
+        "2013-7",
+        "2008-8",
+        "其他",
+        "历年统计"
+       ],
+       "type": "string"
+      },
+      "flood_magnitude": {
+       "description": "洪水量级",
+       "enum": [
+        "百年一遇",
+        "千年一遇",
+        "一般洪水",
+        "不适用"
+       ],
+       "type": "string"
+      },
+      "location": {
+       "description": "工程部位",
+       "enum": [
+        "主坝",
+        "副坝一",
+        "副坝二",
+        "溢洪道",
+        "高洞",
+        "低洞",
+        "放水塔",
+        "库区",
+        "全库"
+       ],
+       "type": "string"
+      },
+      "quality": {
+       "description": "OCR质量分级",
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ],
+       "type": "string"
+      },
+      "responsible_dept": {
+       "description": "责任/发文部门"
+      },
+      "source_format": {
+       "description": "来源格式",
+       "enum": [
+        "pdf",
+        "word",
+        "excel",
+        "ocr_jpg",
+        "ocr_png",
+        "native_xlsx"
+       ],
+       "type": "string"
+      },
+      "sub_category": {
+       "description": "子类"
+      },
+      "year": {
+       "description": "年份"
+      }
+     },
+     "type": "object"
+    },
+    "parent_child": {
+     "children_delimiter": "\n",
+     "use_parent_child": false
+    },
+    "raptor": {
+     "clustering_ratio": 0.5,
+     "clustering_threshold": 0.3,
+     "max_cluster": 64,
+     "max_token": 512,
+     "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+     "random_seed": 0,
+     "use_raptor": false
+    },
+    "table_context_size": 0,
+    "tag_kb_ids": [
+     "d6ae9230a1d711f19d7235ad4ea699d4"
+    ],
+    "topn_tags": 3
+   }
+  },
+  "chunks": [
+   {
+    "id": "ab7763d2b70e7bf7",
+    "content": "\n2021年桃曲坡水库防洪减灾效益统计表：洪水时间; Unnamed: 1：拦蓄洪量（万m3）; Unnamed: 2：削峰率(%); Unnamed: 3：减淹耕地（千公顷）; Unnamed: 4：减少受灾人口（万人）; Unnamed: 5：减免县级以上城区受淹（座）; Unnamed: 6：减灾经济效益（万元）\n2021年桃曲坡水库防洪减灾效益统计表：渭河1号洪水期间（9月19日）; Unnamed: 1：960; Unnamed: 2：90; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan\n2021年桃曲坡水库防洪减灾效益统计表：渭河2号洪水期间（9月25日）; Unnamed: 1：1800; Unnamed: 2：44; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan",
+    "keywords": []
+   },
+   {
+    "id": "c5395fe3872b88ba",
+    "content": "\n2021年桃曲坡水库防洪减灾效益统计表：渭河3号洪水（10月5日）期间; Unnamed: 1：6470; Unnamed: 2：48; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan\n2021年桃曲坡水库防洪减灾效益统计表：合计; Unnamed: 1：9230; Unnamed: 2：nan; Unnamed: 3：0; Unnamed: 4：0; Unnamed: 5：0; Unnamed: 6：0\n2021年桃曲坡水库防洪减灾效益统计表：审核人：同永锋; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：填报人：高珂; Unnamed: 4：nan; Unnamed: 5：联系电话：0919-3588321; Unnamed: 6：nan",
+    "keywords": []
+   },
+   {
+    "id": "a20d644b5c65ec8d",
+    "content": "\n2021年桃曲坡水库防洪减灾效益统计表：注：1、水库座数指2018年参与防洪调度的大、中、小型水库数量。\n    2、表中水库防洪减灾效益四项指标的合计数值分别小于《抗洪抢险综合情况统计表二》（国汛统表9）中全年防洪减灾效益的相应统计指标。; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan\n2021年桃曲坡水库防洪减灾效益统计表：备注：中型1座（桃曲坡水库），小型3座（红星、尚书、街子水库）; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan",
+    "keywords": []
+   }
+  ],
+  "meta_amended": {
+   "date": "2026-09-04",
+   "reason": "REVIEW_WAVE4.md 裁定点②：flood_event 主值 2021-10（2021 渭河1/2/3号效益统计，渭河3号 10·5 拦蓄 6470万m³ 占 70% 为主场次）；year None→2021；doc_nature 技术→统计（全库首例统计类）",
+   "changes": [
+    {
+     "field": "flood_event",
+     "old": "历年统计",
+     "new": "2021-10"
+    },
+    {
+     "field": "year",
+     "old": null,
+     "new": 2021
+    },
+    {
+     "field": "doc_nature",
+     "old": "技术",
+     "new": "统计"
+    }
+   ]
+  }
+ },
+ "洪水过程(3).xls": {
+  "snapshot": {
+   "id": "65807384a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 9,
+   "meta_fields": {
+    "doc_category": "洪水资料",
+    "doc_nature": "技术",
+    "doc_type": "表格",
+    "flood_event": "2011-7",
+    "flood_magnitude": "不适用",
+    "quality": "high",
+    "rel": "06-历年洪水资料/05-2013年洪水(7-22)/洪水过程.xls",
+    "source_format": "excel",
+    "sub_category": "2011年洪水(7-29)",
+    "year": 2011
+   },
+   "chunk_method": "naive",
+   "parser_config": {
+    "auto_keywords": 0,
+    "auto_questions": 5,
+    "built_in_metadata": [],
+    "children_delimiter": "",
+    "chunk_token_num": 256,
+    "delimiter": "\n",
+    "enable_children": false,
+    "graphrag": {
+     "batch_chunk_token_size": 4096,
+     "build_subgraph_min_timeout_seconds": 600,
+     "build_subgraph_timeout_per_chunk_seconds": 300,
+     "community_timeout_seconds": 1800,
+     "entity_types": [
+      "FloodEvent",
+      "Station",
+      "Structure",
+      "Person",
+      "Regulation",
+      "Parameter"
+     ],
+     "lock_acquire_timeout_seconds": 600,
+     "merge_timeout_seconds": 180,
+     "method": "light",
+     "resolution": true,
+     "resolution_timeout_seconds": 1800,
+     "retry_attempts": 2,
+     "retry_backoff_max_seconds": 60.0,
+     "retry_backoff_seconds": 2.0,
+     "use_graphrag": true
+    },
+    "html4excel": false,
+    "image_context_size": 0,
+    "layout_recognize": "DeepDOC",
+    "llm_id": "Qwen3.8-27B-Q4_K_M.gguf@OpenAI-API-Compatible",
+    "metadata": {
+     "additionalProperties": false,
+     "properties": {
+      "doc_category": {
+       "description": "文档大类",
+       "enum": [
+        "规程预案",
+        "基础数据",
+        "洪水资料",
+        "组织管理",
+        "工程资料"
+       ],
+       "type": "string"
+      },
+      "doc_nature": {
+       "description": "文件性质",
+       "enum": [
+        "法规",
+        "技术",
+        "管理",
+        "统计"
+       ],
+       "type": "string"
+      },
+      "doc_type": {
+       "description": "文档形态",
+       "enum": [
+        "文本",
+        "表格",
+        "图片",
+        "图纸"
+       ],
+       "type": "string"
+      },
+      "flood_event": {
+       "description": "关联洪水事件",
+       "enum": [
+        "2021-10",
+        "2021-09",
+        "2020-8",
+        "2019-9",
+        "2013-7",
+        "2008-8",
+        "其他",
+        "历年统计"
+       ],
+       "type": "string"
+      },
+      "flood_magnitude": {
+       "description": "洪水量级",
+       "enum": [
+        "百年一遇",
+        "千年一遇",
+        "一般洪水",
+        "不适用"
+       ],
+       "type": "string"
+      },
+      "location": {
+       "description": "工程部位",
+       "enum": [
+        "主坝",
+        "副坝一",
+        "副坝二",
+        "溢洪道",
+        "高洞",
+        "低洞",
+        "放水塔",
+        "库区",
+        "全库"
+       ],
+       "type": "string"
+      },
+      "quality": {
+       "description": "OCR质量分级",
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ],
+       "type": "string"
+      },
+      "responsible_dept": {
+       "description": "责任/发文部门"
+      },
+      "source_format": {
+       "description": "来源格式",
+       "enum": [
+        "pdf",
+        "word",
+        "excel",
+        "ocr_jpg",
+        "ocr_png",
+        "native_xlsx"
+       ],
+       "type": "string"
+      },
+      "sub_category": {
+       "description": "子类"
+      },
+      "year": {
+       "description": "年份"
+      }
+     },
+     "type": "object"
+    },
+    "parent_child": {
+     "children_delimiter": "\n",
+     "use_parent_child": false
+    },
+    "raptor": {
+     "clustering_ratio": 0.5,
+     "clustering_threshold": 0.3,
+     "max_cluster": 64,
+     "max_token": 512,
+     "prompt": "Summarize the paragraphs below without inventing facts or changing numbers.\nOutput exactly two parts in the same language as the source:\n1. First line: a concise title only.\n2. Following lines: a concise summary of the content.\nDo not output labels, Markdown headings, bullet points, or any other commentary.\n\nParagraphs:\n{cluster_content}",
+     "random_seed": 0,
+     "use_raptor": false
+    },
+    "table_context_size": 0,
+    "tag_kb_ids": [
+     "d6ae9230a1d711f19d7235ad4ea699d4"
+    ],
+    "topn_tags": 3
+   }
+  },
+  "chunks": [
+   {
+    "id": "1e058d070fd3de67",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：柳林断面流量统计表(“20110729”洪水); Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "7118210be9202982",
+    "content": "\nUnnamed: 0：万立米; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：日期; Unnamed: 1：报汛时间; Unnamed: 2：库水位; Unnamed: 3：库容; Unnamed: 4：流量; Unnamed: 5：平均流量; Unnamed: 6：历时; Unnamed: 7：时段水量; Unnamed: 8：洪水总量; Unnamed: 9：2日洪量; Unnamed: 10：依据库容反推的洪量 ——Data\nUnnamed: 0：40752; Unnamed: 1：20:00:00; Unnamed: 2：772.22; Unnamed: 3：820.8; Unnamed: 4：0.385; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "7bd68a2ef987d9f9",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：03:30:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：11; Unnamed: 5：5.6925; Unnamed: 6：7.5; Unnamed: 7：15.36975; Unnamed: 8：15.36975; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：29日; Unnamed: 1：04:00:00; Unnamed: 2：772.28; Unnamed: 3：829.2; Unnamed: 4：75; Unnamed: 5：43; Unnamed: 6：0.5; Unnamed: 7：7.739999999999999; Unnamed: 8：23.10975; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：04:30:00; Unnamed: 2：772.35; Unnamed: 3：839; Unnamed: 4：115; Unnamed: 5：95; Unnamed: 6：0.5; Unnamed: 7：17.099999999999998; Unnamed: 8：40.20975; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "eb8bda61d6f85597",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：05:00:00; Unnamed: 2：772.74; Unnamed: 3：893.6; Unnamed: 4：217; Unnamed: 5：166; Unnamed: 6：0.5; Unnamed: 7：29.88; Unnamed: 8：70.08975; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：05:10:00; Unnamed: 2：772.91; Unnamed: 3：917.4; Unnamed: 4：397; Unnamed: 5：307; Unnamed: 6：0.17; Unnamed: 7：18.7884; Unnamed: 8：88.87814999999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：05:30:00; Unnamed: 2：773.14; Unnamed: 3：946.8; Unnamed: 4：231; Unnamed: 5：224; Unnamed: 6：0.33; Unnamed: 7：26.6112; Unnamed: 8：115.48934999999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "544e9c25647377a2",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：06:24:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：159; Unnamed: 5：195; Unnamed: 6：0.9; Unnamed: 7：63.18; Unnamed: 8：178.66934999999998; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：07:00:00; Unnamed: 2：773.92; Unnamed: 3：1057.2; Unnamed: 4：81.8; Unnamed: 5：120.4; Unnamed: 6：0.6; Unnamed: 7：26.006399999999996; Unnamed: 8：204.67574999999997; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：12:30:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：60.2; Unnamed: 5：71; Unnamed: 6：5.5; Unnamed: 7：140.57999999999998; Unnamed: 8：345.2557499999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "a8ce5de9942fdebf",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：14:00:00; Unnamed: 2：775.06; Unnamed: 3：1224; Unnamed: 4：42.9; Unnamed: 5：51.55; Unnamed: 6：1.5; Unnamed: 7：27.836999999999996; Unnamed: 8：373.0927499999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：18:00:00; Unnamed: 2：775.43; Unnamed: 3：1279.5; Unnamed: 4：39.1; Unnamed: 5：41; Unnamed: 6：4; Unnamed: 7：59.04; Unnamed: 8：432.13274999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：20:00:00; Unnamed: 2：775.52; Unnamed: 3：1293.4; Unnamed: 4：31.8; Unnamed: 5：35.45; Unnamed: 6：2; Unnamed: 7：25.524; Unnamed: 8：457.65674999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "24357a2364d5f438",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：20:30:00; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：26.8; Unnamed: 5：29.3; Unnamed: 6：0.5; Unnamed: 7：5.274; Unnamed: 8：462.93074999999993; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：30日; Unnamed: 1：08:00:00; Unnamed: 2：775.83; Unnamed: 3：1346.1; Unnamed: 4：16.8; Unnamed: 5：21.8; Unnamed: 6：11.5; Unnamed: 7：90.25200000000001; Unnamed: 8：553.1827499999999; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：20:00:00; Unnamed: 2：775.8; Unnamed: 3：1341; Unnamed: 4：10.6; Unnamed: 5：13.7; Unnamed: 6：12; Unnamed: 7：59.18399999999999; Unnamed: 8：612.3667499999999; Unnamed: 9：659; Unnamed: 10：694.5 ——Data",
+    "keywords": []
+   },
+   {
+    "id": "49deb52bbcb89f93",
+    "content": "\nUnnamed: 0：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：nan; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   },
+   {
+    "id": "b9a49a9f13387260",
+    "content": "\nUnnamed: 0：合计; Unnamed: 1：659.2111024999999; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data\nUnnamed: 0：备注：流域面雨量为 104.2  mm，产流系数为 0.14 。; Unnamed: 1：nan; Unnamed: 2：nan; Unnamed: 3：nan; Unnamed: 4：nan; Unnamed: 5：nan; Unnamed: 6：nan; Unnamed: 7：nan; Unnamed: 8：nan; Unnamed: 9：nan; Unnamed: 10：nan ——Data",
+    "keywords": []
+   }
+  ],
+  "meta_amended": {
+   "date": "2026-09-04",
+   "reason": "REVIEW_WAVE4.md 裁定点①：错放 05-2013 目录（档案级错误③），表内标题均 20110729、序列日 40752=2011-07-28 → 2011-7（批次三扩枚举）/2011/2011年洪水(7-29)",
+   "changes": [
+    {
+     "field": "flood_event",
+     "old": "2013-7",
+     "new": "2011-7"
+    },
+    {
+     "field": "year",
+     "old": 2013,
+     "new": 2011
+    },
+    {
+     "field": "sub_category",
+     "old": "2013年洪水(7-22)",
+     "new": "2011年洪水(7-29)"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "防洪减灾统计表.xls": {
+  "kb_name": "防洪减灾统计表.xls",
+  "corpus_path": "06-历年洪水资料/08-历年洪水统计/防洪减灾统计表.xls",
+  "old": {
+   "id": "751b94aea1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 3
+  },
+  "shell_id": "d20ba25ea82111f1af477b6050be89ec",
+  "chunks": 6,
+  "verified": true,
+  "probe_rank": 6,
+  "status": "OK",
+  "finished": "2026-09-04T13:31:26",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 6
+ },
+ "洪水过程(3).xls": {
+  "kb_name": "洪水过程(3).xls",
+  "corpus_path": "06-历年洪水资料/05-2013年洪水(7-22)/洪水过程.xls",
+  "old": {
+   "id": "65807384a1f611f19d7235ad4ea699d4",
+   "run": "DONE",
+   "chunk_count": 9
+  },
+  "shell_id": "e50ad938a82111f1af477b6050be89ec",
+  "chunks": 8,
+  "verified": true,
+  "probe_rank": 1,
+  "status": "OK",
+  "finished": "2026-09-04T13:31:51",
+  "tag_feas": {
+   "洪水资料": 10,
+   "基础数据": 8
+  },
+  "tag_feas_chunks": 8
+ }
+}

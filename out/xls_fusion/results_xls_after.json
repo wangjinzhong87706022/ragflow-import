@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-04T12:46:46",
+ "ts": "2026-09-04T13:50:17",
  "phase": "after",
  "results": [
   {
@@ -149,7 +149,7 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "724-829两场洪水.xls",
+    "top1": "“7.22”洪水汇报终告.doc",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
@@ -268,8 +268,8 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "华州区汛情处置汇报.docx",
-    "top1_is_target": false,
+    "top1": "洪水过程.xls",
+    "top1_is_target": true,
     "target_in_topn": true,
     "hit_docs": [
      "洪水过程.xls"
@@ -303,7 +303,7 @@
    "retrieval": {
     "passed": true,
     "pass_count": "3/3",
-    "top1": "泄生态水过程.xls",
+    "top1": "洪水过程.xls",
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
@@ -358,7 +358,8 @@
     "top1_is_target": false,
     "target_in_topn": true,
     "hit_docs": [
-     "洪水过程(2).xls"
+     "洪水过程(2).xls",
+     "较大洪水统计表.xls"
     ]
    }
   },
@@ -669,6 +670,159 @@
     "target_in_topn": true,
     "hit_docs": [
      "724-829两场洪水.xls"
+    ]
+   }
+  },
+  {
+   "id": "X40",
+   "fusion_doc": "洪水过程(3).xls",
+   "coverage": "fusion",
+   "question": "2011年7·29洪水柳林断面洪峰流量是多少？",
+   "note": "批次三；7-29 05:10 峰",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(3).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(3).xls"
+    ]
+   }
+  },
+  {
+   "id": "X41",
+   "fusion_doc": "洪水过程(3).xls",
+   "coverage": "fusion",
+   "question": "2011年7·29洪水累计洪水总量是多少万立方米？",
+   "note": "批次三；表合计行",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(3).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(3).xls"
+    ]
+   }
+  },
+  {
+   "id": "X42",
+   "fusion_doc": "洪水过程(3).xls",
+   "coverage": "fusion",
+   "question": "2011年7·29洪水流域面雨量和产流系数是多少？",
+   "note": "批次三；备注行",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "“7.22”洪水汇报终告.doc",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(3).xls"
+    ]
+   }
+  },
+  {
+   "id": "X43",
+   "fusion_doc": "洪水过程(3).xls",
+   "coverage": "fusion",
+   "question": "2011年7·29洪水累计泄水量是多少万立方米？",
+   "note": "批次三；全部用于农业灌溉",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪水过程(3).xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "洪水过程(3).xls"
+    ]
+   }
+  },
+  {
+   "id": "X44",
+   "fusion_doc": "防洪减灾统计表.xls",
+   "coverage": "fusion",
+   "question": "2021年渭河3号洪水期间水库拦蓄洪量是多少万立方米？",
+   "note": "批次三；削峰率48%",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "防洪减灾统计表.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "防洪减灾统计表.xls"
+    ]
+   }
+  },
+  {
+   "id": "X45",
+   "fusion_doc": "防洪减灾统计表.xls",
+   "coverage": "fusion",
+   "question": "2021年三次渭河编号洪水合计拦蓄洪量是多少万立方米？",
+   "note": "批次三；960+1800+6470",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "防洪减灾统计表.xls",
+    "top1_is_target": true,
+    "target_in_topn": true,
+    "hit_docs": [
+     "防洪减灾统计表.xls"
+    ]
+   }
+  },
+  {
+   "id": "X46",
+   "fusion_doc": "防洪减灾统计表.xls",
+   "coverage": "fusion",
+   "question": "2021年渭河1号洪水期间拦蓄洪量和削峰率是多少？",
+   "note": "批次三；削峰率90%",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "泄生态水过程.xls",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "防洪减灾统计表.xls"
+    ]
+   }
+  },
+  {
+   "id": "X47",
+   "fusion_doc": "防洪减灾统计表.xls",
+   "coverage": "fusion",
+   "question": "2021年防洪减灾效益统计表的审核人和填报人是谁？",
+   "note": "批次三；实体题",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "洪涝受损统计.xlsx",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "防洪减灾统计表.xls"
+    ]
+   }
+  },
+  {
+   "id": "X48",
+   "fusion_doc": "防洪减灾统计表.xls",
+   "coverage": "fusion",
+   "question": "2021年渭河2号洪水期间拦蓄洪量是多少万立方米？",
+   "note": "批次三；削峰率44%",
+   "retrieval": {
+    "passed": true,
+    "pass_count": "3/3",
+    "top1": "泄生态水过程.xls",
+    "top1_is_target": false,
+    "target_in_topn": true,
+    "hit_docs": [
+     "防洪减灾统计表.xls"
     ]
    }
   }
