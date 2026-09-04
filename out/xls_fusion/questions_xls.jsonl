@@ -37,3 +37,12 @@
 {"id": "X37", "fusion_doc": "2010年下泄水量统计.xls", "question": "2010年汛期两次总计下泄水量与弃水量各是多少？", "all_keywords": ["6157.42", "5057.42"], "any_keywords": ["灌溉", "万m³", "万立方米"], "coverage": "fusion", "note": "批次二：备注行总账（弃水5057.42+灌溉1100）"}
 {"id": "X38", "fusion_doc": "724-829两场洪水.xls", "question": "2003年8·29洪水柳林断面洪峰流量是多少？", "all_keywords": ["327.2"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "批次二：内容层新发现场次（20030829），不扩枚举"}
 {"id": "X39", "fusion_doc": "724-829两场洪水.xls", "question": "7·24和8·29两场洪水分别是哪一年的？", "all_keywords": ["20100724", "20030829"], "any_keywords": [], "coverage": "fusion", "note": "批次二：双表定性，文件名两场=2010-7-24+2003-8-29"}
+{"id": "X40", "fusion_doc": "洪水过程(3).xls", "question": "2011年7·29洪水柳林断面洪峰流量是多少？", "all_keywords": ["397"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "批次三；7-29 05:10 峰"}
+{"id": "X41", "fusion_doc": "洪水过程(3).xls", "question": "2011年7·29洪水累计洪水总量是多少万立方米？", "all_keywords": ["659.21"], "any_keywords": ["万m³", "万立方米"], "coverage": "fusion", "note": "批次三；表合计行"}
+{"id": "X42", "fusion_doc": "洪水过程(3).xls", "question": "2011年7·29洪水流域面雨量和产流系数是多少？", "all_keywords": ["104.2"], "any_keywords": ["产流系数", "毫米", "mm"], "coverage": "fusion", "note": "批次三；备注行"}
+{"id": "X43", "fusion_doc": "洪水过程(3).xls", "question": "2011年7·29洪水累计泄水量是多少万立方米？", "all_keywords": ["375.18"], "any_keywords": ["灌溉", "泄水"], "coverage": "fusion", "note": "批次三；全部用于农业灌溉"}
+{"id": "X44", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年渭河3号洪水期间水库拦蓄洪量是多少万立方米？", "all_keywords": ["6470"], "any_keywords": ["削峰率", "万m³", "万立方米"], "coverage": "fusion", "note": "批次三；削峰率48%"}
+{"id": "X45", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年三次渭河编号洪水合计拦蓄洪量是多少万立方米？", "all_keywords": ["9230"], "any_keywords": ["拦蓄", "万m³", "万立方米"], "coverage": "fusion", "note": "批次三；960+1800+6470"}
+{"id": "X46", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年渭河1号洪水期间拦蓄洪量和削峰率是多少？", "all_keywords": ["960"], "any_keywords": ["削峰率", "%"], "coverage": "fusion", "note": "批次三；削峰率90%"}
+{"id": "X47", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年防洪减灾效益统计表的审核人和填报人是谁？", "all_keywords": ["同永锋", "高珂"], "any_keywords": [], "coverage": "fusion", "note": "批次三；实体题"}
+{"id": "X48", "fusion_doc": "防洪减灾统计表.xls", "question": "2021年渭河2号洪水期间拦蓄洪量是多少万立方米？", "all_keywords": ["1800"], "any_keywords": ["削峰率"], "coverage": "fusion", "note": "批次三；削峰率44%"}

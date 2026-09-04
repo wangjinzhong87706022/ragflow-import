@@ -142,7 +142,7 @@ TAG_KB = {"key": "ds0", "name": "桃曲坡标签库", "chunk_method": "tag"}
 METADATA_SCHEMA = [
     {"key": "doc_category",    "type": "string",  "description": "文档大类",           "enum": ["规程预案","基础数据","洪水资料","组织管理","工程资料"]},
     {"key": "sub_category",    "type": "string",  "description": "子类",               "enum": None},
-    {"key": "flood_event",     "type": "string",  "description": "关联洪水事件",        "enum": ["2021-10","2021-09","2020-8","2019-9","2013-7","2010-8","2010-7","2018-8","2008-8","其他","历年统计"]},
+    {"key": "flood_event",     "type": "string",  "description": "关联洪水事件",        "enum": ["2021-10","2021-09","2020-8","2019-9","2013-7","2011-7","2010-8","2010-7","2018-8","2008-8","其他","历年统计"]},
     {"key": "doc_type",        "type": "string",  "description": "文档形态",           "enum": ["文本","表格","图片","图纸"]},
     {"key": "year",            "type": "number",  "description": "年份",               "enum": None},
     {"key": "source_format",   "type": "string",  "description": "来源格式",           "enum": ["pdf","word","excel","ocr_jpg","ocr_png","native_xlsx"]},

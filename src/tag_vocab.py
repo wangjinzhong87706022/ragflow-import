@@ -1,10 +1,12 @@
 """
 Controlled vocabulary for the 桃曲坡 Reservoir KB RAGFlow import.
-16 TAB-separated (description, tags) rows: 5 knowledge types + 11 flood events.
+17 TAB-separated (description, tags) rows: 5 knowledge types + 12 flood events.
 事件名与 config.FLOOD_EVENT_BY_SUBDIR / METADATA_SCHEMA 枚举保持一致
 （2019 场次为 2019-9，2021 年另有 09 子场；2018-8 系档案 2008 目录名纠偏后
 新增，2008-8 保留为历史值域；2010-7/2010-8 系 F1 批次二按内容归场新增——
-2001年洪水过程线.xls 实为 20100724、2010年下泄水量统计.xls 实为 20100813）。
+2001年洪水过程线.xls 实为 20100724、2010年下泄水量统计.xls 实为 20100813；
+2011-7 系 F1 批次三按内容归场新增——洪水过程(3).xls 实为 20110729，
+错放在 05-2013年洪水(7-22) 目录下）。
 """
 
 from pathlib import Path
@@ -21,6 +23,7 @@ VOCAB_ROWS = [
     ("2019-9", "2019-9"),
     ("2018-8", "2018-8"),
     ("2013-7", "2013-7"),
+    ("2011-7", "2011-7"),
     ("2010-8", "2010-8"),
     ("2010-7", "2010-7"),
     ("2008-8", "2008-8"),

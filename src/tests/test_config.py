@@ -204,3 +204,15 @@ def test_ragflow_api_key_from_env(monkeypatch):
         monkeypatch.delenv("RAGFLOW_API_KEY")
         importlib.reload(cfg)  # 恢复默认，避免污染其他测试
     assert cfg.RAGFLOW_API_KEY == ""
+
+
+def test_flood_event_2011_7_from_content():
+    """F1 批次三（2026-09-04）：洪水过程(3).xls 表内标题 20110729（Excel 序列日
+    40752=2011-07-28 起涨），错放在 05-2013年洪水(7-22) 目录下，按内容归场
+    新增枚举 2011-7；目录映射 05-2013年洪水(7-22) 保持 2013-7 不动。"""
+    fld = next(f for f in METADATA_SCHEMA if f["key"] == "flood_event")
+    assert "2011-7" in fld["enum"]
+    from tag_vocab import VOCAB_ROWS
+    assert ("2011-7", "2011-7") in VOCAB_ROWS
+    # 目录映射不动：该目录下其余文件（如 降雨量统计.xls）确为 2013 场次
+    assert FLOOD_EVENT_BY_SUBDIR["05-2013年洪水(7-22)"] == "2013-7"
