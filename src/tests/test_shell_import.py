@@ -67,15 +67,16 @@ class StubRequests:
 
 
 class FakeClient:
-    def __init__(self, docs=None, search_hits=None):
+    def __init__(self, docs=None, search_hits=None, poll_run="DONE"):
         self.docs = docs or {}
         self.search_hits = search_hits or []
         self.calls = []
         self.uploaded_name = None
+        self.poll_run = poll_run
 
     def find_document_by_name(self, ds, name):
-        if self.uploaded_name == name:  # 上传后轮询：视为解析完成
-            return {"id": "shell-1", "run": "DONE", "chunk_count": 12}
+        if self.uploaded_name == name:  # 上传后轮询：按 poll_run 返回
+            return {"id": "shell-1", "run": self.poll_run, "chunk_count": 12}
         return self.docs.get(name)
 
     def list_chunks(self, ds, doc_id):
@@ -90,6 +91,7 @@ class FakeClient:
         self.calls.append(("patch", doc_id, meta))
 
     def search_datasets(self, ds_list, question, top_k=10):
+        self.search_calls = getattr(self, "search_calls", 0) + 1
         return {"chunks": self.search_hits}
 
 
@@ -148,6 +150,26 @@ def test_process_dry_run_touches_nothing(stub, tmp_path):
     assert ok and not stub.calls and not client.calls
 
 
+def test_process_dry_run_runs_preflight(stub, tmp_path):
+    """评审 F12：dry-run 也先过 pre-flight，缺文件/锚点缺口提前暴露。"""
+    t = target(tmp_path)
+    t["corpus_path"] = "不存在.xls"
+    ok = process(FakeClient(), "ds", t, tmp_path, QUESTIONS, False,
+                 {}, {}, tmp_path / "arch.json", None, None)
+    assert not ok and not stub.calls
+
+
+def test_process_apply_without_archive_refuses(stub, tmp_path):
+    """评审 F6 根治：apply 无存档路径拒删（否则删了不可回滚）。"""
+    client = FakeClient({"a.xls": dict(OLD_DOC)})
+    manifest = {}
+    ok = process(client, "ds", target(tmp_path), tmp_path, QUESTIONS, True,
+                 {}, manifest, None, None, None)
+    assert not ok
+    assert not any(c[0] == "DELETE" for c in stub.calls)
+    assert "存档" in manifest["a.xls"]["status"]
+
+
 def test_process_apply_happy_path(stub, tmp_path):
     client = FakeClient({"a.xls": dict(OLD_DOC)},
                         search_hits=[{"document_name": "a.xls",
@@ -195,6 +217,42 @@ def test_rollback_replays_archive(stub, tmp_path):
     parses = [c for c in stub.calls if c[0] == "POST" and c[1].endswith("/parse")]
     assert puts and parses and puts[0][2]["chunk_method"] == "naive"
     assert ("patch", "shell-1", {"doc_type": "表格", "year": 2008}) in client.calls
+
+
+class FailingPutRequests(StubRequests):
+    """PUT 返回 code!=0（模拟本服务器"静默不生效"前科）。"""
+
+    def put(self, url, headers=None, json=None, timeout=None):
+        self.calls.append(("PUT", url, json))
+        return StubResp({"code": 102, "message": "put silent fail"})
+
+
+def test_rollback_put_failure_raises(stub, tmp_path, monkeypatch):
+    """评审 F7：恢复解析配置的 PUT 不再吞响应，code!=0 即抛。"""
+    (tmp_path / "arch.json").write_text(json.dumps(
+        {"a.xls": {"snapshot": OLD_DOC, "chunks": []}}, ensure_ascii=False), encoding="utf-8")
+    failing = FailingPutRequests()
+    monkeypatch.setattr(si, "requests", failing)
+    client = FakeClient({"a.xls": dict(OLD_DOC, run="UNSTART", chunk_count=9)})
+    with pytest.raises(RuntimeError, match="恢复解析配置"):
+        rollback(client, "ds", target(tmp_path), tmp_path, tmp_path / "arch.json")
+
+
+def test_rollback_parse_fail_aborts(stub, tmp_path):
+    """评审 F7：run=FAIL 不算"回滚完成"，明确中止。"""
+    (tmp_path / "arch.json").write_text(json.dumps(
+        {"a.xls": {"snapshot": OLD_DOC, "chunks": []}}, ensure_ascii=False), encoding="utf-8")
+    client = FakeClient({"a.xls": dict(OLD_DOC, run="UNSTART")}, poll_run="FAIL")
+    with pytest.raises(SystemExit, match="回滚解析失败"):
+        rollback(client, "ds", target(tmp_path), tmp_path, tmp_path / "arch.json")
+
+
+def test_verify_early_exits_on_first_hit(stub):
+    """评审 F13：首轮命中不再烧第二次等待+检索。"""
+    client = FakeClient(search_hits=[{"document_name": "a.xls",
+                                      "content_with_weight": "瑶曲 148mm"}])
+    ok, rank = si.verify(client, "ds", "a.xls", "q", "148", tries=2)
+    assert ok and rank == 1 and client.search_calls == 1
 
 
 def test_patch_chunk_sends_only_given_fields(stub):

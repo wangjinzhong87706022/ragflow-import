@@ -124,13 +124,13 @@ def process_new(client, ds_id, target, corpus_root, apply_changes):
         eng.add_chunk(ds_id, shell["id"], p, target["keywords"])
     print(f"  挂载 {len(pieces)} 切片", flush=True)
 
-    # 4) 探针验证门（复用引擎：两次尝试容排序漂移）
-    ok, sim = eng.verify(client, ds_id, kb_name,
-                         target["probe"]["question"], target["probe"]["anchor"])
+    # 4) 探针验证门（复用引擎：verify 返回 (是否命中, 命中切片最佳排名)，两次尝试容排序漂移）
+    ok, rank = eng.verify(client, ds_id, kb_name,
+                          target["probe"]["question"], target["probe"]["anchor"])
     status = "OK" if ok else "FAIL(验证门)"
-    print(f"  ⇒ {kb_name}: {status}（探针 sim={sim}）", flush=True)
+    print(f"  ⇒ {kb_name}: {status}（探针 rank={rank}）", flush=True)
     return {"status": status, "id": shell["id"], "chunks": len(pieces),
-            "similarity": sim}
+            "probe_rank": rank}
 
 
 def main():

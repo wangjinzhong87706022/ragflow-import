@@ -139,9 +139,9 @@ def kg_gain_record(hit5_on: int, hit5_off: int) -> int:
 CASE_REQUIRED_FIELDS = ("id", "tier", "layer", "question", "datasets", "gold")
 CASE_TIERS = ("acceptance", "regression")
 CASE_LAYERS = ("retrieval", "structured", "e2e")
-# P2-9 实证（2026-09-03）：候选池维持服务端默认 64。QC 六问均为单库检索，
-# 256 池只对多库（ds1+ds2+ds4）场景有益、对 F1 污染库（ds3）反而放进更多
-# 高复合分垃圾块（Q4 实证 PASS→FAIL；多库收益见 qa_eval/run_eval8.py）。
+# P2-9 实证（2026-09-03）：候选池维持服务端默认 64——256 池会放进 ds3（F1 污染库）
+# 更多高复合分垃圾块（Q4 实证 PASS→FAIL）；256 的收益只在多库 26 题场景
+# （见 qa_eval/run_eval8.py）。含 ds3 的 QC 题无论单库多库，默认池均更稳。
 RERANK_CANDIDATES_COUNT = None
 
 

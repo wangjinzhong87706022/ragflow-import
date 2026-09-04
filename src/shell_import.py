@@ -159,6 +159,8 @@ def verify(client, ds_id, doc_name, question, anchor, tries=2, top_n=30):
             cname = c.get("document_name") or c.get("docnm_kwd") or "?"
             if cname == doc_name and anchor in (c.get("content_with_weight") or ""):
                 best = j + 1 if best is None else min(best, j + 1)
+        if best is not None:
+            break  # 本轮已命中：不再烧第二次等待+检索（只有失败才重试容排序漂移）
     return (best is not None), best
 
 
@@ -170,20 +172,24 @@ def process(client, ds_id, target, corpus_root, questions, apply_changes,
         return True
     print(f"== {kb_name} ==", flush=True)
     rec = manifest.setdefault(kb_name, {"kb_name": kb_name, "corpus_path": target["corpus_path"]})
-    if not apply_changes:
-        print("  [dry-run] 将执行: pre-flight→存档→删文档→上传壳→patch元数据→挂融合切片→探针验证",
-              flush=True)
-        return True
 
-    # 0) pre-flight：不过拒删（在 archive/delete 之前，杜绝“已删未传”）
+    # 0) pre-flight：不过拒删（在 archive/delete 之前，杜绝“已删未传”）；dry-run 也先验，
+    #    提前暴露缺文件/锚点缺口（与 photo 新文档流同序）；apply 还必须有存档路径，
+    #    否则删了就不可回滚，同样拒删
     try:
         pieces = preflight(target, corpus_root, questions)
+        if apply_changes and not archive_path:
+            raise PreflightError("未提供存档路径，拒删（删前必须有全量块存档才可回滚）")
     except PreflightError as e:
         rec["status"] = f"ERROR(pre-flight: {str(e)[:160]})"
         if manifest_path:
             save_json(manifest_path, manifest)
         print(f"  [拒删] pre-flight 未过: {e}", flush=True)
         return False
+    if not apply_changes:
+        print(f"  [dry-run] pre-flight 过（将挂 {len(pieces)} 切片）；apply 时执行:"
+              " 存档→删文档→上传壳→patch元数据→挂融合切片→探针验证", flush=True)
+        return True
 
     old = snapshot_doc(client, ds_id, kb_name)
     if not old:
@@ -241,6 +247,17 @@ def process(client, ds_id, target, corpus_root, questions, apply_changes,
     return ok
 
 
+def _raise_if_api_error(resp, what):
+    """回滚路径的 PUT/POST 响应检查（评审 F7：本服务器有"静默不生效"前科，
+    不查 code 会带着错误配置进解析，还报"回滚完成"）。"""
+    try:
+        data = resp.json()
+    except ValueError:
+        raise RuntimeError(f"{what} 失败: HTTP {resp.status_code} 非 JSON 响应")
+    if data.get("code") != 0:
+        raise RuntimeError(f"{what} 失败: {data}")
+
+
 def rollback(client, ds_id, target, corpus_root, archive_path):
     """回滚单目标：删壳 → 重传原件 → 恢复存档元数据/解析配置 → naive 重解析。"""
     arch = load_json(archive_path, {})
@@ -263,21 +280,25 @@ def rollback(client, ds_id, target, corpus_root, archive_path):
                      "location", "flood_magnitude", "rel")}
     if meta:
         client.patch_document(ds_id, did, meta)
-    requests.put(f"{API}/datasets/{ds_id}/documents/{did}", headers=H,
-                 json={"chunk_method": snap.get("chunk_method") or "naive",
-                       "parser_config": snap.get("parser_config")
-                       or {"auto_questions": 0, "auto_keywords": 0}}, timeout=30)
-    requests.post(f"{API}/datasets/{ds_id}/documents/parse", headers=H,
-                  json={"document_ids": [did]}, timeout=30)
+    r = requests.put(f"{API}/datasets/{ds_id}/documents/{did}", headers=H,
+                     json={"chunk_method": snap.get("chunk_method") or "naive",
+                           "parser_config": snap.get("parser_config")
+                           or {"auto_questions": 0, "auto_keywords": 0}}, timeout=30)
+    _raise_if_api_error(r, "rollback 恢复解析配置")
+    r = requests.post(f"{API}/datasets/{ds_id}/documents/parse", headers=H,
+                      json={"document_ids": [did]}, timeout=30)
+    _raise_if_api_error(r, "rollback 触发解析")
     print(f"重传并解析中 {did}（naive）…", flush=True)
     t0 = time.time()
     while time.time() - t0 < DOC_TIMEOUT:
         time.sleep(POLL_SEC)
         d = client.find_document_by_name(ds_id, kb_name) or {}
         run = d.get("run")
+        prog = d.get("progress")
         print(f"  {time.time()-t0:.0f}s run={run} chunks={d.get('chunk_count')}", flush=True)
-        if run in ("DONE", "FAIL") or (isinstance(d.get("progress"), (int, float))
-                                       and d["progress"] >= 1):
+        if str(run) in ("4", "FAIL", "fail") or (isinstance(prog, (int, float)) and prog < 0):
+            raise SystemExit(f"回滚解析失败: {kb_name} run={run}（存档仍在，可排查后重跑回滚）")
+        if run == "DONE" or (isinstance(prog, (int, float)) and prog >= 1):
             print(f"回滚完成: {kb_name} run={run} chunks={d.get('chunk_count')}"
                   f"（存档原值 {snap['chunk_count']}）", flush=True)
             return

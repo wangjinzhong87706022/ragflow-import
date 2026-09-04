@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """剩余 8 图融合文本导入后定向评测（检索层 + 问答层，仅 after）。
 
-- 检索层：search_datasets([ds1, ds2, ds4], q, top_k=10)，判分口径与 src/run_qc.py 一致
-  （all_keywords 全命中且 any_keywords（如给）任一命中，取召回切片文本并集）。
+- 检索层：search_datasets([ds1, ds2, ds4], q, top_k=10)。判分 = all_keywords 全命中
+  **全返回集并集** 且 any_keywords（如给）任一命中——注意 v0.27.1 恒返回 ~30 条、
+  本脚本不切 top10，与 run_qc / run_eval_xls 的 top10 切片口径**不同**
+  （2026-09-04 评审 F3 更正；历史"26/26"成绩系全返回集口径，不可直接当 top10 证据引用）。
+  另候选池 rerank_candidates_count=256 为 P2-9 有意配置（见 out/retrieval_tuning/REPORT.md）。
 - 问答层：POST /chats/{vision8_qa_test}/completions（绑定 ds1+ds2+ds4；不存在则按
   vision_qa_test 同款默认配置创建），判分 = 锚点出现在 answer 或引用切片并集。
 - 每题额外记录：检索 top1 文档、目标融合文档是否进入召回（top1_check）。
@@ -149,14 +152,18 @@ def main():
 
     (HERE / "results_after8.json").write_text(
         json.dumps({"ts": datetime.now().isoformat(timespec="seconds"),
-                    "chat_id": chat_id, "results": results},
+                    "chat_id": chat_id, "pool": POOL,
+                    "scoring": "top30 全返回集并集（非 run_qc top10，评审 F3 更正）",
+                    "results": results},
                    ensure_ascii=False, indent=1), encoding="utf-8")
 
     n = len(results)
     rp = sum(1 for r in results if r["retrieval"]["passed"])
     lines = ["# 剩余 8 图融合文本导入后评测报告", "",
              f"- 生成：{datetime.now().isoformat(timespec='seconds')}",
-             f"- 检索层：search_datasets(ds1+ds2+ds4, top_k=10)×{REPEAT} 次取多数（≥2/3 判过），锚点全命中判分（run_qc 口径）",
+             f"- 检索层：search_datasets(ds1+ds2+ds4, top_k=10)×{REPEAT} 次取多数（≥2/3 判过），"
+             "锚点全命中判分（**top30 全返回集并集口径，非 run_qc top10**；候选池 256，"
+             "见 out/retrieval_tuning/REPORT.md）",
              f"- 问答层：chat 助手 vision8_qa_test（{chat_id}，绑定 ds1+ds2+ds4，top_n=6+rerank）"
              if not args.no_chat else "- 问答层：本次跳过（--no-chat）",
              f"- 题库：{n} 题（覆盖 8 篇融合文档；coverage=fusion 纯delta / both 补强 / text 校准）", "",

@@ -261,3 +261,53 @@ def test_classify_image_downscales_oversized_input():
     b64 = next(p["image_url"]["url"] for p in captured["json"]["messages"][0]["content"]
                if p.get("type") == "image_url").split(",")[1]
     assert len(base64.b64decode(b64)) <= 8 * 1024 * 1024
+
+
+def test_prepare_tall_strip_shrinks_under_limit():
+    """评审 F8 回归：窄长条（传真件形状 300×4000）在旧 `width>800` 守卫下会
+    原样超限返回——新版按长边降采样，必须压进限内。"""
+    import random
+    random.seed(7)
+    w, h = 300, 4000
+    img = PIL_Image.new("RGB", (w, h))
+    img.putdata([(random.randrange(256), random.randrange(256), random.randrange(256))
+                 for _ in range(w * h)])
+    buf = io.BytesIO()
+    img.save(buf, "JPEG", quality=95)
+    assert len(buf.getvalue()) > 1024 * 1024
+    out = photo_triage.prepare_image_bytes(buf.getvalue(), max_bytes=1024 * 1024)
+    assert len(out) <= 1024 * 1024
+    PIL_Image.open(io.BytesIO(out)).verify()
+
+
+def test_run_retry_failed_reprocesses_failure_entries(tmp_path, monkeypatch):
+    """评审 F8 配套：--retry-failed 只重跑「失败」记录，其余沿用断点。"""
+    root = tmp_path / "photos"
+    root.mkdir()
+    (root / "a.jpg").write_bytes(b"img")
+    monkeypatch.setattr(photo_triage, "TRIAGE_ROOT", root)
+    monkeypatch.setattr(photo_triage, "OUT_DIR", tmp_path)
+    res_dir = tmp_path / "photo_triage"
+    res_dir.mkdir()
+    (res_dir / "a.jpg.json").write_text(json.dumps(
+        {"rel": "a.jpg", "category": "失败", "error": "boom"}, ensure_ascii=False),
+        encoding="utf-8")
+
+    calls = []
+
+    def fake_classify(image_bytes, endpoint, api_key, model="m", timeout=1, transport=None):
+        calls.append(1)
+        return {"category": "文件扫描件", "title_hint": "t", "date_hint": "",
+                "handwriting": False, "confidence": 0.9}
+
+    monkeypatch.setattr(photo_triage, "classify_image", fake_classify)
+
+    # 不带 retry_failed：沿用断点，不重跑
+    photo_triage.run("k", endpoint="e", retry_failed=False)
+    assert calls == []
+
+    # 带 retry_failed：失败项重跑并覆盖落盘
+    summary = photo_triage.run("k", endpoint="e", retry_failed=True)
+    assert calls == [1] and summary["counts"] == {"文件扫描件": 1}
+    entry = json.loads((res_dir / "a.jpg.json").read_text(encoding="utf-8"))
+    assert entry["category"] == "文件扫描件" and entry["error"] == ""

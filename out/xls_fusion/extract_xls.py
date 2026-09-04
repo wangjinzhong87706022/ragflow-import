@@ -57,7 +57,9 @@ def read_docker(path: Path):
 def main():
     mode = None
     try:
-        import calamine  # noqa: F401  探测本机通道
+        import pandas  # noqa: F401
+        import python_calamine  # noqa: F401  pip 包 python-calamine 的模块名
+        # （评审 F9：旧探测 `import calamine` 模块名不存在，local 分支永不激活）
         mode = "local-calamine"
     except ImportError:
         mode = "docker-stdin"

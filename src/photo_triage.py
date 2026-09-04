@@ -117,9 +117,18 @@ def _result_name(rel: str) -> str:
 # 网关对请求体设限：11–15.8MB 原图（base64 后 15–21MB）整批 400，10.9MB 及以下实测可过
 MAX_IMAGE_BYTES = int(os.getenv("TRIAGE_MAX_IMAGE_BYTES", str(8 * 1024 * 1024)))
 
+# 压缩地板：长边降到 1000px 后仍超限才转靠质量递减（VLM 分类足以读清版式）
+_MIN_LONG_SIDE, _MIN_QUALITY = 1000, 50
+
 
 def prepare_image_bytes(data: bytes, max_bytes: int = MAX_IMAGE_BYTES) -> bytes:
-    """超过 max_bytes 的图降采样重编码到限制以内；小图原样返回（不引入重编码损失）。"""
+    """超过 max_bytes 的图压到限制以内；小图原样返回（不引入重编码损失）。
+
+    先半幅降采样（直到长边 ≤_MIN_LONG_SIDE），仍超限再递减 JPEG 质量；
+    两个地板都触到仍压不进时返回当前最优（调用方按网关 400 记失败），而
+    不是像旧版 `width>800` 守卫那样让窄长条扫描件（如 700×5000 传真件）
+    原样超限漏检——评审 F8。
+    """
     if len(data) <= max_bytes:
         return data
     import io
@@ -130,12 +139,19 @@ def prepare_image_bytes(data: bytes, max_bytes: int = MAX_IMAGE_BYTES) -> bytes:
         if img.mode not in ("RGB", "L"):
             img = img.convert("RGB")
         quality = 85
-        while len(data) > max_bytes and img.width > 800:
-            img = img.resize((img.width // 2, img.height // 2))
+        while len(data) > max_bytes:
+            if max(img.size) > _MIN_LONG_SIDE:
+                img = img.resize((img.width // 2, img.height // 2))
+            elif quality > _MIN_QUALITY:
+                quality -= 10
+            else:
+                break  # 半幅与质量都到地板：返回当前最优，超限交由调用方报错
             buf = io.BytesIO()
             img.save(buf, "JPEG", quality=quality)
-            data = buf.getvalue()
-            quality = max(60, quality - 10)
+            new = buf.getvalue()
+            if len(new) >= len(data):
+                break  # 重编码不再变小（已达该尺寸压缩极限），防死循环
+            data = new
     return data
 
 
@@ -200,8 +216,12 @@ def run(
     transport=requests.post,
     limit: int = 0,
     force: bool = False,
+    retry_failed: bool = False,
 ) -> dict | None:
-    """批量分类，逐图落盘（断点续跑），产出 results.csv + triage_report.md。"""
+    """批量分类，逐图落盘（断点续跑），产出 results.csv + triage_report.md。
+
+    retry_failed=True 时只重跑历史结果为「失败」的图（其余沿用断点）——
+    评审 F8 配套：旧版压缩守卫缺陷造成的超限失败记录可据此修复性重跑。"""
     if not api_key:
         print("[ERROR] LLM_API_KEY environment variable is not set")
         return None
@@ -217,10 +237,13 @@ def run(
     for i, img in enumerate(images, 1):
         rel = str(img.relative_to(TRIAGE_ROOT))
         res_path = triage_dir / _result_name(rel)
+        entry = None
         if res_path.exists() and not force:
             entry = json.loads(res_path.read_text(encoding="utf-8"))
-        else:
-            entry = None
+            if retry_failed and entry.get("category") == "失败":
+                print(f"[retry] 失败项重跑: {rel}", flush=True)
+                entry = None
+        if entry is None:
             for attempt in range(3):
                 try:
                     verdict = classify_image(
@@ -256,12 +279,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="洪水现场照片 VLM 分诊摸底（只读语料）")
     parser.add_argument("--limit", type=int, default=0, help="最多处理 N 张，0 不限制")
     parser.add_argument("--force", action="store_true", help="忽略已有结果全部重跑")
+    parser.add_argument("--retry-failed", action="store_true",
+                        help="只重跑历史结果为「失败」的图（其余沿用断点）")
     args = parser.parse_args()
 
     run(
         api_key=os.environ.get("LLM_API_KEY", ""),
         limit=args.limit,
         force=args.force,
+        retry_failed=args.retry_failed,
     )
 
 

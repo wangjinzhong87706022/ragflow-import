@@ -53,13 +53,13 @@
     "doc_category": "洪水资料",
     "doc_nature": "技术",
     "doc_type": "表格",
-    "flood_event": "2008-8",
+    "flood_event": "2018-8",
     "flood_magnitude": "不适用",
     "quality": "high",
     "rel": "06-历年洪水资料/06-2008年洪水(8-22)/洪水统计.xls",
     "source_format": "excel",
-    "sub_category": "2008年洪水(8-22)",
-    "year": 2008,
+    "sub_category": "2018年洪水(8-21)",
+    "year": 2018,
     "“8.21洪水”流域内各雨量站日降雨量统计表": [
      "时间",
      "21日17时-22日8时",
@@ -228,7 +228,8 @@
     "table_context_size": 0,
     "tag_kb_ids": [],
     "topn_tags": 3
-   }
+   },
+   "meta_amended": "2026-09-04 R1：按 P1-5 纠偏真值刷新快照元数据（原快照为纠偏前值 {'flood_event': '2008-8', 'year': 2008, 'sub_category': '2008年洪水(8-22)'}，防 rollback 打回；依据 docs/review-code-2026-09-04.md F1）"
   },
   "chunks": [
    {
