@@ -10,3 +10,20 @@
 {"id": "X10", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年9月5日洪水柳林断面洪峰流量和5日洪量各是多少？", "all_keywords": ["904"], "any_keywords": ["70"], "coverage": "fusion", "note": "110905：洪峰70 m³/s、5日洪量904万m³；与洪水目录互证"}
 {"id": "X11", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年桃曲坡水库累计弃水量是多少万立方米？其中低洞泄水量是多少？", "all_keywords": ["10561", "9401"], "any_keywords": [], "coverage": "fusion", "note": "备注行：累计10561=低洞9401+溢流1160"}
 {"id": "X12", "fusion_doc": "2011年下泄水量统计.xls", "question": "2011年水库蓄满溢流共发生了几次？溢流水量累计多少？", "all_keywords": ["1160"], "any_keywords": ["四次", "4次", "36天"], "coverage": "fusion", "note": "备注行：4次溢流（167/127/14/852）共36天，累计1160万m³"}
+{"id": "X13", "fusion_doc": "洪水过程.xls", "question": "2021年10·3洪水柳林断面洪峰流量是多少立方米每秒？", "all_keywords": ["285"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta：dup入库洪水sheet并入后新增可达"}
+{"id": "X14", "fusion_doc": "洪水过程.xls", "question": "2021年11月桃曲坡水库溢洪道溢流持续多少天？累计溢流量多少万立方米？", "all_keywords": ["33天", "679"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "纯delta：全库唯一溢洪道溢流过程（dup独有sheet）"}
+{"id": "X15", "fusion_doc": "洪水过程.xls", "question": "\"10.3\"洪水的面雨量和净雨深分别是多少毫米？", "all_keywords": ["120.68", "24.14"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta：dup降雨量预报值sheet并入"}
+{"id": "X16", "fusion_doc": "洪水过程.xls", "question": "2021年岔口断面全年弃水量是多少？弃水多少天？", "all_keywords": ["190天", "1.83亿"], "any_keywords": ["立方米", "m³"], "coverage": "fusion", "note": "纯delta：dup弃水快照（至10-30）取代在库旧快照"}
+{"id": "X17", "fusion_doc": "洪水过程.xls", "question": "2021年9月25日至10月11日水库泄水总量是多少？其中低洞多少？", "all_keywords": ["9685", "7619"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "纯delta：泄水摘要行结构化"}
+{"id": "X18", "fusion_doc": "洪水过程(1).xls", "question": "2021年9·25洪水柳林断面洪峰流量是多少立方米每秒？", "all_keywords": ["217"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X19", "fusion_doc": "洪水过程(1).xls", "question": "9·25洪水总量是多少？期间最高库水位是多少？", "all_keywords": ["2567.22", "786.56"], "any_keywords": ["万立方米", "米"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X20", "fusion_doc": "洪水过程(1).xls", "question": "9·25洪水的预报面雨量和预报洪水总量是多少？", "all_keywords": ["85.97", "1427.11"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X21", "fusion_doc": "洪水过程(2).xls", "question": "2020年8·16洪水柳林断面洪峰流量是多少立方米每秒？", "all_keywords": ["209"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X22", "fusion_doc": "洪水过程(2).xls", "question": "2020年8·16洪水水库累计泄水多少？泄水用途是什么？", "all_keywords": ["536.92", "农业灌溉"], "any_keywords": ["万立方米"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X23", "fusion_doc": "洪水过程(2).xls", "question": "8·16洪水流域面雨量是多少？哪个站过程降雨最大？", "all_keywords": ["82.8", "142"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta：7站日降雨表（Sheet1）"}
+{"id": "X24", "fusion_doc": "洪水统计.xls", "question": "2019年9·14洪水柳林断面洪峰流量和库区洪峰流量各是多少？", "all_keywords": ["55", "69"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X25", "fusion_doc": "洪水统计.xls", "question": "9·14洪水最大一日和最大五日洪水总量是多少万立方米？", "all_keywords": ["417", "1065"], "any_keywords": ["万立方米", "万m³"], "coverage": "fusion", "note": "纯delta：原表结论文"}
+{"id": "X26", "fusion_doc": "洪水统计.xls", "question": "2019年9·14洪水流域累计面雨量是多少？哪个站最大？", "all_keywords": ["134", "140.4"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X27", "fusion_doc": "降雨量统计.xls", "question": "2013年7·22洪水柳林洪峰流量和折合入库洪峰各是多少？", "all_keywords": ["210", "258"], "any_keywords": ["立方米每秒", "m³/s"], "coverage": "fusion", "note": "纯delta；Q5钻取集内文档"}
+{"id": "X28", "fusion_doc": "降雨量统计.xls", "question": "7·22洪水三日洪水总量和最高库水位各是多少？", "all_keywords": ["1249", "780.93"], "any_keywords": ["万立方米", "米"], "coverage": "fusion", "note": "纯delta"}
+{"id": "X29", "fusion_doc": "降雨量统计.xls", "question": "7·22洪水流域哪个雨量站过程降雨最大？是多少毫米？", "all_keywords": ["瑶曲", "106.5"], "any_keywords": ["毫米", "mm"], "coverage": "fusion", "note": "纯delta"}
