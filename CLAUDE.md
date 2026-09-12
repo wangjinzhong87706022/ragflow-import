@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Toolchain that imports the curated original files of the Taoqupo Reservoir (桃曲坡水库) archive (~70 pdf/doc/xls from `/home/scada/SmartTwinRes-skills/pdfs`, plus ~12 parameter charts converted to text via an offline VLM step) into a local RAGFlow v0.27.0 instance (API `http://localhost:9380/api/v1`) as 5 knowledge bases plus 1 tag KB, supporting GraphRAG / Raptor / tag-based soft reranking / metadata hard filtering. Importing originals (not derived txt) is deliberate: RAGFlow citations must anchor into the source document pages. Read `docs/requirements.md` first (goals, constraints, acceptance criteria); `src/README.md` is the operator manual — note its 阶段0/语料源 section reflects the 2026-08-26 pivot away from `pdf_text_analysis/` derived txts.
+Toolchain that imports the curated original files of the Taoqupo Reservoir (桃曲坡水库) archive (~94 pdf/doc/xls from `/home/scada/SmartTwinRes-skills/pdfs`, plus ~12 parameter charts converted to text via an offline VLM step) into a local RAGFlow v0.27.0 instance (API `http://localhost:9380/api/v1`) as 5 knowledge bases plus 1 tag KB, supporting GraphRAG / Raptor / tag-based soft reranking / metadata hard filtering. `RAGFLOW_API_BASE` / `CORPUS_ROOT` / `PUBLIC_PEM` / `DRAWING_KB_ID` are env-overridable, so the same code targets either the Linux server instance or a Windows workstation (see README 环境变量). Importing originals (not derived txt) is deliberate: RAGFlow citations must anchor into the source document pages. Read `docs/requirements.md` first (goals, constraints, acceptance criteria); `src/README.md` is the operator manual — note its 阶段0/语料源 section reflects the 2026-08-26 pivot away from `pdf_text_analysis/` derived txts.
 
 ## Commands
 
@@ -62,7 +62,7 @@ run_qc.py / inspect_chunks.py ◀── RAGFlowClient.search/list_chunks
 - Tags are a **soft rerank signal only** (`topn_tags`); exact filtering always goes through `meta_data_filter` on metadata fields — never treat tags as filters.
 - GraphRAG lives only on ds1/ds3 (`method=light`, `resolution=true`, 6 fixed entity types) and is configured solely via `parser_config` injection — zero RAGFlow upstream modifications (`/opt/git/ragflow` is off-limits except reading its `public.pem`).
 - Corpus roots are read-only. The import source is `CORPUS_ROOT` = `/home/scada/SmartTwinRes-skills/pdfs`; `/home/scada/SmartTwinRes-skills/pdf_text_analysis` is the previous extraction round's output (legacy, used only by the vestigial tables stage).
-- All runtime artifacts go to `out/`; never write products into `src/`.
+- All runtime artifacts go to `out/`; never write products into `src/`. The mutable pipeline state (`out/{mapping.csv,import_state.json,setup_state.json}`) is **gitignored, not tracked** — it is environment-bound and OS-path-sensitive, and committing it has twice propagated local paths/instance ids to the server. `rel` values must stay POSIX (`config.normalize_rel`).
 - The four human gates are mandatory and must not be scripted around: mapping.csv review, VLM approve flag, 10% OCR sampling, and the ds3 five-file pilot before any full import.
 - Tests must stay network-free and isolate `OUT_DIR` to a temp dir (see the `_isolate_out` pattern in `src/tests/`).
 

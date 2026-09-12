@@ -10,3 +10,21 @@ out/upgrade-v0.27.1/
 out/vision_8chart_test/FUSION_REPORT.md
 src/.env
 *.swp
+
+# ── 运行时状态产物（可复现、与环境强绑定，不入库）──────────────────
+# rel 键与环境相关，入库会把本机路径/实例 ID 带到服务器（2026-09-12 评审 P0-1/P2-10）
+out/import_state.json
+out/mapping.csv
+out/mapping.csv.bak
+out/setup_state.json
+
+# 生成型中间产物
+out/xls_normalized/
+out/vision_drawings/
+out/_tmp_*
+
+# 一次性脚本/产物的归档备份（需要时解压回滚）
+out/_archive/
+
+# 一次性排查脚本（含环境相关常量，不入库）
+src/_tmp_*.py

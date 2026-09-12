@@ -36,7 +36,7 @@ def test_encrypt_password_roundtrips_to_base64_plaintext(tmp_path):
 
     result = encrypt_password("testpass", str(pub))
 
-    key = __import__("Crypto").PublicKey.RSA.import_key(priv.read_text())
+    key = __import__("Crypto").PublicKey.RSA.import_key(priv.read_text(encoding="utf-8"))
     decrypted = PKCS1_v1_5.new(key).decrypt(base64.b64decode(result), None)
     assert decrypted == base64.b64encode(b"testpass"), (
         f"解密结果应为 base64(明文)，实际为 {decrypted!r}"

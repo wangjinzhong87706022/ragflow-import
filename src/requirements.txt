@@ -2,3 +2,13 @@ requests>=2.31.0
 pycryptodome>=3.19.0
 pytest>=8.0.0
 Pillow>=10.0.0          # photo_triage 大图降采样（prepare_image_bytes）
+
+# 旧版 BIFF .xls 预处理规范化（xls_normalize.py）。
+# 注：缺失时 run_import 会回退为直传原始 .xls 并打 WARN（见其 ImportError 分支）。
+pandas>=2.0.0
+openpyxl>=3.1.0
+python-calamine>=0.2.0  # 读取 WPS 生成的非标准 .xls 的**首选**引擎（BIFF 文件优先走它）
+# 默认引擎（xlrd）仅在 calamine 不可用时兜底；需要该兜底再自行安装 xlrd>=2.0.0
+
+# 工程图纸 PNG 补救（rescue_drawings.py）：PDF→PNG 渲染
+PyMuPDF>=1.24.0

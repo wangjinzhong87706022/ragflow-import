@@ -133,9 +133,14 @@ class RAGFlowClient:
         _adapter = HTTPAdapter(max_retries=_RETRY_STRATEGY)
         self.session.mount("http://", _adapter)
         self.session.mount("https://", _adapter)
-        if api_key:
+        self._api_key_mode = bool(api_key)
+        if self._api_key_mode:
             # API-key 模式：SDK 端点原生支持 Bearer 鉴权，跳过登录（无需邮箱/密码/RSA 公钥）。
             self.session.headers["Authorization"] = f"Bearer {api_key}"
+            # 显式置空：wait_* 的 401 分支会调用 login()，需要能识别"无凭据可重登"
+            # （否则会落到 AttributeError，见 2026-09-12 评审 P2-11）。
+            self._email = ""
+            self._encrypted_password = ""
             return
         # Fail fast on placeholder/missing credentials instead of a confusing login 400
         if not email or "@" not in email or not password or password == "placeholder":
@@ -143,16 +148,16 @@ class RAGFlowClient:
                 "[配置错误] RAGFLOW_EMAIL / RAGFLOW_PASSWORD 未正确设置——"
                 "请通过环境变量注入真实凭据后再运行"
             )
-        self.session = requests.Session()
-        # 挂载重试适配器：仅对瞬时连接层错误退避重试，业务失败不重试。
-        _adapter = HTTPAdapter(max_retries=_RETRY_STRATEGY)
-        self.session.mount("http://", _adapter)
-        self.session.mount("https://", _adapter)
         self._email = email
         self._encrypted_password = encrypt_password(password, public_pem_path)
         self.login()
 
     def login(self) -> None:
+        if getattr(self, "_api_key_mode", False):
+            raise RuntimeError(
+                "API-key 模式无法重新登录（未持有邮箱/密码）：请使用长期有效的 key，"
+                "或改用 RAGFLOW_EMAIL / RAGFLOW_PASSWORD 登录模式。"
+            )
         resp = self.session.post(
             f"{API_BASE}/auth/login",
             json={"email": self._email, "password": self._encrypted_password},
@@ -399,7 +404,8 @@ class RAGFlowClient:
     # ------------------------------------------------------------------
     # Tag KB
     # ------------------------------------------------------------------
-    def upload_tag_vocab(self, dataset_id: str, vocab_file_path: pathlib.Path) -> dict:
+    def upload_tag_vocab(self, dataset_id: str, vocab_file_path: pathlib.Path) -> dict | list:
+        """上传标签词表。返回形状与 :meth:`upload_document` 一致（data 为文档 dict 列表）。"""
         with open(vocab_file_path, "rb") as f:
             resp = self.session.post(
                 f"{API_BASE}/datasets/{dataset_id}/documents",

@@ -19,7 +19,7 @@ import re
 import sys
 import time
 
-from config import OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM
+from config import OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, RAGFLOW_API_KEY
 from ragflow_client import RAGFlowClient, _run_done
 
 
@@ -165,7 +165,7 @@ def main(argv: list[str] | None = None) -> dict:
     setup_state = json.loads(state_path.read_text(encoding="utf-8"))
 
     try:
-        client = RAGFlowClient(RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM)
+        client = RAGFlowClient(RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, api_key=RAGFLOW_API_KEY)
     except ValueError as exc:
         print(f"[ERROR] {exc}")
         sys.exit(1)

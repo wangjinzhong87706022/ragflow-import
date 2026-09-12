@@ -3,12 +3,13 @@ import pathlib
 
 # API
 # 凭据仅经环境变量注入；下面的占位默认值会在 RAGFlowClient 构造时 fail-fast
-API_BASE = "http://localhost:9380/api/v1"
+# 支持环境变量 RAGFLOW_API_BASE 覆盖，便于切换 RAGFlow 实例（本地 / 远程）
+API_BASE = os.getenv("RAGFLOW_API_BASE", "http://localhost:9380/api/v1")
 RAGFLOW_EMAIL = os.getenv("RAGFLOW_EMAIL", "placeholder@example.com")
 RAGFLOW_PASSWORD = os.getenv("RAGFLOW_PASSWORD", "placeholder")
 # API-key（Web UI 系统设置生成）：设置后 RAGFlowClient 走 Bearer 免登录模式，无需邮箱/密码
 RAGFLOW_API_KEY = os.getenv("RAGFLOW_API_KEY", "")
-PUBLIC_PEM = "/opt/git/ragflow/conf/public.pem"
+PUBLIC_PEM = os.getenv("PUBLIC_PEM", "/opt/git/ragflow/conf/public.pem")
 
 # VLM 端点与模型（vision_extract.py 阶段1 用；LLM_API_KEY 凭据只走环境变量）
 # 模型名经 /v1/models 实查（capabilities 含 multimodal），与 requirements §2 一致
@@ -19,15 +20,29 @@ VISION_CALL_TIMEOUT = int(os.getenv("LLM_READ_TIMEOUT", "600"))
 
 # Corpus roots (read-only)
 # CORPUS_ROOT = 导入语料源：整理后的原始文件库（pdf/doc/xls 直导 → RAGFlow 引用可锚定原文）
+# 支持环境变量 CORPUS_ROOT 覆盖，便于在不同机器（Linux 服务器 / Windows 本机）间切换语料源
 # DERIVED_ROOT / ORIGINALS_ROOT = 上一轮文本抽取流程的遗留根（tables.py 等兼容用，不再直接导）
-CORPUS_ROOT = pathlib.Path("/home/scada/SmartTwinRes-skills/pdfs")
-DERIVED_ROOT = pathlib.Path("/home/scada/SmartTwinRes-skills/pdf_text_analysis")
+CORPUS_ROOT = pathlib.Path(os.getenv("CORPUS_ROOT", "/home/scada/SmartTwinRes-skills/pdfs"))
+DERIVED_ROOT = pathlib.Path(os.getenv("DERIVED_ROOT", "/home/scada/SmartTwinRes-skills/pdf_text_analysis"))
 ORIGINALS_ROOT = CORPUS_ROOT
+
+
+def normalize_rel(rel) -> str:
+    """把相对路径归一为 POSIX 分隔符（``/``）。
+
+    产出的 ``rel`` 会进入 mapping.csv、import_state.json 与 RAGFlow 元数据，
+    必须跨机（Windows 本机 / Linux 服务器）可复用——OS 原生分隔符会让
+    反斜杠混进产物，导致服务器端 ``CORPUS_ROOT / rel`` 找不到文件、
+    断点续跑状态键失配。
+    """
+    return str(rel).replace("\\", "/")
+
 
 # 可导入的文档扩展名（图片走 VLM 预处理管线，不入扫描范围）
 DOC_EXTS = (".pdf", ".docx", ".doc", ".xls", ".xlsx")
 
 # 目录→知识库指派（2026-08-26 语料源切换：pdfs/ 一级目录即分类）
+# 2026-09-04 扩展：新增 11-技术资料、12-项目资料 两个一级目录（数字孪生项目相关）
 DIR_DATASET = {
     "01-核心文档-四案":   "ds1",
     "02-安全鉴定与评价":  "ds5",
@@ -37,6 +52,8 @@ DIR_DATASET = {
     "06-历年洪水资料":    "ds3",
     "07-管理资料":        "ds4",
     "08-政策文件":        "ds4",
+    "11-技术资料":        "ds5",   # 接口文档/设备明细/网络结构图 → 工程资料
+    "12-项目资料":        "ds5",   # 需求调研/项目附件 → 工程资料
 }
 
 # Output root — <project-root>/out，随代码位置自适应（项目根 = src/ 的上一级）
@@ -119,11 +136,13 @@ DATASETS = [
             "raptor": {"use_raptor": False},
         },
     },
-    # ds5: paper, chunk_token_num=512, auto_keywords=8, topn_tags=3, no graphrag, raptor use_raptor=True
+    # ds5: naive, chunk_token_num=512, auto_keywords=8, topn_tags=3, no graphrag, raptor use_raptor=True
+    # 2026-09-05: paper→naive（paper 解析器仅支持 PDF，且 ds5 为工程报告非学术论文；
+    # 远程实例已全部用 naive 重新解析完成，此处同步以避免 run_setup.py 重置）
     {
         "key": "ds5",
         "name": "工程资料",
-        "chunk_method": "paper",
+        "chunk_method": "naive",
         "parser_config": {
             "chunk_token_num": 512,
             "auto_keywords": 8,
@@ -144,7 +163,7 @@ METADATA_SCHEMA = [
     {"key": "sub_category",    "type": "string",  "description": "子类",               "enum": None},
     {"key": "flood_event",     "type": "string",  "description": "关联洪水事件",        "enum": ["2021-10","2021-09","2020-8","2019-9","2013-7","2011-7","2010-8","2010-7","2018-8","2008-8","其他","历年统计"]},
     {"key": "doc_type",        "type": "string",  "description": "文档形态",           "enum": ["文本","表格","图片","图纸"]},
-    {"key": "year",            "type": "number",  "description": "年份",               "enum": None},
+    {"key": "year",            "type": "string",  "description": "年份",               "enum": None},  # ES 类型安全：number 一旦与 string 冲突需重建索引，本项目无范围查询需求
     {"key": "source_format",   "type": "string",  "description": "来源格式",           "enum": ["pdf","word","excel","ocr_jpg","ocr_png","native_xlsx"]},
     {"key": "quality",         "type": "string",  "description": "OCR质量分级",         "enum": ["high","medium","low"]},
     {"key": "responsible_dept","type": "string",  "description": "责任/发文部门",        "enum": None},
@@ -173,8 +192,11 @@ METADATA_SCHEMA = [
 # （2001年洪水过程线.xls→2010-7、2010年下泄水量统计.xls→2010-8、724-829两场洪水.xls
 # →2010-7 主值；其第二张摘录表 20030829 系内容层新发现，单值字段不扩 2003-8，
 # 见 out/xls_fusion/REVIEW_WAVE3.md 裁定点）。
+# 2026-09-04 扩展：新增 03-2018年洪水(8-21) 子目录（用户将 2018 年洪水文件
+# 从 06-2008年洪水(8-22) 中拆出独立目录，与 P1-5 纠偏一致）
 FLOOD_EVENT_BY_SUBDIR = {
     "02-2021年洪水调度":  "2021-10",
+    "03-2018年洪水(8-21)": "2018-8",
     "03-2020年洪水(8-16)": "2020-8",
     "04-2019年洪水(9-14)": "2019-9",
     "05-2013年洪水(7-22)": "2013-7",
@@ -236,3 +258,21 @@ IMPORT_COLS = [
     "responsible_dept", "doc_nature", "location", "flood_magnitude",
     "skip_reason", "duplicate_of", "sha256",
 ]
+
+# ── 工程图纸优化（2026-09-09）──────────────────────────────────────
+# "工程资料"数据集 ID（ds5 在本实例的对应库）。
+# 刻意不给默认值：ID 与环境强绑定（本地实例 / 远程实例各不相同），
+# 写死默认值会让脚本静默操作错误的库。未设置时由使用方 fail-fast。
+DRAWING_KB_ID = os.getenv("DRAWING_KB_ID", "")
+
+# image_context_size：VLM 描述图片时带上周边 OCR 文本的 token 预算
+# 仅对 paper/naive/manual 方法有效（调用 vision_figure_parser_pdf_wrapper）
+# UI 最大值 256（common-item.tsx:268）
+IMAGE_CONTEXT_SIZE = int(os.getenv("IMAGE_CONTEXT_SIZE", "256"))
+
+# PNG 渲染缩放因子（zoom=2 平衡分辨率和文件大小）
+PNG_RENDER_ZOOM = float(os.getenv("PNG_RENDER_ZOOM", "2"))
+
+# 轮询超时（秒）——大图 VLM 处理可能需要 5-10 分钟
+PARSE_POLL_TIMEOUT = int(os.getenv("PARSE_POLL_TIMEOUT", "600"))
+PARSE_POLL_INTERVAL = int(os.getenv("PARSE_POLL_INTERVAL", "15"))

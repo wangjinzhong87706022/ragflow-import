@@ -96,7 +96,7 @@ class FakeClient:
 
 
 OLD_DOC = {"id": "old-1", "run": "DONE", "chunk_count": 12,
-           "meta_fields": {"doc_type": "表格", "year": 2008},
+           "meta_fields": {"doc_type": "表格", "year": "2008"},
            "chunk_method": "naive", "parser_config": {"auto_questions": 0}}
 
 
@@ -216,7 +216,7 @@ def test_rollback_replays_archive(stub, tmp_path):
     puts = [c for c in stub.calls if c[0] == "PUT"]
     parses = [c for c in stub.calls if c[0] == "POST" and c[1].endswith("/parse")]
     assert puts and parses and puts[0][2]["chunk_method"] == "naive"
-    assert ("patch", "shell-1", {"doc_type": "表格", "year": 2008}) in client.calls
+    assert ("patch", "shell-1", {"doc_type": "表格", "year": "2008"}) in client.calls
 
 
 class FailingPutRequests(StubRequests):

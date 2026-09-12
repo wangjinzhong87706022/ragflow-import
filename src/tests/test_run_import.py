@@ -11,10 +11,10 @@ from config import IMPORT_COLS
 from run_import import row_to_meta_fields, DocImportState, ImportStateMachine, run_import
 from unittest.mock import MagicMock, patch
 
-def test_row_to_meta_fields_year_int():
+def test_row_to_meta_fields_year_string():
     row = {"rel":"test.txt","year":"2021","flood_event":"2021-10","doc_type":"文本"}
     mf = row_to_meta_fields(row)
-    assert mf["year"] == 2021  # coerced to int；返回裸字段 dict（不含 meta_fields 包裹）
+    assert mf["year"] == "2021"  # 保持字符串（ES 类型安全：schema 注册为 string）
 
 def test_row_to_meta_fields_omits_empty():
     row = {"rel":"test.txt","year":"","flood_event":"","doc_type":"文本"}
@@ -94,7 +94,7 @@ def test_patch_document_receives_plain_meta_fields(mock_client_cls, tmp_path):
     args, _ = mock_client.patch_document.call_args
     meta_arg = args[2]  # patch_document(dataset_id, doc_id, meta_fields)
     assert meta_arg == {
-        "doc_category": "规程预案", "year": 2021,
+        "doc_category": "规程预案", "year": "2021",
         "source_format": "pdf", "quality": "high", "doc_nature": "技术",
         "rel": "a.pdf",
     }, f"patch_document 收到的 meta_fields 应为裸字段 dict + rel 溯源，实际为 {meta_arg}"

@@ -235,7 +235,9 @@ def run(
     entries: list[dict] = []
     counts: dict[str, int] = {}
     for i, img in enumerate(images, 1):
-        rel = str(img.relative_to(TRIAGE_ROOT))
+        # POSIX 分隔符：_result_name 只把 "/" 替换为 "__"，Windows 反斜杠
+        # 会残留成子目录路径，导致结果文件父目录不存在而写入失败。
+        rel = img.relative_to(TRIAGE_ROOT).as_posix()
         res_path = triage_dir / _result_name(rel)
         entry = None
         if res_path.exists() and not force:

@@ -267,7 +267,7 @@ def _entry_from_row(row: dict) -> Entry:
         sub_category=row.get("sub_category", ""),
         flood_event=row.get("flood_event") or None,
         doc_type=row.get("doc_type", ""),
-        year=int(row["year"]) if row.get("year") else None,
+        year=row.get("year") or None,  # 保持字符串（ES 类型安全：schema 注册为 string）
         source_format=row.get("source_format", ""),
         quality=row.get("quality", ""),
         responsible_dept=row.get("responsible_dept") or None,

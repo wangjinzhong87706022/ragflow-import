@@ -75,6 +75,14 @@ python run_qc.py
 | 变量 | 必需 | 用途 |
 |---|---|---|
 | `RAGFLOW_EMAIL` / `RAGFLOW_PASSWORD` | 是（除单测） | RAGFlow 登录 |
+| `RAGFLOW_API_KEY` | 否 | RAGFlow API key（Bearer 免登录；设置后无需邮箱/密码/RSA 公钥） |
+| `RAGFLOW_API_BASE` | 否 | RAGFlow API 地址，默认 `http://localhost:9380/api/v1`（本地/远程切换） |
+| `PUBLIC_PEM` | 否 | 登录密码 RSA 公钥，默认 `/opt/git/ragflow/conf/public.pem` |
+| `CORPUS_ROOT` | 否 | 导入语料源，默认 `/home/scada/SmartTwinRes-skills/pdfs`（Linux/Windows 切换） |
+| `DERIVED_ROOT` | 否 | 遗留派生语料根（tables.py 兼容用） |
+| `DRAWING_KB_ID` | 图纸脚本必需 | “工程资料”数据集 ID；**无默认值**，未设置时图纸脚本 fail-fast |
+| `IMAGE_CONTEXT_SIZE` / `PNG_RENDER_ZOOM` | 否 | 图纸 VLM 描述 token 预算 / PNG 渲染缩放（默认 256 / 2） |
+| `PARSE_POLL_TIMEOUT` / `PARSE_POLL_INTERVAL` | 否 | 解析轮询超时/间隔（默认 600s / 15s） |
 | `LLM_API_KEY` | 仅 vision_extract | VLM 端点 Bearer token |
 | `LLM_API_ENDPOINT` | 否 | VLM 端点，默认 `https://llm.openagp.top:9080/v1` |
 
@@ -100,8 +108,31 @@ requests 异常友好退出；location/dept 元数据推导落地、quality 分�
 引用溯源需在原文页面中锚定展示，txt 无法满足。新映射 `config.DIR_DATASET` 按一级目录
 指派（02 安全鉴定+03 施工图纸→ds5 工程资料，空库问题一并解决）；09 现场照片视频与
 10 压缩包不入库；05 参数图表全部走 VLM 预处理（VISION_SOURCES 扩到 12 张）。
-实测分布：73 行=70 可导入+3 个 `_dup` 跳过（ds1=4 / ds2=1 / ds3=45 / ds4=5 / ds5=15）；
+实测分布（2026-09-12 更新，含新增 `11-技术资料`/`12-项目资料` 目录）：
+105 行=94 可导入+11 个 `_dup` 跳过（ds1=4 / ds2=1 / ds3=50 / ds4=5 / ds5=34）；
 `requirements.md` §3"唯一可导入语料"条款自即日起以本说明为准。
+
+**2026-09-12 代码评审修复轮**：
+① **路径分隔符跨平台归一**（P0）：`corpus.py` 产出 `rel` 一律 POSIX（`config.normalize_rel`），
+`run_import`/`photo_triage` 同样归一——此前 Windows 本机产出的 `mapping.csv`、
+`import_state.json` 含反斜杠，提交后会污染服务器（拼路径失败 + 断点续跑键失配）；
+② **明文 API Key 清除**（P0）：50+ 个排查脚本中的硬编码 RAGFlow key 全部改为
+`os.getenv("RAGFLOW_API_KEY")`（**该 key 已视为泄露，需轮换**）；
+③ **运行时状态产物取消跟踪**（P0/P2）：`out/{mapping.csv,import_state.json,setup_state.json}`
+移出版本控制并加入 `.gitignore`（产物与环境强绑定，入库即污染，见 ①）；
+④ **标签库词表 parse 触发修复**（P1）：上传接口返回 `data` 是文档 **列表**，旧代码只认
+dict → parse 永不触发；现兼容两种形状并有回归测试；
+⑤ **`year` 元数据类型 number → string**（P1，见下“迁移须知”）；
+⑥ `DRAWING_KB_ID` 去掉环境相关默认值、`PUBLIC_PEM` 纳入环境变量、`xls_normalize`
+四项缺陷修复（整数浮点转换死条件 / CLI `AttributeError` / 同名产物覆盖 / BIFF 优先 calamine）、
+api_key 模式下 401 重新登录的 `AttributeError` 修复。
+
+**迁移须知：`year` 元数据类型变更（number → string）**：`METADATA_SCHEMA.year` 由
+`number` 改为 `string`（ES 类型安全：number/string 冲突需重建索引，本项目无范围查询需求）。
+若目标实例此前已按 `number` 注册过 `year`，`run_setup.py` 再次 `put_metadata_config`
+会下发冲突类型——**须先确认已在目标实例上以 string 类型重注册成功**（或重建索引），
+再执行任何 `patch_document` 写入；`row_to_meta_fields`/`tables.py` 已同步为字符串传递
+（`test_row_to_meta_fields_year_string` 锁定）。
 
 **2026-08-27 深评修复轮（P0/P1，评审报告见 `docs/review-2026-08-26-deep.md`）**：
 客户端层按线上 v0.27.0 容器实证契约重写（登录密码 base64(明文)→RSA 对偶、业务失败

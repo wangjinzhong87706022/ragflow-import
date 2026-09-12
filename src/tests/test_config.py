@@ -20,23 +20,32 @@ def test_metadata_schema_11_fields():
     assert "location" in keys
 
 def test_dir_dataset_assignment():
-    """语料源切换后：一级目录→库指派必须完整覆盖 01–08，且 ds5 非空。"""
+    """语料源切换后：一级目录→库指派必须完整覆盖 01–08 + 11–12，且 ds5 非空。"""
     assert set(DIR_DATASET) == {
         "01-核心文档-四案", "02-安全鉴定与评价", "03-施工图纸与设计",
         "04-确权划界", "05-基础数据与曲线", "06-历年洪水资料",
         "07-管理资料", "08-政策文件",
+        "11-技术资料", "12-项目资料",
     }
     assert DIR_DATASET["01-核心文档-四案"] == "ds1"
     assert DIR_DATASET["06-历年洪水资料"] == "ds3"
+    assert DIR_DATASET["11-技术资料"] == "ds5"
+    assert DIR_DATASET["12-项目资料"] == "ds5"
     # ds5 工程资料必须有来源目录（修复空库问题）
     ds5_dirs = [k for k, v in DIR_DATASET.items() if v == "ds5"]
     assert ds5_dirs, "ds5 必须有指派目录，否则仍是空库"
 
 def test_corpus_root_is_originals():
-    """导入语料源必须是整理后的原始文件库 pdfs/（引用需锚定原文）。"""
+    """导入语料源必须是整理后的原始文件库 pdfs/（引用需锚定原文）。
+
+    语料根经 `CORPUS_ROOT` 环境变量可覆盖（Linux 服务器 / Windows 本机），
+    目录本身不一定存在于当前机器——存在性断言仅在语料根就位时执行，
+    避免把"跨机可配置"这一特性误报成失败。
+    """
     assert CORPUS_ROOT.name == "pdfs"
     assert ORIGINALS_ROOT == CORPUS_ROOT
-    assert (CORPUS_ROOT / "01-核心文档-四案").exists()
+    if CORPUS_ROOT.exists():
+        assert (CORPUS_ROOT / "01-核心文档-四案").exists()
 
 def test_skip_dirs_exclude_media_and_archives():
     assert "09-图像与多媒体" in SKIP_DIRS

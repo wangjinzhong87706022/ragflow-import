@@ -19,6 +19,7 @@ from config import (
     LOCATION_KEYWORDS,
     DEPT_KEYWORDS,
     OUT_DIR,
+    normalize_rel,
 )
 
 
@@ -211,7 +212,9 @@ def scan() -> list[Entry]:
         rel_parts = path.relative_to(CORPUS_ROOT).parts
         if _should_skip(rel_parts):
             continue
-        rel = str(Path(*rel_parts))
+        # 强制 POSIX 分隔符：rel 会写入 mapping.csv 并被服务器端拼路径，
+        # OS 原生分隔符（Windows 反斜杠）会让产物无法跨机复用。
+        rel = normalize_rel(Path(*rel_parts))
 
         try:
             ds_key = classify(rel)

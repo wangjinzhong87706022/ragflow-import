@@ -22,7 +22,7 @@ from pathlib import Path
 
 import requests
 
-from config import DATASETS, TAG_KB, METADATA_SCHEMA, OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM
+from config import DATASETS, TAG_KB, METADATA_SCHEMA, OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, RAGFLOW_API_KEY
 from ragflow_client import RAGFlowClient
 from tag_vocab import write_vocab_txt
 
@@ -38,7 +38,7 @@ def run_setup(dry_run: bool = False) -> dict[str, dict]:
     # Step 1 – connect
     # ------------------------------------------------------------------
     try:
-        client = RAGFlowClient(RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM)
+        client = RAGFlowClient(RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, api_key=RAGFLOW_API_KEY)
     except ValueError as exc:
         print(f"[ERROR] {exc}")
         sys.exit(1)
@@ -107,8 +107,26 @@ def run_setup(dry_run: bool = False) -> dict[str, dict]:
         else:
             write_vocab_txt(vocab_path)
             print(f"[INFO] Wrote tag vocab to {vocab_path}")
-            client.upload_tag_vocab(tag_kb_id, vocab_path)
+            upload_result = client.upload_tag_vocab(tag_kb_id, vocab_path)
             print(f"[INFO] Uploaded tag vocab for dataset '{TAG_KB['name']}'")
+            # v0.27.0 上传接口的 data 是**文档 dict 列表**（与 upload_document 同契约），
+            # 旧代码只认 dict 形状 → tag_doc_id 恒为 None → 显式 parse 永不触发。
+            # 这里两种形状都兼容，确保词表真的开始解析。
+            if isinstance(upload_result, dict):
+                upload_docs = [upload_result]
+            elif isinstance(upload_result, list):
+                upload_docs = [d for d in upload_result if isinstance(d, dict)]
+            else:
+                upload_docs = []
+            tag_doc_ids = [d["id"] for d in upload_docs if d.get("id")]
+            if tag_doc_ids:
+                client.parse_documents(tag_kb_id, tag_doc_ids)
+                print(f"[INFO] Triggered parse for tag vocab doc(s) {tag_doc_ids}")
+            else:
+                print(
+                    "[WARN] 上传响应中未解析出 doc_id——跳过显式 parse，"
+                    "改由服务端自动解析（若等待超时请检查上传接口返回形状）"
+                )
             client.wait_parse(tag_kb_id, timeout=300)
             print(f"[INFO] Tag KB parse complete for '{TAG_KB['name']}'")
 

@@ -8,7 +8,16 @@ import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from config import CORPUS_ROOT, DATASETS, OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM
+from config import (
+    CORPUS_ROOT,
+    DATASETS,
+    OUT_DIR,
+    RAGFLOW_EMAIL,
+    RAGFLOW_PASSWORD,
+    PUBLIC_PEM,
+    RAGFLOW_API_KEY,
+    normalize_rel,
+)
 from corpus import read_mapping_csv
 from ragflow_client import RAGFlowClient, _run_done
 
@@ -17,8 +26,7 @@ from ragflow_client import RAGFlowClient, _run_done
 # GraphRAG(light) + resolution 每个块 ≥3 次 LLM 调用，还要跑实体消解批——
 # 600s 统一窗口曾把正常构建误判成超时失败（review P1-3）。
 # ---------------------------------------------------------------------------
-WAIT_TIMEOUT_DEFAULT = 1800
-WAIT_TIMEOUT_GRAPHRAg = 1800
+WAIT_TIMEOUT_GRAPH_RAG = 1800
 
 
 def resolve_wait_timeout(ds_key: str) -> int:
@@ -28,7 +36,7 @@ def resolve_wait_timeout(ds_key: str) -> int:
     注入阶段同样耗时（早期 FAIL 即卡在 tag 步骤），600s 曾把正常构建误判成
     超时失败。后台串行跑时放宽窗口更稳，宁可多等也不误判。
     """
-    return WAIT_TIMEOUT_GRAPHRAg
+    return WAIT_TIMEOUT_GRAPH_RAG
 
 # ---------------------------------------------------------------------------
 # Metadata field mapping
@@ -54,28 +62,25 @@ def row_to_meta_fields(row: dict) -> dict:
     Convert a mapping CSV row dict to the bare ``meta_fields`` payload.
 
     - Map CSV column names to the 11 metadata fields
-    - Coerce ``year`` to ``int`` if non-empty
     - Omit fields with empty string or None values
 
     Returns the plain field dict — the ``{"meta_fields": ...}`` envelope is
     added by ``RAGFlowClient.patch_document``, NOT here（双重包裹曾导致元数据
     静默丢失，见评审 C1）。``rel`` 溯源字段由调用方补充。
+
+    year 保持字符串传入（ES 类型安全：schema 注册为 string，避免 number/string
+    类型冲突导致索引重建）。
     """
     meta = {}
     for csv_col, field_key in _META_FIELD_MAP.items():
         val = row.get(csv_col, "")
         if val is None or val == "":
             continue
-        if field_key == "year":
-            try:
-                val = int(val)
-            except (ValueError, TypeError):
-                continue
         meta[field_key] = val
     return meta
 
 
-def find_reusable_doc(client, dataset_id: str, file_path: Path, docs=None):
+def find_reusable_doc(client, dataset_id: str, file_path: Path, docs=None, filename: str | None = None):
     """
     在库内找可复用的同名文档（review P0-5）。
 
@@ -86,10 +91,13 @@ def find_reusable_doc(client, dataset_id: str, file_path: Path, docs=None):
         打到别人头上——mapping.csv 审计确认存在 4 组共 11 个同名文件）。
 
     ``docs`` 允许传入调用方已取好的文档快照，避免一次文件触发两轮翻页。
+    ``filename`` 允许上传名与本地路径名不同（.xls 规范化后上传 .xlsx 内容
+    但保持原 .xls 文档名，使同名复用与 import_state 逻辑不变）。
     """
     if docs is None:
         docs = client.list_documents(dataset_id)
-    candidates = [d for d in docs if d.get("name") == file_path.name]
+    name = filename or file_path.name
+    candidates = [d for d in docs if d.get("name") == name]
     size = file_path.stat().st_size
     exact = [d for d in candidates if d.get("size") == size]
     return exact[0] if len(exact) == 1 else None
@@ -121,7 +129,7 @@ class ImportStateMachine:
         self._state: dict[str, dict] = {}
         if self._state_path.exists():
             try:
-                raw = json.loads(self._state_path.read_text())
+                raw = json.loads(self._state_path.read_text(encoding="utf-8"))
                 for k, v in raw.items():
                     self._state[k] = v  # already dict (from JSON)
             except (json.JSONDecodeError, OSError):
@@ -150,7 +158,7 @@ class ImportStateMachine:
 
     def save(self) -> None:
         self._state_path.parent.mkdir(parents=True, exist_ok=True)
-        self._state_path.write_text(json.dumps(self._state, ensure_ascii=False, indent=2))
+        self._state_path.write_text(json.dumps(self._state, ensure_ascii=False, indent=2), encoding="utf-8")
 
     def items(self):
         return self._state.items()
@@ -200,7 +208,7 @@ def run_import(
             raise FileNotFoundError(f"setup_state.json not found at {setup_path}")
         print(f"[提示] {setup_path} 不存在——请先运行 `python run_setup.py` 完成建库。dry-run 结束。")
         return {"done": 0, "failed": 0, "skipped": 0}
-    setup = json.loads(setup_path.read_text())
+    setup = json.loads(setup_path.read_text(encoding="utf-8"))
 
     # Load mapping CSV (list[dict])
     mapping_path = out_dir / "mapping.csv"
@@ -210,6 +218,10 @@ def run_import(
         print(f"[提示] {mapping_path} 不存在——请先运行 `python -m corpus` 生成映射表。dry-run 结束。")
         return {"done": 0, "failed": 0, "skipped": 0}
     rows = read_mapping_csv(mapping_path)
+    # rel 一律归一为 POSIX 分隔符：产物可能来自 Windows 本机（反斜杠），
+    # 而服务器端按 "/" 拼路径并要求状态键一致。
+    for row in rows:
+        row["rel"] = normalize_rel(row.get("rel", ""))
 
     # Load existing import state (resume support) — 尊重 _out_dir 注入
     sm = ImportStateMachine(state_path=out_dir / "import_state.json")
@@ -250,6 +262,7 @@ def run_import(
             email=RAGFLOW_EMAIL,
             password=RAGFLOW_PASSWORD,
             public_pem_path=PUBLIC_PEM,
+            api_key=RAGFLOW_API_KEY,
         )
     except ValueError as exc:
         print(f"[ERROR] {exc}")
@@ -277,6 +290,22 @@ def run_import(
             failed += 1
             continue
 
+        # 旧版 BIFF .xls 预处理：规范化为表头优先的 .xlsx 再上传
+        # （方案 A 综合路线：预处理优先，shell_import 壳模式作为回退）
+        # 保持原文件名上传，使同名复用与 import_state 逻辑不变
+        upload_path = file_path
+        try:
+            from xls_normalize import normalize_if_needed
+            normalized_dir = out_dir / "xls_normalized"
+            upload_path, was_normalized = normalize_if_needed(file_path, normalized_dir)
+            if was_normalized:
+                print(f"[INFO] {rel}: BIFF .xls 已规范化 → {upload_path.name}")
+        except ImportError:
+            pass  # pandas/openpyxl 未安装时跳过规范化，直传原文件
+        except Exception as exc:
+            print(f"[WARN] {rel}: .xls 规范化失败 ({exc})，回退直传原文件")
+            upload_path = file_path
+
         try:
             # 单次快照：同名复用探测与重跑状态预检共用，避免每文件两轮翻页
             existing = client.list_documents(dataset_id)
@@ -289,12 +318,12 @@ def run_import(
                 print(f"[WARN] {rel}: 状态中的 doc_id={doc_id} 已不存在（可能被手工删除），重新探测")
                 doc_id = None
             if not doc_id:
-                match = find_reusable_doc(client, dataset_id, file_path, docs=existing)
+                match = find_reusable_doc(client, dataset_id, upload_path, docs=existing, filename=file_path.name)
                 if match is not None:
                     doc_id = match["id"]
                     print(f"[INFO] {rel}: 复用已有文档 id={doc_id}（同名同大小），跳过上传")
                 else:
-                    result = client.upload_document(dataset_id, file_path)
+                    result = client.upload_document(dataset_id, upload_path, filename=file_path.name)
                     doc_id = result.get("id") if isinstance(result, dict) else None
                     if not doc_id and isinstance(result, list):
                         doc_id = result[0].get("id") if result else None

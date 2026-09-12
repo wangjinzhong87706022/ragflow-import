@@ -215,6 +215,49 @@ def test_tag_vocab_uploaded_when_kb_empty(mock_client_cls, tmp_path):
 
 
 # ---------------------------------------------------------------------------
+# P1-3（2026-09-12 评审）：上传响应形状必须是"文档 dict 列表"（与 upload_document
+# 同契约）。旧实现只认 dict → tag_doc_id 恒 None → 显式 parse 永不触发、
+# wait_parse 面对未解析文档只能超时。此处锁定两种形状都触发 parse。
+# ---------------------------------------------------------------------------
+
+def _setup_with_upload_result(upload_result):
+    mock_client = MagicMock()
+    mock_client.list_datasets.return_value = []
+    mock_client.create_dataset.return_value = {"id": "new_id"}
+    mock_client.list_documents.return_value = []
+    mock_client.upload_tag_vocab.return_value = upload_result
+    return mock_client
+
+
+@patch("run_setup.RAGFlowClient")
+def test_tag_vocab_parse_triggered_for_list_response(mock_client_cls, tmp_path):
+    """v0.27.0 实际返回 list → 必须取出 id 并调用 parse_documents。"""
+    mock_client = _setup_with_upload_result([{"id": "vocab-doc-1", "name": "taoqupo_vocab.txt"}])
+    mock_client_cls.return_value = mock_client
+
+    with _isolate_out(tmp_path):
+        run_setup_module.run_setup(dry_run=False)
+
+    mock_client.parse_documents.assert_called_once()
+    args, _ = mock_client.parse_documents.call_args
+    assert args[1] == ["vocab-doc-1"], f"parse 应收到词表 doc_id，实际 {args[1]}"
+
+
+@patch("run_setup.RAGFlowClient")
+def test_tag_vocab_parse_triggered_for_dict_response(mock_client_cls, tmp_path):
+    """兼容 dict 形状（旧实现假定）——同样必须触发 parse。"""
+    mock_client = _setup_with_upload_result({"id": "vocab-doc-2"})
+    mock_client_cls.return_value = mock_client
+
+    with _isolate_out(tmp_path):
+        run_setup_module.run_setup(dry_run=False)
+
+    mock_client.parse_documents.assert_called_once()
+    args, _ = mock_client.parse_documents.call_args
+    assert args[1] == ["vocab-doc-2"]
+
+
+# ---------------------------------------------------------------------------
 # P0-6：CLI 入口——CLAUDE.md 记载的阶段2命令 `python3 run_setup.py --dry-run`
 # 此前因缺 main/__main__ 静默空跑（live 冒烟发现，exit 0 零输出）。
 # ---------------------------------------------------------------------------
