@@ -1,0 +1,33 @@
+diff --git a/common/parser_config_utils.py b/common/parser_config_utils.py
+index 7f8bda2b6..d7bfcdd86 100644
+--- a/common/parser_config_utils.py
++++ b/common/parser_config_utils.py
+@@ -27,6 +27,28 @@ MINERU_OPTION_KEYS: tuple[str, ...] = (
+ )
+ 
+ 
++# PaddleOCR-VL algorithm options exposed through ``parser_config``. Keys are
++# the parser_config names; values are the ``PaddleOCRVLConfig`` field names
++# forwarded via ``algorithm_config`` (deepdoc/parser/paddleocr_parser.py).
++PADDLEOCR_ALGORITHM_OPTION_KEYS: tuple[tuple[str, str], ...] = (
++    ("paddleocr_merge_layout_blocks", "merge_layout_blocks"),
++    ("paddleocr_restructure_pages", "restructure_pages"),
++    ("paddleocr_merge_tables", "merge_tables"),
++    ("paddleocr_relevel_titles", "relevel_titles"),
++)
++
++
++def get_paddleocr_algorithm_config(parser_config: Any) -> dict[str, Any]:
++    """Extract PaddleOCR-VL algorithm options from ``parser_config``.
++
++    Returns a dict keyed by ``PaddleOCRVLConfig`` field names, ready to be
++    passed as ``algorithm_config`` to ``PaddleOCRParser.parse_pdf``.
++    """
++    if not isinstance(parser_config, dict):
++        return {}
++    return {field: parser_config[cfg_key] for cfg_key, field in PADDLEOCR_ALGORITHM_OPTION_KEYS if parser_config.get(cfg_key) is not None}
++
++
+ def has_mineru_options(parser_config: Any) -> bool:
+     """Return True if parser_config carries any MinerU-specific option.
+ 

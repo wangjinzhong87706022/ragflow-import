@@ -1,0 +1,27 @@
+diff --git a/rag/app/naive.py b/rag/app/naive.py
+index e59f2ba16..98aa5b502 100644
+--- a/rag/app/naive.py
++++ b/rag/app/naive.py
+@@ -48,7 +48,7 @@ from deepdoc.parser.pdf_parser import PlainParser, VisionParser
+ from deepdoc.parser.docling_parser import DoclingParser
+ from deepdoc.parser.tcadp_parser import TCADPParser
+ from common.float_utils import normalize_overlapped_percent
+-from common.parser_config_utils import has_mineru_options, normalize_layout_recognizer
++from common.parser_config_utils import get_paddleocr_algorithm_config, has_mineru_options, normalize_layout_recognizer
+ from common.text_utils import normalize_arabic_presentation_forms
+ from rag.nlp import (
+     concat_img,
+@@ -344,11 +344,13 @@ def by_paddleocr(
+                 ocr_model_config = resolve_model_config(tenant_id, LLMType.OCR, paddleocr_llm_name)
+                 ocr_model = LLMBundle(tenant_id=tenant_id, model_config=ocr_model_config, lang=lang)
+                 pdf_parser = ocr_model.mdl
++                algorithm_config = get_paddleocr_algorithm_config(kwargs.get("parser_config"))
+                 sections, tables = pdf_parser.parse_pdf(
+                     filepath=filename,
+                     binary=binary,
+                     callback=callback,
+                     parse_method=parse_method,
++                    algorithm_config=algorithm_config or None,
+                     **kwargs,
+                 )
+                 return sections, tables, pdf_parser

@@ -1,0 +1,26 @@
+diff --git a/rag/nlp/search.py b/rag/nlp/search.py
+index 3839a3865..9ada7847d 100644
+--- a/rag/nlp/search.py
++++ b/rag/nlp/search.py
+@@ -15,6 +15,7 @@
+ #
+ import json
+ import logging
++import os
+ import re
+ from collections import OrderedDict, defaultdict
+ from dataclasses import dataclass
+@@ -231,7 +232,12 @@ class Dealer:
+                     vector_weight = req.get("vector_similarity_weight", 0.3)
+                     fusionExpr = FusionExpr("weighted_sum", knn_top_k, {"weights": f"{1 - float(vector_weight)},{float(vector_weight)}"})
+                 else:
+-                    fusionExpr = FusionExpr("weighted_sum", knn_top_k, {"weights": "0.001,1"})
++                    # Window admission text weight. Hardcoded 0.001 upstream
++                    # (admission almost purely vector). Env-overridable so the
++                    # fulltext channel (important_kwd^30) can admit chunks on
++                    # exact figure/table-number queries.
++                    _text_w = float(os.environ.get("RAGFLOW_ES_FUSION_TEXT_WEIGHT", "0.001"))
++                    fusionExpr = FusionExpr("weighted_sum", knn_top_k, {"weights": f"{_text_w},{1 - _text_w}"})
+                 matchExprs = [matchText, matchDense, fusionExpr] if matchText else [matchDense]
+ 
+                 res = await thread_pool_exec(self.dataStore.search, src, highlightFields, filters, matchExprs, orderBy, offset, limit, idx_names, kb_ids, rank_feature=rank_feature)

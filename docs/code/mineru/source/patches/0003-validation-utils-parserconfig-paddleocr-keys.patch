@@ -1,0 +1,16 @@
+diff --git a/api/utils/validation_utils.py b/api/utils/validation_utils.py
+index 7e52e4726..9a074e18b 100644
+--- a/api/utils/validation_utils.py
++++ b/api/utils/validation_utils.py
+@@ -475,6 +475,11 @@ class ParserConfig(Base):
+     table_column_roles: Annotated[dict[str, TableColumnRole] | None, Field(default=None)]
+     # Table parser: list of column names (set by backend after first parse; used by frontend for role selector).
+     table_column_names: Annotated[list[str] | None, Field(default=None)]
++    # PaddleOCR-VL algorithm options forwarded via algorithm_config (see deepdoc/parser/paddleocr_parser.py).
++    paddleocr_merge_layout_blocks: Annotated[bool | None, Field(default=None)]
++    paddleocr_restructure_pages: Annotated[bool | None, Field(default=None)]
++    paddleocr_merge_tables: Annotated[bool | None, Field(default=None)]
++    paddleocr_relevel_titles: Annotated[bool | None, Field(default=None)]
+ 
+     @field_validator("table_column_roles", mode="before")
+     @classmethod

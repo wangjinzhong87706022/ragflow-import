@@ -1,0 +1,112 @@
+# MinerU API 服务 — 供 RAGFlow 以远程客户端方式调用
+# 对接文档: docs/faq.mdx "How to use MinerU to parse PDF documents"
+#
+# 镜像构建（官方 Dockerfile 二选一，内置 mineru[core]>=3.4.0 与全部模型）:
+#   海外网络:
+#     wget https://gcore.jsdelivr.net/gh/opendatalab/MinerU@master/docker/global/Dockerfile
+#   国内网络(模型走 modelscope、pip 走国内源):
+#     wget https://gcore.jsdelivr.net/gh/opendatalab/MinerU@master/docker/china/Dockerfile
+#   docker build -t mineru:latest -f Dockerfile .
+#
+# 基础镜像为 vllm/vllm-openai:v0.21.0(CUDA 13.0 驱动; 驱动较旧时改用 cu129 变体,
+# 见 Dockerfile 顶部注释)。要求 NVIDIA GPU (Volta+, 显存 >= 8G)。
+#
+# 启动:
+#   仅 pipeline 后端:
+#     docker compose -f docker-compose.yml --profile api up -d
+#   vlm-http-client 模式(RAGFlow 侧 MINERU_BACKEND=vlm-http-client):
+#     docker compose -f docker-compose.yml --profile api --profile vlm up -d
+#
+# RAGFlow 侧 .env:
+#   pipeline 模式:
+#     MINERU_APISERVER=http://<mineru-host>:8000
+#     MINERU_BACKEND=pipeline
+#   vlm-http-client 模式:
+#     MINERU_APISERVER=http://<mineru-host>:8000
+#     MINERU_BACKEND=vlm-http-client
+#     MINERU_SERVER_URL=http://<mineru-host>:30000
+#     注意: server_url 必须同时从 RAGFlow 容器和 mineru-api 容器可达(RAGFlow
+#     侧会先探测连通性, deepdoc/parser/mineru_parser.py check_backends),
+#     因此两端都填宿主机对外地址, 不要填容器内地址。
+
+services:
+  # ── Web API 服务: RAGFlow 的 MINERU_APISERVER 指向这里 (POST /file_parse) ──
+  mineru-api:
+    image: mineru:latest
+    container_name: mineru-api
+    restart: always
+    profiles: ["api"]
+    ports:
+      - "8000:8000"
+    environment:
+      MINERU_MODEL_SOURCE: local
+    entrypoint: mineru-api
+    command:
+      --host 0.0.0.0
+      --port 8000
+      # vlm-http-client 模式必须放开此开关: 默认绑定 0.0.0.0 时会禁用
+      # *-http-client 后端和 server_url 透传(SSRF 防护), 仅在内网受信环境启用
+      # --allow-public-http-client
+      # 显存不足时按注释调低 KV cache, 仍不足再降到 0.4 及以下
+      # --gpu-memory-utilization 0.5
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    ipc: host
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - mineru-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]  # 多卡改为 ["0", "1"]
+              capabilities: [gpu]
+    # 提示: 若只用 vlm-http-client 后端(mineru-api 仅转发给 vLLM, 不本地推理),
+    # 可删除上面的 deploy.resources 段, 本服务只需 CPU。
+
+  # ── vLLM 推理服务: 承载 MinerU2.5 VLM 模型, 供 vlm-http-client 后端使用 ──
+  mineru-openai-server:
+    image: mineru:latest
+    container_name: mineru-openai-server
+    restart: always
+    profiles: ["vlm"]
+    ports:
+      - "30000:30000"
+    environment:
+      MINERU_MODEL_SOURCE: local
+    entrypoint: mineru-openai-server
+    command:
+      --host 0.0.0.0
+      --port 30000
+      # 显存不足时降低 KV cache; 仍不足再降到 0.4 及以下
+      # --gpu-memory-utilization 0.5
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    ipc: host
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:30000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    networks:
+      - mineru-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0"]  # 多卡改为 ["0", "1"]
+              capabilities: [gpu]
+
+networks:
+  mineru-net:
+    driver: bridge
