@@ -98,6 +98,59 @@ python run_qc.py
 # Q5-Q6 验证 meta_data_filter 硬过滤
 ```
 
+## 图 / 表题注工具链（2026-09-15 新增）
+
+用于修复"图 / 表与其题注未关联，导致问答时图号、表号查不到"的问题。
+完整背景、根因分析与 RAGFlow 侧代码补丁见 `docs/fix-ragflow-caption-pipeline-2026-09-15.md`。
+
+### 脚本
+
+| 脚本 | 用途 |
+|---|---|
+| `inject_media_keywords.py` | 从 chunk 内容抽取"表X / 图Y"题注，写入 `important_keywords` |
+| `reparse_and_inject.py` | 触发重解析 → 等待完成 → 自动补关键词（一条命令，复用上面的抽取规则） |
+
+**为什么有效**：RAGFlow 检索打分时 `important_kwd` 的权重是正文的 5 倍
+（`rag/nlp/search.py`：`tks = content_ltks + title_tks * 2 + important_kwd * 5 + question_tks * 6`）。
+表格/图片 chunk 的题注常埋在块中部、正文里只剩"见表2"这类引用，
+不注入关键词时"表2 / 图10"这类精确查询召回不稳。
+
+支持的题注落位：`<caption>表D.0.1-1项目特性表</caption>`（DeepDOC）、
+`…</table>表 2 2.5 次抛物线表…`（MinerU）、块首图注（图片块）。
+
+### 用法
+
+```bash
+# 预演：只打印将要写入什么（不调写接口）
+python src/inject_media_keywords.py --base-url <URL>/api/v1 --api-key <KEY> \
+    --dataset-id <DS> --document-id <DOC>
+
+# 写入（合并模式，幂等）
+python src/inject_media_keywords.py ... --apply
+# 覆盖模式（清掉历史脏关键词，仅限识别出的媒体块）
+python src/inject_media_keywords.py ... --apply --replace
+# 整库
+python src/inject_media_keywords.py ... --dataset-id <DS> --all-documents --apply --replace
+
+# 重解析 + 补关键词（推荐：解析补丁上线后让存量文档生效）
+python src/reparse_and_inject.py --base-url <URL>/api/v1 --api-key <KEY> \
+    --dataset-id <DS> --document-id <DOC>
+python src/reparse_and_inject.py ... --dataset-id <DS> --all-documents
+python src/reparse_and_inject.py ... --dataset-id <DS> --all-documents --skip-parse  # 只补关键词
+```
+
+> ⚠️ **重解析会清空 chunk 的 `important_keywords`**，会让"表1/表2 排序打平"等问题立刻回归，
+> 因此「重解析 → 补关键词」必须成对执行（`reparse_and_inject.py` 已把两步串起来并自动等待解析完成）。
+
+> ⚠️ **前提**：走 VLM 图片描述需要租户配了 **Vision 模型**
+> （`GET /api/v1/models` 中存在 `model_type` 含 `vision` 的模型），
+> 否则 MinerU 的图片增强会被静默跳过，图号与图形内容补不出来。
+
+### 相关产出
+
+- 交接工单（可直接交给部署机上的 coding agent）：`docs/fix-ragflow-caption-pipeline-2026-09-15.md`
+- P0 补丁（MinerU VLM 图注上下文）：`docs/code/patches/mineru-vlm-figure-caption.patch`
+
 ## 人工门槛
 
 | 门槛 | 位置 | 通过标准 |

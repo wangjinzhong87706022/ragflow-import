@@ -1,0 +1,49 @@
+diff --git a/deepdoc/parser/mineru_parser.py b/deepdoc/parser/mineru_parser.py
+index 373d0e2c6..3254a4615 100644
+--- a/deepdoc/parser/mineru_parser.py
++++ b/deepdoc/parser/mineru_parser.py
+@@ -963,7 +963,10 @@ class MinerUParser(RAGFlowPdfParser):
+         """
+         from concurrent.futures import ThreadPoolExecutor, as_completed
+         from rag.app.picture import vision_llm_chunk
+-        from rag.prompts.generator import vision_llm_figure_describe_prompt
++        from rag.prompts.generator import (
++            vision_llm_figure_describe_prompt,
++            vision_llm_figure_describe_prompt_with_context,
++        )
+ 
+         image_jobs = [(idx, item) for idx, item in enumerate(outputs) if item.get("type") == MinerUContentType.IMAGE and item.get("img_path") and os.path.exists(item["img_path"])]
+         if not image_jobs:
+@@ -972,10 +975,31 @@ class MinerUParser(RAGFlowPdfParser):
+         if callback:
+             callback(0.78, f"[MinerU] Generating VLM descriptions for {len(image_jobs)} images...")
+ 
+-        prompt = vision_llm_figure_describe_prompt(language=language or "English")
++        default_prompt = vision_llm_figure_describe_prompt(language=language or "English")
++
++        def figure_caption(item):
++            """MinerU 给出的图注 / 脚注，作为 VLM 的上下文（通常含图号与主题）。"""
++            parts = [*(item.get("image_caption") or []), *(item.get("image_footnote") or [])]
++            return " ".join(p.strip() for p in parts if isinstance(p, str) and p.strip()).strip()
+ 
+         def worker(idx, item):
+             try:
++                caption = figure_caption(item)
++                if caption:
++                    # 对齐 deepdoc 的 VisionFigureParser（deepdoc/parser/figure_parser.py:180-186）：
++                    # 把图注作为 CONTEXT (ABOVE) 交给 VLM，使其描述能带上图号（如「图10」），
++                    # 否则纯看图描述天然不含编号，检索「图10」时定位不到该块。
++                    prompt = vision_llm_figure_describe_prompt_with_context(
++                        context_above=caption,
++                        context_below="",
++                        language=language or "English",
++                    )
++                else:
++                    prompt = default_prompt
++                logging.debug(
++                    "[MinerU] image #%s VLM prompt=%s caption_len=%s",
++                    idx, "with_context" if caption else "default", len(caption),
++                )
+                 with Image.open(item["img_path"]) as img:
+                     img.load()
+                     desc = vision_llm_chunk(binary=img, vision_model=vision_model, prompt=prompt)
