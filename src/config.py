@@ -77,10 +77,11 @@ DATASETS = [
             "topn_tags": 3,
             "tag_kb_ids": [],
             # laws 创建默认 graphrag/raptor 均为 False → 显式打开 GraphRAG 与 Raptor
+            # 2026-09-20: 应用图谱优化模块配置
             "graphrag": {
                 "use_graphrag": True,
                 "method": "light",
-                "entity_types": ["FloodEvent", "Station", "Structure", "Person", "Regulation", "Parameter"],
+                "entity_types": ["FloodEvent", "Station", "Structure", "Person", "Regulation", "Parameter", "Organization", "Equipment"],
                 "resolution": True,
             },
             "raptor": {"use_raptor": True},

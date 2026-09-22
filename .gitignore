@@ -28,3 +28,8 @@ out/_archive/
 
 # 一次性排查脚本（含环境相关常量，不入库）
 src/_tmp_*.py
+
+# ── qa-webapp（问答工作台）────────────────────────────────────────────
+# config.json 里是明文 API Key，只提交 config.example.json
+qa-webapp/config.json
+qa-webapp/*.log
