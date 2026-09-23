@@ -270,6 +270,25 @@ def _no_creds_needed(monkeypatch):
 
 
 @patch("run_setup.RAGFlowClient")
+def test_use_tag_kb_false_skips_tag_kb_entirely(mock_client_cls, tmp_path):
+    """USE_TAG_KB=False（如泾惠渠画像）：不建 ds0、不传词表，tag_kb_ids 下发 []。"""
+    mock_client = MagicMock()
+    mock_client_cls.return_value = mock_client
+    mock_client.list_datasets.return_value = []
+    mock_client.create_dataset.side_effect = lambda name, chunk_method: {"id": f"id-{name}"}
+
+    with _isolate_out(tmp_path), patch.object(run_setup_module, "USE_TAG_KB", False):
+        state = run_setup_module.run_setup(dry_run=False)
+
+    assert "ds0" not in state
+    mock_client.upload_tag_vocab.assert_not_called()
+    calls = mock_client.update_dataset.call_args_list
+    assert len(calls) == 5, "业务库 parser_config 仍须全部下发"
+    for call in calls:
+        assert call.args[1]["tag_kb_ids"] == []
+
+
+@patch("run_setup.RAGFlowClient")
 def test_cli_dry_run_prints_plan_without_creating(mock_client_cls, tmp_path, capsys):
     """`run_setup.py --dry-run` 必须打印建库计划且不调用 create_dataset。"""
     mock_client = MagicMock()

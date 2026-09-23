@@ -158,6 +158,30 @@ DATASETS = [
 
 TAG_KB = {"key": "ds0", "name": "桃曲坡标签库", "chunk_method": "tag"}
 
+# 标签库开关：False 时 run_setup 跳过 TAG_KB 创建/词表上传，tag_kb_ids 注入 []
+# （多项目复用：新项目用不同用户/API key，桃曲坡标签库不可复用）
+USE_TAG_KB = True
+
+# 词表文件名（profile 可按项目改名）
+TAG_VOCAB_FILENAME = "taoqupo_vocab.txt"
+
+# dataset key → 元数据推导映射（原在 corpus.py，上移至 config 供 profile 覆盖）
+DOC_CATEGORY_BY_DS = {
+    "ds1": "规程预案",
+    "ds2": "基础数据",
+    "ds3": "洪水资料",
+    "ds4": "组织管理",
+    "ds5": "工程资料",
+}
+
+DOC_NATURE_BY_DS = {
+    "ds1": "法规",
+    "ds2": "技术",
+    "ds3": "技术",
+    "ds4": "管理",
+    "ds5": "技术",
+}
+
 # 11 metadata fields (spec §4.1)
 METADATA_SCHEMA = [
     {"key": "doc_category",    "type": "string",  "description": "文档大类",           "enum": ["规程预案","基础数据","洪水资料","组织管理","工程资料"]},
@@ -277,3 +301,30 @@ PNG_RENDER_ZOOM = float(os.getenv("PNG_RENDER_ZOOM", "2"))
 # 轮询超时（秒）——大图 VLM 处理可能需要 5-10 分钟
 PARSE_POLL_TIMEOUT = int(os.getenv("PARSE_POLL_TIMEOUT", "600"))
 PARSE_POLL_INTERVAL = int(os.getenv("PARSE_POLL_INTERVAL", "15"))
+
+
+# ── 知识库画像（KB_PROFILE）────────────────────────────────────────
+# 设 `KB_PROFILE=<name>` 环境变量时加载 profiles/<name>.py，其中定义的**大写
+# 常量**覆盖本模块同名默认值（CORPUS_ROOT / DIR_DATASET / DATASETS /
+# OUT_DIR / METADATA_SCHEMA / USE_TAG_KB 等），同一套管线服务多个知识库项目。
+# 未设置时一切保持桃曲坡默认值——现有测试与脚本零影响。
+# 注意：profile 的 OUT_DIR 必须指向项目专属子目录，隔离各项目的
+# mapping.csv / setup_state.json / import_state.json。
+KB_PROFILE = os.getenv("KB_PROFILE", "")
+
+
+def _apply_profile(profile: str) -> None:
+    import importlib
+    try:
+        mod = importlib.import_module(f"profiles.{profile}")
+    except ModuleNotFoundError as exc:
+        raise ValueError(
+            f"KB_PROFILE={profile!r} 指向不存在的画像（应为 src/profiles/{profile}.py）"
+        ) from exc
+    overrides = {n: getattr(mod, n) for n in dir(mod) if n.isupper()}
+    globals().update(overrides)
+    print(f"[INFO] KB_PROFILE={profile}: 已覆盖 {len(overrides)} 个 config 常量")
+
+
+if KB_PROFILE:
+    _apply_profile(KB_PROFILE)

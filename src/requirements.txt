@@ -12,3 +12,7 @@ python-calamine>=0.2.0  # 读取 WPS 生成的非标准 .xls 的**首选**引擎
 
 # 工程图纸 PNG 补救（rescue_drawings.py）：PDF→PNG 渲染
 PyMuPDF>=1.24.0
+
+# 泾惠渠语料预处理（jhc_prepare.py）：扫描件图片按组合并为 PDF（无损 JPEG/PNG 内嵌，
+# tif 经 Pillow 转码兜底）
+img2pdf>=0.5.0

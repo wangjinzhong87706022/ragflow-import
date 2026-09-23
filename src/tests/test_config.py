@@ -169,11 +169,17 @@ def test_parser_config_carries_nested_graphrag_and_raptor():
 def test_graphrag_scope_matches_spec():
     ds = _ds_by_key()
     types = {"FloodEvent", "Station", "Structure", "Person", "Regulation", "Parameter"}
-    for k in ("ds1", "ds3"):
-        g = ds[k]["parser_config"]["graphrag"]
-        assert g["use_graphrag"] is True and g["method"] == "light"
-        assert g["resolution"] is True
-        assert set(g["entity_types"]) == types
+    # ds1：2026-09-20 图谱优化在 6 核心类型上扩了 Organization/Equipment（见 config 注释），
+    # 核心集必须齐；ds3 保持 spec 精确集
+    g1 = ds["ds1"]["parser_config"]["graphrag"]
+    assert g1["use_graphrag"] is True and g1["method"] == "light"
+    assert g1["resolution"] is True
+    assert types <= set(g1["entity_types"])
+    assert set(g1["entity_types"]) - types == {"Organization", "Equipment"}
+    g3 = ds["ds3"]["parser_config"]["graphrag"]
+    assert g3["use_graphrag"] is True and g3["method"] == "light"
+    assert g3["resolution"] is True
+    assert set(g3["entity_types"]) == types
     # naive 创建默认 use_graphrag=True → ds2/ds4 必须显式 False；ds5(paper) 显式自文档化
     for k in ("ds2", "ds4", "ds5"):
         assert ds[k]["parser_config"]["graphrag"]["use_graphrag"] is False

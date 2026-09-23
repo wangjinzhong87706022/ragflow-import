@@ -22,7 +22,11 @@ from pathlib import Path
 
 import requests
 
-from config import DATASETS, TAG_KB, METADATA_SCHEMA, OUT_DIR, RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, RAGFLOW_API_KEY
+from config import (
+    DATASETS, TAG_KB, METADATA_SCHEMA, OUT_DIR,
+    RAGFLOW_EMAIL, RAGFLOW_PASSWORD, PUBLIC_PEM, RAGFLOW_API_KEY,
+    USE_TAG_KB, TAG_VOCAB_FILENAME,
+)
 from ragflow_client import RAGFlowClient
 from tag_vocab import write_vocab_txt
 
@@ -63,7 +67,7 @@ def run_setup(dry_run: bool = False) -> dict[str, dict]:
     # ------------------------------------------------------------------
     # Step 3 – create or reuse datasets (TAG_KB first, then DATASETS)
     # ------------------------------------------------------------------
-    all_defs = [TAG_KB] + DATASETS          # ds0 then ds1..ds5
+    all_defs = ([TAG_KB] if USE_TAG_KB else []) + DATASETS   # ds0 然后 ds1..ds5
     state: dict[str, dict] = {}
     created: list[str] = []
     reused: list[str] = []
@@ -90,12 +94,15 @@ def run_setup(dry_run: bool = False) -> dict[str, dict]:
         state[key] = {"name": name, "id": ds_id}
 
     # ------------------------------------------------------------------
-    # Step 4 – TAG_KB special handling（幂等：库内已有文档则跳过上传）
+    # Step 4 – TAG_KB special handling（幂等：库内已有文档则跳过上传；
+    #   USE_TAG_KB=False 的画像整体跳过——不同用户的知识库不可复用桃曲坡词表）
     # ------------------------------------------------------------------
-    tag_kb_id = state["ds0"]["id"]
+    tag_kb_id = state["ds0"]["id"] if USE_TAG_KB else None
 
-    vocab_path = OUT_DIR / "tag_vocab" / "taoqupo_vocab.txt"
-    if dry_run:
+    vocab_path = OUT_DIR / "tag_vocab" / TAG_VOCAB_FILENAME
+    if not USE_TAG_KB:
+        print("[INFO] USE_TAG_KB=False——跳过标签库创建与词表上传（tag_kb_ids=[]）")
+    elif dry_run:
         print(f"[dry_run] Would write vocab to {vocab_path}, upload and parse it in the tag KB")
     else:
         existing_docs = client.list_documents(tag_kb_id)
@@ -138,12 +145,15 @@ def run_setup(dry_run: bool = False) -> dict[str, dict]:
     for ds_def in DATASETS:            # ds1..ds5 only
         key = ds_def["key"]
         ds_id = state[key]["id"]
-        parser_config = {**ds_def["parser_config"], "tag_kb_ids": [tag_kb_id]}
+        parser_config = {
+            **ds_def["parser_config"],
+            "tag_kb_ids": [tag_kb_id] if USE_TAG_KB else [],
+        }
 
         if dry_run:
             g_on = parser_config["graphrag"]["use_graphrag"]
             r_on = parser_config["raptor"]["use_raptor"]
-            print(f"[dry_run] Would update_dataset({key}, tag_kb_ids=[{tag_kb_id}], "
+            print(f"[dry_run] Would update_dataset({key}, tag_kb_ids={parser_config['tag_kb_ids']}, "
                   f"graphrag={g_on}, raptor={r_on})")
         else:
             client.update_dataset(ds_id, parser_config)

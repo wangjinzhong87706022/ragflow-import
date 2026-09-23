@@ -242,8 +242,8 @@ def run_import(
             continue
         pending.append(row)
 
-    # Order: ds1..ds5 (ds0 tag KB is already done)
-    ds_order = ["ds1", "ds2", "ds3", "ds4", "ds5"]
+    # Order: config.DATASETS 定义顺序（桃曲坡 ds1..ds5；profile 项目如 jhc1..jhc3 同理）
+    ds_order = [d["key"] for d in DATASETS]
     pending.sort(key=lambda r: ds_order.index(r.get("dataset_key", "ds1")) if r.get("dataset_key", "ds1") in ds_order else len(ds_order))
 
     if limit:

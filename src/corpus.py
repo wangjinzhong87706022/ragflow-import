@@ -13,6 +13,8 @@ from config import (
     CORPUS_ROOT,
     DIR_DATASET,
     DOC_EXTS,
+    DOC_CATEGORY_BY_DS,
+    DOC_NATURE_BY_DS,
     FLOOD_EVENT_BY_SUBDIR,
     SKIP_DIRS,
     IMPORT_COLS,
@@ -126,6 +128,15 @@ def source_format_from_ext(ext: str) -> str:
     return "unknown"
 
 
+def source_format_from_name(name: str, ext: str) -> str:
+    """扩展名判定 + 扫描图片合并 PDF 特例：jhc_prepare 产物文件名带全角（合并）
+    标记 → merged_pdf，供元数据硬过滤区分原生 PDF 与 OCR 扫描件。"""
+    sf = source_format_from_ext(ext)
+    if sf == "pdf" and "（合并）" in name:
+        return "merged_pdf"
+    return sf
+
+
 def quality_from_source_format(sf: str) -> str:
     """
     原生可编辑格式（word/excel）文本保真 → high；
@@ -141,22 +152,11 @@ def _should_skip(rel_parts: tuple[str, ...]) -> bool:
 # ---------------------------------------------------------------------------
 # Metadata derivation
 # ---------------------------------------------------------------------------
+# dataset key → doc_category / doc_nature 已上移至 config（DOC_CATEGORY_BY_DS /
+# DOC_NATURE_BY_DS），供 KB_PROFILE 画像覆盖。
 
-_DOC_CATEGORY_FROM_DS = {
-    "ds1": "规程预案",
-    "ds2": "基础数据",
-    "ds3": "洪水资料",
-    "ds4": "组织管理",
-    "ds5": "工程资料",
-}
-
-_DOC_NATURE_BY_DS = {
-    "ds1": "法规",
-    "ds2": "技术",
-    "ds3": "技术",
-    "ds4": "管理",
-    "ds5": "技术",
-}
+_DOC_CATEGORY_FROM_DS = DOC_CATEGORY_BY_DS
+_DOC_NATURE_BY_DS = DOC_NATURE_BY_DS
 
 
 def _doc_type_from_rel(rel: str, source_format: str) -> str:
@@ -222,7 +222,7 @@ def scan() -> list[Entry]:
             unknown.append(rel)
             continue
 
-        sf = source_format_from_ext(path.suffix)
+        sf = source_format_from_name(path.name, path.suffix)
         meta = derive_metadata(rel, ds_key, sf)
 
         skip_reason: str | None = None
