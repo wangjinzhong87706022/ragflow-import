@@ -11,14 +11,22 @@ profiles/jinghuiqu.py — 泾惠渠灌区项目知识库画像（KB_PROFILE=jing
 - 三库统一 naive、graphrag/raptor 显式关闭（防 naive 创建默认 True）
 - 不建标签库（不同用户/API key，桃曲坡词表不可复用）
 """
-import os
+import copy
 import pathlib
+
+from jhc_constants import (
+    DOC_EXTS as _DOC_EXTS_CONST,
+    JHC_CORPUS_ROOT_DEFAULT,
+    JHC_SRC_ROOT_DEFAULT,
+    JUNK_DIRS,
+)
 
 _ROOT = pathlib.Path(__file__).resolve().parent.parent.parent   # 项目根（src/ 上一级）
 
 # 原始资料根（jhc_prepare 输入，只读）与暂存语料根（jhc_prepare 输出 = 导入源）
-JHC_SRC_ROOT = pathlib.Path(os.getenv("JHC_SRC_ROOT", r"D:\doc\taineng\泾惠渠项目\资料收集"))
-CORPUS_ROOT = pathlib.Path(os.getenv("JHC_CORPUS_ROOT", str(_ROOT / "out" / "jhc_corpus")))
+# 路径默认值单源在 jhc_constants，env 覆盖优先级一致（评审 #1）
+JHC_SRC_ROOT = JHC_SRC_ROOT_DEFAULT
+CORPUS_ROOT = JHC_CORPUS_ROOT_DEFAULT
 
 # 项目专属 OUT_DIR：隔离 mapping.csv / setup_state.json / import_state.json
 OUT_DIR = _ROOT / "out" / "jinghuiqu"
@@ -30,10 +38,12 @@ DIR_DATASET = {
     "计划处":        "jhc3",
 }
 
-# 3 个业务库：naive / chunk 512 / auto_keywords 8；graphrag+raptor 一期全关
+# 3 个业务库：naive / chunk 512 / auto_keywords 0（关闭——每 chunk 一次 27B LLM
+# 调用是导入速度第二大瓶颈，大文件数百 chunks 拖慢数小时；检索靠向量+ES 全文
+# 兜底，若质检发现短查询召回差再对个别库补开）；graphrag+raptor 一期全关
 _NAIVE_PARSER_CONFIG = {
     "chunk_token_num": 512,
-    "auto_keywords": 8,
+    "auto_keywords": 0,
     "auto_questions": 0,
     "topn_tags": 3,
     "tag_kb_ids": [],
@@ -43,11 +53,11 @@ _NAIVE_PARSER_CONFIG = {
 
 DATASETS = [
     {"key": "jhc1", "name": "泾惠渠-工程管理处",    "chunk_method": "naive",
-     "parser_config": dict(_NAIVE_PARSER_CONFIG)},
+     "parser_config": copy.deepcopy(_NAIVE_PARSER_CONFIG)},
     {"key": "jhc2", "name": "泾惠渠-工程建设处资料", "chunk_method": "naive",
-     "parser_config": dict(_NAIVE_PARSER_CONFIG)},
+     "parser_config": copy.deepcopy(_NAIVE_PARSER_CONFIG)},
     {"key": "jhc3", "name": "泾惠渠-计划处",        "chunk_method": "naive",
-     "parser_config": dict(_NAIVE_PARSER_CONFIG)},
+     "parser_config": copy.deepcopy(_NAIVE_PARSER_CONFIG)},
 ]
 
 # 一期不建标签库（run_setup 据此跳过 ds0 与词表上传，tag_kb_ids 下发 []）
@@ -86,8 +96,11 @@ DEPT_KEYWORDS = sorted([
     "防汛办", "泾惠渠管理局", "泾惠渠灌区",
 ], key=len, reverse=True)
 
-# 压缩包经 jhc_prepare 校验后统一打 skip 标记；此处仅挡杂项目录
-SKIP_DIRS = {"__MACOSX", ".claude", "Thumbs.db目录"}
+# 压缩包经 jhc_prepare 校验后统一打 skip 标记；此处仅挡杂项目录。
+# Thumbs.db 是文件非目录，经 jhc_constants.JUNK_FILES 在 jhc_prepare 过滤；
+# corpus 扫描时 .db 扩展名不在 DOC_EXTS 自然跳过（评审 #9）。
+SKIP_DIRS = set(JUNK_DIRS)
 
-# 可导入扩展名与桃曲坡一致（图片已在预处理阶段合并为 PDF，不直导）
-DOC_EXTS = (".pdf", ".docx", ".doc", ".xls", ".xlsx")
+# 可导入扩展名与桃曲坡一致（图片已在预处理阶段合并为 PDF，不直导）；
+# 单源在 jhc_constants，转 tuple 保持与 config 默认类型一致（评审 #11）
+DOC_EXTS = tuple(_DOC_EXTS_CONST)

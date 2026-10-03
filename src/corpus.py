@@ -20,6 +20,7 @@ from config import (
     IMPORT_COLS,
     LOCATION_KEYWORDS,
     DEPT_KEYWORDS,
+    MERGED_TAG,
     OUT_DIR,
     normalize_rel,
 )
@@ -129,10 +130,10 @@ def source_format_from_ext(ext: str) -> str:
 
 
 def source_format_from_name(name: str, ext: str) -> str:
-    """扩展名判定 + 扫描图片合并 PDF 特例：jhc_prepare 产物文件名带全角（合并）
+    """扩展名判定 + 扫描图片合并 PDF 特例：jhc_prepare 产物文件名带 MERGED_TAG
     标记 → merged_pdf，供元数据硬过滤区分原生 PDF 与 OCR 扫描件。"""
     sf = source_format_from_ext(ext)
-    if sf == "pdf" and "（合并）" in name:
+    if sf == "pdf" and MERGED_TAG in name:
         return "merged_pdf"
     return sf
 

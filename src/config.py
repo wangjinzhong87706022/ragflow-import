@@ -41,6 +41,10 @@ def normalize_rel(rel) -> str:
 # 可导入的文档扩展名（图片走 VLM 预处理管线，不入扫描范围）
 DOC_EXTS = (".pdf", ".docx", ".doc", ".xls", ".xlsx")
 
+# 合并 PDF 标记（jhc_prepare 产物文件名带此标记 → corpus 判 source_format=merged_pdf）。
+# 单源在 jhc_constants，消除此前与 jhc_prepare/corpus 的跨模块字符串约定（评审 #5）
+from jhc_constants import MERGED_TAG
+
 # 目录→知识库指派（2026-08-26 语料源切换：pdfs/ 一级目录即分类）
 # 2026-09-04 扩展：新增 11-技术资料、12-项目资料 两个一级目录（数字孪生项目相关）
 DIR_DATASET = {

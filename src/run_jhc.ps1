@@ -14,10 +14,16 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot          # 管线脚本需在 src/ 下运行
+
+# venv 提示：忘激活环境会用错解释器（评审 #12）
+if (-not $env:VIRTUAL_ENV -and -not (Test-Path .venv)) {
+    Write-Host "[WARN] 未检测到 venv，建议先: python -m venv .venv; .\.venv\Scripts\Activate.ps1; pip install -r requirements.txt"
+}
+
 $env:KB_PROFILE = 'jinghuiqu'
 if (-not $env:RAGFLOW_API_BASE) {
-    $env:RAGFLOW_API_BASE = 'https://labragf.openagp.top:9080/api/v1'   # 远程实例；本地自启可先 set 后运行
-    Write-Host "[INFO] RAGFLOW_API_BASE 未设置，默认远程实例 $env:RAGFLOW_API_BASE"
+    $env:RAGFLOW_API_BASE = 'http://localhost:9380/api/v1'   # 默认本地实例；远程实例请显式 set RAGFLOW_API_BASE
+    Write-Host "[INFO] RAGFLOW_API_BASE 未设置，默认本地实例 $env:RAGFLOW_API_BASE"
 }
 if (-not $env:RAGFLOW_API_KEY) {
     $sec = Read-Host '请输入泾惠渠用户的 RAGFlow API Key（掩码输入）' -AsSecureString
@@ -30,7 +36,7 @@ if (-not $Import) {
     python run_setup.py --dry-run
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     $ans = Read-Host '确认按上述计划建库？(y/N)'
-    if ($ans -eq 'y') { python run_setup.py --apply }
+    if ($ans -and $ans.Trim().ToLower() -eq 'y') { python run_setup.py --apply }
     return
 }
 

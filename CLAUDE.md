@@ -65,6 +65,7 @@ run_qc.py / inspect_chunks.py ◀── RAGFlowClient.search/list_chunks
 - All runtime artifacts go to `out/`; never write products into `src/`. The mutable pipeline state (`out/{mapping.csv,import_state.json,setup_state.json}`) is **gitignored, not tracked** — it is environment-bound and OS-path-sensitive, and committing it has twice propagated local paths/instance ids to the server. `rel` values must stay POSIX (`config.normalize_rel`).
 - The four human gates are mandatory and must not be scripted around: mapping.csv review, VLM approve flag, 10% OCR sampling, and the ds3 five-file pilot before any full import.
 - Tests must stay network-free and isolate `OUT_DIR` to a temp dir (see the `_isolate_out` pattern in `src/tests/`).
+- **Import is strictly serial**: `run_import.py` processes one file at a time (upload → parse → wait_document), never concurrent — LLM/embedding model services on the RAGFlow instance have limited concurrency and parallel parsing will overwhelm them. No `concurrent.futures`/`asyncio`/thread pools in any import path.
 
 ## Conventions
 

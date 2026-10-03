@@ -55,6 +55,7 @@ def call_vision(
     model: str = LLM_MODEL,
     timeout: int = VISION_CALL_TIMEOUT,
     transport=requests.post,
+    max_tokens: int | None = None,
 ) -> str:
     """
     向 VLM 端点发送 chat/completions 请求并返回 assistant 消息文本。
@@ -71,10 +72,15 @@ def call_vision(
         API base URL，例如 ``"https://llm.openagp.top:9080/v1"``.
     api_key : str
         Bearer token.
-    model : str
+    model : str, optional
         模型名，缺省取 config.LLM_MODEL.
+    timeout : int, optional
+        读超时秒数，缺省取 config.VISION_CALL_TIMEOUT.
     transport : callable, optional
         HTTP transport callable (默认为 ``requests.post``)，用于单元测试注入 mock.
+    max_tokens : int, optional
+        最大输出 token；缺省不传该字段（走网关默认）。密集表格全文转写
+        易触网关默认 4k 截断 → JSON 解析失败，转写管线显式给大值。
 
     Returns
     -------
@@ -96,6 +102,8 @@ def call_vision(
         "messages": [payload],
         "temperature": 0.1,
     }
+    if max_tokens is not None:
+        body["max_tokens"] = max_tokens
     resp = transport(url, headers=headers, json=body, timeout=timeout)
     resp.raise_for_status()
     return resp.json()["choices"][0]["message"]["content"]

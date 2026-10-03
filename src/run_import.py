@@ -272,6 +272,8 @@ def run_import(
     failed = 0
     t0 = time.time()
 
+    # 严格串行：大模型并发能力有限，逐文件 upload→parse→wait 完成后再处理下一个。
+    # 刻意不用线程池/asyncio——并发解析会压垮 RAGFlow 实例的模型服务（用户明确要求）。
     for row in pending:
         rel = row["rel"]
         ds_k = row.get("dataset_key", "")
