@@ -1,0 +1,78 @@
+[
+  {
+    "id": "JQ1",
+    "text": "徐木泵站机组运行记录表记录了哪些机组参数？",
+    "dataset_ids": ["jhc1"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["徐木泵站机组运行记录表", "进线柜电压"],
+    "category": "单跳参数（B/C页VLM转写）"
+  },
+  {
+    "id": "JQ2",
+    "text": "2025年度电度记录表由哪个管理站填报？",
+    "dataset_ids": ["jhc1"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["电度记录表", "徐木"],
+    "category": "手写记录表"
+  },
+  {
+    "id": "JQ3",
+    "text": "冬灌操作票的操作项目与时间安排是怎样的？",
+    "dataset_ids": ["jhc1"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["操作票"],
+    "category": "操作票（手写混写）"
+  },
+  {
+    "id": "JQ4",
+    "text": "西郊水库除险加固工程初步设计审查视频会议何时何地召开？",
+    "dataset_ids": ["jhc2"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["视频会议", "12 月 2 日"],
+    "category": "会议通知（扫描页）"
+  },
+  {
+    "id": "JQ5",
+    "text": "泾惠渠西郊水库除险加固工程安全监督书的监督单位与项目法人是谁？",
+    "dataset_ids": ["jhc2"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["安全监督书", "陕西省水利工程质量安全中心"],
+    "category": "多页扫描件"
+  },
+  {
+    "id": "JQ6",
+    "text": "2024年安全防护实施方案技术审查会签到表有哪些人员与单位？",
+    "dataset_ids": ["jhc3"],
+    "use_kg": true,
+    "meta_data_filter": null,
+    "expected_keywords": ["签到表", "陕西省泾惠水利水电设计院"],
+    "category": "签到表（惯常写法〃展开）"
+  },
+  {
+    "id": "JQ7",
+    "text": "十三五尾留工程概算投资的编制依据与复核金额是什么？",
+    "dataset_ids": ["jhc3"],
+    "use_kg": false,
+    "meta_data_filter": null,
+    "expected_keywords": ["编制规定", "概算"],
+    "category": "概算书（扫描页）"
+  },
+  {
+    "id": "JQ8",
+    "text": "计划处归类的实施方案审查意见文件有哪些？",
+    "dataset_ids": ["jhc3"],
+    "use_kg": false,
+    "meta_data_filter": {
+      "method": "manual",
+      "logic": "and",
+      "conditions": [{"key": "doc_category", "op": "=", "value": "计划审批"}]
+    },
+    "expected_keywords": ["实施方案审查意见"],
+    "category": "元数据过滤（doc_category）"
+  }
+]

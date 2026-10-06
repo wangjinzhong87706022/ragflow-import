@@ -146,3 +146,65 @@ def test_write_markdown_empty_results_no_crash(tmp_path):
     out = tmp_path / "report.md"
     write_markdown(out, [])  # 不抛异常即通过
     assert "0/0" in out.read_text(encoding="utf-8")
+
+
+# ------------------------------------------------------------------
+# 外挂题集（--questions）：泾惠渠 jhc1-3 验收题集
+# ------------------------------------------------------------------
+
+def test_load_questions_default_returns_builtin():
+    from run_qc import QUESTIONS, load_questions
+    assert load_questions(None) == QUESTIONS
+
+
+def test_load_questions_reads_json_file(tmp_path):
+    from run_qc import load_questions
+    p = tmp_path / "qs.json"
+    p.write_text(json.dumps([
+        {"id": "A1", "text": "问题", "dataset_ids": ["jhc1"], "use_kg": False,
+         "meta_data_filter": None, "expected_keywords": ["关键词"], "category": "c"},
+    ], ensure_ascii=False), encoding="utf-8")
+    qs = load_questions(p)
+    assert qs[0]["id"] == "A1" and qs[0]["dataset_ids"] == ["jhc1"]
+
+
+def test_load_questions_rejects_missing_file(tmp_path):
+    import pytest
+    from run_qc import load_questions
+    with pytest.raises(FileNotFoundError):
+        load_questions(tmp_path / "nope.json")
+
+
+def test_load_questions_rejects_bad_shape(tmp_path):
+    import pytest
+    from run_qc import load_questions
+    empty = tmp_path / "empty.json"
+    empty.write_text("[]", encoding="utf-8")
+    with pytest.raises(ValueError):
+        load_questions(empty)
+    bad = tmp_path / "bad.json"
+    bad.write_text(json.dumps([{"id": "A1"}]), encoding="utf-8")
+    with pytest.raises(ValueError):
+        load_questions(bad)
+
+
+def test_shipped_jinghuiqu_questions_valid():
+    """随仓题集须满足 schema，且 dataset_ids 用库 key（非 dataset id）。"""
+    import pathlib
+    from run_qc import load_questions
+    p = pathlib.Path(__file__).parent.parent / "qc_questions_jinghuiqu.json"
+    qs = load_questions(p)
+    assert len(qs) >= 6
+    for q in qs:
+        assert q["dataset_ids"] == [k for k in q["dataset_ids"]
+                                    if k in ("jhc1", "jhc2", "jhc3")], q["id"]
+        assert q["expected_keywords"], q["id"]
+
+
+def test_report_title_reflects_question_set(tmp_path):
+    from run_qc import write_markdown
+    out = tmp_path / "r.md"
+    qs = tmp_path / "my_qs.json"
+    qs.write_text("[]", encoding="utf-8")
+    write_markdown(out, [], title="RAGFlow Import — QC Report（my_qs）")
+    assert "my_qs" in out.read_text(encoding="utf-8")

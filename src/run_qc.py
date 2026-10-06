@@ -1,4 +1,4 @@
-"""
+﻿"""
 run_qc — 人工验收问题集 for the 桃曲坡 RAGFlow import.
 
 Procedure:
@@ -290,6 +290,38 @@ def load_setup_state() -> dict[str, dict]:
         return json.load(f)
 
 
+REQUIRED_QUESTION_FIELDS = ("id", "text", "dataset_ids", "use_kg",
+                            "expected_keywords", "category")
+
+
+def load_questions(path: str | Path | None) -> list[dict]:
+    """题集来源：``None`` → 内置桃曲坡 QUESTIONS；给路径 → 读 JSON 题集。
+
+    外挂题集用于其它知识库（如泾惠渠 jhc1-3）：题目按同一 schema 书写，
+    ``dataset_ids`` 放库 key（jhc1 之类），由 run_qc 用 setup_state 解析为
+    真实 dataset id（服务端只认 id，传 key 会报 code=102）。
+    """
+    if path is None:
+        return list(QUESTIONS)
+    p = Path(path)
+    if not p.is_file():
+        raise FileNotFoundError(f"题集文件不存在: {p}")
+    data = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(data, list) or not data:
+        raise ValueError(f"题集须为非空 JSON 数组: {p}")
+    problems = []
+    for i, q in enumerate(data):
+        if not isinstance(q, dict):
+            problems.append(f"[{i}] 非对象")
+            continue
+        missing = [f for f in REQUIRED_QUESTION_FIELDS if f not in q]
+        if missing:
+            problems.append(f"[{i}] 缺字段 {missing}")
+    if problems:
+        raise ValueError(f"题集格式错误 {p}: " + "；".join(problems))
+    return data
+
+
 def keywords_found(chunk_texts: list[str], expected_keywords: list[str]) -> list[str]:
     """Return which expected_keywords appear in any chunk text."""
     found = []
@@ -313,15 +345,19 @@ def write_json(path: Path, data) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def write_markdown(path: Path, results: list[dict]) -> None:
+def write_markdown(path: Path, results: list[dict], title: str = "RAGFlow Import — QC Report") -> None:
     """Write the QC report as a markdown file with a results table."""
-    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(write_markdown_text(results, title))
+
+
+def write_markdown_text(results: list[dict], title: str) -> str:
     total = len(results)
     passed = sum(1 for r in results if r["passed"])
     pass_rate = f"{passed}/{total} ({100 * passed / total:.0f}%)" if total else f"{passed}/{total}"
 
     lines = [
-        "# 桃曲坡 RAGFlow Import — QC Report",
+        f"# {title}",
         "",
         f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}",
         f"Pass rate: {pass_rate}",
@@ -362,23 +398,26 @@ def write_markdown(path: Path, results: list[dict]) -> None:
         lines.append("---")
         lines.append("")
 
-    with open(path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+    return "\n".join(lines)
 
 
 # ------------------------------------------------------------------
 # Main
 # ------------------------------------------------------------------
-def run_qc(dry_run: bool = False) -> list[dict]:
+def run_qc(dry_run: bool = False, questions_path: str | Path | None = None) -> list[dict]:
     """
     Run the QC question set against the live RAGFlow API.
+
+    ``questions_path`` 给定时用外挂题集（如泾惠渠 jhc1-3），否则用内置桃曲坡题集。
 
     Returns:
         List of result dicts, one per question.
     """
+    questions = load_questions(questions_path)
+
     # 0. dry-run 短路：不读前置产物、不登录、不发任何请求、不写任何产物
     if dry_run:
-        for q in QUESTIONS:
+        for q in questions:
             print(f"[dry_run] Would ask {q['id']} on {q['dataset_ids']}: {q['text']}")
         return []
 
@@ -401,7 +440,7 @@ def run_qc(dry_run: bool = False) -> list[dict]:
     # 4. Run each question
     results: list[dict] = []
 
-    for q in QUESTIONS:
+    for q in questions:
         qid = q["id"]
         question_text = q["text"]
         ds_keys = q["dataset_ids"]
@@ -487,7 +526,9 @@ def run_qc(dry_run: bool = False) -> list[dict]:
 
     # 6. Write report markdown
     report_path = OUT_DIR / "qc" / f"report_{ts}.md"
-    write_markdown(report_path, results)
+    report_title = ("RAGFlow Import — QC Report" if questions_path is None
+                    else f"RAGFlow Import — QC Report（{Path(questions_path).stem}）")
+    write_markdown(report_path, results, title=report_title)
     print(f"[INFO] Wrote {report_path}")
 
     # 7. Print summary
@@ -506,5 +547,11 @@ def run_qc(dry_run: bool = False) -> list[dict]:
 
 
 if __name__ == "__main__":
-    dry = "--dry-run" in sys.argv
-    run_qc(dry_run=dry)
+    import argparse
+
+    ap = argparse.ArgumentParser(description="知识库检索验收（默认内置桃曲坡题集）")
+    ap.add_argument("--dry-run", action="store_true", help="只打印将要问的题目")
+    ap.add_argument("--questions", default=None,
+                    help="外挂题集 JSON（dataset_ids 用库 key，如 jhc1）")
+    args_ns = ap.parse_args()
+    run_qc(dry_run=args_ns.dry_run, questions_path=args_ns.questions)
