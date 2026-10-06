@@ -209,6 +209,8 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--setup", type=Path, default=SETUP_STATE)
     ap.add_argument("--state", type=Path, default=MOUNT_STATE)
     ap.add_argument("--apply", action="store_true", help="实际挂载（默认 dry-run）")
+    ap.add_argument("--redo", action="store_true",
+                    help="重挂已 done 的组（转写文本修正后刷新库内切片）")
     ap.add_argument("--limit", type=int, default=0, help="最多处理 N 组（0=不限）")
     ap.add_argument("--only", action="append", default=[], metavar="SUBSTR",
                     help="仅处理暂存 rel 含此子串的组（可重复）")
@@ -246,7 +248,7 @@ def main(argv: list[str] | None = None) -> None:
 
     state = json.loads(args.state.read_text(encoding="utf-8")) if args.state.is_file() else {}
     todo = [(rel, pages) for rel, pages in sorted(groups.items())
-            if state.get(rel, {}).get("status") != "done" or not args.apply]
+            if args.redo or state.get(rel, {}).get("status") != "done" or not args.apply]
     if not args.apply:
         for rel, pages in sorted(groups.items())[:15]:
             st = state.get(rel, {}).get("status", "-")

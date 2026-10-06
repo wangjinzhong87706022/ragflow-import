@@ -32,7 +32,7 @@
     "dataset_ids": ["jhc2"],
     "use_kg": false,
     "meta_data_filter": null,
-    "expected_keywords": ["视频会议", "12 月 2 日"],
+    "expected_keywords": ["视频会议", "2022年12月2日"],
     "category": "会议通知（扫描页）"
   },
   {

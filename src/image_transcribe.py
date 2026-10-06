@@ -76,12 +76,34 @@ TRANSCRIBE_PROMPT = (
     "7. 表格每个单元格独立照抄：认不出的单元格整格填〔?〕，"
     "**严禁把上一行的数值复制到下一行充数**——宁可整行〔?〕也绝不编造重复值；\n"
     "8. 图中出现明确的惯常写法（〃、同上、点线）表示同上时，展开为与上一行同栏相同的完整内容"
-    "（如单位名照上一行写全称）；仅限有明确同上标记时才展开，无标记时仍按第 7 条严禁复制。"
+    "（如单位名照上一行写全称）；仅限有明确同上标记时才展开，无标记时仍按第 7 条严禁复制。\n"
+    "9. 数字内部不得插入空格：日期/时间/编号/单位一律连写"
+    "（写“2022年12月2日”“14:30”“5746V”“30%”，"
+    "不得写成“2022 年 12 月 2 日”“14: 30”）；"
+    "表格单元格之间、词与词之间的空格不受此限。"
 )
 PROMPT_SHA = hashlib.sha256(TRANSCRIBE_PROMPT.encode("utf-8")).hexdigest()[:12]
 
 _DITTO = {"〃", "同上"}
 _SEP_CELL = re.compile(r":?-{1,}:?")
+
+# 数字内部空格（模型爱加，破坏精确数值检索）的确定性回退：
+# 只在"数字↔中文单位/时间单位"与"冒号时间"这些绝不会真空格的边界收紧，
+# 绝不合并两个独立数字（表格里 "5746 | 5923"、正文 "流量 4541 10.1" 不受影响）。
+_NUMBER_SPACE_PATTERNS = (
+    (re.compile(r"(?<=\d)\s+(?=[年月日时分秒])"), ""),
+    (re.compile(r"(?<=[年月日时分秒])\s+(?=\d)"), ""),
+    (re.compile(r"(?<=\d)\s*:\s+(?=\d)"), ":"),
+    (re.compile(r"(?<=\d)\s+(?=[%℃°])"), ""),
+    (re.compile(r"(?<=\d)\s+(?=[米元方级人次台名处条款项次兆])"), ""),
+)
+
+
+def _despace_numbers(text: str) -> str:
+    """收掉数字内部的多余空格（prompt 第 9 条的确定性兜底）。"""
+    for pat, repl in _NUMBER_SPACE_PATTERNS:
+        text = pat.sub(repl, text)
+    return text
 
 
 def _expand_dittos(text: str) -> str:
@@ -280,7 +302,7 @@ def transcribe_one(path: Path, src_root: Path, bucket: str, endpoint: str,
         data = parse_transcription(text)
         row.update({
             "ok": True,
-            "text": _expand_dittos(data["text"]),
+            "text": _despace_numbers(_expand_dittos(data["text"])),
             "low_conf": bool(data["low_conf"]),
             "notes": data["notes"],
         })

@@ -340,3 +340,25 @@ def test_expand_dittos_ignores_non_table_lines():
     out = _expand_dittos(src)
     assert out.splitlines()[0] == "同上所述"
     assert "| x | 〃 |" in out
+
+
+# ---------------------------------------------------------------------------
+# 数字内部空格（prompt 第 9 条的确定性兜底）
+# ---------------------------------------------------------------------------
+
+def test_despace_numbers_closes_date_time_units():
+    from image_transcribe import _despace_numbers
+    assert _despace_numbers("定于 2022 年 12 月 2 日（星期五）下午 14: 30") == \
+        "定于 2022年12月2日（星期五）下午 14:30"
+    assert _despace_numbers("提前 10 分钟入会") == "提前 10分钟入会"
+    assert _despace_numbers("出力 30 % 温度 62 ℃") == "出力 30% 温度 62℃"
+    # 字母单位保持原样（保守：只收数字↔中文单位/冒号时间这些绝不会真空格的边界）
+    assert _despace_numbers("电压 5746 V") == "电压 5746 V"
+
+
+def test_despace_numbers_keeps_separate_numbers_and_cells():
+    from image_transcribe import _despace_numbers
+    # 两个独立数字之间的空格必须保留（表格列、正文并列数值）
+    assert _despace_numbers("| 1:00 | 4541 | 10.1 | 5746 | 5923 | 305 |") == \
+        "| 1:00 | 4541 | 10.1 | 5746 | 5923 | 305 |"
+    assert _despace_numbers("流量 4541 10.1 电压 5746") == "流量 4541 10.1 电压 5746"
