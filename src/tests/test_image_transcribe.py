@@ -7,6 +7,7 @@ import pytest
 
 from image_transcribe import (
     MAX_TOKENS,
+    _expand_dittos,
     bucket_of,
     is_target,
     load_done,
@@ -309,3 +310,33 @@ def test_main_report_only_writes_report(tmp_path):
     report = out_dir / "transcribe_report.md"
     assert report.exists()
     assert "转写目标：1 页" in report.read_text(encoding="utf-8")
+
+
+# ---------------------------------------------------------------------------
+# 惯常写法展开（prompt 第 8 条的确定性兜底）
+# ---------------------------------------------------------------------------
+
+def test_expand_dittos_expands_ditto_cell():
+    src = ("| 姓名 | 单位 |\n| :--- | :--- |\n"
+           "| 张三 | 陕西省泾惠水利水电设计院 |\n| 张光伟 | 〃 |")
+    out = _expand_dittos(src)
+    assert "| 张光伟 | 陕西省泾惠水利水电设计院 |" in out
+
+
+def test_expand_dittos_keeps_ditto_when_prev_empty():
+    src = "| a | b |\n| - | - |\n|  | 〃 |\n| 张三 | 〃 |"
+    out = _expand_dittos(src)
+    assert "|  | 〃 |" in out
+
+
+def test_expand_dittos_keeps_ditto_after_separator_row():
+    src = "| 姓名 | 单位 |\n| :--- | :--- |\n| 张三 | 〃 |"
+    out = _expand_dittos(src)
+    assert "| 张三 | 〃 |" in out
+
+
+def test_expand_dittos_ignores_non_table_lines():
+    src = "同上所述\n\n| a | b |\n| - | - |\n| x | 〃 |"
+    out = _expand_dittos(src)
+    assert out.splitlines()[0] == "同上所述"
+    assert "| x | 〃 |" in out

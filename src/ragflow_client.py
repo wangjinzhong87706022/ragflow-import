@@ -14,6 +14,7 @@ Import API_BASE and PUBLIC_PEM from config (resolved relative to ragflow_import/
     等待逻辑同时兼容两种表示与 progress 信号。
 """
 import base64
+import os
 import pathlib
 import time
 from typing import Optional
@@ -26,7 +27,9 @@ from urllib3.util.retry import Retry
 from config import API_BASE, PUBLIC_PEM
 
 DEFAULT_TIMEOUT = 30   # 常规 JSON 调用
-UPLOAD_TIMEOUT = 120   # 文件上传
+# 文件上传。大件（百 MB 级合并 PDF，如 162MB/121 页扫描件）写超时会打断
+# 整条导入，故可经 RAGFLOW_UPLOAD_TIMEOUT 调高（秒）。
+UPLOAD_TIMEOUT = int(os.getenv("RAGFLOW_UPLOAD_TIMEOUT", "120"))
 
 # 瞬时连接错误重试：shared-LLM 网关与 Docker bridge 在并发解析期间偶发
 # TCP reset（RemoteDisconnected / ConnectionAborted / ConnectionReset），服务端

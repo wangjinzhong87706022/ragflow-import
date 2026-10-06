@@ -39,11 +39,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from config import LLM_API_ENDPOINT, LLM_MODEL, OUT_DIR, VISION_CALL_TIMEOUT  # noqa: F401
 from image_triage import prepare_image
-from jhc_constants import JHC_SRC_ROOT_DEFAULT
+from jhc_constants import JHC_SRC_ROOT_DEFAULT, TRIAGE_JSONL_DEFAULT
 from jhc_prepare import _dedup_identical_images
 from vision_extract import build_payload, call_vision
 
-TRIAGE_JSONL = OUT_DIR / "triage" / "image_triage.jsonl"
+# profile 会覆写 OUT_DIR（如 jinghuiqu → out/jinghuiqu），而分诊/转写产物始终在
+# out/triage —— 故走 profile 无关的 TRIAGE_JSONL_DEFAULT，否则带 KB_PROFILE 跑时
+# 会指向不存在的目录（静默变成 0 目标）。
+TRIAGE_JSONL = TRIAGE_JSONL_DEFAULT
 
 DEFAULT_MAX_SIDE = 2000     # 密集手写表格比分诊的 1600 口径更需要细节
 DEFAULT_WORKERS = 4         # agnes 实测 4 并发最优
@@ -71,8 +74,52 @@ TRANSCRIBE_PROMPT = (
     "5. 按原文顺序输出，不总结、不评论、不改写；空白区域跳过；\n"
     "6. CONF: LOW 仅在整页大面积难以辨认或〔?〕很多时使用，NOTES 说明原因；\n"
     "7. 表格每个单元格独立照抄：认不出的单元格整格填〔?〕，"
-    "**严禁把上一行的数值复制到下一行充数**——宁可整行〔?〕也绝不编造重复值。"
+    "**严禁把上一行的数值复制到下一行充数**——宁可整行〔?〕也绝不编造重复值；\n"
+    "8. 图中出现明确的惯常写法（〃、同上、点线）表示同上时，展开为与上一行同栏相同的完整内容"
+    "（如单位名照上一行写全称）；仅限有明确同上标记时才展开，无标记时仍按第 7 条严禁复制。"
 )
+PROMPT_SHA = hashlib.sha256(TRANSCRIBE_PROMPT.encode("utf-8")).hexdigest()[:12]
+
+_DITTO = {"〃", "同上"}
+_SEP_CELL = re.compile(r":?-{1,}:?")
+
+
+def _expand_dittos(text: str) -> str:
+    """表格单元格为 〃/同上 时展开为上一行同列内容（prompt 第 8 条的确定性兜底）。
+
+    仅当上一行同列有真实内容（非分隔行、非空、非自身同上）才展开，
+    否则原样保留；非表格行不受影响。
+    """
+    prev: list[str] | None = None
+    out: list[str] = []
+    for ln in text.splitlines():
+        s = ln.strip()
+        if not s.startswith("|"):
+            prev = None
+            out.append(ln)
+            continue
+        seps = s.split("|")
+        prev_real = prev is not None and len(seps) == len(prev) and any(
+            c.strip() and not _SEP_CELL.fullmatch(c.strip())
+            for c in prev[1:-1]
+        )
+        if prev_real:
+            new_cells = []
+            for i, c in enumerate(seps):
+                val = c.strip().strip("\u201c\u201d\u2018\u2019\"'").strip()
+                if 0 < i < len(seps) - 1 and val in _DITTO:
+                    p = prev[i].strip()
+                    if p and p not in _DITTO and not _SEP_CELL.fullmatch(p):
+                        new_cells.append(f" {p} ")
+                        continue
+                new_cells.append(c)
+            new_ln = "|".join(new_cells)
+            out.append(new_ln)
+            prev = new_ln.split("|")
+        else:
+            out.append(ln)
+            prev = seps
+    return "\n".join(out)
 
 LOCK = threading.Lock()
 
@@ -208,7 +255,8 @@ def transcribe_one(path: Path, src_root: Path, bucket: str, endpoint: str,
                    api_key: str, model: str, max_side: int,
                    transport=None, backoff=RETRY_BACKOFF) -> dict:
     rel = path.relative_to(src_root).as_posix()
-    row: dict = {"rel": rel, "bucket": bucket, "endpoint": endpoint, "model": model}
+    row: dict = {"rel": rel, "bucket": bucket, "endpoint": endpoint, "model": model,
+                 "prompt_sha": PROMPT_SHA}
     try:
         img = prepare_image(path, max_side)
         payload = build_payload(img, TRANSCRIBE_PROMPT)
@@ -232,7 +280,7 @@ def transcribe_one(path: Path, src_root: Path, bucket: str, endpoint: str,
         data = parse_transcription(text)
         row.update({
             "ok": True,
-            "text": data["text"],
+            "text": _expand_dittos(data["text"]),
             "low_conf": bool(data["low_conf"]),
             "notes": data["notes"],
         })

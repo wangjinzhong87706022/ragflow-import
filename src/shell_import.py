@@ -44,8 +44,12 @@ def save_json(path, obj):
     Path(path).write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def build_chunks(md_text, max_lines=10, max_chars=600):
-    """按 '## ' 小节切分，节内按行分组（≤max_lines 且 ≤max_chars）；丢弃 <40 字残片。"""
+def build_chunks(md_text, max_lines=10, max_chars=600, min_chars=40):
+    """按 '## ' 小节切分，节内按行分组（≤max_lines 且 ≤max_chars）；丢弃 <min_chars 字残片。
+
+    ``min_chars`` 下调（如 8）用于页级转写挂载：40 字下限会把"标题页/图签"
+    这类整页只有一行的合法短页整页丢弃，导致该页文本在库内缺失。
+    """
     sections, cur = [], ["# 头部"]
     for line in md_text.splitlines():
         if line.startswith("## "):
@@ -68,7 +72,7 @@ def build_chunks(md_text, max_lines=10, max_chars=600):
         if buf:
             prefix = header + "\n" if header.startswith("## ") else ""
             chunks.append(prefix + "\n".join(buf))
-    return [c.strip() for c in chunks if len(c.strip()) >= 40]
+    return [c.strip() for c in chunks if len(c.strip()) >= min_chars]
 
 
 def question_anchors(questions, kb_name):
